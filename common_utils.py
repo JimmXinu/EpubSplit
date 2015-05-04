@@ -256,7 +256,6 @@ class ReadOnlyTableWidgetItem(QTableWidgetItem):
         QTableWidgetItem.__init__(self, text, QtGui.QTableWidgetItem.UserType)
         self.setFlags(Qt.ItemIsSelectable|Qt.ItemIsEnabled)
 
-
 class RatingTableWidgetItem(QTableWidgetItem):
 
     def __init__(self, rating, is_read_only=False):
