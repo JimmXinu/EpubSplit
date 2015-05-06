@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-05-05 16:00+Central Daylight Time\n"
+"POT-Creation-Date: 2015-05-06 11:19+Central Daylight Time\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -155,7 +155,7 @@ msgstr ""
 msgid "View data stored in the library database for this plugin"
 msgstr ""
 
-#: config.py:314 dialogs.py:97
+#: config.py:314 dialogs.py:98
 msgid "Done"
 msgstr ""
 
@@ -187,61 +187,61 @@ msgstr ""
 msgid "Template from source book. Example: {title} by {authors}"
 msgstr ""
 
-#: dialogs.py:89
-msgid "New Book"
+#: dialogs.py:61
+msgid "<p><b><i>Double click to copy from sample.</i></b></p>"
 msgstr ""
 
 #: dialogs.py:90
+msgid "New Book"
+msgstr ""
+
+#: dialogs.py:91
 msgid "Make <i>one</i> new book containing the sections selected above and then edit its Metadata."
 msgstr ""
 
-#: dialogs.py:93
+#: dialogs.py:94
 msgid "New Book per Section"
 msgstr ""
 
-#: dialogs.py:94
+#: dialogs.py:95
 msgid "Make a new book for <i>each</i> of the sections selected above.  Title for each will be the Table of Contents, which you can edit here first."
 msgstr ""
 
-#: dialogs.py:113
+#: dialogs.py:114
 msgid "Missing Title(s)"
 msgstr ""
 
-#: dialogs.py:114
+#: dialogs.py:115
 msgid ""
 "Books not split.\n"
 "\n"
 "Some selected sections don't have a Table of Contents text.  You must enter one before splitting sections to individual books.  Double click to edit the Table of Contents entry for a section."
 msgstr ""
 
-#: dialogs.py:132
+#: dialogs.py:133
 msgid "Guide"
 msgstr ""
 
-#: dialogs.py:132
+#: dialogs.py:133
 msgid "HREF"
 msgstr ""
 
-#: dialogs.py:132
+#: dialogs.py:133
 msgid "Table of Contents"
 msgstr ""
 
-#: dialogs.py:163
-msgid "<p><b><i>Double click to copy from sample.</i></b></p>"
-msgstr ""
-
-#: dialogs.py:172
+#: dialogs.py:173
 msgid "Indicates 'special' pages: copyright, titlepage, etc."
 msgstr ""
 
-#: dialogs.py:178
+#: dialogs.py:179
 msgid ""
 "Click and copy hotkey to copy text.\n"
 "Double-click to edit ToC entry.\n"
 "Pipes(|) divide different ToC entries to the same place."
 msgstr ""
 
-#: dialogs.py:217
+#: dialogs.py:218
 msgid "Section Sample"
 msgstr ""
 
@@ -257,39 +257,39 @@ msgstr ""
 msgid " - %s estimated until done"
 msgstr ""
 
-#: dialogs.py:290
+#: dialogs.py:313
 msgid "%d day"
 msgstr ""
 
-#: dialogs.py:290
+#: dialogs.py:313
 msgid "%d days"
 msgstr ""
 
-#: dialogs.py:291
+#: dialogs.py:314
 msgid "%d hour"
 msgstr ""
 
-#: dialogs.py:291
+#: dialogs.py:314
 msgid "%d hours"
 msgstr ""
 
-#: dialogs.py:292
+#: dialogs.py:315
 msgid "%d minute"
 msgstr ""
 
-#: dialogs.py:292
+#: dialogs.py:315
 msgid "%d minutes"
 msgstr ""
 
-#: dialogs.py:293
+#: dialogs.py:316
 msgid "%d second"
 msgstr ""
 
-#: dialogs.py:293
+#: dialogs.py:316
 msgid "%d seconds"
 msgstr ""
 
-#: dialogs.py:308
+#: dialogs.py:331
 msgid "less than 1 second"
 msgstr ""
 
