@@ -18,11 +18,11 @@ from datetime import datetime
 try:
     from PyQt5 import QtWidgets as QtGui
     from PyQt5.Qt import (QTableWidget, QVBoxLayout, QHBoxLayout, QProgressDialog, QTimer,
-                          QDialogButtonBox, Qt, QAbstractItemView, QTableWidgetItem)
+                          QDialogButtonBox, Qt, QAbstractItemView, QTableWidgetItem, QTextBrowser)
 except ImportError as e:
     from PyQt4 import QtGui
     from PyQt4.Qt import (QTableWidget, QVBoxLayout, QHBoxLayout, QProgressDialog, QTimer,
-                          QDialogButtonBox, Qt, QAbstractItemView, QTableWidgetItem)
+                          QDialogButtonBox, Qt, QAbstractItemView, QTableWidgetItem, QTextBrowser)
 
 try:
     from calibre.gui2 import QVariant
@@ -42,7 +42,6 @@ else:
         return x.toPyObject()
 
 from calibre.gui2 import error_dialog, warning_dialog, question_dialog, info_dialog
-from calibre.gui2.dialogs.message_box import ViewLog
 from calibre.gui2.dialogs.confirm_delete import confirm
 from calibre.ebooks.metadata import fmt_sidx
 
@@ -59,6 +58,8 @@ from calibre_plugins.epubsplit.common_utils \
     import (ReadOnlyTableWidgetItem, SizePersistedDialog,
             ImageTitleLayout, get_icon)
 
+SAMPLE_NOTE=_("<p><b><i>Double click to copy from sample.</i></b></p>")
+    
 class SelectLinesDialog(SizePersistedDialog):
     def __init__(self, gui, header, prefs, icon, lines,
                  do_split_fn,
@@ -160,7 +161,7 @@ class LinesTableWidget(QTableWidget):
             href = "%s#%s"%(href,line['anchor'])
 
         href_cell = ReadOnlyTableWidgetItem(href)
-        href_cell.setToolTip(line['sample']+_("<p><b><i>Double click to copy from sample.</i></b></p>"))
+        href_cell.setToolTip(line['sample']+SAMPLE_NOTE)
         href_cell.setData(Qt.UserRole, line['num'])
         self.setItem(row, 0, href_cell)
 
@@ -214,10 +215,9 @@ Pipes(|) divide different ToC entries to the same place.'''))
     def show_tooltip(self,modidx):
         "Show section sample from tooltip in an info for copying when double clicked."
         if modidx.column() == 0: # first column only.
-            ViewLog(_("Section Sample"),
-                    # negate the <pre> ViewLog wraps with.
-                    "</pre>%s<pre>"%self.item(modidx.row(),modidx.column()).toolTip(),
-                    parent=self.parent()).exec_()
+            ViewSample(_("Section Sample"),
+                       self.item(modidx.row(),modidx.column()).toolTip().replace(SAMPLE_NOTE,''),
+                       parent=self.parent()).exec_()
 
 class LoopProgressDialog(QProgressDialog):
     '''
@@ -277,6 +277,29 @@ class LoopProgressDialog(QProgressDialog):
     def do_when_finished(self):
         self.hide()
         self.finish_function(self.split_list)
+
+class ViewSample(SizePersistedDialog):
+
+    def __init__(self, title, html, parent=None):
+        SizePersistedDialog.__init__(self, parent, 'epubsplit:view sample')
+        self.l = l = QVBoxLayout()
+        self.setLayout(l)
+
+        self.tb = QTextBrowser(self)
+        self.tb.setHtml(html)
+        l.addWidget(self.tb)
+
+        self.bb = QDialogButtonBox(QDialogButtonBox.Ok)
+        self.bb.accepted.connect(self.accept)
+        self.bb.rejected.connect(self.reject)
+        l.addWidget(self.bb)
+        self.setModal(False)
+        self.setWindowTitle(title)
+        self.setWindowIcon(get_icon('format-justify-fill.png'))
+        
+        # Cause our dialog size to be restored from prefs or created on first usage
+        self.resize_dialog()
+        self.show()
 
 def time_duration_format(seconds):
     """
