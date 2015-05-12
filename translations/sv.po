@@ -2,12 +2,12 @@
 # Copyright (C) YEAR ORGANIZATION
 # 
 # Translators:
-# Merarom <merarom@yahoo.es>, 2014
+# Merarom <merarom@yahoo.es>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
-"POT-Creation-Date: 2014-12-27 13:16+Central Standard Time\n"
-"PO-Revision-Date: 2014-08-14 17:31+0000\n"
+"POT-Creation-Date: 2015-05-06 11:19+Central Daylight Time\n"
+"PO-Revision-Date: 2015-05-10 10:52+0000\n"
 "Last-Translator: Merarom <merarom@yahoo.es>\n"
 "Language-Team: Swedish (http://www.transifex.com/projects/p/calibre-plugins/language/sv/)\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:32
+#: __init__.py:42
 msgid "UI plugin to split off parts of an epub into a new book."
 msgstr "Användargränssnitt för att dela upp delar av en epub till en ny book."
 
@@ -166,7 +166,7 @@ msgstr "Visa biblioteksval"
 msgid "View data stored in the library database for this plugin"
 msgstr "Visa data lagrat i biblioteksdatabasen för detta tilläggsprogram"
 
-#: config.py:314 dialogs.py:84
+#: config.py:314 dialogs.py:98
 msgid "Done"
 msgstr "Klar"
 
@@ -202,70 +202,161 @@ msgstr "Välj en kolumn att fylla upp med mall vid delning"
 msgid "Template from source book. Example: {title} by {authors}"
 msgstr "Mall från källbok. Till exempel: {title} av {authors}"
 
-#: dialogs.py:81
+#: dialogs.py:61
+msgid "<p><b><i>Double click to copy from sample.</i></b></p>"
+msgstr "<p><b><i>Dubbelklicka för att kopiera från prov.</i></b></p>"
+
+#: dialogs.py:90
 msgid "New Book"
 msgstr "Ny bok"
 
-#: dialogs.py:110
+#: dialogs.py:91
+msgid ""
+"Make <i>one</i> new book containing the sections selected above and then "
+"edit its Metadata."
+msgstr "Gör <i>en</i> ny bok som innehåller sektionerna valda ovan och sedan redigera dess Metadata."
+
+#: dialogs.py:94
+msgid "New Book per Section"
+msgstr "Ny bok per sektion"
+
+#: dialogs.py:95
+msgid ""
+"Make a new book for <i>each</i> of the sections selected above.  Title for "
+"each will be the Table of Contents, which you can edit here first."
+msgstr "Gör en ny bok för <i>varje</i> del av sektionerna valda ovan. Titel för var och en kommer bli innehållsförteckningens, vilken du kan redigera här först."
+
+#: dialogs.py:114
+msgid "Missing Title(s)"
+msgstr "Saknade titlar"
+
+#: dialogs.py:115
+msgid ""
+"Books not split.\n"
+"\n"
+"Some selected sections don't have a Table of Contents text.  You must enter one before splitting sections to individual books.  Double click to edit the Table of Contents entry for a section."
+msgstr "Böcker inte uppdelade.\n\nNågra valda sektioner har inte innehållsförteckning. Du måste ange en innan uppdelning av sektioner till individuella böcker. Dubbelklicka för att redigera innehållsförteckning."
+
+#: dialogs.py:133
 msgid "Guide"
 msgstr "Guide"
 
-#: dialogs.py:110
+#: dialogs.py:133
 msgid "HREF"
 msgstr "HREF"
 
-#: dialogs.py:110
+#: dialogs.py:133
 msgid "Table of Contents"
 msgstr "Innehållsförteckning"
 
-#: dialogs.py:147
+#: dialogs.py:173
 msgid "Indicates 'special' pages: copyright, titlepage, etc."
 msgstr "Indikerar \"speciella\" sidor: copyright, titelsida, etc."
 
-#: dialogs.py:153
+#: dialogs.py:179
 msgid ""
 "Click and copy hotkey to copy text.\n"
 "Double-click to edit ToC entry.\n"
 "Pipes(|) divide different ToC entries to the same place."
 msgstr "Klicka och kopiera snabbvalstangent för att kopiera text.\nDubbelklicka för att redigera element i innehållsförteckning. Pipes() delar upp olika innehållsförteckningselement till samma ställe."
 
-#: epubsplit_plugin.py:62
+#: dialogs.py:218
+msgid "Section Sample"
+msgstr "Sektionsprov"
+
+#: dialogs.py:230 dialogs.py:231 dialogs.py:232
+msgid "Splitting Sections..."
+msgstr "Delar upp sektioner..."
+
+#: dialogs.py:235
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: dialogs.py:255
+msgid " - %s estimated until done"
+msgstr " - %s estimaterade till klara"
+
+#: dialogs.py:313
+msgid "%d day"
+msgstr "%d dag"
+
+#: dialogs.py:313
+msgid "%d days"
+msgstr "%d dagar"
+
+#: dialogs.py:314
+msgid "%d hour"
+msgstr "%d timme"
+
+#: dialogs.py:314
+msgid "%d hours"
+msgstr "%d timmar"
+
+#: dialogs.py:315
+msgid "%d minute"
+msgstr "%d minut"
+
+#: dialogs.py:315
+msgid "%d minutes"
+msgstr "%d minuter"
+
+#: dialogs.py:316
+msgid "%d second"
+msgstr "%d sekund"
+
+#: dialogs.py:316
+msgid "%d seconds"
+msgstr "%d sekunder"
+
+#: dialogs.py:331
+msgid "less than 1 second"
+msgstr "mindre än 1 sekund"
+
+#: epubsplit_plugin.py:65
 msgid "EpubSplit"
 msgstr "EpubSplit"
 
-#: epubsplit_plugin.py:63
+#: epubsplit_plugin.py:66
 msgid "Split off part of an EPUB into a new book."
 msgstr "Dela upp en del av EPUB till en ny bok."
 
-#: epubsplit_plugin.py:111
+#: epubsplit_plugin.py:114
 msgid "Select One Book"
 msgstr "Välj en bok"
 
-#: epubsplit_plugin.py:112
+#: epubsplit_plugin.py:115
 msgid "Please select exactly one book to split."
 msgstr "Var god välj exakt en bok att dela upp."
 
-#: epubsplit_plugin.py:129
+#: epubsplit_plugin.py:132
 msgid "No EPUB"
 msgstr "Ingen EPUB"
 
-#: epubsplit_plugin.py:130
+#: epubsplit_plugin.py:133
 msgid "This plugin only works on EPUB format ebooks."
 msgstr "Detta tilläggsprogram fungerar bara på EPUB-formaterade e-böcker."
 
-#: epubsplit_plugin.py:141
+#: epubsplit_plugin.py:144
 msgid "Select Sections to Split Off"
 msgstr "Välj sektion att dela upp"
 
-#: epubsplit_plugin.py:168
+#: epubsplit_plugin.py:179
+msgid "New Books Created"
+msgstr "Nya böcker skapade"
+
+#: epubsplit_plugin.py:180
+msgid "%s New Books Created."
+msgstr "%s Nya böcker skapade."
+
+#: epubsplit_plugin.py:228
 msgid "%s Split"
 msgstr "%s Dela upp"
 
-#: epubsplit_plugin.py:200
+#: epubsplit_plugin.py:260
 msgid "Split from:"
 msgstr "Dela upp från:"
 
-#: epubsplit_plugin.py:247
+#: epubsplit_plugin.py:309
 msgid ""
 "The book for the new Split EPUB has been created and default metadata filled in.\n"
 "\n"
@@ -276,10 +367,10 @@ msgid ""
 "If you download or add a cover image, it will be included in the generated EPUB."
 msgstr "Boken för den nya uppdelade EPUB har skapats och standard metadata är ifyllt. \n\nMen EPUB kommer *inte* att skapas förrän du har granskat, redigerat, och stängt metadata dialogrutan som följer. \n\nDu kan fylla i metadata själv, eller använda hämtat metadata för kända böcker. \n\nOm du laddar ner eller lägga till en omslagsbild, kommer den att inkluderas i den genererade EPUB."
 
-#: epubsplit_plugin.py:263
+#: epubsplit_plugin.py:325
 msgid "Splitting off from EPUB..."
 msgstr "Delar upp från EPUB..."
 
-#: epubsplit_plugin.py:293
+#: epubsplit_plugin.py:355
 msgid "Finished splitting off EPUB."
 msgstr "Klar med uppdelning av EPUB."

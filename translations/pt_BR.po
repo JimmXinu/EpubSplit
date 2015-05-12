@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
-"POT-Creation-Date: 2014-12-27 13:16+Central Standard Time\n"
-"PO-Revision-Date: 2014-07-18 16:40+0000\n"
-"Last-Translator: Paulo_Neto <layoutbr@lexxa.com.br>\n"
+"POT-Creation-Date: 2015-05-06 11:19+Central Daylight Time\n"
+"PO-Revision-Date: 2015-05-06 09:01+0000\n"
+"Last-Translator: Kovid Goyal <kovid@kovidgoyal.net>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/calibre-plugins/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: __init__.py:32
+#: __init__.py:42
 msgid "UI plugin to split off parts of an epub into a new book."
 msgstr "Plugin para dividir partes de um epub em um novo livro."
 
@@ -166,7 +166,7 @@ msgstr "Visualizar preferências da biblioteca..."
 msgid "View data stored in the library database for this plugin"
 msgstr "Visualizar dados armazenados no banco de dados da biblioteca para este plugin"
 
-#: config.py:314 dialogs.py:84
+#: config.py:314 dialogs.py:98
 msgid "Done"
 msgstr "Ok"
 
@@ -202,70 +202,161 @@ msgstr "Escolha uma coluna para preencher com o modelo dividido."
 msgid "Template from source book. Example: {title} by {authors}"
 msgstr "Modelo do livro de origem. Exemplo: {title} por {authors}"
 
-#: dialogs.py:81
+#: dialogs.py:61
+msgid "<p><b><i>Double click to copy from sample.</i></b></p>"
+msgstr ""
+
+#: dialogs.py:90
 msgid "New Book"
 msgstr "Novo Livro"
 
-#: dialogs.py:110
+#: dialogs.py:91
+msgid ""
+"Make <i>one</i> new book containing the sections selected above and then "
+"edit its Metadata."
+msgstr ""
+
+#: dialogs.py:94
+msgid "New Book per Section"
+msgstr ""
+
+#: dialogs.py:95
+msgid ""
+"Make a new book for <i>each</i> of the sections selected above.  Title for "
+"each will be the Table of Contents, which you can edit here first."
+msgstr ""
+
+#: dialogs.py:114
+msgid "Missing Title(s)"
+msgstr ""
+
+#: dialogs.py:115
+msgid ""
+"Books not split.\n"
+"\n"
+"Some selected sections don't have a Table of Contents text.  You must enter one before splitting sections to individual books.  Double click to edit the Table of Contents entry for a section."
+msgstr ""
+
+#: dialogs.py:133
 msgid "Guide"
 msgstr "Manual"
 
-#: dialogs.py:110
+#: dialogs.py:133
 msgid "HREF"
 msgstr "HREF"
 
-#: dialogs.py:110
+#: dialogs.py:133
 msgid "Table of Contents"
 msgstr "Índice"
 
-#: dialogs.py:147
+#: dialogs.py:173
 msgid "Indicates 'special' pages: copyright, titlepage, etc."
 msgstr "Indicar páginas 'especiais': copyright, titlepage, etc."
 
-#: dialogs.py:153
+#: dialogs.py:179
 msgid ""
 "Click and copy hotkey to copy text.\n"
 "Double-click to edit ToC entry.\n"
 "Pipes(|) divide different ToC entries to the same place."
 msgstr "Clicar e copiar atalho para copiar o texto.\nClique duas vezes para editar entradas do índice.\nPipes(|) divide diferentes entradas do índice para o mesmo local."
 
-#: epubsplit_plugin.py:62
+#: dialogs.py:218
+msgid "Section Sample"
+msgstr ""
+
+#: dialogs.py:230 dialogs.py:231 dialogs.py:232
+msgid "Splitting Sections..."
+msgstr ""
+
+#: dialogs.py:235
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: dialogs.py:255
+msgid " - %s estimated until done"
+msgstr " - %s estimado até ser concluído"
+
+#: dialogs.py:313
+msgid "%d day"
+msgstr "%d dia"
+
+#: dialogs.py:313
+msgid "%d days"
+msgstr "%d dias"
+
+#: dialogs.py:314
+msgid "%d hour"
+msgstr "%d hora"
+
+#: dialogs.py:314
+msgid "%d hours"
+msgstr "%d horas"
+
+#: dialogs.py:315
+msgid "%d minute"
+msgstr "%d minuto"
+
+#: dialogs.py:315
+msgid "%d minutes"
+msgstr "%d minutos"
+
+#: dialogs.py:316
+msgid "%d second"
+msgstr "%d segundo"
+
+#: dialogs.py:316
+msgid "%d seconds"
+msgstr "%d segundos"
+
+#: dialogs.py:331
+msgid "less than 1 second"
+msgstr "menos de 1 segundo"
+
+#: epubsplit_plugin.py:65
 msgid "EpubSplit"
 msgstr "EpubSplit"
 
-#: epubsplit_plugin.py:63
+#: epubsplit_plugin.py:66
 msgid "Split off part of an EPUB into a new book."
 msgstr "Dividir parte de um EPUB em um novo livro."
 
-#: epubsplit_plugin.py:111
+#: epubsplit_plugin.py:114
 msgid "Select One Book"
 msgstr "Selecionar um Livro"
 
-#: epubsplit_plugin.py:112
+#: epubsplit_plugin.py:115
 msgid "Please select exactly one book to split."
 msgstr "Selecione exatamente um livro para dividir."
 
-#: epubsplit_plugin.py:129
+#: epubsplit_plugin.py:132
 msgid "No EPUB"
 msgstr "Nenhum EPUB"
 
-#: epubsplit_plugin.py:130
+#: epubsplit_plugin.py:133
 msgid "This plugin only works on EPUB format ebooks."
 msgstr "Este plugin apenas funciona em e-books de formato EPUB."
 
-#: epubsplit_plugin.py:141
+#: epubsplit_plugin.py:144
 msgid "Select Sections to Split Off"
 msgstr "Selecionar Seções Para Dividir"
 
-#: epubsplit_plugin.py:168
+#: epubsplit_plugin.py:179
+msgid "New Books Created"
+msgstr ""
+
+#: epubsplit_plugin.py:180
+msgid "%s New Books Created."
+msgstr ""
+
+#: epubsplit_plugin.py:228
 msgid "%s Split"
 msgstr "Dividir %s"
 
-#: epubsplit_plugin.py:200
+#: epubsplit_plugin.py:260
 msgid "Split from:"
 msgstr "Dividir de:"
 
-#: epubsplit_plugin.py:247
+#: epubsplit_plugin.py:309
 msgid ""
 "The book for the new Split EPUB has been created and default metadata filled in.\n"
 "\n"
@@ -276,10 +367,10 @@ msgid ""
 "If you download or add a cover image, it will be included in the generated EPUB."
 msgstr "O livro para a nova divisão EPUB foi criado e metadados padrão preenchidos.\n\nContudo, o EPUB *não* vai ser criado enquanto você não revisar, editar, e fechar a janela de metadados a seguir.\n\nVocê mesmo pode preencher os metadados, ou utilizar os metadados de transferência de livros conhecidos.\n\nSe você transferir ou adicionar uma imagem de capa, ela será incluída no EPUB gerado."
 
-#: epubsplit_plugin.py:263
+#: epubsplit_plugin.py:325
 msgid "Splitting off from EPUB..."
 msgstr "Dividindo do EPUB..."
 
-#: epubsplit_plugin.py:293
+#: epubsplit_plugin.py:355
 msgid "Finished splitting off EPUB."
 msgstr "Divisão do EPUB concluída."

@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
-"POT-Creation-Date: 2014-12-27 13:16+Central Standard Time\n"
-"PO-Revision-Date: 2014-06-30 13:11+0000\n"
-"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
+"POT-Creation-Date: 2015-05-06 11:19+Central Daylight Time\n"
+"PO-Revision-Date: 2015-05-06 09:01+0000\n"
+"Last-Translator: Kovid Goyal <kovid@kovidgoyal.net>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/calibre-plugins/language/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Language: uk\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: __init__.py:32
+#: __init__.py:42
 msgid "UI plugin to split off parts of an epub into a new book."
 msgstr "Додаток для поділу файла EPub на декілька нових електронних книг."
 
@@ -166,7 +166,7 @@ msgstr "Переглянути налаштування бібліотеки…"
 msgid "View data stored in the library database for this plugin"
 msgstr "Переглянути дані, збережені у базі даних бібліотеки для цього додатка"
 
-#: config.py:314 dialogs.py:84
+#: config.py:314 dialogs.py:98
 msgid "Done"
 msgstr "Виконано"
 
@@ -202,70 +202,161 @@ msgstr "Виберіть стовпчик, який буде заповнено 
 msgid "Template from source book. Example: {title} by {authors}"
 msgstr "Шаблон на основі даних початкової книги. Приклад: {title}, {authors}"
 
-#: dialogs.py:81
+#: dialogs.py:61
+msgid "<p><b><i>Double click to copy from sample.</i></b></p>"
+msgstr ""
+
+#: dialogs.py:90
 msgid "New Book"
 msgstr "Нова книга"
 
-#: dialogs.py:110
+#: dialogs.py:91
+msgid ""
+"Make <i>one</i> new book containing the sections selected above and then "
+"edit its Metadata."
+msgstr ""
+
+#: dialogs.py:94
+msgid "New Book per Section"
+msgstr ""
+
+#: dialogs.py:95
+msgid ""
+"Make a new book for <i>each</i> of the sections selected above.  Title for "
+"each will be the Table of Contents, which you can edit here first."
+msgstr ""
+
+#: dialogs.py:114
+msgid "Missing Title(s)"
+msgstr ""
+
+#: dialogs.py:115
+msgid ""
+"Books not split.\n"
+"\n"
+"Some selected sections don't have a Table of Contents text.  You must enter one before splitting sections to individual books.  Double click to edit the Table of Contents entry for a section."
+msgstr ""
+
+#: dialogs.py:133
 msgid "Guide"
 msgstr "Путівник"
 
-#: dialogs.py:110
+#: dialogs.py:133
 msgid "HREF"
 msgstr "HREF"
 
-#: dialogs.py:110
+#: dialogs.py:133
 msgid "Table of Contents"
 msgstr "Зміст"
 
-#: dialogs.py:147
+#: dialogs.py:173
 msgid "Indicates 'special' pages: copyright, titlepage, etc."
 msgstr "Позначає «особливі» сторінки: сторінка авторських прав, титульна сторінка тощо"
 
-#: dialogs.py:153
+#: dialogs.py:179
 msgid ""
 "Click and copy hotkey to copy text.\n"
 "Double-click to edit ToC entry.\n"
 "Pipes(|) divide different ToC entries to the same place."
 msgstr "Клацніть і натисніть відповідну комбінацію клавіш для копіювання тексту.\nДвічі клацніть для редагування запису змісту.\nСимволи вертикальної риски (|) поділяють різні записи змісту, які слід зберегти у одному місці."
 
-#: epubsplit_plugin.py:62
+#: dialogs.py:218
+msgid "Section Sample"
+msgstr ""
+
+#: dialogs.py:230 dialogs.py:231 dialogs.py:232
+msgid "Splitting Sections..."
+msgstr ""
+
+#: dialogs.py:235
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: dialogs.py:255
+msgid " - %s estimated until done"
+msgstr ""
+
+#: dialogs.py:313
+msgid "%d day"
+msgstr ""
+
+#: dialogs.py:313
+msgid "%d days"
+msgstr ""
+
+#: dialogs.py:314
+msgid "%d hour"
+msgstr ""
+
+#: dialogs.py:314
+msgid "%d hours"
+msgstr ""
+
+#: dialogs.py:315
+msgid "%d minute"
+msgstr ""
+
+#: dialogs.py:315
+msgid "%d minutes"
+msgstr ""
+
+#: dialogs.py:316
+msgid "%d second"
+msgstr ""
+
+#: dialogs.py:316
+msgid "%d seconds"
+msgstr ""
+
+#: dialogs.py:331
+msgid "less than 1 second"
+msgstr ""
+
+#: epubsplit_plugin.py:65
 msgid "EpubSplit"
 msgstr "Поділ Epub"
 
-#: epubsplit_plugin.py:63
+#: epubsplit_plugin.py:66
 msgid "Split off part of an EPUB into a new book."
 msgstr "Вирізати частину книги EPUB до нової книги."
 
-#: epubsplit_plugin.py:111
+#: epubsplit_plugin.py:114
 msgid "Select One Book"
 msgstr "Виберіть одну книгу"
 
-#: epubsplit_plugin.py:112
+#: epubsplit_plugin.py:115
 msgid "Please select exactly one book to split."
 msgstr "Будь ласка, виберіть точно одну книгу для поділу."
 
-#: epubsplit_plugin.py:129
+#: epubsplit_plugin.py:132
 msgid "No EPUB"
 msgstr "Не є книгою EPUB"
 
-#: epubsplit_plugin.py:130
+#: epubsplit_plugin.py:133
 msgid "This plugin only works on EPUB format ebooks."
 msgstr "Цей додаток може обробляти лише книги у форматі EPUB."
 
-#: epubsplit_plugin.py:141
+#: epubsplit_plugin.py:144
 msgid "Select Sections to Split Off"
 msgstr "Виберіть розділи для поділу"
 
-#: epubsplit_plugin.py:168
+#: epubsplit_plugin.py:179
+msgid "New Books Created"
+msgstr ""
+
+#: epubsplit_plugin.py:180
+msgid "%s New Books Created."
+msgstr ""
+
+#: epubsplit_plugin.py:228
 msgid "%s Split"
 msgstr "%s (частина)"
 
-#: epubsplit_plugin.py:200
+#: epubsplit_plugin.py:260
 msgid "Split from:"
 msgstr "Частина:"
 
-#: epubsplit_plugin.py:247
+#: epubsplit_plugin.py:309
 msgid ""
 "The book for the new Split EPUB has been created and default metadata filled in.\n"
 "\n"
@@ -276,10 +367,10 @@ msgid ""
 "If you download or add a cover image, it will be included in the generated EPUB."
 msgstr "Створено нові частини розділеної книги EPUB, метадані яких заповнено типовими значеннями.\n\nВтім, самі книги EPUB *не буде* створено, доки ви не переглянете, відредагуєте дані і закриєте діалогове вікно метаданих, яке буде показано далі.\n\nВи можете заповнити поля даних власноруч або скористатися отриманими програмою метаданими відомих книг.\n\nЯкщо ви отримаєте або додасте зображення обкладинки, його буде включено до створеного програмою файла EPUB."
 
-#: epubsplit_plugin.py:263
+#: epubsplit_plugin.py:325
 msgid "Splitting off from EPUB..."
 msgstr "Вирізаємо частину з EPUB…"
 
-#: epubsplit_plugin.py:293
+#: epubsplit_plugin.py:355
 msgid "Finished splitting off EPUB."
 msgstr "Розрізання EPUB завершено."

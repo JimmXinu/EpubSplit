@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
-"POT-Creation-Date: 2014-12-27 13:16+Central Standard Time\n"
-"PO-Revision-Date: 2014-06-19 23:11+0000\n"
-"Last-Translator: JimmXinu <retiefjimm@gmail.com>\n"
+"POT-Creation-Date: 2015-05-06 11:19+Central Daylight Time\n"
+"PO-Revision-Date: 2015-05-06 09:01+0000\n"
+"Last-Translator: Kovid Goyal <kovid@kovidgoyal.net>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/calibre-plugins/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: __init__.py:32
+#: __init__.py:42
 msgid "UI plugin to split off parts of an epub into a new book."
 msgstr "Greffon à Interface Utilisateur pour extraire des parties d'un epub en un nouveau livre"
 
@@ -165,7 +165,7 @@ msgstr "Voir les préférences de la bibliothèque..."
 msgid "View data stored in the library database for this plugin"
 msgstr "Voir les données stockées pour ce greffon dans la base de donnée de la bibliothèque"
 
-#: config.py:314 dialogs.py:84
+#: config.py:314 dialogs.py:98
 msgid "Done"
 msgstr "Terminé"
 
@@ -201,70 +201,161 @@ msgstr "Choisir une colonne à peupler avec le modèle à l'extraction."
 msgid "Template from source book. Example: {title} by {authors}"
 msgstr "Modèle du livre source. Exemple : {title} par {authors}"
 
-#: dialogs.py:81
+#: dialogs.py:61
+msgid "<p><b><i>Double click to copy from sample.</i></b></p>"
+msgstr ""
+
+#: dialogs.py:90
 msgid "New Book"
 msgstr "Nouveau Livre"
 
-#: dialogs.py:110
+#: dialogs.py:91
+msgid ""
+"Make <i>one</i> new book containing the sections selected above and then "
+"edit its Metadata."
+msgstr ""
+
+#: dialogs.py:94
+msgid "New Book per Section"
+msgstr ""
+
+#: dialogs.py:95
+msgid ""
+"Make a new book for <i>each</i> of the sections selected above.  Title for "
+"each will be the Table of Contents, which you can edit here first."
+msgstr ""
+
+#: dialogs.py:114
+msgid "Missing Title(s)"
+msgstr ""
+
+#: dialogs.py:115
+msgid ""
+"Books not split.\n"
+"\n"
+"Some selected sections don't have a Table of Contents text.  You must enter one before splitting sections to individual books.  Double click to edit the Table of Contents entry for a section."
+msgstr ""
+
+#: dialogs.py:133
 msgid "Guide"
 msgstr "Guide"
 
-#: dialogs.py:110
+#: dialogs.py:133
 msgid "HREF"
 msgstr "HREF"
 
-#: dialogs.py:110
+#: dialogs.py:133
 msgid "Table of Contents"
 msgstr "Table des matières"
 
-#: dialogs.py:147
+#: dialogs.py:173
 msgid "Indicates 'special' pages: copyright, titlepage, etc."
 msgstr "Indique les pages 'spéciales' : copyright, page de titre etc."
 
-#: dialogs.py:153
+#: dialogs.py:179
 msgid ""
 "Click and copy hotkey to copy text.\n"
 "Double-click to edit ToC entry.\n"
 "Pipes(|) divide different ToC entries to the same place."
 msgstr "Touche directe cliquer et copier pour copier du texte.\nDouble clic pour éditer l'entrée de TdM\nLes tuyaux (|) clivent les diffétentes enrées de TdM vers la même place."
 
-#: epubsplit_plugin.py:62
+#: dialogs.py:218
+msgid "Section Sample"
+msgstr ""
+
+#: dialogs.py:230 dialogs.py:231 dialogs.py:232
+msgid "Splitting Sections..."
+msgstr ""
+
+#: dialogs.py:235
+msgid "Cancel"
+msgstr "Annuler"
+
+#: dialogs.py:255
+msgid " - %s estimated until done"
+msgstr " - %s prévu jusqu'à la fin"
+
+#: dialogs.py:313
+msgid "%d day"
+msgstr "%d jour"
+
+#: dialogs.py:313
+msgid "%d days"
+msgstr "%d jours"
+
+#: dialogs.py:314
+msgid "%d hour"
+msgstr "%d heure"
+
+#: dialogs.py:314
+msgid "%d hours"
+msgstr "%d heures"
+
+#: dialogs.py:315
+msgid "%d minute"
+msgstr "%d minute"
+
+#: dialogs.py:315
+msgid "%d minutes"
+msgstr "%d minutes"
+
+#: dialogs.py:316
+msgid "%d second"
+msgstr "%d seconde"
+
+#: dialogs.py:316
+msgid "%d seconds"
+msgstr "%d secondes"
+
+#: dialogs.py:331
+msgid "less than 1 second"
+msgstr "moins d'1 seconde"
+
+#: epubsplit_plugin.py:65
 msgid "EpubSplit"
 msgstr "EpubSplit"
 
-#: epubsplit_plugin.py:63
+#: epubsplit_plugin.py:66
 msgid "Split off part of an EPUB into a new book."
 msgstr "Extrait une partie d'un EPUB dans un nouveau livre."
 
-#: epubsplit_plugin.py:111
+#: epubsplit_plugin.py:114
 msgid "Select One Book"
 msgstr "Sélectionner un livre"
 
-#: epubsplit_plugin.py:112
+#: epubsplit_plugin.py:115
 msgid "Please select exactly one book to split."
 msgstr "S'il vous plait, sélectionner exactement un livre à extraire."
 
-#: epubsplit_plugin.py:129
+#: epubsplit_plugin.py:132
 msgid "No EPUB"
 msgstr "Pas d'EPUB"
 
-#: epubsplit_plugin.py:130
+#: epubsplit_plugin.py:133
 msgid "This plugin only works on EPUB format ebooks."
 msgstr "Ce greffon fonctionne uniquement avec des ebooks au format EPUB"
 
-#: epubsplit_plugin.py:141
+#: epubsplit_plugin.py:144
 msgid "Select Sections to Split Off"
 msgstr "Sélectionner les sections à extraire"
 
-#: epubsplit_plugin.py:168
+#: epubsplit_plugin.py:179
+msgid "New Books Created"
+msgstr ""
+
+#: epubsplit_plugin.py:180
+msgid "%s New Books Created."
+msgstr ""
+
+#: epubsplit_plugin.py:228
 msgid "%s Split"
 msgstr "%s Extrait"
 
-#: epubsplit_plugin.py:200
+#: epubsplit_plugin.py:260
 msgid "Split from:"
 msgstr "Extrait de :"
 
-#: epubsplit_plugin.py:247
+#: epubsplit_plugin.py:309
 msgid ""
 "The book for the new Split EPUB has been created and default metadata filled in.\n"
 "\n"
@@ -275,10 +366,10 @@ msgid ""
 "If you download or add a cover image, it will be included in the generated EPUB."
 msgstr "Le livre pour le nouvel EPUB Extrait a été créé et les métadonnées intégrées.\n\nCependant, l'EPUB ne sera *pas* créé  tant que vous n'aurez pas revu, édité et fermé le dialogue de métadonnées qui suit.\n\nVous pouvez insérez les métadonnées vous même ou utiliser télécharger les métadonnées pour les livres connus.\n\nSi vous téléchargez ou ajoutez une couverture, celle-ci sera incluse dans l'EPUB généré."
 
-#: epubsplit_plugin.py:263
+#: epubsplit_plugin.py:325
 msgid "Splitting off from EPUB..."
 msgstr "Extraction de l'ePub..."
 
-#: epubsplit_plugin.py:293
+#: epubsplit_plugin.py:355
 msgid "Finished splitting off EPUB."
 msgstr "Extraction de l'ePub terminée"
