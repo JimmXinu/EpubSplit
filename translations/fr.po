@@ -2,12 +2,13 @@
 # Copyright (C) YEAR ORGANIZATION
 # 
 # Translators:
+# Ptitprince <leporello1791@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
 "POT-Creation-Date: 2015-05-06 11:19+Central Daylight Time\n"
-"PO-Revision-Date: 2015-05-06 09:01+0000\n"
-"Last-Translator: Kovid Goyal <kovid@kovidgoyal.net>\n"
+"PO-Revision-Date: 2015-05-22 09:28+0000\n"
+"Last-Translator: Ptitprince <leporello1791@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/calibre-plugins/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -203,7 +204,7 @@ msgstr "Modèle du livre source. Exemple : {title} par {authors}"
 
 #: dialogs.py:61
 msgid "<p><b><i>Double click to copy from sample.</i></b></p>"
-msgstr ""
+msgstr "<p><b><i>Double cliquer pour copier à partir de l'exemple.</i></b></p>"
 
 #: dialogs.py:90
 msgid "New Book"
@@ -213,28 +214,28 @@ msgstr "Nouveau Livre"
 msgid ""
 "Make <i>one</i> new book containing the sections selected above and then "
 "edit its Metadata."
-msgstr ""
+msgstr "Faire <i>un</i> nouveau livre contenant les sections sélectionnées ci-dessus et éditer alors ses métadonnées."
 
 #: dialogs.py:94
 msgid "New Book per Section"
-msgstr ""
+msgstr "Nouveau Livre par Section"
 
 #: dialogs.py:95
 msgid ""
 "Make a new book for <i>each</i> of the sections selected above.  Title for "
 "each will be the Table of Contents, which you can edit here first."
-msgstr ""
+msgstr "Faire un nouveau livre pour <i>chacune</i> des sections sélectionnées ci-dessus. Le Titre pour chacun sera la Table des Matières, que vous pouvez d'abord éditer ici."
 
 #: dialogs.py:114
 msgid "Missing Title(s)"
-msgstr ""
+msgstr "Titre(s) manquant"
 
 #: dialogs.py:115
 msgid ""
 "Books not split.\n"
 "\n"
 "Some selected sections don't have a Table of Contents text.  You must enter one before splitting sections to individual books.  Double click to edit the Table of Contents entry for a section."
-msgstr ""
+msgstr "Livre non divisé\n\nCertaines des sections sélectionnées n'ont pas un texte Table des Matières. Vous devez d'abord en entrer une avant de diviser les sections en livres individuels. Double cliquer pour éditer l'entrée Table des Matières pour une section."
 
 #: dialogs.py:133
 msgid "Guide"
@@ -261,11 +262,11 @@ msgstr "Touche directe cliquer et copier pour copier du texte.\nDouble clic pour
 
 #: dialogs.py:218
 msgid "Section Sample"
-msgstr ""
+msgstr "Section Exemple"
 
 #: dialogs.py:230 dialogs.py:231 dialogs.py:232
 msgid "Splitting Sections..."
-msgstr ""
+msgstr "Division des Sections..."
 
 #: dialogs.py:235
 msgid "Cancel"
@@ -341,11 +342,11 @@ msgstr "Sélectionner les sections à extraire"
 
 #: epubsplit_plugin.py:179
 msgid "New Books Created"
-msgstr ""
+msgstr "Nouveaux Livres Créés"
 
 #: epubsplit_plugin.py:180
 msgid "%s New Books Created."
-msgstr ""
+msgstr "%s Nouveaux Livres Créés"
 
 #: epubsplit_plugin.py:228
 msgid "%s Split"
