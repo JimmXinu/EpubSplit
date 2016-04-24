@@ -521,8 +521,8 @@ class SplitEpub:
             for item in self.get_content_dom().getElementsByTagName("item"):
                 fullhref=unquote(self.get_content_relpath()+item.getAttribute("href"))
                 #print("---- item href:%s path part: %s"%(href,get_path_part(href)))
-                self.manifest_items[fullhref]=(item.getAttribute("id"),item.getAttribute("media-type"))
-                self.manifest_items[item.getAttribute("id")]=(fullhref,item.getAttribute("media-type"))
+                self.manifest_items["h:"+fullhref]=(item.getAttribute("id"),item.getAttribute("media-type"))
+                self.manifest_items["i:"+item.getAttribute("id")]=(fullhref,item.getAttribute("media-type"))
                     
                 if( item.getAttribute("media-type") == "application/x-dtbncx+xml" ):
                     # TOC file is only one with this type--as far as I know.
@@ -603,7 +603,7 @@ class SplitEpub:
         count=0
         for itemref in metadom.getElementsByTagName("itemref"):
             idref = itemref.getAttribute("idref")
-            (href,type) = self.get_manifest_items()[idref]
+            (href,type) = self.get_manifest_items()["i:"+idref]
             current = {}
             self.split_lines.append(current)
             current['href']=href
@@ -991,10 +991,16 @@ class FileCache:
         self.anchors = {}
         self.linkedfiles = set()
 
+        ## always include font files for embedded fonts
+        for key, value in self.manifest_items.iteritems():
+            #print("manifest:%s %s"%(key,value))
+            if key.startswith('i:') and value[1] == 'application/x-font-truetype':
+                self.add_linked_file(value[0])
+
     def add_linked_file(self, href):
         href = normpath(unquote(href)) # fix %20 & /../
-        if href in self.manifest_items:
-            type = self.manifest_items[href][1]
+        if ("h:"+href) in self.manifest_items:
+            type = self.manifest_items["h:"+href][1]
         else:
             type = 'unknown'
         self.linkedfiles.add((href,type))
