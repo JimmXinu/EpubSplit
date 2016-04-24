@@ -7,14 +7,14 @@
 # ILB, 2014
 # Max <mail@max-vogl.de>, 2014
 # Sebastian Keller <Haggard@gmx.de>, 2015
-# Simon_Schuette <simonschuette@arcor.de>, 2014
+# Simon_Schuette <simonschuette@arcor.de>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
 "POT-Creation-Date: 2015-05-06 11:19+Central Daylight Time\n"
-"PO-Revision-Date: 2015-05-11 12:42+0000\n"
-"Last-Translator: Sebastian Keller <Haggard@gmx.de>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/calibre-plugins/language/de/)\n"
+"PO-Revision-Date: 2015-09-24 15:23+0000\n"
+"Last-Translator: Simon_Schuette <simonschuette@arcor.de>\n"
+"Language-Team: German (http://www.transifex.com/calibre/calibre-plugins/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: ENCODING\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #: __init__.py:42
 msgid "UI plugin to split off parts of an epub into a new book."
-msgstr "UI-Plugin Epub-Dateien in neue Bücher aufzuteilen."
+msgstr "UI-Plugin Epub-Dateien in neue Bücher aufteilen."
 
 #: config.py:159
 msgid "Basic"
@@ -68,11 +68,11 @@ msgstr "Kopiere die Buchreihe vom Quell-Epub zum Split Epub."
 
 #: config.py:236
 msgid "Copy Cover"
-msgstr "Coverbilder kopieren"
+msgstr "Titelbilder kopieren"
 
 #: config.py:237
 msgid "Copy Cover from the source Epub to the Split Epub."
-msgstr "Kopiere das Cover vom Quell-Epub zum Split Epub."
+msgstr "Kopiere das Titelbild vom Quell-Epub zum Split Epub."
 
 #: config.py:241
 msgid "Copy Rating"
@@ -88,7 +88,7 @@ msgstr "Schlagwörter kopieren"
 
 #: config.py:247
 msgid "Copy Tags from the source Epub to the Split Epub."
-msgstr "Kopiere die Tags vom Quell-Epub zum Split Epub."
+msgstr "Kopiere die Schlagwörter vom Quell-Epub zum Split Epub."
 
 #: config.py:251
 msgid "Copy Identifiers"
@@ -263,7 +263,7 @@ msgid ""
 "Click and copy hotkey to copy text.\n"
 "Double-click to edit ToC entry.\n"
 "Pipes(|) divide different ToC entries to the same place."
-msgstr ""
+msgstr "Klicken und Kopieren Tastenkürzel zum Kopieren von Text.\nDoppelklicken Sie, um einen ToC-Eintrag zu bearbeiten.\nVertikale Balken (|) unterteilen unterschiedliche ToC-Einträge zum gleichen Ziel."
 
 #: dialogs.py:218
 msgid "Section Sample"
@@ -370,7 +370,7 @@ msgid ""
 "You can fill in the metadata yourself, or use download metadata for known books.\n"
 "\n"
 "If you download or add a cover image, it will be included in the generated EPUB."
-msgstr ""
+msgstr "Das neue zusammengesetzte Split-ePub wurde erzeugt und Standard-Metadaten eingefügt.\n\nDas neue Buch wird *erst dann* erzeugt, wenn Sie den folgenden Metadaten-Dialog überprüft, bearbeitet und geschlossen haben.\n\nSie können die Metadaten selber eintragen oder Metadaten für bekannte Bücher herunterladen.\n\nWenn Sie ein Titelbild herunterladen oder hinzufügen, wird es in das generierte EPUB eingebunden."
 
 #: epubsplit_plugin.py:325
 msgid "Splitting off from EPUB..."

@@ -2,14 +2,14 @@
 # Copyright (C) YEAR ORGANIZATION
 # 
 # Translators:
-# Yuri Chornoivan <yurchor@ukr.net>, 2014
+# Yuri Chornoivan <yurchor@ukr.net>, 2014,2016
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
 "POT-Creation-Date: 2015-05-06 11:19+Central Daylight Time\n"
-"PO-Revision-Date: 2015-05-06 09:01+0000\n"
-"Last-Translator: Kovid Goyal <kovid@kovidgoyal.net>\n"
-"Language-Team: Ukrainian (http://www.transifex.com/projects/p/calibre-plugins/language/uk/)\n"
+"PO-Revision-Date: 2016-03-01 17:25+0000\n"
+"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
+"Language-Team: Ukrainian (http://www.transifex.com/calibre/calibre-plugins/language/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: ENCODING\n"
@@ -204,7 +204,7 @@ msgstr "Шаблон на основі даних початкової книг�
 
 #: dialogs.py:61
 msgid "<p><b><i>Double click to copy from sample.</i></b></p>"
-msgstr ""
+msgstr "<p><b><i>Двічі клацніть для копіювання зі зразка.</i></b></p>"
 
 #: dialogs.py:90
 msgid "New Book"
@@ -214,28 +214,28 @@ msgstr "Нова книга"
 msgid ""
 "Make <i>one</i> new book containing the sections selected above and then "
 "edit its Metadata."
-msgstr ""
+msgstr "Створити <i>одну</i> нову книгу, що міститиме розділи, позначені вище, і почати редагування її метаданих."
 
 #: dialogs.py:94
 msgid "New Book per Section"
-msgstr ""
+msgstr "Нова книга на кожен розділ"
 
 #: dialogs.py:95
 msgid ""
 "Make a new book for <i>each</i> of the sections selected above.  Title for "
 "each will be the Table of Contents, which you can edit here first."
-msgstr ""
+msgstr "Створити нову книгу для <i>кожного</i> з позначених вище розділів. Заголовок для кожної книги буде визначено за змістом, який ви спершу можете тут змінити."
 
 #: dialogs.py:114
 msgid "Missing Title(s)"
-msgstr ""
+msgstr "Пропущені заголовки"
 
 #: dialogs.py:115
 msgid ""
 "Books not split.\n"
 "\n"
 "Some selected sections don't have a Table of Contents text.  You must enter one before splitting sections to individual books.  Double click to edit the Table of Contents entry for a section."
-msgstr ""
+msgstr "Книги не відокремлено.\n\nДля деяких із позначених розділів немає тексту у змісті. Вам слід вказати цей текст, перш ніж ділити книгу на розділи. Двічі клацніть на пункті розділу у змісті, щоб розпочати його редагування."
 
 #: dialogs.py:133
 msgid "Guide"
@@ -262,11 +262,11 @@ msgstr "Клацніть і натисніть відповідну комбін
 
 #: dialogs.py:218
 msgid "Section Sample"
-msgstr ""
+msgstr "Зразок розділу"
 
 #: dialogs.py:230 dialogs.py:231 dialogs.py:232
 msgid "Splitting Sections..."
-msgstr ""
+msgstr "Ділимо розділи…"
 
 #: dialogs.py:235
 msgid "Cancel"
@@ -274,43 +274,43 @@ msgstr "Скасувати"
 
 #: dialogs.py:255
 msgid " - %s estimated until done"
-msgstr ""
+msgstr " - приблизно %s до завершення"
 
 #: dialogs.py:313
 msgid "%d day"
-msgstr ""
+msgstr "%d день"
 
 #: dialogs.py:313
 msgid "%d days"
-msgstr ""
+msgstr "%d дні"
 
 #: dialogs.py:314
 msgid "%d hour"
-msgstr ""
+msgstr "%d година"
 
 #: dialogs.py:314
 msgid "%d hours"
-msgstr ""
+msgstr "%d години"
 
 #: dialogs.py:315
 msgid "%d minute"
-msgstr ""
+msgstr "%d хвилина"
 
 #: dialogs.py:315
 msgid "%d minutes"
-msgstr ""
+msgstr "%d хвилин"
 
 #: dialogs.py:316
 msgid "%d second"
-msgstr ""
+msgstr "%d секунда"
 
 #: dialogs.py:316
 msgid "%d seconds"
-msgstr ""
+msgstr "%d секунд"
 
 #: dialogs.py:331
 msgid "less than 1 second"
-msgstr ""
+msgstr "менше за секунду"
 
 #: epubsplit_plugin.py:65
 msgid "EpubSplit"
@@ -342,11 +342,11 @@ msgstr "Виберіть розділи для поділу"
 
 #: epubsplit_plugin.py:179
 msgid "New Books Created"
-msgstr ""
+msgstr "Створено нові книги"
 
 #: epubsplit_plugin.py:180
 msgid "%s New Books Created."
-msgstr ""
+msgstr "Створено %s нові книги."
 
 #: epubsplit_plugin.py:228
 msgid "%s Split"

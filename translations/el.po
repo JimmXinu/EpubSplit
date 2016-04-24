@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
 "POT-Creation-Date: 2015-05-06 11:19+Central Daylight Time\n"
-"PO-Revision-Date: 2015-05-06 08:30+0000\n"
+"PO-Revision-Date: 2015-07-17 14:48+0000\n"
 "Last-Translator: Kovid Goyal <kovid@kovidgoyal.net>\n"
-"Language-Team: Greek (http://www.transifex.com/projects/p/calibre-plugins/language/el/)\n"
+"Language-Team: Greek (http://www.transifex.com/calibre/calibre-plugins/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: ENCODING\n"
@@ -271,7 +271,7 @@ msgstr ""
 
 #: dialogs.py:235
 msgid "Cancel"
-msgstr ""
+msgstr "Ακύρωση"
 
 #: dialogs.py:255
 msgid " - %s estimated until done"

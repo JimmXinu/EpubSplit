@@ -3,14 +3,15 @@
 # 
 # Translators:
 # Rodolfo_Jadon, 2014-2015
+# Volluta <volluta@tutanota.com>, 2015
 # W.P.M.E. Hofland <wpme.hofland@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
 "POT-Creation-Date: 2015-05-06 11:19+Central Daylight Time\n"
-"PO-Revision-Date: 2015-05-06 09:01+0000\n"
-"Last-Translator: Kovid Goyal <kovid@kovidgoyal.net>\n"
-"Language-Team: Dutch (http://www.transifex.com/projects/p/calibre-plugins/language/nl/)\n"
+"PO-Revision-Date: 2015-10-04 19:20+0000\n"
+"Last-Translator: Volluta <volluta@tutanota.com>\n"
+"Language-Team: Dutch (http://www.transifex.com/calibre/calibre-plugins/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: ENCODING\n"
@@ -52,7 +53,7 @@ msgstr "Kopieer auteurs"
 
 #: config.py:227
 msgid "Copy Authors from the source Epub to the Split Epub."
-msgstr ""
+msgstr "Kopieer auteurs van de bron Epub naar de gesplitste Epub."
 
 #: config.py:231
 msgid "Copy Series"
@@ -68,7 +69,7 @@ msgstr "Kopieer omslag"
 
 #: config.py:237
 msgid "Copy Cover from the source Epub to the Split Epub."
-msgstr ""
+msgstr "Kopieer de omslag van de bron-Epub naar de gesplitste Epub."
 
 #: config.py:241
 msgid "Copy Rating"
@@ -84,15 +85,15 @@ msgstr "Kopieer labels"
 
 #: config.py:247
 msgid "Copy Tags from the source Epub to the Split Epub."
-msgstr ""
+msgstr "Kopieer labels van de bron Epub naar de gesplitste Epub."
 
 #: config.py:251
 msgid "Copy Identifiers"
-msgstr ""
+msgstr "Kopieer identificatoren"
 
 #: config.py:252
 msgid "Copy Identifiers from the source Epub to the Split Epub."
-msgstr ""
+msgstr "Kopieer identificatoren van de bron-Epub naar de gesplitste Epub."
 
 #: config.py:256
 msgid "Copy Date"
@@ -100,7 +101,7 @@ msgstr "Kopieer datum"
 
 #: config.py:257
 msgid "Copy Date from the source Epub to the Split Epub."
-msgstr ""
+msgstr "Kopieer datum van bron Epub naar gesplitste Epub."
 
 #: config.py:261
 msgid "Copy Published Date"
@@ -149,11 +150,11 @@ msgstr "Sneltoetsen..."
 
 #: config.py:291
 msgid "Edit the keyboard shortcuts associated with this plugin"
-msgstr ""
+msgstr "Bewerk de sneltoetsen voor deze plugin"
 
 #: config.py:295
 msgid "Reset disabled &confirmation dialogs"
-msgstr ""
+msgstr "Uitgeschakelde &bevestigins-meldingen weer tonen"
 
 #: config.py:296
 msgid "Reset all show me again dialogs for the EpubSplit plugin"
@@ -179,7 +180,7 @@ msgstr "Bevestigingsdialogen zijn allemaal gereset"
 msgid ""
 "If you have custom columns defined, they will be listed below.  Choose if "
 "you would like these columns copied to new split books."
-msgstr ""
+msgstr "Als je eigen kolommen hebt gedefinieerd, zullen ze hieronder worden weergegeven. Kies of u deze kolommen wilt kopiëren naar nieuwe split boeken."
 
 #: config.py:351
 msgid "Copy this %s column to new split books..."
@@ -219,7 +220,7 @@ msgstr ""
 
 #: dialogs.py:94
 msgid "New Book per Section"
-msgstr ""
+msgstr "Nieuw boek per sectie"
 
 #: dialogs.py:95
 msgid ""
@@ -229,7 +230,7 @@ msgstr ""
 
 #: dialogs.py:114
 msgid "Missing Title(s)"
-msgstr ""
+msgstr "Missende titel(s)"
 
 #: dialogs.py:115
 msgid ""
@@ -263,11 +264,11 @@ msgstr ""
 
 #: dialogs.py:218
 msgid "Section Sample"
-msgstr ""
+msgstr "Sectie voorbeeld"
 
 #: dialogs.py:230 dialogs.py:231 dialogs.py:232
 msgid "Splitting Sections..."
-msgstr ""
+msgstr "Secties splitsen..."
 
 #: dialogs.py:235
 msgid "Cancel"
@@ -275,7 +276,7 @@ msgstr "Annuleren"
 
 #: dialogs.py:255
 msgid " - %s estimated until done"
-msgstr ""
+msgstr " - %s geschat tot einde"
 
 #: dialogs.py:313
 msgid "%d day"
@@ -339,23 +340,23 @@ msgstr ""
 
 #: epubsplit_plugin.py:144
 msgid "Select Sections to Split Off"
-msgstr ""
+msgstr "Selecteer secties om af te splitsen"
 
 #: epubsplit_plugin.py:179
 msgid "New Books Created"
-msgstr ""
+msgstr "Nieuwe boeken gemaakt"
 
 #: epubsplit_plugin.py:180
 msgid "%s New Books Created."
-msgstr ""
+msgstr "%s Nieuwe boeken gemaakt."
 
 #: epubsplit_plugin.py:228
 msgid "%s Split"
-msgstr ""
+msgstr "%s splits"
 
 #: epubsplit_plugin.py:260
 msgid "Split from:"
-msgstr ""
+msgstr "Splits vanaf:"
 
 #: epubsplit_plugin.py:309
 msgid ""
