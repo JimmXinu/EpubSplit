@@ -219,14 +219,34 @@ Pipes(|) divide different ToC entries to the same place.'''))
                        self.item(modidx.row(),modidx.column()).toolTip().replace(SAMPLE_NOTE,''),
                        parent=self.parent()).exec_()
 
-class LoopProgressDialog(QProgressDialog):
+def LoopProgressDialog(gui,
+                       split_list,
+                       foreach_function,
+                       finish_function,
+                       init_label=_("Splitting Sections..."),
+                       win_title=_("Splitting Sections..."),
+                       status_prefix=_("Splitting Sections...")):
+    ld = _LoopProgressDialog(gui,
+                             split_list,
+                             foreach_function,
+                             init_label,
+                             win_title,
+                             status_prefix)
+    
+    # Mac OS X gets upset if the finish_function is called from inside
+    # the real _LoopProgressDialog class.
+    
+    # reflect old behavior.
+    if not ld.wasCanceled():
+        finish_function(split_list)
+        
+class _LoopProgressDialog(QProgressDialog):
     '''
     ProgressDialog displayed while splitting each section.
     '''
     def __init__(self, gui,
                  split_list,
                  foreach_function,
-                 finish_function,
                  init_label=_("Splitting Sections..."),
                  win_title=_("Splitting Sections..."),
                  status_prefix=_("Splitting Sections...")):
@@ -237,7 +257,6 @@ class LoopProgressDialog(QProgressDialog):
         self.setMinimumWidth(500)
         self.split_list = split_list
         self.foreach_function = foreach_function
-        self.finish_function = finish_function
         self.status_prefix = status_prefix
         self.i = 0
         self.start_time = datetime.now()
@@ -276,7 +295,6 @@ class LoopProgressDialog(QProgressDialog):
 
     def do_when_finished(self):
         self.hide()
-        self.finish_function(self.split_list)
 
 class ViewSample(SizePersistedDialog):
 
