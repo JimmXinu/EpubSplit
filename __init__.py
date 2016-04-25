@@ -8,15 +8,21 @@ __license__   = 'GPL v3'
 __copyright__ = '2015, Jim Miller'
 __docformat__ = 'restructuredtext en'
 
-import sys
+import sys, os
 if sys.version_info >= (2, 7):
     import logging
     logger = logging.getLogger(__name__)
     loghandler=logging.StreamHandler()
-    loghandler.setFormatter(logging.Formatter("EpubSplit:%(levelname)s:%(filename)s(%(lineno)d):%(message)s"))
+    loghandler.setFormatter(logging.Formatter("EpubSplit: %(levelname)s: %(asctime)s: %(filename)s(%(lineno)d): %(message)s"))
     logger.addHandler(loghandler)
-    loghandler.setLevel(logging.DEBUG)
-    logger.setLevel(logging.DEBUG)
+
+    from calibre.constants import DEBUG
+    if os.environ.get('CALIBRE_WORKER', None) is not None or DEBUG:
+        loghandler.setLevel(logging.DEBUG)
+        logger.setLevel(logging.DEBUG)
+    else:
+        loghandler.setLevel(logging.CRITICAL)
+        logger.setLevel(logging.CRITICAL)
 
 # The class that all Interface Action plugin wrappers must inherit from
 from calibre.customize import InterfaceActionBase
