@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
-"POT-Creation-Date: 2015-05-06 11:19+Central Daylight Time\n"
+"POT-Creation-Date: 2016-04-24 14:12+Central Daylight Time\n"
 "PO-Revision-Date: 2015-05-22 09:28+0000\n"
 "Last-Translator: Ptit Prince <leporello1791@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/calibre/calibre-plugins/language/fr/)\n"
@@ -264,51 +264,52 @@ msgstr "Touche directe cliquer et copier pour copier du texte.\nDouble clic pour
 msgid "Section Sample"
 msgstr "Section Exemple"
 
-#: dialogs.py:230 dialogs.py:231 dialogs.py:232
+#: dialogs.py:226 dialogs.py:227 dialogs.py:228 dialogs.py:250 dialogs.py:251
+#: dialogs.py:252
 msgid "Splitting Sections..."
 msgstr "Division des Sections..."
 
-#: dialogs.py:235
+#: dialogs.py:255
 msgid "Cancel"
 msgstr "Annuler"
 
-#: dialogs.py:255
+#: dialogs.py:274
 msgid " - %s estimated until done"
 msgstr " - %s prévu jusqu'à la fin"
 
-#: dialogs.py:313
+#: dialogs.py:331
 msgid "%d day"
 msgstr "%d jour"
 
-#: dialogs.py:313
+#: dialogs.py:331
 msgid "%d days"
 msgstr "%d jours"
 
-#: dialogs.py:314
+#: dialogs.py:332
 msgid "%d hour"
 msgstr "%d heure"
 
-#: dialogs.py:314
+#: dialogs.py:332
 msgid "%d hours"
 msgstr "%d heures"
 
-#: dialogs.py:315
+#: dialogs.py:333
 msgid "%d minute"
 msgstr "%d minute"
 
-#: dialogs.py:315
+#: dialogs.py:333
 msgid "%d minutes"
 msgstr "%d minutes"
 
-#: dialogs.py:316
+#: dialogs.py:334
 msgid "%d second"
 msgstr "%d seconde"
 
-#: dialogs.py:316
+#: dialogs.py:334
 msgid "%d seconds"
 msgstr "%d secondes"
 
-#: dialogs.py:331
+#: dialogs.py:349
 msgid "less than 1 second"
 msgstr "moins d'1 seconde"
 

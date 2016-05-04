@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
-"POT-Creation-Date: 2015-05-06 11:19+Central Daylight Time\n"
+"POT-Creation-Date: 2016-04-24 14:12+Central Daylight Time\n"
 "PO-Revision-Date: 2016-02-09 03:53+0000\n"
 "Last-Translator: Jonatan Nyberg <jonatan@autistici.org>\n"
 "Language-Team: Swedish (http://www.transifex.com/calibre/calibre-plugins/language/sv/)\n"
@@ -265,51 +265,52 @@ msgstr "Klicka och kopiera snabbvalstangent för att kopiera text.\nDubbelklicka
 msgid "Section Sample"
 msgstr "Sektionsprov"
 
-#: dialogs.py:230 dialogs.py:231 dialogs.py:232
+#: dialogs.py:226 dialogs.py:227 dialogs.py:228 dialogs.py:250 dialogs.py:251
+#: dialogs.py:252
 msgid "Splitting Sections..."
 msgstr "Delar upp sektioner..."
 
-#: dialogs.py:235
+#: dialogs.py:255
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: dialogs.py:255
+#: dialogs.py:274
 msgid " - %s estimated until done"
 msgstr " - %s estimaterade till klara"
 
-#: dialogs.py:313
+#: dialogs.py:331
 msgid "%d day"
 msgstr "%d dag"
 
-#: dialogs.py:313
+#: dialogs.py:331
 msgid "%d days"
 msgstr "%d dagar"
 
-#: dialogs.py:314
+#: dialogs.py:332
 msgid "%d hour"
 msgstr "%d timme"
 
-#: dialogs.py:314
+#: dialogs.py:332
 msgid "%d hours"
 msgstr "%d timmar"
 
-#: dialogs.py:315
+#: dialogs.py:333
 msgid "%d minute"
 msgstr "%d minut"
 
-#: dialogs.py:315
+#: dialogs.py:333
 msgid "%d minutes"
 msgstr "%d minuter"
 
-#: dialogs.py:316
+#: dialogs.py:334
 msgid "%d second"
 msgstr "%d sekund"
 
-#: dialogs.py:316
+#: dialogs.py:334
 msgid "%d seconds"
 msgstr "%d sekunder"
 
-#: dialogs.py:331
+#: dialogs.py:349
 msgid "less than 1 second"
 msgstr "mindre än 1 sekund"
 

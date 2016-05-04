@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
-"POT-Creation-Date: 2015-05-06 11:19+Central Daylight Time\n"
+"POT-Creation-Date: 2016-04-24 14:12+Central Daylight Time\n"
 "PO-Revision-Date: 2015-07-17 14:48+0000\n"
 "Last-Translator: Kovid Goyal <kovid@kovidgoyal.net>\n"
 "Language-Team: Greek (http://www.transifex.com/calibre/calibre-plugins/language/el/)\n"
@@ -265,51 +265,52 @@ msgstr ""
 msgid "Section Sample"
 msgstr ""
 
-#: dialogs.py:230 dialogs.py:231 dialogs.py:232
+#: dialogs.py:226 dialogs.py:227 dialogs.py:228 dialogs.py:250 dialogs.py:251
+#: dialogs.py:252
 msgid "Splitting Sections..."
 msgstr ""
 
-#: dialogs.py:235
+#: dialogs.py:255
 msgid "Cancel"
 msgstr "Ακύρωση"
 
-#: dialogs.py:255
+#: dialogs.py:274
 msgid " - %s estimated until done"
 msgstr ""
 
-#: dialogs.py:313
+#: dialogs.py:331
 msgid "%d day"
 msgstr ""
 
-#: dialogs.py:313
+#: dialogs.py:331
 msgid "%d days"
 msgstr ""
 
-#: dialogs.py:314
+#: dialogs.py:332
 msgid "%d hour"
 msgstr ""
 
-#: dialogs.py:314
+#: dialogs.py:332
 msgid "%d hours"
 msgstr ""
 
-#: dialogs.py:315
+#: dialogs.py:333
 msgid "%d minute"
 msgstr ""
 
-#: dialogs.py:315
+#: dialogs.py:333
 msgid "%d minutes"
 msgstr ""
 
-#: dialogs.py:316
+#: dialogs.py:334
 msgid "%d second"
 msgstr ""
 
-#: dialogs.py:316
+#: dialogs.py:334
 msgid "%d seconds"
 msgstr ""
 
-#: dialogs.py:331
+#: dialogs.py:349
 msgid "less than 1 second"
 msgstr ""
 

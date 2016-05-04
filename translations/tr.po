@@ -4,13 +4,14 @@
 # Translators:
 # Atilla Öntaş <tarakbumba@gmail.com>, 2016
 # Emre Deniz, 2014
+# faradundamarti <faradundamarti@yandex.com>, 2016
 # MUSTAFA ANAR <mstf.anar@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
-"POT-Creation-Date: 2015-05-06 11:19+Central Daylight Time\n"
-"PO-Revision-Date: 2016-03-18 11:47+0000\n"
-"Last-Translator: MUSTAFA ANAR <mstf.anar@gmail.com>\n"
+"POT-Creation-Date: 2016-04-24 14:12+Central Daylight Time\n"
+"PO-Revision-Date: 2016-04-25 16:33+0000\n"
+"Last-Translator: faradundamarti <faradundamarti@yandex.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/calibre/calibre-plugins/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -220,7 +221,7 @@ msgstr ""
 
 #: dialogs.py:94
 msgid "New Book per Section"
-msgstr ""
+msgstr "Her bir bölüm için yeni kitap"
 
 #: dialogs.py:95
 msgid ""
@@ -266,51 +267,52 @@ msgstr ""
 msgid "Section Sample"
 msgstr "Örnek bölüm"
 
-#: dialogs.py:230 dialogs.py:231 dialogs.py:232
+#: dialogs.py:226 dialogs.py:227 dialogs.py:228 dialogs.py:250 dialogs.py:251
+#: dialogs.py:252
 msgid "Splitting Sections..."
-msgstr ""
+msgstr "Bölümleri Ayırma..."
 
-#: dialogs.py:235
+#: dialogs.py:255
 msgid "Cancel"
 msgstr "İptal"
 
-#: dialogs.py:255
+#: dialogs.py:274
 msgid " - %s estimated until done"
 msgstr "- %s tahmini bitiş süresi"
 
-#: dialogs.py:313
+#: dialogs.py:331
 msgid "%d day"
 msgstr "%d gün"
 
-#: dialogs.py:313
+#: dialogs.py:331
 msgid "%d days"
 msgstr "%d günler"
 
-#: dialogs.py:314
+#: dialogs.py:332
 msgid "%d hour"
 msgstr "%d saat"
 
-#: dialogs.py:314
+#: dialogs.py:332
 msgid "%d hours"
 msgstr "%d saatler"
 
-#: dialogs.py:315
+#: dialogs.py:333
 msgid "%d minute"
 msgstr "%d dakika"
 
-#: dialogs.py:315
+#: dialogs.py:333
 msgid "%d minutes"
 msgstr "%d dakikalar"
 
-#: dialogs.py:316
+#: dialogs.py:334
 msgid "%d second"
 msgstr "%d saniye"
 
-#: dialogs.py:316
+#: dialogs.py:334
 msgid "%d seconds"
 msgstr "%d saniyeler"
 
-#: dialogs.py:331
+#: dialogs.py:349
 msgid "less than 1 second"
 msgstr "1 saniyeden az"
 
