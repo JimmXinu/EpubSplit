@@ -4,7 +4,7 @@ from __future__ import (unicode_literals, division, absolute_import,
                         print_function)
 
 __license__   = 'GPL v3'
-__copyright__ = '2015, Jim Miller'
+__copyright__ = '2016, Jim Miller'
 __docformat__ = 'restructuredtext en'
 
 import logging
@@ -75,7 +75,7 @@ class EpubSplitPlugin(InterfaceAction):
         enabled = loc == 'library'
         self.qaction.setEnabled(enabled)
         self.menuless_qaction.setEnabled(enabled)
-        
+
     def genesis(self):
 
         # This method is called once per plugin, do initial setup here
@@ -83,7 +83,7 @@ class EpubSplitPlugin(InterfaceAction):
         # Read the plugin icons and store for potential sharing with the config widget
         icon_resources = self.load_resources(PLUGIN_ICONS)
         set_plugin_icon_resources(self.name, icon_resources)
-        
+
         base = self.interface_action_base_plugin
         self.version = base.name+" v%d.%d.%d"%base.version
 
@@ -108,7 +108,7 @@ class EpubSplitPlugin(InterfaceAction):
 
     def plugin_button(self):
         self.t = time.time()
-        
+
         if len(self.gui.library_view.get_selected_ids()) != 1:
             d = error_dialog(self.gui,
                              _('Select One Book'),
@@ -125,7 +125,7 @@ class EpubSplitPlugin(InterfaceAction):
             source_id = self.gui.library_view.get_selected_ids()[0]
 
             misource = db.get_metadata(source_id, index_is_id=True)
-            
+
             if db.has_format(source_id,'EPUB',index_is_id=True):
                 splitepub = SplitEpub(StringIO(db.format(source_id,'EPUB',index_is_id=True)))
             else:
@@ -139,19 +139,19 @@ class EpubSplitPlugin(InterfaceAction):
             # for line in lines:
             #     logger.debug("line(%d):%s"%(line['num'],line))
             # logger.debug()
-            
+
             d = SelectLinesDialog(self.gui,
                                   _('Select Sections to Split Off'),
                                   prefs,
                                   self.qaction.icon(),
                                   lines,
-                                  partial(self._do_split, db, source_id, misource, splitepub),
+                                  partial(self._do_split, db, source_id, misource, splitepub, lines),
                                   partial(self._do_splits, db, source_id, misource, splitepub, lines),
                                   )
             d.exec_()
 
             return
-        
+
             if d.result() != d.Accepted:
                 return
 
@@ -201,35 +201,44 @@ class EpubSplitPlugin(InterfaceAction):
                        source_id,
                        misource,
                        splitepub,
+                       origlines,
                        ([linenum],changedtocs),
                        deftitle=deftitle,
                        editmeta=False)
-    
+
     def _do_split(self,
                   db,
                   source_id,
                   misource,
                   splitepub,
+                  origlines,
                   newspecs,
                   deftitle=None,
                   editmeta=True):
-    
+
             linenums,changedtocs = newspecs
             #logger.debug("updated tocs:%s"%changedtocs)
-            
+
             #logger.debug("2:%s"%(time.time()-self.t))
             self.t = time.time()
 
             #logger.debug("linenums:%s"%linenums)
-            
+
             defauthors = None
-            
+
+            if not deftitle and prefs['copytoctitle']:
+                if linenums[0] in changedtocs:
+                    deftitle=changedtocs[linenums[0]][0] # already unicoded()'ed
+                elif len(origlines[linenums[0]]['toc']) > 0:
+                    deftitle=unicode(origlines[linenums[0]]['toc'][0])
+                #logger.debug("deftitle:%s"%deftitle)
+
             if not deftitle and prefs['copytitle']:
                 deftitle = _("%s Split") % misource.title
-                
+
             if prefs['copyauthors']:
                 defauthors = misource.authors
-                
+
             mi = MetaInformation(deftitle,defauthors)
 
             if prefs['copytags']:
@@ -272,18 +281,18 @@ class EpubSplitPlugin(InterfaceAction):
             custom_columns = self.gui.library_view.model().custom_columns
             for col, action in prefs['custom_cols'].iteritems():
                 #logger.debug("col: %s action: %s"%(col,action))
-                
+
                 if col not in custom_columns:
                     #logger.debug("%s not an existing column, skipping."%col)
                     continue
-                
+
                 coldef = custom_columns[col]
                 #logger.debug("coldef:%s"%coldef)
                 label = coldef['label']
                 value = db.get_custom(source_id, label=label, index_is_id=True)
                 if value:
                     db.set_custom(book_id,value,label=label,commit=False)
-            
+
             #logger.debug("3.5:%s"%(time.time()-self.t))
             self.t = time.time()
 
@@ -293,15 +302,15 @@ class EpubSplitPlugin(InterfaceAction):
                 #logger.debug("Attempting to set %s to %s"%(prefs['sourcecol'],val))
                 label = custom_columns[prefs['sourcecol']]['label']
                 db.set_custom(book_id, val, label=label, commit=False)
-                
+
             db.commit()
-            
+
             #logger.debug("4:%s"%(time.time()-self.t))
             self.t = time.time()
-            
+
             self.gui.library_view.model().books_added(1)
             self.gui.library_view.select_rows([book_id])
-            
+
             #logger.debug("5:%s"%(time.time()-self.t))
             self.t = time.time()
 
@@ -315,7 +324,7 @@ You can fill in the metadata yourself, or use download metadata for known books.
 If you download or add a cover image, it will be included in the generated EPUB.''')+'\n',
                         'epubsplit_created_now_edit_again',
                         self.gui)
-            
+
                 self.gui.iactions['Edit Metadata'].edit_metadata(False)
 
             #logger.debug("5:%s"%(time.time()-self.t))
@@ -325,14 +334,14 @@ If you download or add a cover image, it will be included in the generated EPUB.
             self.gui.status_bar.show_message(_('Splitting off from EPUB...'), 60000)
 
             mi = db.get_metadata(book_id,index_is_id=True)
-            
+
             outputepub = PersistentTemporaryFile(suffix='.epub')
 
             coverjpgpath = None
             if mi.has_cover:
                 # grab the path to the real image.
                 coverjpgpath = os.path.join(db.library_path, db.path(book_id, index_is_id=True), 'cover.jpg')
-                
+
             splitepub.write_split_epub(outputepub,
                                        linenums,
                                        changedtocs=changedtocs,
@@ -342,7 +351,7 @@ If you download or add a cover image, it will be included in the generated EPUB.
                                        tags=mi.tags,
                                        languages=mi.languages,
                                        coverjpgpath=coverjpgpath)
-            
+
             #logger.debug("6:%s"%(time.time()-self.t))
             self.t = time.time()
             db.add_format_with_hooks(book_id,
@@ -351,7 +360,7 @@ If you download or add a cover image, it will be included in the generated EPUB.
 
             #logger.debug("7:%s"%(time.time()-self.t))
             self.t = time.time()
-            
+
             self.gui.status_bar.show_message(_('Finished splitting off EPUB.'), 3000)
             self.gui.library_view.model().refresh_ids([book_id])
             self.gui.tags_view.recount()
@@ -361,4 +370,4 @@ If you download or add a cover image, it will be included in the generated EPUB.
     def apply_settings(self):
         # No need to do anything with prefs here, but we could.
         prefs
-        
+

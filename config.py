@@ -4,7 +4,7 @@ from __future__ import (unicode_literals, division, absolute_import,
                         print_function)
 
 __license__   = 'GPL v3'
-__copyright__ = '2014, Jim Miller'
+__copyright__ = '2016, Jim Miller'
 __docformat__ = 'restructuredtext en'
 
 import traceback, copy
@@ -12,7 +12,7 @@ import traceback, copy
 try:
     from PyQt5.Qt import (QDialog, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QFont, QGridLayout,
                           QTextEdit, QComboBox, QCheckBox, QPushButton, QTabWidget, QScrollArea)
-except ImportError as e:    
+except ImportError as e:
     from PyQt4.Qt import (QDialog, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QFont, QGridLayout,
                           QTextEdit, QComboBox, QCheckBox, QPushButton, QTabWidget, QScrollArea)
 try:
@@ -50,6 +50,7 @@ PREFS_KEY_SETTINGS = 'settings'
 # Set defaults used by all.  Library specific settings continue to
 # take from here.
 default_prefs = {}
+default_prefs['copytoctitle'] = True
 default_prefs['copytitle'] = True
 default_prefs['copyauthors'] = True
 default_prefs['copytags'] = True
@@ -74,7 +75,7 @@ def set_library_config(library_config):
     get_gui().current_db.prefs.set_namespaced(PREFS_NAMESPACE,
                                               PREFS_KEY_SETTINGS,
                                               library_config)
-    
+
 def get_library_config():
     db = get_gui().current_db
     library_id = get_library_uuid(db)
@@ -108,7 +109,7 @@ class PrefsFacade():
         self.default_prefs = default_prefs
         self.libraryid = None
         self.current_prefs = None
-        
+
     def _get_prefs(self):
         libraryid = get_library_uuid(get_gui().current_db)
         if self.current_prefs == None or self.libraryid != libraryid:
@@ -116,8 +117,8 @@ class PrefsFacade():
             self.libraryid = libraryid
             self.current_prefs = get_library_config()
         return self.current_prefs
-        
-    def __getitem__(self,k):            
+
+    def __getitem__(self,k):
         prefs = self._get_prefs()
         if k not in prefs:
             # some users have old JSON, but have never saved all the
@@ -142,13 +143,13 @@ class PrefsFacade():
         set_library_config(self._get_prefs())
 
 prefs = PrefsFacade(old_prefs)
-    
+
 class ConfigWidget(QWidget):
 
     def __init__(self, plugin_action):
         QWidget.__init__(self)
         self.plugin_action = plugin_action
-        
+
         self.l = QVBoxLayout()
         self.setLayout(self.l)
 
@@ -162,6 +163,7 @@ class ConfigWidget(QWidget):
         tab_widget.addTab(self.columns_tab, _('Custom Columns'))
 
     def save_settings(self):
+        prefs['copytoctitle'] = self.basic_tab.copytoctitle.isChecked()
         prefs['copytitle'] = self.basic_tab.copytitle.isChecked()
         prefs['copyauthors'] = self.basic_tab.copyauthors.isChecked()
         prefs['copytags'] = self.basic_tab.copytags.isChecked()
@@ -185,9 +187,9 @@ class ConfigWidget(QWidget):
 
         prefs['sourcecol'] = unicode(convert_qvariant(self.columns_tab.sourcecol.itemData(self.columns_tab.sourcecol.currentIndex())))
         prefs['sourcetemplate'] = unicode(self.columns_tab.sourcetemplate.text())
-        
+
         prefs.save_to_db()
-        
+
     def edit_shortcuts(self):
         self.save_settings()
         d = KeyboardConfigDialog(self.plugin_action.gui, self.plugin_action.action_spec[0])
@@ -200,7 +202,7 @@ class BasicTab(QWidget):
         QWidget.__init__(self)
         self.parent_dialog = parent_dialog
         self.plugin_action = plugin_action
-        
+
         self.l = QVBoxLayout()
         self.setLayout(self.l)
 
@@ -208,7 +210,7 @@ class BasicTab(QWidget):
         label.setWordWrap(True)
         self.l.addWidget(label)
         #self.l.addSpacing(5)
-        
+
         scrollable = QScrollArea()
         scrollcontent = QWidget()
         scrollable.setWidget(scrollcontent)
@@ -217,76 +219,81 @@ class BasicTab(QWidget):
 
         self.sl = QVBoxLayout()
         scrollcontent.setLayout(self.sl)
-        
+
+        self.copytoctitle = QCheckBox(_('Title from First Included TOC'),self)
+        self.copytoctitle.setToolTip(_('Copy Title from the the first Table of Contents entry included in the Split Epub.\nSupersedes Copy Title below.'))
+        self.copytoctitle.setChecked(prefs['copytoctitle'])
+        self.sl.addWidget(self.copytoctitle)
+
         self.copytitle = QCheckBox(_('Copy Title'),self)
         self.copytitle.setToolTip(_('Copy Title from the source Epub to the Split Epub.  Adds "Split" to the title.'))
         self.copytitle.setChecked(prefs['copytitle'])
         self.sl.addWidget(self.copytitle)
-        
+
         self.copyauthors = QCheckBox(_('Copy Authors'),self)
         self.copyauthors.setToolTip(_('Copy Authors from the source Epub to the Split Epub.'))
         self.copyauthors.setChecked(prefs['copyauthors'])
         self.sl.addWidget(self.copyauthors)
-        
+
         self.copyseries = QCheckBox(_('Copy Series'),self)
         self.copyseries.setToolTip(_('Copy Series from the source Epub to the Split Epub.'))
         self.copyseries.setChecked(prefs['copyseries'])
         self.sl.addWidget(self.copyseries)
-        
+
         self.copycover = QCheckBox(_('Copy Cover'),self)
         self.copycover.setToolTip(_('Copy Cover from the source Epub to the Split Epub.'))
         self.copycover.setChecked(prefs['copycover'])
         self.sl.addWidget(self.copycover)
-        
+
         self.copyrating = QCheckBox(_('Copy Rating'),self)
         self.copyrating.setToolTip(_('Copy Rating from the source Epub to the Split Epub.'))
         self.copyrating.setChecked(prefs['copyrating'])
         self.sl.addWidget(self.copyrating)
-        
+
         self.copytags = QCheckBox(_('Copy Tags'),self)
         self.copytags.setToolTip(_('Copy Tags from the source Epub to the Split Epub.'))
         self.copytags.setChecked(prefs['copytags'])
         self.sl.addWidget(self.copytags)
-        
+
         self.copyidentifiers = QCheckBox(_('Copy Identifiers'),self)
         self.copyidentifiers.setToolTip(_('Copy Identifiers from the source Epub to the Split Epub.'))
         self.copyidentifiers.setChecked(prefs['copyidentifiers'])
         self.sl.addWidget(self.copyidentifiers)
-        
+
         self.copydate = QCheckBox(_('Copy Date'),self)
         self.copydate.setToolTip(_('Copy Date from the source Epub to the Split Epub.'))
         self.copydate.setChecked(prefs['copydate'])
         self.sl.addWidget(self.copydate)
-        
+
         self.copypubdate = QCheckBox(_('Copy Published Date'),self)
         self.copypubdate.setToolTip(_('Copy Published Date from the source Epub to the Split Epub.'))
         self.copypubdate.setChecked(prefs['copypubdate'])
         self.sl.addWidget(self.copypubdate)
-        
+
         self.copypublisher = QCheckBox(_('Copy Publisher'),self)
         self.copypublisher.setToolTip(_('Copy Publisher from the source Epub to the Split Epub.'))
         self.copypublisher.setChecked(prefs['copypublisher'])
         self.sl.addWidget(self.copypublisher)
-        
+
         self.copylanguages = QCheckBox(_('Copy Languages'),self)
         self.copylanguages.setToolTip(_('Copy Languages from the source Epub to the Split Epub.'))
         self.copylanguages.setChecked(prefs['copylanguages'])
         self.sl.addWidget(self.copylanguages)
-        
+
         self.copycomments = QCheckBox(_('Copy Comments'),self)
         self.copycomments.setToolTip(_('Copy Comments from the source Epub to the Split Epub.  Adds "Split from:" to the comments.'))
         self.copycomments.setChecked(prefs['copycomments'])
         self.sl.addWidget(self.copycomments)
-        
+
         self.sl.insertStretch(-1)
-        
-        self.l.addSpacing(15)        
+
+        self.l.addSpacing(15)
 
         label = QLabel(_("These controls aren't plugin settings as such, but convenience buttons for setting Keyboard shortcuts and getting all the EpubSplit confirmation dialogs back again."))
         label.setWordWrap(True)
         self.l.addWidget(label)
         self.l.addSpacing(5)
-        
+
         keyboard_shortcuts_button = QPushButton(_('Keyboard shortcuts...'), self)
         keyboard_shortcuts_button.setToolTip(_('Edit the keyboard shortcuts associated with this plugin'))
         keyboard_shortcuts_button.clicked.connect(parent_dialog.edit_shortcuts)
@@ -296,16 +303,16 @@ class BasicTab(QWidget):
         reset_confirmation_button.setToolTip(_('Reset all show me again dialogs for the EpubSplit plugin'))
         reset_confirmation_button.clicked.connect(self.reset_dialogs)
         self.l.addWidget(reset_confirmation_button)
-                
+
         view_prefs_button = QPushButton(_('View library preferences...'), self)
         view_prefs_button.setToolTip(_('View data stored in the library database for this plugin'))
         view_prefs_button.clicked.connect(self.view_prefs)
         self.l.addWidget(view_prefs_button)
-        
+
     def view_prefs(self):
         d = PrefsViewerDialog(self.plugin_action.gui, PREFS_NAMESPACE)
         d.exec_()
-        
+
     def reset_dialogs(self):
         for key in dynamic.keys():
             if key.startswith('epubsplit_') and key.endswith('_again') \
@@ -322,7 +329,7 @@ class CustomColumnsTab(QWidget):
         self.parent_dialog = parent_dialog
         self.plugin_action = plugin_action
         QWidget.__init__(self)
-        
+
         self.l = QVBoxLayout()
         self.setLayout(self.l)
 
@@ -330,7 +337,7 @@ class CustomColumnsTab(QWidget):
         label.setWordWrap(True)
         self.l.addWidget(label)
         self.l.addSpacing(5)
-        
+
         scrollable = QScrollArea()
         scrollcontent = QWidget()
         scrollable.setWidget(scrollcontent)
@@ -339,7 +346,7 @@ class CustomColumnsTab(QWidget):
 
         self.sl = QVBoxLayout()
         scrollcontent.setLayout(self.sl)
-        
+
         self.custcol_checkboxes = {}
 
         custom_columns = self.plugin_action.gui.library_view.model().custom_columns
@@ -352,7 +359,7 @@ class CustomColumnsTab(QWidget):
             checkbox.setChecked(key in prefs['custom_cols'] and prefs['custom_cols'][key])
             self.custcol_checkboxes[key] = checkbox
             self.sl.addWidget(checkbox)
-            
+
         self.sl.insertStretch(-1)
 
         self.l.addSpacing(5)
@@ -360,7 +367,7 @@ class CustomColumnsTab(QWidget):
         label.setToolTip(_("If set, the column below will be populated with the template below to record the source of the split file."))
         label.setWordWrap(True)
         self.l.addWidget(label)
-        
+
         horz = QHBoxLayout()
         self.sourcecol = QComboBox(self)
         self.sourcecol.setToolTip(_("Choose a column to populate with template on split."))
@@ -370,7 +377,7 @@ class CustomColumnsTab(QWidget):
                 self.sourcecol.addItem(column['name'],key)
         self.sourcecol.setCurrentIndex(self.sourcecol.findData(prefs['sourcecol']))
         horz.addWidget(self.sourcecol)
-        
+
         self.sourcetemplate = QLineEdit(self)
         self.sourcetemplate.setToolTip(_("Template from source book. Example: {title} by {authors}"))
         # if 'sourcetemplate' in prefs:
@@ -378,5 +385,5 @@ class CustomColumnsTab(QWidget):
         # else:
         #      self.sourcetemplate.setText("{title} by {authors}")
         horz.addWidget(self.sourcetemplate)
-        
+
         self.l.addLayout(horz)
