@@ -2,14 +2,15 @@
 # Copyright (C) YEAR ORGANIZATION
 # 
 # Translators:
-# Jonatan Nyberg <jonatan@autistici.org>, 2016
+# Jony, 2016
+# Mars Northman <marsnorthman@gmail.com>, 2017
 # Merarom <merarom@yahoo.es>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
 "POT-Creation-Date: 2016-10-25 19:18+Central Daylight Time\n"
-"PO-Revision-Date: 2016-10-26 09:03+0000\n"
-"Last-Translator: Kovid Goyal <kovid@kovidgoyal.net>\n"
+"PO-Revision-Date: 2017-02-06 20:41+0000\n"
+"Last-Translator: Mars Northman <marsnorthman@gmail.com>\n"
 "Language-Team: Swedish (http://www.transifex.com/calibre/calibre-plugins/language/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +21,7 @@ msgstr ""
 
 #: __init__.py:48
 msgid "UI plugin to split off parts of an epub into a new book."
-msgstr "Användargränssnitt för att dela upp delar av en EPUB till en ny book."
+msgstr "Användargränssnitt för att välja ut delar av en EPUB-fil att göra till en ny bok."
 
 #: config.py:160
 msgid "Basic"
@@ -34,17 +35,17 @@ msgstr "Anpassa kolumner"
 msgid ""
 "When making a new Epub, the metadata from the source book will be copied or "
 "not as you choose below."
-msgstr "När en ny Epub görs, kommer metadata från källboken att kopieras eller inte beroende på ditt val nedan."
+msgstr "Valet nedan avgör om, vid generering av en ny Epub, huruvida källbokens metadata kommer kopieras eller ej."
 
 #: config.py:223
 msgid "Title from First Included TOC"
-msgstr ""
+msgstr "Titel från första inkluderade innehållsförteckning."
 
 #: config.py:224
 msgid ""
 "Copy Title from the the first Table of Contents entry included in the Split Epub.\n"
 "Supersedes Copy Title below."
-msgstr ""
+msgstr "Kopiera Titel från den första Innehållsförteckningen inträde inkluderad i Split Epub.\nErsätter Kopiera Titel nedan."
 
 #: config.py:228
 msgid "Copy Title"

@@ -3,7 +3,7 @@
 # 
 # Translators:
 # Adolfo Jayme-Barrientos, 2014
-# Alberto Díaz Tormo <albertodiaztormo@gmail.com>, 2016
+# Albert, 2016
 # Jellby <jellby@yahoo.com>, 2014-2016
 msgid ""
 msgstr ""
