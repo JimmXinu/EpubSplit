@@ -64,11 +64,13 @@ class SelectLinesDialog(SizePersistedDialog):
     def __init__(self, gui, header, prefs, icon, lines,
                  do_split_fn,
                  do_splits_fn,
+                 get_split_size_fn,
                  save_size_name='epubsplit:update list dialog'):
         SizePersistedDialog.__init__(self, gui, save_size_name)
         self.gui = gui
         self.do_split_fn = do_split_fn
         self.do_splits_fn = do_splits_fn
+        self.get_split_size_fn = get_split_size_fn
 
         self.setWindowTitle(header)
         self.setWindowIcon(icon)
@@ -95,6 +97,10 @@ class SelectLinesDialog(SizePersistedDialog):
         new_books.setToolTip(_("Make a new book for <i>each</i> of the sections selected above.  Title for each will be the Table of Contents, which you can edit here first."))
         new_books.clicked.connect(self.new_books)
 
+        get_split_size = button_box.addButton(_("Get Size"), button_box.ActionRole)
+        get_split_size.setToolTip("<i></i>" + _("Calculate the size of the new book from the currently selected sections."))
+        get_split_size.clicked.connect(self.get_split_size)
+
         button_box.addButton(_("Done"), button_box.RejectRole)
         button_box.rejected.connect(self.reject)
         options_layout.addWidget(button_box)
@@ -104,6 +110,9 @@ class SelectLinesDialog(SizePersistedDialog):
         # Cause our dialog size to be restored from prefs or created on first usage
         self.resize_dialog()
         self.lines_table.populate_table(lines)
+
+    def get_split_size(self):
+        self.get_split_size_fn(self.get_selected_linenums_tocs())
 
     def new_book(self):
         self.do_split_fn(self.get_selected_linenums_tocs())

@@ -17,9 +17,9 @@ from functools import partial
 from datetime import datetime
 
 try:
-    from PyQt5.Qt import (QApplication, QMenu, QToolButton)
+    from PyQt5.Qt import (QApplication, QCursor, Qt, QMenu, QToolButton)
 except ImportError as e:
-    from PyQt4.Qt import (QApplication, QMenu, QToolButton)
+    from PyQt4.Qt import (QApplication, QCursor, Qt, QMenu, QToolButton)
 
 from calibre.ptempfile import PersistentTemporaryFile
 from calibre.ebooks.metadata import MetaInformation, authors_to_string
@@ -147,6 +147,7 @@ class EpubSplitPlugin(InterfaceAction):
                                   lines,
                                   partial(self._do_split, db, source_id, misource, splitepub, lines),
                                   partial(self._do_splits, db, source_id, misource, splitepub, lines),
+                                  partial(self._get_split_size, splitepub),
                                   )
             d.exec_()
 
@@ -206,6 +207,25 @@ class EpubSplitPlugin(InterfaceAction):
                        deftitle=deftitle,
                        editmeta=False)
 
+    def _get_split_size(self,splitepub,newspecs):
+        try:
+            QApplication.setOverrideCursor(QCursor(Qt.WaitCursor))
+            self.gui.status_bar.show_message(_('Computing size of EPUB...'), 60000)
+            linenums,changedtocs = newspecs
+            self.t = time.time()
+            outputepub = PersistentTemporaryFile(suffix='.epub')
+            splitepub.write_split_epub(outputepub,
+                                       linenums,
+                                       changedtocs=changedtocs,)
+            logger.debug("size:%s"%(time.time()-self.t))
+            self.t = time.time()
+        finally:
+            self.gui.status_bar.show_message(_('Finished computing size of EPUB.'), 3000)
+            QApplication.restoreOverrideCursor()
+        info_dialog(self.gui, _('Size of New Book'),
+                    _('New EPUB File Size:') + ' ' + humanbytes(os.path.getsize(outputepub.name)),
+                    show_copy_button=False).exec_()
+
     def _do_split(self,
                   db,
                   source_id,
@@ -216,117 +236,118 @@ class EpubSplitPlugin(InterfaceAction):
                   deftitle=None,
                   editmeta=True):
 
-            linenums,changedtocs = newspecs
-            #logger.debug("updated tocs:%s"%changedtocs)
+        linenums,changedtocs = newspecs
+        #logger.debug("updated tocs:%s"%changedtocs)
 
-            #logger.debug("2:%s"%(time.time()-self.t))
-            self.t = time.time()
+        #logger.debug("2:%s"%(time.time()-self.t))
+        self.t = time.time()
 
-            #logger.debug("linenums:%s"%linenums)
+        #logger.debug("linenums:%s"%linenums)
 
-            defauthors = None
+        defauthors = None
 
-            if not deftitle and prefs['copytoctitle']:
-                if linenums[0] in changedtocs:
-                    deftitle=changedtocs[linenums[0]][0] # already unicoded()'ed
-                elif len(origlines[linenums[0]]['toc']) > 0:
-                    deftitle=unicode(origlines[linenums[0]]['toc'][0])
-                #logger.debug("deftitle:%s"%deftitle)
+        if not deftitle and prefs['copytoctitle']:
+            if linenums[0] in changedtocs:
+                deftitle=changedtocs[linenums[0]][0] # already unicoded()'ed
+            elif len(origlines[linenums[0]]['toc']) > 0:
+                deftitle=unicode(origlines[linenums[0]]['toc'][0])
+            #logger.debug("deftitle:%s"%deftitle)
 
-            if not deftitle and prefs['copytitle']:
-                deftitle = _("%s Split") % misource.title
+        if not deftitle and prefs['copytitle']:
+            deftitle = _("%s Split") % misource.title
 
-            if prefs['copyauthors']:
-                defauthors = misource.authors
+        if prefs['copyauthors']:
+            defauthors = misource.authors
 
-            mi = MetaInformation(deftitle,defauthors)
+        mi = MetaInformation(deftitle,defauthors)
 
-            if prefs['copytags']:
-                mi.tags = misource.tags # [item for sublist in tagslists for item in sublist]
+        if prefs['copytags']:
+            mi.tags = misource.tags # [item for sublist in tagslists for item in sublist]
 
-            if prefs['copylanguages']:
-                mi.languages = misource.languages
+        if prefs['copylanguages']:
+            mi.languages = misource.languages
 
-            if prefs['copyseries']:
-                mi.series = misource.series
+        if prefs['copyseries']:
+            mi.series = misource.series
 
-            if prefs['copydate']:
-                mi.timestamp = misource.timestamp
+        if prefs['copydate']:
+            mi.timestamp = misource.timestamp
 
-            if prefs['copyrating']:
-                mi.rating = misource.rating
+        if prefs['copyrating']:
+            mi.rating = misource.rating
 
-            if prefs['copypubdate']:
-                mi.pubdate = misource.pubdate
+        if prefs['copypubdate']:
+            mi.pubdate = misource.pubdate
 
-            if prefs['copypublisher']:
-                mi.publisher = misource.publisher
+        if prefs['copypublisher']:
+            mi.publisher = misource.publisher
 
-            if prefs['copyidentifiers']:
-                mi.set_identifiers(misource.get_identifiers())
+        if prefs['copyidentifiers']:
+            mi.set_identifiers(misource.get_identifiers())
 
-            if prefs['copycomments'] and misource.comments:
-                mi.comments = _("Split from:")+"\n\n" + misource.comments
+        if prefs['copycomments'] and misource.comments:
+            mi.comments = _("Split from:")+"\n\n" + misource.comments
 
-            #logger.debug("mi:%s"%mi)
-            book_id = db.create_book_entry(mi,
-                                           add_duplicates=True)
+        #logger.debug("mi:%s"%mi)
+        book_id = db.create_book_entry(mi,
+                                       add_duplicates=True)
 
-            if prefs['copycover'] and misource.has_cover:
-                db.set_cover(book_id, db.cover(source_id,index_is_id=True))
+        if prefs['copycover'] and misource.has_cover:
+            db.set_cover(book_id, db.cover(source_id,index_is_id=True))
 
-            #logger.debug("3:%s"%(time.time()-self.t))
-            self.t = time.time()
+        #logger.debug("3:%s"%(time.time()-self.t))
+        self.t = time.time()
 
-            custom_columns = self.gui.library_view.model().custom_columns
-            for col, action in prefs['custom_cols'].iteritems():
-                #logger.debug("col: %s action: %s"%(col,action))
+        custom_columns = self.gui.library_view.model().custom_columns
+        for col, action in prefs['custom_cols'].iteritems():
+            #logger.debug("col: %s action: %s"%(col,action))
 
-                if col not in custom_columns:
-                    #logger.debug("%s not an existing column, skipping."%col)
-                    continue
+            if col not in custom_columns:
+                #logger.debug("%s not an existing column, skipping."%col)
+                continue
 
-                coldef = custom_columns[col]
-                #logger.debug("coldef:%s"%coldef)
-                label = coldef['label']
-                value = db.get_custom(source_id, label=label, index_is_id=True)
-                if value:
-                    db.set_custom(book_id,value,label=label,commit=False)
+            coldef = custom_columns[col]
+            #logger.debug("coldef:%s"%coldef)
+            label = coldef['label']
+            value = db.get_custom(source_id, label=label, index_is_id=True)
+            if value:
+                db.set_custom(book_id,value,label=label,commit=False)
 
-            #logger.debug("3.5:%s"%(time.time()-self.t))
-            self.t = time.time()
+        #logger.debug("3.5:%s"%(time.time()-self.t))
+        self.t = time.time()
 
-            if prefs['sourcecol'] != '' and prefs['sourcecol'] in custom_columns \
-                    and prefs['sourcetemplate']:
-                val = SafeFormat().safe_format(prefs['sourcetemplate'], misource, 'EpubSplit Source Template Error', misource)
-                #logger.debug("Attempting to set %s to %s"%(prefs['sourcecol'],val))
-                label = custom_columns[prefs['sourcecol']]['label']
-                db.set_custom(book_id, val, label=label, commit=False)
+        if prefs['sourcecol'] != '' and prefs['sourcecol'] in custom_columns \
+                and prefs['sourcetemplate']:
+            val = SafeFormat().safe_format(prefs['sourcetemplate'], misource, 'EpubSplit Source Template Error', misource)
+            #logger.debug("Attempting to set %s to %s"%(prefs['sourcecol'],val))
+            label = custom_columns[prefs['sourcecol']]['label']
+            db.set_custom(book_id, val, label=label, commit=False)
 
-            db.commit()
+        db.commit()
 
-            #logger.debug("4:%s"%(time.time()-self.t))
-            self.t = time.time()
+        #logger.debug("4:%s"%(time.time()-self.t))
+        self.t = time.time()
 
-            self.gui.library_view.model().books_added(1)
-            self.gui.library_view.select_rows([book_id])
+        self.gui.library_view.model().books_added(1)
+        self.gui.library_view.select_rows([book_id])
 
-            #logger.debug("5:%s"%(time.time()-self.t))
-            self.t = time.time()
+        #logger.debug("5:%s"%(time.time()-self.t))
+        self.t = time.time()
 
-            if editmeta:
-                confirm('\n'+_('''The book for the new Split EPUB has been created and default metadata filled in.
+        if editmeta:
+            confirm('\n'+_('''The book for the new Split EPUB has been created and default metadata filled in.
 
 However, the EPUB will *not* be created until after you've reviewed, edited, and closed the metadata dialog that follows.
 
 You can fill in the metadata yourself, or use download metadata for known books.
 
 If you download or add a cover image, it will be included in the generated EPUB.''')+'\n',
-                        'epubsplit_created_now_edit_again',
-                        self.gui)
+                    'epubsplit_created_now_edit_again',
+                    self.gui)
+            self.gui.iactions['Edit Metadata'].edit_metadata(False)
 
-                self.gui.iactions['Edit Metadata'].edit_metadata(False)
-
+        try:
+            QApplication.setOverrideCursor(QCursor(Qt.WaitCursor))
             #logger.debug("5:%s"%(time.time()-self.t))
             self.t = time.time()
             self.gui.tags_view.recount()
@@ -366,8 +387,28 @@ If you download or add a cover image, it will be included in the generated EPUB.
             self.gui.tags_view.recount()
             current = self.gui.library_view.currentIndex()
             self.gui.library_view.model().current_changed(current, self.previous)
+        finally:
+            QApplication.restoreOverrideCursor()
 
     def apply_settings(self):
         # No need to do anything with prefs here, but we could.
         prefs
 
+def humanbytes(B):
+   'Return the given bytes as a human friendly KB, MB, GB, or TB string'
+   B = float(B)
+   KB = float(1024)
+   MB = float(KB ** 2) # 1,048,576
+   GB = float(KB ** 3) # 1,073,741,824
+   TB = float(KB ** 4) # 1,099,511,627,776
+
+   if B < KB:
+      return '{0} {1}'.format(B,'Bytes' if 0 == B > 1 else 'Byte')
+   elif KB <= B < MB:
+      return '{0:.2f} KB'.format(B/KB)
+   elif MB <= B < GB:
+      return '{0:.2f} MB'.format(B/MB)
+   elif GB <= B < TB:
+      return '{0:.2f} GB'.format(B/GB)
+   elif TB <= B:
+      return '{0:.2f} TB'.format(B/TB)
