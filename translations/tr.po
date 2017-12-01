@@ -12,9 +12,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
-"POT-Creation-Date: 2016-10-25 19:18+Central Daylight Time\n"
-"PO-Revision-Date: 2017-05-12 17:52+0000\n"
-"Last-Translator: Necdet Yücel <necdetyucel@gmail.com>\n"
+"POT-Creation-Date: 2017-11-29 13:41+Central Standard Time\n"
+"PO-Revision-Date: 2017-11-30 14:17+0000\n"
+"Last-Translator: Kovid Goyal <kovid@kovidgoyal.net>\n"
 "Language-Team: Turkish (http://www.transifex.com/calibre/calibre-plugins/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -182,7 +182,7 @@ msgstr "Kitaplı ayarlarını görüntüle..."
 msgid "View data stored in the library database for this plugin"
 msgstr "Bu eklenti için kitaplık veri tabanına kayıtlı verileri görüntüle"
 
-#: config.py:321 dialogs.py:98
+#: config.py:321 dialogs.py:104
 msgid "Done"
 msgstr "Tamam"
 
@@ -222,110 +222,119 @@ msgstr "Kaynak kitaptan şablon. Örnek: "
 msgid "<p><b><i>Double click to copy from sample.</i></b></p>"
 msgstr "<p><b><i>Örnekten kopyalamak için çift tıklayın.</i></b></p>"
 
-#: dialogs.py:90
+#: dialogs.py:92
 msgid "New Book"
 msgstr "Yeni Kitap"
 
-#: dialogs.py:91
+#: dialogs.py:93
 msgid ""
 "Make <i>one</i> new book containing the sections selected above and then "
 "edit its Metadata."
 msgstr "Yukarıda seçilmiş olan tüm bölümleri içeren yeni bir kitap oluştur ve üstverisini düzenle."
 
-#: dialogs.py:94
+#: dialogs.py:96
 msgid "New Book per Section"
 msgstr "Her bir bölüm için yeni kitap"
 
-#: dialogs.py:95
+#: dialogs.py:97
 msgid ""
 "Make a new book for <i>each</i> of the sections selected above.  Title for "
 "each will be the Table of Contents, which you can edit here first."
 msgstr "Yukarıda seçilmiş olan <i>her bir<i> bölüm için yeni bir kitap oluşturun. Her birinin, öncelikle burada düzeltebileceğiniz, başlığı İçindekiler olacaktır."
 
-#: dialogs.py:114
+#: dialogs.py:100
+msgid "Get Size"
+msgstr ""
+
+#: dialogs.py:101
+msgid ""
+"Calculate the size of the new book from the currently selected sections."
+msgstr ""
+
+#: dialogs.py:123
 msgid "Missing Title(s)"
 msgstr "Eksik Başlık(lar)"
 
-#: dialogs.py:115
+#: dialogs.py:124
 msgid ""
 "Books not split.\n"
 "\n"
 "Some selected sections don't have a Table of Contents text.  You must enter one before splitting sections to individual books.  Double click to edit the Table of Contents entry for a section."
 msgstr "Kitaplar ayrılmayacak.\nBazı seçilmiş bölümlerin İçindekiler metni bulunmamaktadır. Bölümleri, ayrı bir kitap olarak ayırmadan önce, onlara İçindekiler eklemelisiniz. Bir bölüme ait İçindekiler maddelerini düzenlemek için çift tıklayın."
 
-#: dialogs.py:133
+#: dialogs.py:142
 msgid "Guide"
 msgstr "Kılavuz"
 
-#: dialogs.py:133
+#: dialogs.py:142
 msgid "HREF"
 msgstr "HREF"
 
-#: dialogs.py:133
+#: dialogs.py:142
 msgid "Table of Contents"
 msgstr "İçindekiler"
 
-#: dialogs.py:173
+#: dialogs.py:182
 msgid "Indicates 'special' pages: copyright, titlepage, etc."
 msgstr "Özel sayfaları gösterir: telif hakkı, ilk sayfa vb."
 
-#: dialogs.py:179
+#: dialogs.py:188
 msgid ""
 "Click and copy hotkey to copy text.\n"
 "Double-click to edit ToC entry.\n"
 "Pipes(|) divide different ToC entries to the same place."
 msgstr "Metni kopyalamak için kısayol tuşunu tıklayın ve kopyalayın.\nİçindekiler kısmının maddelerini düzenlemek için çift tıklayın.\nBorular(I), İçindekiler kısmına ait farklı maddeleri aynı yere böler."
 
-#: dialogs.py:218
+#: dialogs.py:227
 msgid "Section Sample"
 msgstr "Örnek bölüm"
 
-#: dialogs.py:226 dialogs.py:227 dialogs.py:228 dialogs.py:250 dialogs.py:251
-#: dialogs.py:252
+#: dialogs.py:235 dialogs.py:236 dialogs.py:237 dialogs.py:259 dialogs.py:260
+#: dialogs.py:261
 msgid "Splitting Sections..."
 msgstr "Bölümleri Ayırma..."
 
-#: dialogs.py:255
+#: dialogs.py:264
 msgid "Cancel"
 msgstr "İptal"
 
-#: dialogs.py:274
+#: dialogs.py:283
 msgid " - %s estimated until done"
 msgstr "- %s tahmini bitiş süresi"
 
-#: dialogs.py:331
+#: dialogs.py:340
 msgid "%d day"
 msgstr "%d gün"
 
-#: dialogs.py:331
+#: dialogs.py:340
 msgid "%d days"
 msgstr "%d günler"
 
-#: dialogs.py:332
+#: dialogs.py:341
 msgid "%d hour"
 msgstr "%d saat"
 
-#: dialogs.py:332
+#: dialogs.py:341
 msgid "%d hours"
 msgstr "%d saatler"
 
-#: dialogs.py:333
+#: dialogs.py:342
 msgid "%d minute"
 msgstr "%d dakika"
 
-#: dialogs.py:333
+#: dialogs.py:342
 msgid "%d minutes"
 msgstr "%d dakikalar"
 
-#: dialogs.py:334
+#: dialogs.py:343
 msgid "%d second"
 msgstr "%d saniye"
 
-#: dialogs.py:334
+#: dialogs.py:343
 msgid "%d seconds"
 msgstr "%d saniyeler"
 
-#: dialogs.py:349
+#: dialogs.py:358
 msgid "less than 1 second"
 msgstr "1 saniyeden az"
 
@@ -357,23 +366,39 @@ msgstr "Bu eklenti sadece Epub formatlı ekitaplara uygundur."
 msgid "Select Sections to Split Off"
 msgstr "Ayırmak istediğiniz bölümleri seçin."
 
-#: epubsplit_plugin.py:179
+#: epubsplit_plugin.py:180
 msgid "New Books Created"
 msgstr "Yeni Kitap(lar) Oluşturuldu"
 
-#: epubsplit_plugin.py:180
+#: epubsplit_plugin.py:181
 msgid "%s New Books Created."
 msgstr "%s Yeni Kitap(lar) Oluşturuldu."
 
-#: epubsplit_plugin.py:237
+#: epubsplit_plugin.py:213
+msgid "Computing size of EPUB..."
+msgstr ""
+
+#: epubsplit_plugin.py:223
+msgid "Finished computing size of EPUB."
+msgstr ""
+
+#: epubsplit_plugin.py:225
+msgid "Size of New Book"
+msgstr ""
+
+#: epubsplit_plugin.py:226
+msgid "New EPUB File Size:"
+msgstr ""
+
+#: epubsplit_plugin.py:257
 msgid "%s Split"
 msgstr "%s Bölme"
 
-#: epubsplit_plugin.py:269
+#: epubsplit_plugin.py:289
 msgid "Split from:"
 msgstr "Bu ögeden ayır:"
 
-#: epubsplit_plugin.py:318
+#: epubsplit_plugin.py:338
 msgid ""
 "The book for the new Split EPUB has been created and default metadata filled in.\n"
 "\n"
@@ -384,10 +409,10 @@ msgid ""
 "If you download or add a cover image, it will be included in the generated EPUB."
 msgstr "Kitap EPUB'ı Ayır işlemi sonucunda oluşturuldu ve içeriği öntanımlı üstveri ile dolduruldu.\n\nEPUB siz dosyayı açmadan, üzerinde değişiklik yapmadan ve sonrasında gelen üstveri penceresini kapatmadan oluşturulmayacak.\n\nÜstveri bilgisini siz yazabilir ve ya bilinen kitaplar için internetten indirebilirsiniz.\n\nEğer bir kapak resmi indirir ya da eklerseniz, eklediğiniz resim oluşturulan EPUB'a eklenecektir."
 
-#: epubsplit_plugin.py:334
+#: epubsplit_plugin.py:355
 msgid "Splitting off from EPUB..."
 msgstr "EPUB'dan ayrılıyor..."
 
-#: epubsplit_plugin.py:364
+#: epubsplit_plugin.py:385
 msgid "Finished splitting off EPUB."
 msgstr "EPUB'ın ayrılması tamamlandı."

@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
-"POT-Creation-Date: 2016-10-25 19:18+Central Daylight Time\n"
-"PO-Revision-Date: 2016-10-26 09:03+0000\n"
+"POT-Creation-Date: 2017-11-29 13:41+Central Standard Time\n"
+"PO-Revision-Date: 2017-11-30 14:17+0000\n"
 "Last-Translator: Kovid Goyal <kovid@kovidgoyal.net>\n"
 "Language-Team: Chinese (Hong Kong) (http://www.transifex.com/calibre/calibre-plugins/language/zh_HK/)\n"
 "MIME-Version: 1.0\n"
@@ -176,7 +176,7 @@ msgstr "觀看書櫃設定"
 msgid "View data stored in the library database for this plugin"
 msgstr ""
 
-#: config.py:321 dialogs.py:98
+#: config.py:321 dialogs.py:104
 msgid "Done"
 msgstr "已完成"
 
@@ -216,110 +216,119 @@ msgstr ""
 msgid "<p><b><i>Double click to copy from sample.</i></b></p>"
 msgstr ""
 
-#: dialogs.py:90
+#: dialogs.py:92
 msgid "New Book"
 msgstr "新書"
 
-#: dialogs.py:91
+#: dialogs.py:93
 msgid ""
 "Make <i>one</i> new book containing the sections selected above and then "
 "edit its Metadata."
 msgstr ""
 
-#: dialogs.py:94
+#: dialogs.py:96
 msgid "New Book per Section"
 msgstr ""
 
-#: dialogs.py:95
+#: dialogs.py:97
 msgid ""
 "Make a new book for <i>each</i> of the sections selected above.  Title for "
 "each will be the Table of Contents, which you can edit here first."
 msgstr ""
 
-#: dialogs.py:114
+#: dialogs.py:100
+msgid "Get Size"
+msgstr ""
+
+#: dialogs.py:101
+msgid ""
+"Calculate the size of the new book from the currently selected sections."
+msgstr ""
+
+#: dialogs.py:123
 msgid "Missing Title(s)"
 msgstr "遺失的標題"
 
-#: dialogs.py:115
+#: dialogs.py:124
 msgid ""
 "Books not split.\n"
 "\n"
 "Some selected sections don't have a Table of Contents text.  You must enter one before splitting sections to individual books.  Double click to edit the Table of Contents entry for a section."
 msgstr ""
 
-#: dialogs.py:133
+#: dialogs.py:142
 msgid "Guide"
 msgstr "指引"
 
-#: dialogs.py:133
+#: dialogs.py:142
 msgid "HREF"
 msgstr ""
 
-#: dialogs.py:133
+#: dialogs.py:142
 msgid "Table of Contents"
 msgstr "目錄"
 
-#: dialogs.py:173
+#: dialogs.py:182
 msgid "Indicates 'special' pages: copyright, titlepage, etc."
 msgstr ""
 
-#: dialogs.py:179
+#: dialogs.py:188
 msgid ""
 "Click and copy hotkey to copy text.\n"
 "Double-click to edit ToC entry.\n"
 "Pipes(|) divide different ToC entries to the same place."
 msgstr ""
 
-#: dialogs.py:218
+#: dialogs.py:227
 msgid "Section Sample"
 msgstr ""
 
-#: dialogs.py:226 dialogs.py:227 dialogs.py:228 dialogs.py:250 dialogs.py:251
-#: dialogs.py:252
+#: dialogs.py:235 dialogs.py:236 dialogs.py:237 dialogs.py:259 dialogs.py:260
+#: dialogs.py:261
 msgid "Splitting Sections..."
 msgstr ""
 
-#: dialogs.py:255
+#: dialogs.py:264
 msgid "Cancel"
 msgstr "取消"
 
-#: dialogs.py:274
+#: dialogs.py:283
 msgid " - %s estimated until done"
 msgstr ""
 
-#: dialogs.py:331
+#: dialogs.py:340
 msgid "%d day"
 msgstr "%d 日"
 
-#: dialogs.py:331
+#: dialogs.py:340
 msgid "%d days"
 msgstr "%d 日"
 
-#: dialogs.py:332
+#: dialogs.py:341
 msgid "%d hour"
 msgstr "%d 小時"
 
-#: dialogs.py:332
+#: dialogs.py:341
 msgid "%d hours"
 msgstr "%d 小時"
 
-#: dialogs.py:333
+#: dialogs.py:342
 msgid "%d minute"
 msgstr "%d 分鐘"
 
-#: dialogs.py:333
+#: dialogs.py:342
 msgid "%d minutes"
 msgstr "%d 分鐘"
 
-#: dialogs.py:334
+#: dialogs.py:343
 msgid "%d second"
 msgstr "%d 秒"
 
-#: dialogs.py:334
+#: dialogs.py:343
 msgid "%d seconds"
 msgstr "%d 秒"
 
-#: dialogs.py:349
+#: dialogs.py:358
 msgid "less than 1 second"
 msgstr "少過1秒"
 
@@ -351,23 +360,39 @@ msgstr ""
 msgid "Select Sections to Split Off"
 msgstr "選擇需分拆的章節"
 
-#: epubsplit_plugin.py:179
+#: epubsplit_plugin.py:180
 msgid "New Books Created"
 msgstr "新書已創造"
 
-#: epubsplit_plugin.py:180
+#: epubsplit_plugin.py:181
 msgid "%s New Books Created."
 msgstr "&s 已建立新書"
 
-#: epubsplit_plugin.py:237
+#: epubsplit_plugin.py:213
+msgid "Computing size of EPUB..."
+msgstr ""
+
+#: epubsplit_plugin.py:223
+msgid "Finished computing size of EPUB."
+msgstr ""
+
+#: epubsplit_plugin.py:225
+msgid "Size of New Book"
+msgstr ""
+
+#: epubsplit_plugin.py:226
+msgid "New EPUB File Size:"
+msgstr ""
+
+#: epubsplit_plugin.py:257
 msgid "%s Split"
 msgstr "%s 分拆"
 
-#: epubsplit_plugin.py:269
+#: epubsplit_plugin.py:289
 msgid "Split from:"
 msgstr "分拆自:"
 
-#: epubsplit_plugin.py:318
+#: epubsplit_plugin.py:338
 msgid ""
 "The book for the new Split EPUB has been created and default metadata filled in.\n"
 "\n"
@@ -378,10 +403,10 @@ msgid ""
 "If you download or add a cover image, it will be included in the generated EPUB."
 msgstr ""
 
-#: epubsplit_plugin.py:334
+#: epubsplit_plugin.py:355
 msgid "Splitting off from EPUB..."
 msgstr "分拆自EPUB..."
 
-#: epubsplit_plugin.py:364
+#: epubsplit_plugin.py:385
 msgid "Finished splitting off EPUB."
 msgstr "完成EPUB分拆"
