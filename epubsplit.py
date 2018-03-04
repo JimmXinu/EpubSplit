@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 __license__   = 'GPL v3'
-__copyright__ = '2014, Jim Miller'
+__copyright__ = '2018, Jim Miller'
 __docformat__ = 'restructuredtext en'
 
 import sys, re, os, traceback, copy
@@ -519,8 +519,8 @@ class SplitEpub:
             self.manifest_items = {}
 
             for item in self.get_content_dom().getElementsByTagName("item"):
-                fullhref=unquote(self.get_content_relpath()+item.getAttribute("href"))
-                #print("---- item href:%s path part: %s"%(href,get_path_part(href)))
+                fullhref=normpath(unquote(self.get_content_relpath()+item.getAttribute("href")))
+                #print("---- item fullhref:%s"%(fullhref))
                 self.manifest_items["h:"+fullhref]=(item.getAttribute("id"),item.getAttribute("media-type"))
                 self.manifest_items["i:"+item.getAttribute("id")]=(fullhref,item.getAttribute("media-type"))
                     
@@ -535,7 +535,7 @@ class SplitEpub:
             self.guide_items = {}
 
             for item in self.get_content_dom().getElementsByTagName("reference"):
-                fullhref=unquote(self.get_content_relpath()+item.getAttribute("href"))
+                fullhref=normpath(unquote(self.get_content_relpath()+item.getAttribute("href")))
                 self.guide_items[fullhref]=(item.getAttribute("type"),item.getAttribute("title"))
                 #print("---- reference href:%s value:%s"%(fullhref,self.guide_items[fullhref],))
                 #self.guide_items[item.getAttribute("type")]=(fullhref,item.getAttribute("media-type"))
@@ -554,7 +554,7 @@ class SplitEpub:
             self.toc_map = {}
             # update all navpoint ids with bookid for uniqueness.
             for navpoint in self.get_toc_dom().getElementsByTagName("navPoint"):
-                src = unquote(self.get_content_relpath()+navpoint.getElementsByTagName("content")[0].getAttribute("src"))
+                src = normpath(unquote(self.get_content_relpath()+navpoint.getElementsByTagName("content")[0].getAttribute("src")))
                 if '#' in src:
                     (href,anchor)=src.split("#")
                 else:
