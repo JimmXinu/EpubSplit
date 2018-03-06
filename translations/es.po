@@ -2,7 +2,7 @@
 # Copyright (C) YEAR ORGANIZATION
 # 
 # Translators:
-# Adolfo Jayme Barrientos, 2014
+# Adolfo Jayme-Barrientos, 2014
 # Albert, 2016
 # Jellby <jellby@yahoo.com>, 2014-2017
 # Rafael Ontivero <rafael.ontivero@gmail.com>, 2017

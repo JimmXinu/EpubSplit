@@ -3,6 +3,7 @@
 # 
 # Translators:
 # Alex, 2016
+# Herman van der Vaart <vaarttuig@gmail.com>, 2018
 # Mario Moens <marimo.it4u@gmail.com>, 2017
 # Rodolfo_Jadon, 2014-2015
 # Volluta <volluta@tutanota.com>, 2015
@@ -11,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
 "POT-Creation-Date: 2017-11-29 13:41+Central Standard Time\n"
-"PO-Revision-Date: 2017-11-30 14:17+0000\n"
-"Last-Translator: Kovid Goyal <kovid@kovidgoyal.net>\n"
+"PO-Revision-Date: 2018-02-21 23:28+0000\n"
+"Last-Translator: Herman van der Vaart <vaarttuig@gmail.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/calibre/calibre-plugins/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -242,12 +243,12 @@ msgstr "Maak een nieuw boek voor <i>elk</i> van de hierboven geselecteerde sect
 
 #: dialogs.py:100
 msgid "Get Size"
-msgstr ""
+msgstr "Verkrijg grootte"
 
 #: dialogs.py:101
 msgid ""
 "Calculate the size of the new book from the currently selected sections."
-msgstr ""
+msgstr "Bereken de grootte van het nieuwe boek uit de momenteel geselecteerde secties."
 
 #: dialogs.py:123
 msgid "Missing Title(s)"
@@ -374,19 +375,19 @@ msgstr "%s Nieuwe boeken gemaakt."
 
 #: epubsplit_plugin.py:213
 msgid "Computing size of EPUB..."
-msgstr ""
+msgstr "Grootte van EPUB aan het berekenen..."
 
 #: epubsplit_plugin.py:223
 msgid "Finished computing size of EPUB."
-msgstr ""
+msgstr "Berekenen EPUB grootte beëindigd."
 
 #: epubsplit_plugin.py:225
 msgid "Size of New Book"
-msgstr ""
+msgstr "Grootte van het nieuwe boek"
 
 #: epubsplit_plugin.py:226
 msgid "New EPUB File Size:"
-msgstr ""
+msgstr "EPUB file grootte:"
 
 #: epubsplit_plugin.py:257
 msgid "%s Split"
