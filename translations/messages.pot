@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-11-29 13:41+Central Standard Time\n"
+"POT-Creation-Date: 2018-07-03 18:49+Central Daylight Time\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -340,39 +340,50 @@ msgstr ""
 msgid "Select Sections to Split Off"
 msgstr ""
 
-#: epubsplit_plugin.py:180
+#: epubsplit_plugin.py:162
+msgid "No Sections Selected"
+msgstr ""
+
+#: epubsplit_plugin.py:163
+msgid ""
+"Book(s) not split.\n"
+"\n"
+"You must select at least one section to split."
+msgstr ""
+
+#: epubsplit_plugin.py:192
 msgid "New Books Created"
 msgstr ""
 
-#: epubsplit_plugin.py:181
+#: epubsplit_plugin.py:193
 msgid "%s New Books Created."
 msgstr ""
 
-#: epubsplit_plugin.py:213
+#: epubsplit_plugin.py:225
 msgid "Computing size of EPUB..."
 msgstr ""
 
-#: epubsplit_plugin.py:223
+#: epubsplit_plugin.py:237
 msgid "Finished computing size of EPUB."
 msgstr ""
 
-#: epubsplit_plugin.py:225
+#: epubsplit_plugin.py:239
 msgid "Size of New Book"
 msgstr ""
 
-#: epubsplit_plugin.py:226
+#: epubsplit_plugin.py:240
 msgid "New EPUB File Size:"
 msgstr ""
 
-#: epubsplit_plugin.py:257
+#: epubsplit_plugin.py:272
 msgid "%s Split"
 msgstr ""
 
-#: epubsplit_plugin.py:289
+#: epubsplit_plugin.py:304
 msgid "Split from:"
 msgstr ""
 
-#: epubsplit_plugin.py:338
+#: epubsplit_plugin.py:353
 msgid ""
 "The book for the new Split EPUB has been created and default metadata filled in.\n"
 "\n"
@@ -383,11 +394,11 @@ msgid ""
 "If you download or add a cover image, it will be included in the generated EPUB."
 msgstr ""
 
-#: epubsplit_plugin.py:355
+#: epubsplit_plugin.py:370
 msgid "Splitting off from EPUB..."
 msgstr ""
 
-#: epubsplit_plugin.py:385
+#: epubsplit_plugin.py:400
 msgid "Finished splitting off EPUB."
 msgstr ""
 
