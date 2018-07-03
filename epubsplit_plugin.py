@@ -301,7 +301,7 @@ class EpubSplitPlugin(InterfaceAction):
             mi.set_identifiers(misource.get_identifiers())
 
         if prefs['copycomments'] and misource.comments:
-            mi.comments = _("Split from:")+"\n\n" + misource.comments
+            mi.comments = "<p>"+_("Split from:")+"</p>" + misource.comments
 
         #logger.debug("mi:%s"%mi)
         book_id = db.create_book_entry(mi,
