@@ -156,6 +156,16 @@ class EpubSplitPlugin(InterfaceAction):
             if d.result() != d.Accepted:
                 return
 
+    def has_lines(self,linenums):
+        if len(linenums) < 1:
+            error_dialog(self.gui,
+                         _('No Sections Selected'),
+                         _("Book(s) not split.\n\nYou must select at least one section to split."),
+                         show_copy_button=False).exec_()
+            return False
+        else:
+            return True
+
     def _do_splits(self,
                    db,
                    source_id,
@@ -165,6 +175,8 @@ class EpubSplitPlugin(InterfaceAction):
                    newspecs):
 
         linenums,changedtocs = newspecs
+        if not self.has_lines(linenums):
+            return
         LoopProgressDialog(self.gui,
                            linenums,
                            partial(self._do_splits_loop,
@@ -212,6 +224,8 @@ class EpubSplitPlugin(InterfaceAction):
             QApplication.setOverrideCursor(QCursor(Qt.WaitCursor))
             self.gui.status_bar.show_message(_('Computing size of EPUB...'), 60000)
             linenums,changedtocs = newspecs
+            if not self.has_lines(linenums):
+                return
             self.t = time.time()
             outputepub = PersistentTemporaryFile(suffix='.epub')
             splitepub.write_split_epub(outputepub,
@@ -238,7 +252,8 @@ class EpubSplitPlugin(InterfaceAction):
 
         linenums,changedtocs = newspecs
         #logger.debug("updated tocs:%s"%changedtocs)
-
+        if not self.has_lines(linenums):
+            return
         #logger.debug("2:%s"%(time.time()-self.t))
         self.t = time.time()
 
