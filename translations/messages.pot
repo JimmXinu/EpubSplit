@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-07-03 18:49+Central Daylight Time\n"
+"POT-Creation-Date: 2018-08-29 13:12+Central Daylight Time\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -225,90 +225,99 @@ msgstr ""
 msgid "Calculate the size of the new book from the currently selected sections."
 msgstr ""
 
-#: dialogs.py:123
+#: dialogs.py:122
 msgid "Missing Title(s)"
 msgstr ""
 
-#: dialogs.py:124
-msgid ""
-"Books not split.\n"
-"\n"
-"Some selected sections don't have a Table of Contents text.  You must enter one before splitting sections to individual books.  Double click to edit the Table of Contents entry for a section."
+#: dialogs.py:123
+msgid "Some selected sections don't have a Table of Contents text."
 msgstr ""
 
-#: dialogs.py:142
+#: dialogs.py:124
+msgid "If you continue, those sections will be included with the last prior section that did have a Table of Contents text."
+msgstr ""
+
+#: dialogs.py:125
+msgid "If you cancel, you can go back and add Table of Contents entries."
+msgstr ""
+
+#: dialogs.py:126
+msgid "Double click to edit the Table of Contents entry for a section."
+msgstr ""
+
+#: dialogs.py:148
 msgid "Guide"
 msgstr ""
 
-#: dialogs.py:142
+#: dialogs.py:148
 msgid "HREF"
 msgstr ""
 
-#: dialogs.py:142
+#: dialogs.py:148
 msgid "Table of Contents"
 msgstr ""
 
-#: dialogs.py:182
+#: dialogs.py:188
 msgid "Indicates 'special' pages: copyright, titlepage, etc."
 msgstr ""
 
-#: dialogs.py:188
+#: dialogs.py:194
 msgid ""
 "Click and copy hotkey to copy text.\n"
 "Double-click to edit ToC entry.\n"
 "Pipes(|) divide different ToC entries to the same place."
 msgstr ""
 
-#: dialogs.py:227
+#: dialogs.py:268
 msgid "Section Sample"
 msgstr ""
 
-#: dialogs.py:235 dialogs.py:236 dialogs.py:237 dialogs.py:259 dialogs.py:260
-#: dialogs.py:261
+#: dialogs.py:276 dialogs.py:277 dialogs.py:278 dialogs.py:300 dialogs.py:301
+#: dialogs.py:302
 msgid "Splitting Sections..."
 msgstr ""
 
-#: dialogs.py:264
+#: dialogs.py:305
 msgid "Cancel"
 msgstr ""
 
-#: dialogs.py:283
+#: dialogs.py:324
 msgid " - %s estimated until done"
 msgstr ""
 
-#: dialogs.py:340
+#: dialogs.py:381
 msgid "%d day"
 msgstr ""
 
-#: dialogs.py:340
+#: dialogs.py:381
 msgid "%d days"
 msgstr ""
 
-#: dialogs.py:341
+#: dialogs.py:382
 msgid "%d hour"
 msgstr ""
 
-#: dialogs.py:341
+#: dialogs.py:382
 msgid "%d hours"
 msgstr ""
 
-#: dialogs.py:342
+#: dialogs.py:383
 msgid "%d minute"
 msgstr ""
 
-#: dialogs.py:342
+#: dialogs.py:383
 msgid "%d minutes"
 msgstr ""
 
-#: dialogs.py:343
+#: dialogs.py:384
 msgid "%d second"
 msgstr ""
 
-#: dialogs.py:343
+#: dialogs.py:384
 msgid "%d seconds"
 msgstr ""
 
-#: dialogs.py:358
+#: dialogs.py:399
 msgid "less than 1 second"
 msgstr ""
 
@@ -351,39 +360,39 @@ msgid ""
 "You must select at least one section to split."
 msgstr ""
 
-#: epubsplit_plugin.py:192
+#: epubsplit_plugin.py:193
 msgid "New Books Created"
 msgstr ""
 
-#: epubsplit_plugin.py:193
+#: epubsplit_plugin.py:194
 msgid "%s New Books Created."
 msgstr ""
 
-#: epubsplit_plugin.py:225
+#: epubsplit_plugin.py:226
 msgid "Computing size of EPUB..."
 msgstr ""
 
-#: epubsplit_plugin.py:237
+#: epubsplit_plugin.py:238
 msgid "Finished computing size of EPUB."
 msgstr ""
 
-#: epubsplit_plugin.py:239
+#: epubsplit_plugin.py:240
 msgid "Size of New Book"
 msgstr ""
 
-#: epubsplit_plugin.py:240
+#: epubsplit_plugin.py:241
 msgid "New EPUB File Size:"
 msgstr ""
 
-#: epubsplit_plugin.py:272
+#: epubsplit_plugin.py:273
 msgid "%s Split"
 msgstr ""
 
-#: epubsplit_plugin.py:304
+#: epubsplit_plugin.py:305
 msgid "Split from:"
 msgstr ""
 
-#: epubsplit_plugin.py:353
+#: epubsplit_plugin.py:354
 msgid ""
 "The book for the new Split EPUB has been created and default metadata filled in.\n"
 "\n"
@@ -394,11 +403,11 @@ msgid ""
 "If you download or add a cover image, it will be included in the generated EPUB."
 msgstr ""
 
-#: epubsplit_plugin.py:370
+#: epubsplit_plugin.py:371
 msgid "Splitting off from EPUB..."
 msgstr ""
 
-#: epubsplit_plugin.py:400
+#: epubsplit_plugin.py:401
 msgid "Finished splitting off EPUB."
 msgstr ""
 

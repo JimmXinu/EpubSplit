@@ -59,7 +59,7 @@ from calibre_plugins.epubsplit.common_utils \
             ImageTitleLayout, get_icon)
 
 SAMPLE_NOTE=_("<p><b><i>Double click to copy from sample.</i></b></p>")
-    
+
 class SelectLinesDialog(SizePersistedDialog):
     def __init__(self, gui, header, prefs, icon, lines,
                  do_split_fn,
@@ -119,12 +119,18 @@ class SelectLinesDialog(SizePersistedDialog):
 
     def new_books(self):
         if not self.lines_table.selected_all_have_toc():
-            error_dialog(self.gui,
-                         _('Missing Title(s)'),
-                         _("Books not split.\n\nSome selected sections don't have a Table of Contents text.  You must enter one before splitting sections to individual books.  Double click to edit the Table of Contents entry for a section."),
-                         show_copy_button=False).exec_()
-        else:
-            self.do_splits_fn(self.get_selected_linenums_tocs())
+            if not confirm("<p><b>"+_('Missing Title(s)')+"</b></p><p>"+
+                           ("</p><p>").join([_("Some selected sections don't have a Table of Contents text."),
+                                             _("If you continue, those sections will be included with the last prior section that did have a Table of Contents text."),
+                                             _("If you cancel, you can go back and add Table of Contents entries.")+" "+
+                                             _("Double click to edit the Table of Contents entry for a section.")])
+                           +"</p>",
+                           'epubsplit_missing_tocs_warning_again',
+                           self.gui):
+                return
+        # return a list of lists of linenums
+        linelists,changedtocs = self.lines_table.get_selected_tocs()
+        self.do_splits_fn( (linelists,changedtocs) )
 
     def get_selected_linenums_tocs(self):
         return self.lines_table.get_selected_linenums_tocs()
@@ -152,7 +158,7 @@ class LinesTableWidget(QTableWidget):
 
         # can't connect to individual cells, it seems.
         self.doubleClicked.connect(self.show_tooltip)
-        
+
         self.resizeColumnsToContents()
         self.setMinimumColumnWidth(1, 100)
         self.setMinimumColumnWidth(2, 10)
@@ -190,36 +196,71 @@ Double-click to edit ToC entry.
 Pipes(|) divide different ToC entries to the same place.'''))
         self.setItem(row, 2, toc_cell)
 
+    def get_row_linenum(self,row):
+        return convert_qvariant(row.data(Qt.UserRole))
+
+    def get_row_prev_toc(self,row):
+        return convert_qvariant(self.item(row.row(),2).data(Qt.UserRole)).strip()
+
+    def get_row_toc(self,row):
+        return convert_qvariant(self.item(row.row(),2).text()).strip()
+
+    def get_selected_rows(self):
+        ## order rows by linenum, copy in case QT handed us something
+        ## internal.
+        rows = list(self.selectionModel().selectedRows())
+        rows.sort(key=self.get_row_linenum)
+        return rows
+
     def selected_all_have_toc(self):
         "Return false if any of the sections would not have a title when doing split all."
-        for row in self.selectionModel().selectedRows():
-            linenum = convert_qvariant(row.data(Qt.UserRole))
-            pre = convert_qvariant(self.item(row.row(),2).data(Qt.UserRole)).strip()
-            changed = self.item(row.row(),2).text().strip()
+        for row in self.get_selected_rows():
+            linenum = self.get_row_linenum(row)
+            pre = self.get_row_prev_toc(row)
+            changed = self.get_row_toc(row)
             if not changed or ( (pre == changed) and not pre ):
                 return False
         return True
 
-    def get_selected_linenums_tocs(self):
-        # lines = []
-        # for row in range(self.rowCount()):
-        #     rnum = self.item(row, 0).data(Qt.UserRole).toPyObject()
-        #     line = self.lines[rnum]
-        #     lines.append(line)
-        # return lines
+    def get_selected_tocs(self):
+        linelists = []
         linenums = []
         changedtocs = {}
 
-        for row in self.selectionModel().selectedRows():
-            linenum = convert_qvariant(row.data(Qt.UserRole))
+        for row in self.get_selected_rows():
+            linenum = self.get_row_linenum(row)
+            # changed tocs only.
+            pre = self.get_row_prev_toc(row)
+            changed = self.get_row_toc(row)
+            toc = pre
+            if pre != changed:
+                changedtocs[linenum] = unicode(changed).split('|')
+                toc = changed
+            if toc and linenums:
+                linelists.append(linenums)
+                linenums = []
+            linenums.append(linenum)
+            # logger.debug("linenums:%s"%linenums)
+            # logger.debug("linelists:%s"%linelists)
+
+        if linenums:
+            linelists.append(linenums)
+
+        # logger.debug("linelists:%s"%linelists)
+        return linelists, changedtocs
+
+    def get_selected_linenums_tocs(self):
+        linenums = []
+        changedtocs = {}
+
+        for row in self.get_selected_rows():
+            linenum = self.get_row_linenum(row)
             linenums.append(linenum)
             # changed tocs only.
-            if convert_qvariant(self.item(row.row(),2).data(Qt.UserRole)) != self.item(row.row(),2).text():
-                changedtocs[linenum] = unicode(self.item(row.row(),2).text()).strip().split('|')
+            if self.get_row_prev_toc(row) != self.get_row_toc(row):
+                changedtocs[linenum] = self.get_row_toc(row).split('|')
 
-        linenums.sort()
         return linenums, changedtocs
-
 
     def show_tooltip(self,modidx):
         "Show section sample from tooltip in an info for copying when double clicked."
@@ -241,14 +282,14 @@ def LoopProgressDialog(gui,
                              init_label,
                              win_title,
                              status_prefix)
-    
+
     # Mac OS X gets upset if the finish_function is called from inside
     # the real _LoopProgressDialog class.
-    
+
     # reflect old behavior.
     if not ld.wasCanceled():
         finish_function(split_list)
-        
+
 class _LoopProgressDialog(QProgressDialog):
     '''
     ProgressDialog displayed while splitting each section.
@@ -293,10 +334,10 @@ class _LoopProgressDialog(QProgressDialog):
 
         split = self.split_list[self.i]
         self.foreach_function(split)
-            
+
         self.updateStatus()
         self.i += 1
-            
+
         if self.i >= len(self.split_list) or self.wasCanceled():
             return self.do_when_finished()
         else:
@@ -323,7 +364,7 @@ class ViewSample(SizePersistedDialog):
         self.setModal(False)
         self.setWindowTitle(title)
         self.setWindowIcon(get_icon('format-justify-fill.png'))
-        
+
         # Cause our dialog size to be restored from prefs or created on first usage
         self.resize_dialog()
         self.show()

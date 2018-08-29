@@ -174,11 +174,12 @@ class EpubSplitPlugin(InterfaceAction):
                    origlines,
                    newspecs):
 
-        linenums,changedtocs = newspecs
-        if not self.has_lines(linenums):
+        linelists,changedtocs = newspecs
+        logger.debug(linelists)
+        if not self.has_lines(linelists):
             return
         LoopProgressDialog(self.gui,
-                           linenums,
+                           linelists,
                            partial(self._do_splits_loop,
                                    db=db,
                                    source_id=source_id,
@@ -188,12 +189,12 @@ class EpubSplitPlugin(InterfaceAction):
                                    origlines=origlines),
                            self._do_splits_finish,)
 
-    def _do_splits_finish(self,linenums):
+    def _do_splits_finish(self,linelists):
         info_dialog(self.gui, _('New Books Created'),
-                    _('%s New Books Created.')%len(linenums)).exec_()
+                    _('%s New Books Created.')%len(linelists)).exec_()
 
     def _do_splits_loop(self,
-                        linenum,
+                        linelist,
                         db=None,
                         source_id=None,
                         misource=None,
@@ -203,10 +204,10 @@ class EpubSplitPlugin(InterfaceAction):
                         ):
         #logger.debug("origline:%s"%origlines[l])
         try:
-            if linenum in changedtocs:
-                deftitle=changedtocs[linenum][0] # already unicoded()'ed
+            if linelist[0] in changedtocs:
+                deftitle=changedtocs[linelist[0]][0] # already unicoded()'ed
             else:
-                deftitle=unicode(origlines[linenum]['toc'][0])
+                deftitle=unicode(origlines[linelist[0]]['toc'][0])
         except:
             # catches empty chapter titles
             deftitle=None
@@ -215,7 +216,7 @@ class EpubSplitPlugin(InterfaceAction):
                        misource,
                        splitepub,
                        origlines,
-                       ([linenum],changedtocs),
+                       (linelist,changedtocs),
                        deftitle=deftitle,
                        editmeta=False)
 
