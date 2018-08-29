@@ -4,7 +4,7 @@ from __future__ import (unicode_literals, division, absolute_import,
                         print_function)
 
 __license__   = 'GPL v3'
-__copyright__ = '2016, Jim Miller'
+__copyright__ = '2018, Jim Miller'
 __docformat__ = 'restructuredtext en'
 
 import logging
@@ -175,7 +175,7 @@ class EpubSplitPlugin(InterfaceAction):
                    newspecs):
 
         linelists,changedtocs = newspecs
-        logger.debug(linelists)
+        # logger.debug(linelists)
         if not self.has_lines(linelists):
             return
         LoopProgressDialog(self.gui,
@@ -217,8 +217,7 @@ class EpubSplitPlugin(InterfaceAction):
                        splitepub,
                        origlines,
                        (linelist,changedtocs),
-                       deftitle=deftitle,
-                       editmeta=False)
+                       deftitle=deftitle)
 
     def _get_split_size(self,splitepub,newspecs):
         try:
@@ -248,8 +247,7 @@ class EpubSplitPlugin(InterfaceAction):
                   splitepub,
                   origlines,
                   newspecs,
-                  deftitle=None,
-                  editmeta=True):
+                  deftitle=None):
 
         linenums,changedtocs = newspecs
         #logger.debug("updated tocs:%s"%changedtocs)
@@ -350,14 +348,16 @@ class EpubSplitPlugin(InterfaceAction):
         #logger.debug("5:%s"%(time.time()-self.t))
         self.t = time.time()
 
-        if editmeta:
+        editconfig_txt = _('You can enable or disable Edit Metadata in Preferences > Plugins > EpubSplit.')
+        if prefs['editmetadata']:
             confirm('\n'+_('''The book for the new Split EPUB has been created and default metadata filled in.
 
 However, the EPUB will *not* be created until after you've reviewed, edited, and closed the metadata dialog that follows.
 
 You can fill in the metadata yourself, or use download metadata for known books.
 
-If you download or add a cover image, it will be included in the generated EPUB.''')+'\n',
+If you download or add a cover image, it will be included in the generated EPUB.''')+'\n\n'+
+                    editconfig_txt+'\n',
                     'epubsplit_created_now_edit_again',
                     self.gui)
             self.gui.iactions['Edit Metadata'].edit_metadata(False)
@@ -405,6 +405,15 @@ If you download or add a cover image, it will be included in the generated EPUB.
             self.gui.library_view.model().current_changed(current, self.previous)
         finally:
             QApplication.restoreOverrideCursor()
+
+        if not prefs['editmetadata']:
+            confirm('<p>'+
+                    '</p><p>'.join([_('<b><u>%s</u> by %s</b> has been created and default metadata filled in.')%(mi.title,', '.join(mi.authors)),
+                                   _('EpubSplit now skips the Edit Metadata step by default.'),
+                                   editconfig_txt])+
+                    '</p>',
+                    'epubsplit_created_now_no_edit_again',
+                    self.gui)
 
     def apply_settings(self):
         # No need to do anything with prefs here, but we could.

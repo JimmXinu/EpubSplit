@@ -4,7 +4,7 @@ from __future__ import (unicode_literals, division, absolute_import,
                         print_function)
 
 __license__   = 'GPL v3'
-__copyright__ = '2016, Jim Miller'
+__copyright__ = '2018, Jim Miller'
 __docformat__ = 'restructuredtext en'
 
 import traceback, copy
@@ -50,6 +50,8 @@ PREFS_KEY_SETTINGS = 'settings'
 # Set defaults used by all.  Library specific settings continue to
 # take from here.
 default_prefs = {}
+default_prefs['editmetadata'] = False
+
 default_prefs['copytoctitle'] = True
 default_prefs['copytitle'] = True
 default_prefs['copyauthors'] = True
@@ -163,6 +165,7 @@ class ConfigWidget(QWidget):
         tab_widget.addTab(self.columns_tab, _('Custom Columns'))
 
     def save_settings(self):
+        prefs['editmetadata'] = self.basic_tab.editmetadata.isChecked()
         prefs['copytoctitle'] = self.basic_tab.copytoctitle.isChecked()
         prefs['copytitle'] = self.basic_tab.copytitle.isChecked()
         prefs['copyauthors'] = self.basic_tab.copyauthors.isChecked()
@@ -206,10 +209,15 @@ class BasicTab(QWidget):
         self.l = QVBoxLayout()
         self.setLayout(self.l)
 
+        self.editmetadata = QCheckBox(_('Edit Metadata for New Book(s)'),self)
+        self.editmetadata.setToolTip(_('Show Edit Metadata Dialog after creating each new book entry, but <i>before</i> EPUB is created.<br>Allows for downloading metadata and ensures EPUB has updated metadata.'))
+        self.editmetadata.setChecked(prefs['editmetadata'])
+        self.l.addWidget(self.editmetadata)
+        self.l.addSpacing(5)
+
         label = QLabel(_('When making a new Epub, the metadata from the source book will be copied or not as you choose below.'))
         label.setWordWrap(True)
         self.l.addWidget(label)
-        #self.l.addSpacing(5)
 
         scrollable = QScrollArea()
         scrollcontent = QWidget()
@@ -330,40 +338,12 @@ class CustomColumnsTab(QWidget):
         self.plugin_action = plugin_action
         QWidget.__init__(self)
 
+        custom_columns = self.plugin_action.gui.library_view.model().custom_columns
+
         self.l = QVBoxLayout()
         self.setLayout(self.l)
 
-        label = QLabel(_("If you have custom columns defined, they will be listed below.  Choose if you would like these columns copied to new split books."))
-        label.setWordWrap(True)
-        self.l.addWidget(label)
-        self.l.addSpacing(5)
-
-        scrollable = QScrollArea()
-        scrollcontent = QWidget()
-        scrollable.setWidget(scrollcontent)
-        scrollable.setWidgetResizable(True)
-        self.l.addWidget(scrollable)
-
-        self.sl = QVBoxLayout()
-        scrollcontent.setLayout(self.sl)
-
-        self.custcol_checkboxes = {}
-
-        custom_columns = self.plugin_action.gui.library_view.model().custom_columns
-        for key, column in custom_columns.iteritems():
-            # print("\n============== %s ===========\n"%key)
-            # for (k,v) in column.iteritems():
-            #     print("column['%s'] => %s"%(k,v))
-            checkbox = QCheckBox('%s(%s)'%(column['name'],key))
-            checkbox.setToolTip(_("Copy this %s column to new split books...")%column['datatype'])
-            checkbox.setChecked(key in prefs['custom_cols'] and prefs['custom_cols'][key])
-            self.custcol_checkboxes[key] = checkbox
-            self.sl.addWidget(checkbox)
-
-        self.sl.insertStretch(-1)
-
-        self.l.addSpacing(5)
-        label = QLabel(_("Source column:"))
+        label = QLabel(_("Save Source column:"))
         label.setToolTip(_("If set, the column below will be populated with the template below to record the source of the split file."))
         label.setWordWrap(True)
         self.l.addWidget(label)
@@ -387,3 +367,33 @@ class CustomColumnsTab(QWidget):
         horz.addWidget(self.sourcetemplate)
 
         self.l.addLayout(horz)
+        self.l.addSpacing(5)
+
+        label = QLabel(_("If you have custom columns defined, they will be listed below.  Choose if you would like these columns copied to new split books."))
+        label.setWordWrap(True)
+        self.l.addWidget(label)
+        self.l.addSpacing(5)
+
+        scrollable = QScrollArea()
+        scrollcontent = QWidget()
+        scrollable.setWidget(scrollcontent)
+        scrollable.setWidgetResizable(True)
+        self.l.addWidget(scrollable)
+
+        self.sl = QVBoxLayout()
+        scrollcontent.setLayout(self.sl)
+
+        self.custcol_checkboxes = {}
+
+        for key, column in custom_columns.iteritems():
+            # print("\n============== %s ===========\n"%key)
+            # for (k,v) in column.iteritems():
+            #     print("column['%s'] => %s"%(k,v))
+            checkbox = QCheckBox('%s(%s)'%(column['name'],key))
+            checkbox.setToolTip(_("Copy this %s column to new split books...")%column['datatype'])
+            checkbox.setChecked(key in prefs['custom_cols'] and prefs['custom_cols'][key])
+            self.custcol_checkboxes[key] = checkbox
+            self.sl.addWidget(checkbox)
+
+        self.sl.insertStretch(-1)
+
