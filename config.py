@@ -361,7 +361,7 @@ class CustomColumnsTab(QWidget):
         self.sourcecol.setToolTip(_("Choose a column to populate with template on split."))
         self.sourcecol.addItem('','none')
         for key, column in custom_columns.iteritems():
-            if column['datatype'] in ('text','comments'):
+            if column['datatype'] in ('text','comments','series'):
                 self.sourcecol.addItem(column['name'],key)
         self.sourcecol.setCurrentIndex(self.sourcecol.findData(prefs['sourcecol']))
         horz.addWidget(self.sourcecol)

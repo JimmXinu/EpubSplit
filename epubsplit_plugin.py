@@ -118,6 +118,7 @@ class EpubSplitPlugin(InterfaceAction):
         else:
             self.previous = self.gui.library_view.currentIndex()
             db=self.gui.current_db
+            self.book_count = 1 # for series Source columns
 
             #logger.debug("1:%s"%(time.time()-self.t))
             self.t = time.time()
@@ -255,7 +256,7 @@ class EpubSplitPlugin(InterfaceAction):
                   deftitle=None):
 
         linenums, changedtocs, checkedalways = newspecs
-        logger.debug("updated tocs:%s"%changedtocs)
+        # logger.debug("updated tocs:%s"%changedtocs)
         if not self.has_lines(linenums):
             return
         #logger.debug("2:%s"%(time.time()-self.t))
@@ -340,8 +341,10 @@ class EpubSplitPlugin(InterfaceAction):
             val = SafeFormat().safe_format(prefs['sourcetemplate'], misource, 'EpubSplit Source Template Error', misource)
             #logger.debug("Attempting to set %s to %s"%(prefs['sourcecol'],val))
             label = custom_columns[prefs['sourcecol']]['label']
+            if custom_columns[prefs['sourcecol']]['datatype'] == 'series':
+                val = val + (" [%s]"%self.book_count)
             db.set_custom(book_id, val, label=label, commit=False)
-
+        self.book_count = self.book_count+1
         db.commit()
 
         #logger.debug("4:%s"%(time.time()-self.t))
