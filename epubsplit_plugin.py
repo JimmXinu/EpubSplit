@@ -174,7 +174,7 @@ class EpubSplitPlugin(InterfaceAction):
                    origlines,
                    newspecs):
 
-        linelists,changedtocs = newspecs
+        linelists, changedtocs, checkedalways = newspecs
         # logger.debug(linelists)
         if not self.has_lines(linelists):
             return
@@ -185,6 +185,7 @@ class EpubSplitPlugin(InterfaceAction):
                                    source_id=source_id,
                                    misource=misource,
                                    changedtocs=changedtocs,
+                                   checkedalways=checkedalways,
                                    splitepub=splitepub,
                                    origlines=origlines),
                            self._do_splits_finish,)
@@ -199,6 +200,7 @@ class EpubSplitPlugin(InterfaceAction):
                         source_id=None,
                         misource=None,
                         changedtocs=None,
+                        checkedalways=None,
                         splitepub=None,
                         origlines=None,
                         ):
@@ -216,20 +218,22 @@ class EpubSplitPlugin(InterfaceAction):
                        misource,
                        splitepub,
                        origlines,
-                       (linelist,changedtocs),
+                       (linelist,changedtocs,checkedalways),
                        deftitle=deftitle)
 
     def _get_split_size(self,splitepub,newspecs):
         try:
             QApplication.setOverrideCursor(QCursor(Qt.WaitCursor))
             self.gui.status_bar.show_message(_('Computing size of EPUB...'), 60000)
-            linenums,changedtocs = newspecs
+            linenums, changedtocs, checkedalways = newspecs
             if not self.has_lines(linenums):
                 return
             self.t = time.time()
             outputepub = PersistentTemporaryFile(suffix='.epub')
+            outlist = list(set(linenums + checkedalways))
+            outlist.sort()
             splitepub.write_split_epub(outputepub,
-                                       linenums,
+                                       outlist,
                                        changedtocs=changedtocs,)
             logger.debug("size:%s"%(time.time()-self.t))
             self.t = time.time()
@@ -249,8 +253,8 @@ class EpubSplitPlugin(InterfaceAction):
                   newspecs,
                   deftitle=None):
 
-        linenums,changedtocs = newspecs
-        #logger.debug("updated tocs:%s"%changedtocs)
+        linenums, changedtocs, checkedalways = newspecs
+        logger.debug("updated tocs:%s"%changedtocs)
         if not self.has_lines(linenums):
             return
         #logger.debug("2:%s"%(time.time()-self.t))
@@ -379,8 +383,10 @@ If you download or add a cover image, it will be included in the generated EPUB.
                 # grab the path to the real image.
                 coverjpgpath = os.path.join(db.library_path, db.path(book_id, index_is_id=True), 'cover.jpg')
 
+            outlist = list(set(linenums + checkedalways))
+            outlist.sort()
             splitepub.write_split_epub(outputepub,
-                                       linenums,
+                                       outlist,
                                        changedtocs=changedtocs,
                                        authoropts=mi.authors,
                                        titleopt=mi.title,

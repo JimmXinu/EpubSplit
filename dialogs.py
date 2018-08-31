@@ -129,8 +129,7 @@ class SelectLinesDialog(SizePersistedDialog):
                            self.gui):
                 return
         # return a list of lists of linenums
-        linelists,changedtocs = self.lines_table.get_selected_tocs()
-        self.do_splits_fn( (linelists,changedtocs) )
+        self.do_splits_fn(self.lines_table.get_selected_tocs())
 
     def get_selected_linenums_tocs(self):
         return self.lines_table.get_selected_linenums_tocs()
@@ -145,7 +144,7 @@ class LinesTableWidget(QTableWidget):
         self.clear()
         self.setAlternatingRowColors(True)
         self.setRowCount(len(lines))
-        header_labels = [_('HREF'), _('Guide'), _('Table of Contents')] #, 'extra'
+        header_labels = ['', _('HREF'), _('Guide'), _('Table of Contents')] #, 'extra'
         self.setColumnCount(len(header_labels))
         self.setHorizontalHeaderLabels(header_labels)
         self.horizontalHeader().setStretchLastSection(True)
@@ -160,9 +159,10 @@ class LinesTableWidget(QTableWidget):
         self.doubleClicked.connect(self.show_tooltip)
 
         self.resizeColumnsToContents()
-        self.setMinimumColumnWidth(1, 100)
-        self.setMinimumColumnWidth(2, 10)
-        self.setMinimumColumnWidth(3, 100)
+        self.setMinimumColumnWidth(1, 2)
+        self.setMinimumColumnWidth(2, 100)
+        self.setMinimumColumnWidth(3, 10)
+        self.setMinimumColumnWidth(4, 100)
         self.setMinimumSize(300, 0)
 
     def setMinimumColumnWidth(self, col, minimum):
@@ -171,14 +171,19 @@ class LinesTableWidget(QTableWidget):
 
     def populate_table_row(self, row, line):
 
+        if True:
+            checkbox_cell = QTableWidgetItem()
+            checkbox_cell.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
+            checkbox_cell.setCheckState(Qt.Unchecked)
+            self.setItem(row, 0, checkbox_cell)
+
         href = line['href']
         if line['anchor']:
             href = "%s#%s"%(href,line['anchor'])
 
         href_cell = ReadOnlyTableWidgetItem(href)
         href_cell.setToolTip(line['sample']+SAMPLE_NOTE)
-        href_cell.setData(Qt.UserRole, line['num'])
-        self.setItem(row, 0, href_cell)
+        self.setItem(row, 1, href_cell)
 
         if 'guide' in line:
             guide = "(%s):%s"%line['guide']
@@ -186,7 +191,7 @@ class LinesTableWidget(QTableWidget):
             guide = ""
         guide_cell = ReadOnlyTableWidgetItem(guide)
         guide_cell.setToolTip(_("Indicates 'special' pages: copyright, titlepage, etc."))
-        self.setItem(row, 1, guide_cell)
+        self.setItem(row, 2, guide_cell)
 
         toc_str = "|".join(line['toc'])
         toc_cell = QTableWidgetItem(toc_str)
@@ -194,16 +199,22 @@ class LinesTableWidget(QTableWidget):
         toc_cell.setToolTip(_('''Click and copy hotkey to copy text.
 Double-click to edit ToC entry.
 Pipes(|) divide different ToC entries to the same place.'''))
-        self.setItem(row, 2, toc_cell)
+        self.setItem(row, 3, toc_cell)
 
     def get_row_linenum(self,row):
-        return convert_qvariant(row.data(Qt.UserRole))
+        if not isinstance(row,int): # Can pass either Row qt obj or int.
+            row = row.row()
+        return row
 
     def get_row_prev_toc(self,row):
-        return convert_qvariant(self.item(row.row(),2).data(Qt.UserRole)).strip()
+        if not isinstance(row,int): # Can pass either Row qt obj or int.
+            row = row.row()
+        return convert_qvariant(self.item(row,3).data(Qt.UserRole)).strip()
 
     def get_row_toc(self,row):
-        return convert_qvariant(self.item(row.row(),2).text()).strip()
+        if not isinstance(row,int): # Can pass either Row qt obj or int.
+            row = row.row()
+        return convert_qvariant(self.item(row,3).text()).strip()
 
     def get_selected_rows(self):
         ## order rows by linenum, copy in case QT handed us something
@@ -225,7 +236,6 @@ Pipes(|) divide different ToC entries to the same place.'''))
     def get_selected_tocs(self):
         linelists = []
         linenums = []
-        changedtocs = {}
 
         for row in self.get_selected_rows():
             linenum = self.get_row_linenum(row)
@@ -234,7 +244,6 @@ Pipes(|) divide different ToC entries to the same place.'''))
             changed = self.get_row_toc(row)
             toc = pre
             if pre != changed:
-                changedtocs[linenum] = unicode(changed).split('|')
                 toc = changed
             if toc and linenums:
                 linelists.append(linenums)
@@ -246,21 +255,34 @@ Pipes(|) divide different ToC entries to the same place.'''))
         if linenums:
             linelists.append(linenums)
 
+        checkedalways,changedtocs = self.get_checkedalways_changedtocs()
         # logger.debug("linelists:%s"%linelists)
-        return linelists, changedtocs
+        return linelists, changedtocs, checkedalways
+
+    def get_checkedalways_changedtocs(self):
+        checkedalways = []
+        changedtocs = {}
+        logger.debug("rowCount:%s"%range(self.rowCount()))
+        for row in range(self.rowCount()):
+            cb = self.item(row,0)
+            if cb.checkState() == Qt.Checked:
+                checkedalways.append(row)
+            # changed tocs only.
+            if self.get_row_prev_toc(row) != self.get_row_toc(row):
+                changedtocs[row] = self.get_row_toc(row).split('|')
+        logger.debug(checkedalways)
+        logger.debug(changedtocs)
+
+        return checkedalways, changedtocs
 
     def get_selected_linenums_tocs(self):
         linenums = []
-        changedtocs = {}
-
         for row in self.get_selected_rows():
             linenum = self.get_row_linenum(row)
             linenums.append(linenum)
-            # changed tocs only.
-            if self.get_row_prev_toc(row) != self.get_row_toc(row):
-                changedtocs[linenum] = self.get_row_toc(row).split('|')
+        checkedalways,changedtocs = self.get_checkedalways_changedtocs()
 
-        return linenums, changedtocs
+        return linenums, changedtocs, checkedalways
 
     def show_tooltip(self,modidx):
         "Show section sample from tooltip in an info for copying when double clicked."
