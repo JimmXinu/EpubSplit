@@ -65,12 +65,14 @@ class SelectLinesDialog(SizePersistedDialog):
                  do_split_fn,
                  do_splits_fn,
                  get_split_size_fn,
+                 do_user_config,
                  save_size_name='epubsplit:update list dialog'):
         SizePersistedDialog.__init__(self, gui, save_size_name)
         self.gui = gui
         self.do_split_fn = do_split_fn
         self.do_splits_fn = do_splits_fn
         self.get_split_size_fn = get_split_size_fn
+        self.do_user_config = do_user_config
 
         self.setWindowTitle(header)
         self.setWindowIcon(icon)
@@ -87,6 +89,12 @@ class SelectLinesDialog(SizePersistedDialog):
         lines_layout.addWidget(self.lines_table)
 
         options_layout = QHBoxLayout()
+
+        # Button to search the document for something
+        config_button = QtGui.QPushButton(_('Configure'),self)
+        config_button.clicked.connect(self.do_user_config)
+        config_button.setToolTip(_('Configure Plugin'))
+        options_layout.addWidget(config_button)
 
         button_box = QDialogButtonBox(self)
         new_book = button_box.addButton(_("New Book"), button_box.ActionRole)

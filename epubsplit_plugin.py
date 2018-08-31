@@ -148,6 +148,7 @@ class EpubSplitPlugin(InterfaceAction):
                                   partial(self._do_split, db, source_id, misource, splitepub, lines),
                                   partial(self._do_splits, db, source_id, misource, splitepub, lines),
                                   partial(self._get_split_size, splitepub),
+                                  partial(self.interface_action_base_plugin.do_user_config,parent=self.gui)
                                   )
             d.exec_()
 
