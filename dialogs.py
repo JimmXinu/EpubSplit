@@ -294,7 +294,7 @@ Pipes(|) divide different ToC entries to the same place.'''))
 
     def show_tooltip(self,modidx):
         "Show section sample from tooltip in an info for copying when double clicked."
-        if modidx.column() == 0: # first column only.
+        if modidx.column() == 1: # first column only.
             ViewSample(_("Section Sample"),
                        self.item(modidx.row(),modidx.column()).toolTip().replace(SAMPLE_NOTE,''),
                        parent=self.parent()).exec_()
