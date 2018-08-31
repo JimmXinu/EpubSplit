@@ -51,6 +51,7 @@ PREFS_KEY_SETTINGS = 'settings'
 # take from here.
 default_prefs = {}
 default_prefs['editmetadata'] = False
+default_prefs['show_checkedalways'] = False
 
 default_prefs['copytoctitle'] = True
 default_prefs['copytitle'] = True
@@ -166,6 +167,7 @@ class ConfigWidget(QWidget):
 
     def save_settings(self):
         prefs['editmetadata'] = self.basic_tab.editmetadata.isChecked()
+        prefs['show_checkedalways'] = self.basic_tab.show_checkedalways.isChecked()
         prefs['copytoctitle'] = self.basic_tab.copytoctitle.isChecked()
         prefs['copytitle'] = self.basic_tab.copytitle.isChecked()
         prefs['copyauthors'] = self.basic_tab.copyauthors.isChecked()
@@ -213,6 +215,12 @@ class BasicTab(QWidget):
         self.editmetadata.setToolTip(_('Show Edit Metadata Dialog after creating each new book entry, but <i>before</i> EPUB is created.<br>Allows for downloading metadata and ensures EPUB has updated metadata.'))
         self.editmetadata.setChecked(prefs['editmetadata'])
         self.l.addWidget(self.editmetadata)
+
+        self.show_checkedalways = QCheckBox(_("Show 'Always Include' Checkboxes"),self)
+        self.show_checkedalways.setToolTip(_('If enabled, a checkbox will appear for each section.')+' '+
+                                           _('Checked sections will be included in <i>all</i> split books.<br>Default title will still be taken from the first <i>selected</i> section, and section order will remain as shown.'))
+        self.show_checkedalways.setChecked(prefs['show_checkedalways'])
+        self.l.addWidget(self.show_checkedalways)
         self.l.addSpacing(5)
 
         label = QLabel(_('When making a new Epub, the metadata from the source book will be copied or not as you choose below.'))

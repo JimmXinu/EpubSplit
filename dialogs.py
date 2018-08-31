@@ -73,6 +73,7 @@ class SelectLinesDialog(SizePersistedDialog):
         self.do_splits_fn = do_splits_fn
         self.get_split_size_fn = get_split_size_fn
         self.do_user_config = do_user_config
+        self.prefs = prefs
 
         self.setWindowTitle(header)
         self.setWindowIcon(icon)
@@ -92,7 +93,7 @@ class SelectLinesDialog(SizePersistedDialog):
 
         # Button to search the document for something
         config_button = QtGui.QPushButton(_('Configure'),self)
-        config_button.clicked.connect(self.do_user_config)
+        config_button.clicked.connect(self.user_config)
         config_button.setToolTip(_('Configure Plugin'))
         options_layout.addWidget(config_button)
 
@@ -118,6 +119,11 @@ class SelectLinesDialog(SizePersistedDialog):
         # Cause our dialog size to be restored from prefs or created on first usage
         self.resize_dialog()
         self.lines_table.populate_table(lines)
+        self.lines_table.show_checkedalways(self.prefs['show_checkedalways'])
+
+    def user_config(self):
+        self.do_user_config()
+        self.lines_table.show_checkedalways(self.prefs['show_checkedalways'])
 
     def get_split_size(self):
         self.get_split_size_fn(self.get_selected_linenums_tocs())
@@ -183,6 +189,7 @@ class LinesTableWidget(QTableWidget):
             checkbox_cell = QTableWidgetItem()
             checkbox_cell.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
             checkbox_cell.setCheckState(Qt.Unchecked)
+            checkbox_cell.setToolTip(_('Checked sections will be included in <i>all</i> split books.<br>Default title will still be taken from the first <i>selected</i> section, and section order will remain as shown.'))
             self.setItem(row, 0, checkbox_cell)
 
         href = line['href']
@@ -267,19 +274,21 @@ Pipes(|) divide different ToC entries to the same place.'''))
         # logger.debug("linelists:%s"%linelists)
         return linelists, changedtocs, checkedalways
 
+    def show_checkedalways(self,show=False):
+        self.setColumnHidden(0,not show)
+
     def get_checkedalways_changedtocs(self):
         checkedalways = []
         changedtocs = {}
-        logger.debug("rowCount:%s"%range(self.rowCount()))
         for row in range(self.rowCount()):
             cb = self.item(row,0)
-            if cb.checkState() == Qt.Checked:
+            if not self.isColumnHidden(0) and cb.checkState() == Qt.Checked:
                 checkedalways.append(row)
             # changed tocs only.
             if self.get_row_prev_toc(row) != self.get_row_toc(row):
                 changedtocs[row] = self.get_row_toc(row).split('|')
-        logger.debug(checkedalways)
-        logger.debug(changedtocs)
+        # logger.debug(checkedalways)
+        # logger.debug(changedtocs)
 
         return checkedalways, changedtocs
 
@@ -294,7 +303,7 @@ Pipes(|) divide different ToC entries to the same place.'''))
 
     def show_tooltip(self,modidx):
         "Show section sample from tooltip in an info for copying when double clicked."
-        if modidx.column() == 1: # first column only.
+        if modidx.column() == 1: # HREFs column only.
             ViewSample(_("Section Sample"),
                        self.item(modidx.row(),modidx.column()).toolTip().replace(SAMPLE_NOTE,''),
                        parent=self.parent()).exec_()
