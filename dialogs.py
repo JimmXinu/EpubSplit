@@ -18,11 +18,13 @@ from datetime import datetime
 try:
     from PyQt5 import QtWidgets as QtGui
     from PyQt5.Qt import (QTableWidget, QVBoxLayout, QHBoxLayout, QProgressDialog, QTimer,
-                          QDialogButtonBox, Qt, QAbstractItemView, QTableWidgetItem, QTextBrowser)
+                          QDialogButtonBox, Qt, QAbstractItemView, QTableWidgetItem, QTextBrowser,
+                          QMenu)
 except ImportError as e:
     from PyQt4 import QtGui
     from PyQt4.Qt import (QTableWidget, QVBoxLayout, QHBoxLayout, QProgressDialog, QTimer,
-                          QDialogButtonBox, Qt, QAbstractItemView, QTableWidgetItem, QTextBrowser)
+                          QDialogButtonBox, Qt, QAbstractItemView, QTableWidgetItem, QTextBrowser,
+                          QMenu)
 
 try:
     from calibre.gui2 import QVariant
@@ -189,7 +191,8 @@ class LinesTableWidget(QTableWidget):
             checkbox_cell = QTableWidgetItem()
             checkbox_cell.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
             checkbox_cell.setCheckState(Qt.Unchecked)
-            checkbox_cell.setToolTip(_('Checked sections will be included in <i>all</i> split books.<br>Default title will still be taken from the first <i>selected</i> section, and section order will remain as shown.'))
+            checkbox_cell.setToolTip(_('Checked sections will be included in <i>all</i> split books.<br>Default title will still be taken from the first <i>selected</i> section, and section order will remain as shown.')+
+                                     '<br>'+_('Use Context Menu (right-click) on selected sections to check or uncheck all selected sections.'))
             self.setItem(row, 0, checkbox_cell)
 
         href = line['href']
@@ -307,6 +310,20 @@ Pipes(|) divide different ToC entries to the same place.'''))
             ViewSample(_("Section Sample"),
                        self.item(modidx.row(),modidx.column()).toolTip().replace(SAMPLE_NOTE,''),
                        parent=self.parent()).exec_()
+
+    def contextMenuEvent(self, event):
+        if not self.isColumnHidden(0):
+            menu = QMenu(self)
+            checkAction = menu.addAction(_("Check Selected"))
+            uncheckAction = menu.addAction(_("Uncheck Selected"))
+            action = menu.exec_(self.mapToGlobal(event.pos()))
+            for row in self.get_selected_rows():
+                cb = self.item(self.get_row_linenum(row),0)
+                if action == checkAction:
+                    cb.setCheckState(Qt.Checked)
+                if action == uncheckAction:
+                    cb.setCheckState(Qt.Unchecked)
+
 
 def LoopProgressDialog(gui,
                        split_list,
