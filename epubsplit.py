@@ -10,7 +10,7 @@ from urllib import unquote
 from posixpath import normpath
 
 from zipfile import ZipFile, ZIP_STORED, ZIP_DEFLATED
-    
+
 from xml.dom.minidom import parse, parseString, getDOMImplementation, Element
 from time import time
 
@@ -62,32 +62,32 @@ def conditionalRemoveEntities(value):
         return removeEntities(value).strip()
     else:
         return value
-        
+
 def removeAllEntities(text):
     # Remove &lt; &lt; and &amp;
     return removeEntities(text).replace('&lt;', '<').replace('&gt;', '>').replace('&amp;', '&')
 
 def removeEntities(text):
-    
+
     if text is None:
         return ""
     if not (isinstance(text,str) or isinstance(text,unicode)):
         return str(text)
-    
+
     try:
         t = text.decode('utf-8')
     except UnicodeEncodeError, e:
         try:
-            t = text.encode ('ascii', 'xmlcharrefreplace') 
+            t = text.encode ('ascii', 'xmlcharrefreplace')
         except UnicodeEncodeError, e:
             t = text
-    text = t 
+    text = t
     # replace numeric versions of [&<>] with named versions,
     # then replace named versions with actual characters,
     text = re.sub(r'&#0*38;','&amp;',text)
     text = re.sub(r'&#0*60;','&lt;',text)
     text = re.sub(r'&#0*62;','&gt;',text)
-    
+
     # replace remaining &#000; entities with unicode value, such as &#039; -> '
     text = _replaceNumberEntities(text)
 
@@ -110,10 +110,10 @@ def removeEntities(text):
     # this point, there should be *no* real entities left, so find
     # these not-entities and removing them here should be safe.
     text = _replaceNotEntities(text)
-    
+
     # &lt; &lt; and &amp; are the only html entities allowed in xhtml, put those back.
     return text.replace('&', '&amp;').replace('&amp;lt', '&lt;').replace('&amp;gt', '&gt;')
-    
+
 # entity list from http://code.google.com/p/doctype/wiki/CharacterEntitiesConsistent
 entities = { '&aacute;' : 'á',
          '&Aacute;' : 'Á',
@@ -523,11 +523,11 @@ class SplitEpub:
                 #print("---- item fullhref:%s"%(fullhref))
                 self.manifest_items["h:"+fullhref]=(item.getAttribute("id"),item.getAttribute("media-type"))
                 self.manifest_items["i:"+item.getAttribute("id")]=(fullhref,item.getAttribute("media-type"))
-                    
+
                 if( item.getAttribute("media-type") == "application/x-dtbncx+xml" ):
                     # TOC file is only one with this type--as far as I know.
                     self.toc_dom = parseString(self.epub.read(fullhref))
-        
+
         return self.manifest_items
 
     def get_guide_items(self):
@@ -539,7 +539,7 @@ class SplitEpub:
                 self.guide_items[fullhref]=(item.getAttribute("type"),item.getAttribute("title"))
                 #print("---- reference href:%s value:%s"%(fullhref,self.guide_items[fullhref],))
                 #self.guide_items[item.getAttribute("type")]=(fullhref,item.getAttribute("media-type"))
-                    
+
         return self.guide_items
 
     def get_toc_dom(self):
@@ -559,7 +559,7 @@ class SplitEpub:
                     (href,anchor)=src.split("#")
                 else:
                     (href,anchor)=(src,None)
-                    
+
                 # The first of these in each navPoint should be the appropriate one.
                 # (may be others due to nesting.
                 textnode = navpoint.getElementsByTagName("text")[0].firstChild
@@ -568,13 +568,17 @@ class SplitEpub:
                 else:
                     #print("No chapter title found in TOC for (%s)"%src)
                     text = ""
-                    
+
                 if href not in self.toc_map:
                     self.toc_map[href] = []
                 self.toc_map[href].append((text,anchor))
-                        
+                # sorting will put file links ahead of ancher links.
+                # Otherwise a non-linear anchor link may take
+                # precedence.
+                self.toc_map[href].sort()
+
         return self.toc_map
-        
+
     # list of dicts with href, anchor & toc text.
     # 'split lines' are all the points that the epub can be split on.
     # Offer a split at each spine file and each ToC point.
@@ -596,8 +600,8 @@ class SplitEpub:
             except:
                 pass
         if len(self.origauthors) == 0:
-            self.origauthors.append("(Authors Missing)")        
-        
+            self.origauthors.append("(Authors Missing)")
+
         self.split_lines = [] # list of dicts with href, anchor and toc
         # spin on spine files.
         count=0
@@ -619,7 +623,7 @@ class SplitEpub:
             current['sample']=t
             count += 1
             #print("spine:%s->%s"%(idref,href))
-            
+
             # if href is in the toc.
             if href in self.get_toc_map():
                 # For each toc entry, check to see if there's an anchor, if so,
@@ -631,7 +635,7 @@ class SplitEpub:
                         text = "%s"%text
                     except:
                         text = "(error text)"
-                        
+
                     if anchor:
                         #print("breakpoint: %d"%count)
                         current = {}
@@ -657,7 +661,7 @@ class SplitEpub:
     def get_split_files(self,linenums):
 
         self.filecache = FileCache(self.get_manifest_items())
-        
+
         # grab a copy--going to be modifying it.  Doesn't do deep copy.
         lines = self.get_split_lines()
         for j in linenums:
@@ -688,19 +692,19 @@ class SplitEpub:
                 if inchunk: # save previous chunk.
                     outchunks.append((currentfile,start,line))
                     inchunk=False
-                
+
         # final chunk for when last in list is include.
         if inchunk:
             outchunks.append((currentfile,start,None))
-    
+
         outfiles=[]  # tuples, (filename,type,data) -- filename changed to unique
         for (href,start,end) in outchunks:
             filedata = self.epub.read(href).decode('utf-8')
-            
+
             # discard before start if anchor.
             if start['anchor'] != None:
                 filedata = splitHtml(filedata,start['anchor'],before=False)
-    
+
             # discard from end anchor on(inclusive), but only if same file.  If
             # different file, keep rest of file.  If no 'end', then it was the
             # last chunk and went to the end of the last file.
@@ -715,7 +719,7 @@ class SplitEpub:
         # print("\nanchors:%s\n"%self.filecache.anchors)
         # print("\nlinkedfiles:%s\n"%self.filecache.linkedfiles)
         # print("relpath:%s"%get_path_part())
-            
+
         # Spin through to replace internal URLs
         for fl in outfiles:
             #print("file:%s"%fl[0])
@@ -755,7 +759,7 @@ class SplitEpub:
         outputepub.debug = 3
         outputepub.writestr("mimetype", "application/epub+zip")
         outputepub.close()
-    
+
         ## Re-open file for content.
         outputepub = ZipFile(outputio, "a", compression=ZIP_DEFLATED)
         outputepub.debug = 3
@@ -773,11 +777,11 @@ class SplitEpub:
         outputepub.writestr("META-INF/container.xml",containerdom.toprettyxml(indent='   ',encoding='utf-8'))
 
 
-####    ## create content.opf file. 
+####    ## create content.opf file.
         uniqueid="epubsplit-uid-%d" % time() # real sophisticated uid scheme.
         contentdom = getDOMImplementation().createDocument(None, "package", None)
         package = contentdom.documentElement
-    
+
         package.setAttribute("version","2.0")
         package.setAttribute("xmlns","http://www.idpf.org/2007/opf")
         package.setAttribute("unique-identifier","epubsplit-id")
@@ -788,7 +792,7 @@ class SplitEpub:
         if( titleopt is None ):
             titleopt = self.origtitle+" Split"
         metadata.appendChild(newTag(contentdom,"dc:title",text=titleopt))
-        
+
         if( authoropts and len(authoropts) > 0  ):
             useauthors=authoropts
         else:
@@ -801,7 +805,7 @@ class SplitEpub:
                 metadata.appendChild(newTag(contentdom,"dc:creator",
                                             attrs={"opf:role":"aut"},
                                             text=author))
-        
+
         metadata.appendChild(newTag(contentdom,"dc:contributor",text="epubsplit",attrs={"opf:role":"bkp"}))
         metadata.appendChild(newTag(contentdom,"dc:rights",text="Copyrights as per source stories"))
 
@@ -810,19 +814,19 @@ class SplitEpub:
                 metadata.appendChild(newTag(contentdom,"dc:language",text=l))
         else:
             metadata.appendChild(newTag(contentdom,"dc:language",text="en"))
-        
+
         if not descopt:
             # created now, but not filled in until TOC generation to save loops.
             description = newTag(contentdom,"dc:description",text="Split from %s by %s."%(self.origtitle,", ".join(self.origauthors)))
         else:
             description = newTag(contentdom,"dc:description",text=descopt)
         metadata.appendChild(description)
-        
+
         for tag in tags:
             metadata.appendChild(newTag(contentdom,"dc:subject",text=tag))
-        
+
         package.appendChild(metadata)
-        
+
         manifest = contentdom.createElement("manifest")
         package.appendChild(manifest)
         spine = newTag(contentdom,"spine",attrs={"toc":"ncx"})
@@ -851,28 +855,28 @@ class SplitEpub:
             manifest.appendChild(newTag(contentdom,"item",
                                         attrs={'id':"coverimageid",
                                                'href':"cover.jpg",
-                                               'media-type':"image/jpeg"}))            
-            
+                                               'media-type':"image/jpeg"}))
+
             # Note that the id of the cover xhmtl *must* be 'cover'
             # for it to work on Nook.
             manifest.appendChild(newTag(contentdom,"item",
                                         attrs={'id':"cover",
                                                'href':"cover.xhtml",
                                                'media-type':"application/xhtml+xml"}))
-            
+
             spine.appendChild(newTag(contentdom,"itemref",
                                      attrs={"idref":"cover",
                                             "linear":"yes"}))
-        
+
         contentcount=0
         for (filename,id,type,filedata) in files:
             #filename = self.filecache.addHtml(href,filedata)
             #print("writing :%s"%filename)
             # add to manifest and spine
-            
+
             if coverjpgpath and filename == "cover.xhtml":
                 continue # don't dup cover.
-                
+
             outputepub.writestr(filename,filedata.encode('utf-8'))
             id = "a%d"%contentcount
             contentcount += 1
@@ -885,7 +889,7 @@ class SplitEpub:
                                             "linear":"yes"}))
 
         for (linked,type) in self.filecache.linkedfiles:
-            # add to manifest 
+            # add to manifest
             if coverjpgpath and linked == "cover.jpg":
                 continue # don't dup cover.
 
@@ -893,7 +897,7 @@ class SplitEpub:
                 outputepub.writestr(linked,self.get_file(linked))
             except Exception, e:
                 print("Failed to copy linked file (%s)\nException: %s"%(linked,e))
-                
+
             id = "a%d"%contentcount
             contentcount += 1
             manifest.appendChild(newTag(contentdom,"item",
@@ -923,11 +927,11 @@ class SplitEpub:
                                 attrs={"name":"dtb:totalPageCount", "content":"0"}))
         head.appendChild(newTag(tocncxdom,"meta",
                                 attrs={"name":"dtb:maxPageNumber", "content":"0"}))
-        
+
         docTitle = tocncxdom.createElement("docTitle")
         docTitle.appendChild(newTag(tocncxdom,"text",text=stripHTML(titleopt)))
         ncx.appendChild(docTitle)
-        
+
         tocnavMap = tocncxdom.createElement("navMap")
         ncx.appendChild(tocnavMap)
 
@@ -961,11 +965,11 @@ class SplitEpub:
                                               {"src":src}))
 
         outputepub.writestr("toc.ncx",tocncxdom.toprettyxml(indent='   ',encoding='utf-8'))
-        
+
         if coverjpgpath:
             # write, not write string.  Pulling from file.
             outputepub.write(coverjpgpath,"cover.jpg")
-            
+
             outputepub.writestr("cover.xhtml",'''
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><title>Cover</title><style type="text/css" title="override_css">
 @page {padding: 0pt; margin:0pt}
@@ -975,13 +979,13 @@ div { margin: 0pt; padding: 0pt; }
 <img src="cover.jpg" alt="cover"/>
 </div></body></html>
 ''')
-            
+
 	# declares all the files created by Windows.  otherwise, when
         # it runs in appengine, windows unzips the files as 000 perms.
         for zf in outputepub.filelist:
             zf.create_system = 0
-        outputepub.close()        
-    
+        outputepub.close()
+
 class FileCache:
 
     def __init__(self,manifest_items={}):
@@ -1016,7 +1020,7 @@ class FileCache:
             newfile = "%s%d-%s"%(get_path_part(href),
                                  len(self.oldnew[href]),
                                  get_file_part(href))
-            
+
         self.oldnew[href].append(newfile)
         self.newold[newfile]=href
         #print("newfile:%s"%newfile)
@@ -1051,7 +1055,7 @@ class FileCache:
             #print("link:%s"%style)
             if style.has_key('href'):
                 self.add_linked_file(get_path_part(href)+style['href'])
-        
+
         return newfile
 
 def splitHtml(data,tagid,before=False):
@@ -1064,7 +1068,7 @@ def splitHtml(data,tagid,before=False):
 
     if splitpoint == None:
         return data
-    
+
     if before:
         # remove all next siblings.
         for n in splitpoint.findNextSiblings():
@@ -1108,7 +1112,7 @@ def newTag(dom,name,attrs=None,text=None):
     if( text is not None ):
         tag.appendChild(dom.createTextNode(text))
     return tag
-    
+
 def main(argv,usage=None):
 
     from optparse import OptionParser
@@ -1116,13 +1120,13 @@ def main(argv,usage=None):
     if not usage:
         # read in args, anything starting with -- will be treated as --<varible>=<value>
         usage = 'usage: python %prog'
-        
+
     parser = OptionParser(usage+''' [options] <input epub> [line numbers...]
 
 Giving an epub without line numbers will return a list of line numbers: the
 possible split points in the input file. Calling with line numbers will
 generate an epub with each of the "lines" given included.''')
-        
+
     parser.add_option("-o", "--output", dest="outputopt", default="split.epub",
                       help="Set OUTPUT file, Default: split.epub", metavar="OUTPUT")
     parser.add_option("-t", "--title", dest="titleopt", default=None,
@@ -1140,7 +1144,7 @@ generate an epub with each of the "lines" given included.''')
                       help="Include LANG as dc:language tag, multiple languages may be given, Default: en", metavar="LANG")
     parser.add_option("-c", "--cover", dest="coveropt", default=None,
                       help="Path to a jpg to use as cover image.", metavar="COVER")
-    
+
     (options, args) = parser.parse_args(argv)
 
     ## Add .epub if not already there.
@@ -1154,7 +1158,7 @@ generate an epub with each of the "lines" given included.''')
 
     if not args:
         parser.print_help()
-        return        
+        return
 
     epubO = SplitEpub(args[0])
 
@@ -1169,7 +1173,7 @@ generate an epub with each of the "lines" given included.''')
                 if s in line and line[s]:
                     print("\t%s: %s"%(s,line[s]))
             count += 1
-        
+
     if len(args) > 1:
 
         epubO.write_split_epub(options.outputopt,
@@ -1182,7 +1186,7 @@ generate an epub with each of the "lines" given included.''')
                                coverjpgpath=options.coveropt)
 
         return
-    
+
 if __name__ == "__main__":
     main(sys.argv[1:])
 
