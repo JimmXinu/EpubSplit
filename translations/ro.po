@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
-"POT-Creation-Date: 2018-08-31 13:05+Central Daylight Time\n"
-"PO-Revision-Date: 2018-09-01 02:24+0000\n"
+"POT-Creation-Date: 2018-09-02 13:44+Central Daylight Time\n"
+"PO-Revision-Date: 2018-09-05 03:23+0000\n"
 "Last-Translator: Kovid Goyal <kovid@kovidgoyal.net>\n"
 "Language-Team: Romanian (http://www.transifex.com/calibre/calibre-plugins/language/ro/)\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +48,7 @@ msgstr ""
 msgid "If enabled, a checkbox will appear for each section."
 msgstr ""
 
-#: config.py:221 dialogs.py:192
+#: config.py:221 dialogs.py:194
 msgid ""
 "Checked sections will be included in <i>all</i> split books.<br>Default "
 "title will still be taken from the first <i>selected</i> section, and "
@@ -202,7 +202,7 @@ msgstr "Vizualizați preferințele librăriei..."
 msgid "View data stored in the library database for this plugin"
 msgstr "Vizualizați datele stocate în baza de date a librăriei pentru această conectare"
 
-#: config.py:337 dialogs.py:113
+#: config.py:337 dialogs.py:115
 msgid "Done"
 msgstr "Făcut"
 
@@ -238,142 +238,156 @@ msgstr "Dacă aveţi definite coloane personalizate, acestea vor fi listate mai 
 msgid "Copy this %s column to new split books..."
 msgstr "Copiaţi această coloană %s în cărţile nou împărţite..."
 
-#: dialogs.py:61
+#: dialogs.py:63
 msgid "<p><b><i>Double click to copy from sample.</i></b></p>"
 msgstr "<p><b><i>Dublu clic pentru copiere din şablon.</i></b></p>"
 
-#: dialogs.py:95
+#: dialogs.py:97
 msgid "Configure"
 msgstr ""
 
-#: dialogs.py:97
+#: dialogs.py:99
 msgid "Configure Plugin"
 msgstr ""
 
-#: dialogs.py:101
+#: dialogs.py:103
 msgid "New Book"
 msgstr "Carte nouă"
 
-#: dialogs.py:102
+#: dialogs.py:104
 msgid ""
 "Make <i>one</i> new book containing the sections selected above and then "
 "edit its Metadata."
 msgstr "Faceţi <i>o</i> nouă carte ce conţine secţiunile selectate mai sus şi apoi editaţi Metadata sa."
 
-#: dialogs.py:105
+#: dialogs.py:107
 msgid "New Book per Section"
 msgstr "Carte nouă per Secțiune"
 
-#: dialogs.py:106
+#: dialogs.py:108
 msgid ""
 "Make a new book for <i>each</i> of the sections selected above.  Title for "
 "each will be the Table of Contents, which you can edit here first."
 msgstr "faceţi o nouă carte pentru <i>fiecare</i> secţiunile selectate mai sus. Titlul pentru fiecare va fi Conţinutul, pe care îl puteţi edita mai întâi aici."
 
-#: dialogs.py:109
+#: dialogs.py:111
 msgid "Get Size"
 msgstr ""
 
-#: dialogs.py:110
+#: dialogs.py:112
 msgid ""
 "Calculate the size of the new book from the currently selected sections."
 msgstr ""
 
-#: dialogs.py:136
+#: dialogs.py:138
 msgid "Missing Title(s)"
 msgstr "Titlu(ri) lipsă"
 
-#: dialogs.py:137
+#: dialogs.py:139
 msgid "Some selected sections don't have a Table of Contents text."
 msgstr ""
 
-#: dialogs.py:138
+#: dialogs.py:140
 msgid ""
 "If you continue, those sections will be included with the last prior section"
 " that did have a Table of Contents text."
 msgstr ""
 
-#: dialogs.py:139
+#: dialogs.py:141
 msgid "If you cancel, you can go back and add Table of Contents entries."
 msgstr ""
 
-#: dialogs.py:140
+#: dialogs.py:142
 msgid "Double click to edit the Table of Contents entry for a section."
 msgstr ""
 
-#: dialogs.py:161
+#: dialogs.py:163
 msgid "Guide"
 msgstr "Ghid"
 
-#: dialogs.py:161
+#: dialogs.py:163
 msgid "HREF"
 msgstr "HREF"
 
-#: dialogs.py:161
+#: dialogs.py:163
 msgid "Table of Contents"
 msgstr "Conținut"
 
-#: dialogs.py:208
+#: dialogs.py:195
+msgid ""
+"Use Context Menu (right-click) on selected sections to check or uncheck all "
+"selected sections."
+msgstr ""
+
+#: dialogs.py:211
 msgid "Indicates 'special' pages: copyright, titlepage, etc."
 msgstr "Indică pagini 'speciale': drept de autor, pagina cu titlul, etc. "
 
-#: dialogs.py:214
+#: dialogs.py:217
 msgid ""
 "Click and copy hotkey to copy text.\n"
 "Double-click to edit ToC entry.\n"
 "Pipes(|) divide different ToC entries to the same place."
 msgstr "Clic şi copiere combinaţia de chei pentru copiere text. Dublu clic pentru editare intrare ToC. Conductele (I) divid diferite intrări ToC în acelaşi loc."
 
-#: dialogs.py:307
+#: dialogs.py:310
 msgid "Section Sample"
 msgstr "Secțiune mostră"
 
-#: dialogs.py:315 dialogs.py:316 dialogs.py:317 dialogs.py:339 dialogs.py:340
-#: dialogs.py:341
+#: dialogs.py:317
+msgid "Check Selected"
+msgstr ""
+
+#: dialogs.py:318
+msgid "Uncheck Selected"
+msgstr ""
+
+#: dialogs.py:332 dialogs.py:333 dialogs.py:334 dialogs.py:356 dialogs.py:357
+#: dialogs.py:358
 msgid "Splitting Sections..."
 msgstr "Secțiuni de împărțit..."
 
-#: dialogs.py:344
+#: dialogs.py:361
 msgid "Cancel"
 msgstr "Anulare"
 
-#: dialogs.py:363
+#: dialogs.py:380
 msgid " - %s estimated until done"
 msgstr "- %s estimate până la terminare"
 
-#: dialogs.py:420
+#: dialogs.py:437
 msgid "%d day"
 msgstr "%d zi"
 
-#: dialogs.py:420
+#: dialogs.py:437
 msgid "%d days"
 msgstr "%d zile "
 
-#: dialogs.py:421
+#: dialogs.py:438
 msgid "%d hour"
 msgstr "%d oră"
 
-#: dialogs.py:421
+#: dialogs.py:438
 msgid "%d hours"
 msgstr "%d ore "
 
-#: dialogs.py:422
+#: dialogs.py:439
 msgid "%d minute"
 msgstr "%d minut"
 
-#: dialogs.py:422
+#: dialogs.py:439
 msgid "%d minutes"
 msgstr "%d minute "
 
-#: dialogs.py:423
+#: dialogs.py:440
 msgid "%d second"
 msgstr "%d secundă"
 
-#: dialogs.py:423
+#: dialogs.py:440
 msgid "%d seconds"
 msgstr "%d secunde "
 
-#: dialogs.py:438
+#: dialogs.py:455
 msgid "less than 1 second"
 msgstr "mai puțin de 1 secundă"
 
@@ -393,68 +407,68 @@ msgstr "Selectați o carte"
 msgid "Please select exactly one book to split."
 msgstr "Selectați exact o carte pentru împărțire."
 
-#: epubsplit_plugin.py:132
+#: epubsplit_plugin.py:133
 msgid "No EPUB"
 msgstr "Fără EPUB"
 
-#: epubsplit_plugin.py:133
+#: epubsplit_plugin.py:134
 msgid "This plugin only works on EPUB format ebooks."
 msgstr "Această conectare funcționează numai pe ebook în format EPUB."
 
-#: epubsplit_plugin.py:144
+#: epubsplit_plugin.py:145
 msgid "Select Sections to Split Off"
 msgstr "Selectați secțiunile pentru împărțire"
 
-#: epubsplit_plugin.py:163
+#: epubsplit_plugin.py:164
 msgid "No Sections Selected"
 msgstr ""
 
-#: epubsplit_plugin.py:164
+#: epubsplit_plugin.py:165
 msgid ""
 "Book(s) not split.\n"
 "\n"
 "You must select at least one section to split."
 msgstr ""
 
-#: epubsplit_plugin.py:195
+#: epubsplit_plugin.py:196
 msgid "New Books Created"
 msgstr "Cărți noi create"
 
-#: epubsplit_plugin.py:196
+#: epubsplit_plugin.py:197
 msgid "%s New Books Created."
 msgstr "%s cărți noi create."
 
-#: epubsplit_plugin.py:228
+#: epubsplit_plugin.py:229
 msgid "Computing size of EPUB..."
 msgstr ""
 
-#: epubsplit_plugin.py:242
+#: epubsplit_plugin.py:243
 msgid "Finished computing size of EPUB."
 msgstr ""
 
-#: epubsplit_plugin.py:244
+#: epubsplit_plugin.py:245
 msgid "Size of New Book"
 msgstr ""
 
-#: epubsplit_plugin.py:245
+#: epubsplit_plugin.py:246
 msgid "New EPUB File Size:"
 msgstr ""
 
-#: epubsplit_plugin.py:276
+#: epubsplit_plugin.py:277
 msgid "%s Split"
 msgstr "%s Împărțire"
 
-#: epubsplit_plugin.py:308
+#: epubsplit_plugin.py:309
 msgid "Split from:"
 msgstr "Împărțire de la:"
 
-#: epubsplit_plugin.py:356
+#: epubsplit_plugin.py:359
 msgid ""
 "You can enable or disable Edit Metadata in Preferences > Plugins > "
 "EpubSplit."
 msgstr ""
 
-#: epubsplit_plugin.py:358
+#: epubsplit_plugin.py:361
 msgid ""
 "The book for the new Split EPUB has been created and default metadata filled in.\n"
 "\n"
@@ -465,19 +479,19 @@ msgid ""
 "If you download or add a cover image, it will be included in the generated EPUB."
 msgstr "Cartea pentru noul EPUB împărţit a fost creată şi metadata implicită a fost completată. Totuşi, EPUB *nu* va fi creat până când nu aţi revizuit, editat şi închis dialogul metadata care urmează. \nPuteţi completa personal metadata sau să descărcaţi metadata pentru cărţile cunoscute. \nDacă descărcaţi sau adăugaţi o imagine de copertă, aceasta va fi inclusă în EPUB generat. "
 
-#: epubsplit_plugin.py:376
+#: epubsplit_plugin.py:379
 msgid "Splitting off from EPUB..."
 msgstr "Împărțire de la EPUB..."
 
-#: epubsplit_plugin.py:408
+#: epubsplit_plugin.py:411
 msgid "Finished splitting off EPUB."
 msgstr "Împărțire EPUB terminată."
 
-#: epubsplit_plugin.py:418
+#: epubsplit_plugin.py:421
 msgid ""
 "<b><u>%s</u> by %s</b> has been created and default metadata filled in."
 msgstr ""
 
-#: epubsplit_plugin.py:419
+#: epubsplit_plugin.py:422
 msgid "EpubSplit now skips the Edit Metadata step by default."
 msgstr ""

@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
-"POT-Creation-Date: 2018-08-31 13:05+Central Daylight Time\n"
-"PO-Revision-Date: 2018-09-01 02:24+0000\n"
+"POT-Creation-Date: 2018-09-02 13:44+Central Daylight Time\n"
+"PO-Revision-Date: 2018-09-05 03:23+0000\n"
 "Last-Translator: Kovid Goyal <kovid@kovidgoyal.net>\n"
 "Language-Team: Swedish (http://www.transifex.com/calibre/calibre-plugins/language/sv/)\n"
 "MIME-Version: 1.0\n"
@@ -50,7 +50,7 @@ msgstr ""
 msgid "If enabled, a checkbox will appear for each section."
 msgstr ""
 
-#: config.py:221 dialogs.py:192
+#: config.py:221 dialogs.py:194
 msgid ""
 "Checked sections will be included in <i>all</i> split books.<br>Default "
 "title will still be taken from the first <i>selected</i> section, and "
@@ -204,7 +204,7 @@ msgstr "Visa biblioteksval"
 msgid "View data stored in the library database for this plugin"
 msgstr "Visa data lagrat i biblioteksdatabasen för detta tilläggsprogram"
 
-#: config.py:337 dialogs.py:113
+#: config.py:337 dialogs.py:115
 msgid "Done"
 msgstr "Klar"
 
@@ -240,142 +240,156 @@ msgstr "Om du har definierat anpassade kolumner, kommer de listas nedan. Välj o
 msgid "Copy this %s column to new split books..."
 msgstr "Kopiera denna %s kolumn till nya uppdelade böcker..."
 
-#: dialogs.py:61
+#: dialogs.py:63
 msgid "<p><b><i>Double click to copy from sample.</i></b></p>"
 msgstr "<p><b><i>Dubbelklicka för att kopiera från prov.</i></b></p>"
 
-#: dialogs.py:95
+#: dialogs.py:97
 msgid "Configure"
 msgstr ""
 
-#: dialogs.py:97
+#: dialogs.py:99
 msgid "Configure Plugin"
 msgstr ""
 
-#: dialogs.py:101
+#: dialogs.py:103
 msgid "New Book"
 msgstr "Ny bok"
 
-#: dialogs.py:102
+#: dialogs.py:104
 msgid ""
 "Make <i>one</i> new book containing the sections selected above and then "
 "edit its Metadata."
 msgstr "Gör <i>en</i> ny bok som innehåller sektionerna valda ovan och sedan redigera dess Metadata."
 
-#: dialogs.py:105
+#: dialogs.py:107
 msgid "New Book per Section"
 msgstr "Ny bok per sektion"
 
-#: dialogs.py:106
+#: dialogs.py:108
 msgid ""
 "Make a new book for <i>each</i> of the sections selected above.  Title for "
 "each will be the Table of Contents, which you can edit here first."
 msgstr "Gör en ny bok för <i>varje</i> del av sektionerna valda ovan. Titel för var och en kommer bli innehållsförteckningens, vilken du kan redigera här först."
 
-#: dialogs.py:109
+#: dialogs.py:111
 msgid "Get Size"
 msgstr ""
 
-#: dialogs.py:110
+#: dialogs.py:112
 msgid ""
 "Calculate the size of the new book from the currently selected sections."
 msgstr ""
 
-#: dialogs.py:136
+#: dialogs.py:138
 msgid "Missing Title(s)"
 msgstr "Saknade titlar"
 
-#: dialogs.py:137
+#: dialogs.py:139
 msgid "Some selected sections don't have a Table of Contents text."
 msgstr ""
 
-#: dialogs.py:138
+#: dialogs.py:140
 msgid ""
 "If you continue, those sections will be included with the last prior section"
 " that did have a Table of Contents text."
 msgstr ""
 
-#: dialogs.py:139
+#: dialogs.py:141
 msgid "If you cancel, you can go back and add Table of Contents entries."
 msgstr ""
 
-#: dialogs.py:140
+#: dialogs.py:142
 msgid "Double click to edit the Table of Contents entry for a section."
 msgstr ""
 
-#: dialogs.py:161
+#: dialogs.py:163
 msgid "Guide"
 msgstr "Guide"
 
-#: dialogs.py:161
+#: dialogs.py:163
 msgid "HREF"
 msgstr "HREF"
 
-#: dialogs.py:161
+#: dialogs.py:163
 msgid "Table of Contents"
 msgstr "Innehållsförteckning"
 
-#: dialogs.py:208
+#: dialogs.py:195
+msgid ""
+"Use Context Menu (right-click) on selected sections to check or uncheck all "
+"selected sections."
+msgstr ""
+
+#: dialogs.py:211
 msgid "Indicates 'special' pages: copyright, titlepage, etc."
 msgstr "Indikerar \"speciella\" sidor: copyright, titelsida, etc."
 
-#: dialogs.py:214
+#: dialogs.py:217
 msgid ""
 "Click and copy hotkey to copy text.\n"
 "Double-click to edit ToC entry.\n"
 "Pipes(|) divide different ToC entries to the same place."
 msgstr "Klicka och kopiera snabbvalstangent för att kopiera text.\nDubbelklicka för att redigera element i innehållsförteckning. Pipes() delar upp olika innehållsförteckningselement till samma ställe."
 
-#: dialogs.py:307
+#: dialogs.py:310
 msgid "Section Sample"
 msgstr "Sektionsprov"
 
-#: dialogs.py:315 dialogs.py:316 dialogs.py:317 dialogs.py:339 dialogs.py:340
-#: dialogs.py:341
+#: dialogs.py:317
+msgid "Check Selected"
+msgstr ""
+
+#: dialogs.py:318
+msgid "Uncheck Selected"
+msgstr ""
+
+#: dialogs.py:332 dialogs.py:333 dialogs.py:334 dialogs.py:356 dialogs.py:357
+#: dialogs.py:358
 msgid "Splitting Sections..."
 msgstr "Delar upp sektioner..."
 
-#: dialogs.py:344
+#: dialogs.py:361
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: dialogs.py:363
+#: dialogs.py:380
 msgid " - %s estimated until done"
 msgstr " - %s estimaterade till klara"
 
-#: dialogs.py:420
+#: dialogs.py:437
 msgid "%d day"
 msgstr "%d dag"
 
-#: dialogs.py:420
+#: dialogs.py:437
 msgid "%d days"
 msgstr "%d dagar"
 
-#: dialogs.py:421
+#: dialogs.py:438
 msgid "%d hour"
 msgstr "%d timme"
 
-#: dialogs.py:421
+#: dialogs.py:438
 msgid "%d hours"
 msgstr "%d timmar"
 
-#: dialogs.py:422
+#: dialogs.py:439
 msgid "%d minute"
 msgstr "%d minut"
 
-#: dialogs.py:422
+#: dialogs.py:439
 msgid "%d minutes"
 msgstr "%d minuter"
 
-#: dialogs.py:423
+#: dialogs.py:440
 msgid "%d second"
 msgstr "%d sekund"
 
-#: dialogs.py:423
+#: dialogs.py:440
 msgid "%d seconds"
 msgstr "%d sekunder"
 
-#: dialogs.py:438
+#: dialogs.py:455
 msgid "less than 1 second"
 msgstr "mindre än 1 sekund"
 
@@ -395,68 +409,68 @@ msgstr "Välj en bok"
 msgid "Please select exactly one book to split."
 msgstr "Var god välj exakt en bok att dela upp."
 
-#: epubsplit_plugin.py:132
+#: epubsplit_plugin.py:133
 msgid "No EPUB"
 msgstr "Ingen EPUB"
 
-#: epubsplit_plugin.py:133
+#: epubsplit_plugin.py:134
 msgid "This plugin only works on EPUB format ebooks."
 msgstr "Detta tilläggsprogram fungerar bara på EPUB-formaterade e-böcker."
 
-#: epubsplit_plugin.py:144
+#: epubsplit_plugin.py:145
 msgid "Select Sections to Split Off"
 msgstr "Välj sektion att dela upp"
 
-#: epubsplit_plugin.py:163
+#: epubsplit_plugin.py:164
 msgid "No Sections Selected"
 msgstr ""
 
-#: epubsplit_plugin.py:164
+#: epubsplit_plugin.py:165
 msgid ""
 "Book(s) not split.\n"
 "\n"
 "You must select at least one section to split."
 msgstr ""
 
-#: epubsplit_plugin.py:195
+#: epubsplit_plugin.py:196
 msgid "New Books Created"
 msgstr "Nya böcker skapade"
 
-#: epubsplit_plugin.py:196
+#: epubsplit_plugin.py:197
 msgid "%s New Books Created."
 msgstr "%s Nya böcker skapade."
 
-#: epubsplit_plugin.py:228
+#: epubsplit_plugin.py:229
 msgid "Computing size of EPUB..."
 msgstr ""
 
-#: epubsplit_plugin.py:242
+#: epubsplit_plugin.py:243
 msgid "Finished computing size of EPUB."
 msgstr ""
 
-#: epubsplit_plugin.py:244
+#: epubsplit_plugin.py:245
 msgid "Size of New Book"
 msgstr ""
 
-#: epubsplit_plugin.py:245
+#: epubsplit_plugin.py:246
 msgid "New EPUB File Size:"
 msgstr ""
 
-#: epubsplit_plugin.py:276
+#: epubsplit_plugin.py:277
 msgid "%s Split"
 msgstr "%s Dela upp"
 
-#: epubsplit_plugin.py:308
+#: epubsplit_plugin.py:309
 msgid "Split from:"
 msgstr "Dela upp från:"
 
-#: epubsplit_plugin.py:356
+#: epubsplit_plugin.py:359
 msgid ""
 "You can enable or disable Edit Metadata in Preferences > Plugins > "
 "EpubSplit."
 msgstr ""
 
-#: epubsplit_plugin.py:358
+#: epubsplit_plugin.py:361
 msgid ""
 "The book for the new Split EPUB has been created and default metadata filled in.\n"
 "\n"
@@ -467,19 +481,19 @@ msgid ""
 "If you download or add a cover image, it will be included in the generated EPUB."
 msgstr "Boken för den nya uppdelade EPUB har skapats och standard metadata är ifyllt. \n\nMen EPUB kommer *inte* att skapas förrän du har granskat, redigerat, och stängt metadata dialogrutan som följer. \n\nDu kan fylla i metadata själv, eller använda hämtat metadata för kända böcker. \n\nOm du laddar ner eller lägga till en omslagsbild, kommer den att inkluderas i den genererade EPUB."
 
-#: epubsplit_plugin.py:376
+#: epubsplit_plugin.py:379
 msgid "Splitting off from EPUB..."
 msgstr "Delar upp från EPUB..."
 
-#: epubsplit_plugin.py:408
+#: epubsplit_plugin.py:411
 msgid "Finished splitting off EPUB."
 msgstr "Klar med uppdelning av EPUB."
 
-#: epubsplit_plugin.py:418
+#: epubsplit_plugin.py:421
 msgid ""
 "<b><u>%s</u> by %s</b> has been created and default metadata filled in."
 msgstr ""
 
-#: epubsplit_plugin.py:419
+#: epubsplit_plugin.py:422
 msgid "EpubSplit now skips the Edit Metadata step by default."
 msgstr ""

@@ -5,15 +5,16 @@
 # Alex, 2016
 # Herman L.M. van der Vaart <vaarttuig@gmail.com>, 2018
 # Mario Moens <marimo.it4u@gmail.com>, 2017
+# M. de Boer <de.boer.melle@gmail.com>, 2018
 # Rodolfo_Jadon, 2014-2015
 # Volluta <volluta@tutanota.com>, 2015
 # W.P.M.E. Hofland <wpme.hofland@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
-"POT-Creation-Date: 2018-08-31 13:05+Central Daylight Time\n"
-"PO-Revision-Date: 2018-09-01 02:24+0000\n"
-"Last-Translator: Kovid Goyal <kovid@kovidgoyal.net>\n"
+"POT-Creation-Date: 2018-09-02 13:44+Central Daylight Time\n"
+"PO-Revision-Date: 2018-09-05 20:40+0000\n"
+"Last-Translator: M. de Boer <de.boer.melle@gmail.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/calibre/calibre-plugins/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,24 +37,24 @@ msgstr "Eigen kolommen"
 
 #: config.py:214
 msgid "Edit Metadata for New Book(s)"
-msgstr ""
+msgstr "Bewerk meta gegevens voor nieuwe boek(en)"
 
 #: config.py:215
 msgid ""
 "Show Edit Metadata Dialog after creating each new book entry, but "
 "<i>before</i> EPUB is created.<br>Allows for downloading metadata and "
 "ensures EPUB has updated metadata."
-msgstr ""
+msgstr "Toon wijzig metagegevens venster na het creëren van elk nieuw boek, maar <i>voor</i> EPUB is gecreëerd. <br>Staat downloaden van metagegevens toe en verzekerd de EPUB van geüpdate metagegevens"
 
 #: config.py:219
 msgid "Show 'Always Include' Checkboxes"
-msgstr ""
+msgstr "Toon 'Altijd opnemen'-selectievakjes"
 
 #: config.py:220
 msgid "If enabled, a checkbox will appear for each section."
-msgstr ""
+msgstr "Indien ingeschakeld, verschijnt er een selectievakje voor elke sectie."
 
-#: config.py:221 dialogs.py:192
+#: config.py:221 dialogs.py:194
 msgid ""
 "Checked sections will be included in <i>all</i> split books.<br>Default "
 "title will still be taken from the first <i>selected</i> section, and "
@@ -207,7 +208,7 @@ msgstr "Toon bibliotheek voorkeuren..."
 msgid "View data stored in the library database for this plugin"
 msgstr "Bekijk gegevens opgeslagen in de bibliotheekdatabase voor deze plugin"
 
-#: config.py:337 dialogs.py:113
+#: config.py:337 dialogs.py:115
 msgid "Done"
 msgstr "Klaar"
 
@@ -243,142 +244,156 @@ msgstr "Als je eigen kolommen hebt gedefinieerd, zullen ze hieronder worden weer
 msgid "Copy this %s column to new split books..."
 msgstr "Kopieer deze %s kolom naar nieuwe opgesplitste boeken..."
 
-#: dialogs.py:61
+#: dialogs.py:63
 msgid "<p><b><i>Double click to copy from sample.</i></b></p>"
 msgstr "<p><b><i>Dubbelklik om van het voorbeeld te kopiëren.</i></b></p>"
 
-#: dialogs.py:95
+#: dialogs.py:97
 msgid "Configure"
 msgstr ""
 
-#: dialogs.py:97
+#: dialogs.py:99
 msgid "Configure Plugin"
 msgstr ""
 
-#: dialogs.py:101
+#: dialogs.py:103
 msgid "New Book"
 msgstr "Nieuw boek"
 
-#: dialogs.py:102
+#: dialogs.py:104
 msgid ""
 "Make <i>one</i> new book containing the sections selected above and then "
 "edit its Metadata."
 msgstr "Maak <i>een</i> nieuw boek aan met de hierboven geselecteerde secties  en wijzig dan de Metadata."
 
-#: dialogs.py:105
+#: dialogs.py:107
 msgid "New Book per Section"
 msgstr "Nieuw boek per sectie"
 
-#: dialogs.py:106
+#: dialogs.py:108
 msgid ""
 "Make a new book for <i>each</i> of the sections selected above.  Title for "
 "each will be the Table of Contents, which you can edit here first."
 msgstr "Maak een nieuw boek voor <i>elk</i> van de hierboven geselecteerde secties.  Elke titel wordt de inhoudstabel, dat je hier eerst kan wijzigen."
 
-#: dialogs.py:109
+#: dialogs.py:111
 msgid "Get Size"
 msgstr "Verkrijg grootte"
 
-#: dialogs.py:110
+#: dialogs.py:112
 msgid ""
 "Calculate the size of the new book from the currently selected sections."
 msgstr "Bereken de grootte van het nieuwe boek uit de momenteel geselecteerde secties."
 
-#: dialogs.py:136
+#: dialogs.py:138
 msgid "Missing Title(s)"
 msgstr "Missende titel(s)"
 
-#: dialogs.py:137
+#: dialogs.py:139
 msgid "Some selected sections don't have a Table of Contents text."
 msgstr ""
 
-#: dialogs.py:138
+#: dialogs.py:140
 msgid ""
 "If you continue, those sections will be included with the last prior section"
 " that did have a Table of Contents text."
 msgstr ""
 
-#: dialogs.py:139
+#: dialogs.py:141
 msgid "If you cancel, you can go back and add Table of Contents entries."
 msgstr ""
 
-#: dialogs.py:140
+#: dialogs.py:142
 msgid "Double click to edit the Table of Contents entry for a section."
 msgstr ""
 
-#: dialogs.py:161
+#: dialogs.py:163
 msgid "Guide"
 msgstr "Handleiding"
 
-#: dialogs.py:161
+#: dialogs.py:163
 msgid "HREF"
 msgstr "HREF"
 
-#: dialogs.py:161
+#: dialogs.py:163
 msgid "Table of Contents"
 msgstr "Inhoudstafel"
 
-#: dialogs.py:208
+#: dialogs.py:195
+msgid ""
+"Use Context Menu (right-click) on selected sections to check or uncheck all "
+"selected sections."
+msgstr ""
+
+#: dialogs.py:211
 msgid "Indicates 'special' pages: copyright, titlepage, etc."
 msgstr "Geeft 'speciale' pagina's aan: auteursrecht, titelpagina, enz."
 
-#: dialogs.py:214
+#: dialogs.py:217
 msgid ""
 "Click and copy hotkey to copy text.\n"
 "Double-click to edit ToC entry.\n"
 "Pipes(|) divide different ToC entries to the same place."
 msgstr "Sneltoets Klik en Kopieer om tekst te kopieren.\nDubbelklik om een ToC ingave te wijzigen.\nDe verticale streep (|) verdeelt verschillende ToC vermeldingen op dezelfde plaats."
 
-#: dialogs.py:307
+#: dialogs.py:310
 msgid "Section Sample"
 msgstr "Sectie voorbeeld"
 
-#: dialogs.py:315 dialogs.py:316 dialogs.py:317 dialogs.py:339 dialogs.py:340
-#: dialogs.py:341
+#: dialogs.py:317
+msgid "Check Selected"
+msgstr ""
+
+#: dialogs.py:318
+msgid "Uncheck Selected"
+msgstr ""
+
+#: dialogs.py:332 dialogs.py:333 dialogs.py:334 dialogs.py:356 dialogs.py:357
+#: dialogs.py:358
 msgid "Splitting Sections..."
 msgstr "Secties splitsen..."
 
-#: dialogs.py:344
+#: dialogs.py:361
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: dialogs.py:363
+#: dialogs.py:380
 msgid " - %s estimated until done"
 msgstr " - %s geschat tot einde"
 
-#: dialogs.py:420
+#: dialogs.py:437
 msgid "%d day"
 msgstr "%d dag"
 
-#: dialogs.py:420
+#: dialogs.py:437
 msgid "%d days"
 msgstr "%d dagen"
 
-#: dialogs.py:421
+#: dialogs.py:438
 msgid "%d hour"
 msgstr "%d uur"
 
-#: dialogs.py:421
+#: dialogs.py:438
 msgid "%d hours"
 msgstr "%d uren"
 
-#: dialogs.py:422
+#: dialogs.py:439
 msgid "%d minute"
 msgstr "%d minuut"
 
-#: dialogs.py:422
+#: dialogs.py:439
 msgid "%d minutes"
 msgstr "%d minuten"
 
-#: dialogs.py:423
+#: dialogs.py:440
 msgid "%d second"
 msgstr "%d seconde"
 
-#: dialogs.py:423
+#: dialogs.py:440
 msgid "%d seconds"
 msgstr "%d seconden"
 
-#: dialogs.py:438
+#: dialogs.py:455
 msgid "less than 1 second"
 msgstr "minder dan 1 seconde"
 
@@ -398,68 +413,68 @@ msgstr "Selecteer één boek"
 msgid "Please select exactly one book to split."
 msgstr "Selecteer alstublieft één boek om te splitsen."
 
-#: epubsplit_plugin.py:132
+#: epubsplit_plugin.py:133
 msgid "No EPUB"
 msgstr "Geen EPUB"
 
-#: epubsplit_plugin.py:133
+#: epubsplit_plugin.py:134
 msgid "This plugin only works on EPUB format ebooks."
 msgstr "Deze plugin werkt alleen op ebooks met het EPUB-bestandsformaat."
 
-#: epubsplit_plugin.py:144
+#: epubsplit_plugin.py:145
 msgid "Select Sections to Split Off"
 msgstr "Selecteer secties om af te splitsen"
 
-#: epubsplit_plugin.py:163
+#: epubsplit_plugin.py:164
 msgid "No Sections Selected"
 msgstr ""
 
-#: epubsplit_plugin.py:164
+#: epubsplit_plugin.py:165
 msgid ""
 "Book(s) not split.\n"
 "\n"
 "You must select at least one section to split."
 msgstr ""
 
-#: epubsplit_plugin.py:195
+#: epubsplit_plugin.py:196
 msgid "New Books Created"
 msgstr "Nieuwe boeken gemaakt"
 
-#: epubsplit_plugin.py:196
+#: epubsplit_plugin.py:197
 msgid "%s New Books Created."
 msgstr "%s Nieuwe boeken gemaakt."
 
-#: epubsplit_plugin.py:228
+#: epubsplit_plugin.py:229
 msgid "Computing size of EPUB..."
 msgstr "Grootte van EPUB aan het berekenen..."
 
-#: epubsplit_plugin.py:242
+#: epubsplit_plugin.py:243
 msgid "Finished computing size of EPUB."
 msgstr "Berekenen EPUB grootte beëindigd."
 
-#: epubsplit_plugin.py:244
+#: epubsplit_plugin.py:245
 msgid "Size of New Book"
 msgstr "Grootte van het nieuwe boek"
 
-#: epubsplit_plugin.py:245
+#: epubsplit_plugin.py:246
 msgid "New EPUB File Size:"
 msgstr "EPUB file grootte:"
 
-#: epubsplit_plugin.py:276
+#: epubsplit_plugin.py:277
 msgid "%s Split"
 msgstr "%s splits"
 
-#: epubsplit_plugin.py:308
+#: epubsplit_plugin.py:309
 msgid "Split from:"
 msgstr "Splits vanaf:"
 
-#: epubsplit_plugin.py:356
+#: epubsplit_plugin.py:359
 msgid ""
 "You can enable or disable Edit Metadata in Preferences > Plugins > "
 "EpubSplit."
 msgstr ""
 
-#: epubsplit_plugin.py:358
+#: epubsplit_plugin.py:361
 msgid ""
 "The book for the new Split EPUB has been created and default metadata filled in.\n"
 "\n"
@@ -470,19 +485,19 @@ msgid ""
 "If you download or add a cover image, it will be included in the generated EPUB."
 msgstr "Het boek voor het nieuwe opgesplitste EPUB is aangemaakt met standaard metadata reeds ingevuld.\n\nEchter, De EPUB zal *niet* worden aangemaakt zolang u het daar op volgende metadata dialoogvenster niet beoordeeld, bewerkt en afgesloten hebt.\n\nU kunt zelf de metadata gegevens invullen, of maak gebruik van metadata downloaden voor bekende boeken.\n\nIndien u een afbeelding van een voorblad download of toevoegt , zal het toegevoegd worden in de aangemaakte EPUB."
 
-#: epubsplit_plugin.py:376
+#: epubsplit_plugin.py:379
 msgid "Splitting off from EPUB..."
 msgstr "Splisten van EPUB..."
 
-#: epubsplit_plugin.py:408
+#: epubsplit_plugin.py:411
 msgid "Finished splitting off EPUB."
 msgstr "Splitsen van EPUB voltooid."
 
-#: epubsplit_plugin.py:418
+#: epubsplit_plugin.py:421
 msgid ""
 "<b><u>%s</u> by %s</b> has been created and default metadata filled in."
 msgstr ""
 
-#: epubsplit_plugin.py:419
+#: epubsplit_plugin.py:422
 msgid "EpubSplit now skips the Edit Metadata step by default."
 msgstr ""

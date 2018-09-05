@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
-"POT-Creation-Date: 2018-08-31 13:05+Central Daylight Time\n"
-"PO-Revision-Date: 2018-09-01 02:24+0000\n"
+"POT-Creation-Date: 2018-09-02 13:44+Central Daylight Time\n"
+"PO-Revision-Date: 2018-09-05 03:23+0000\n"
 "Last-Translator: Kovid Goyal <kovid@kovidgoyal.net>\n"
 "Language-Team: French (http://www.transifex.com/calibre/calibre-plugins/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -50,7 +50,7 @@ msgstr ""
 msgid "If enabled, a checkbox will appear for each section."
 msgstr ""
 
-#: config.py:221 dialogs.py:192
+#: config.py:221 dialogs.py:194
 msgid ""
 "Checked sections will be included in <i>all</i> split books.<br>Default "
 "title will still be taken from the first <i>selected</i> section, and "
@@ -204,7 +204,7 @@ msgstr "Voir les préférences de la bibliothèque..."
 msgid "View data stored in the library database for this plugin"
 msgstr "Voir les données stockées dans la base de donnée de la bibliothèque pour cette extension"
 
-#: config.py:337 dialogs.py:113
+#: config.py:337 dialogs.py:115
 msgid "Done"
 msgstr "Terminé"
 
@@ -240,142 +240,156 @@ msgstr "Si vous avez défini des colonnes personnalisées, elles seront listées
 msgid "Copy this %s column to new split books..."
 msgstr "Copier cette colonne %s vers les nouveaux livres extraits..."
 
-#: dialogs.py:61
+#: dialogs.py:63
 msgid "<p><b><i>Double click to copy from sample.</i></b></p>"
 msgstr "<p><b><i>Double cliquer pour copier à partir de l'exemple.</i></b></p>"
 
-#: dialogs.py:95
+#: dialogs.py:97
 msgid "Configure"
 msgstr ""
 
-#: dialogs.py:97
+#: dialogs.py:99
 msgid "Configure Plugin"
 msgstr ""
 
-#: dialogs.py:101
+#: dialogs.py:103
 msgid "New Book"
 msgstr "Nouveau Livre"
 
-#: dialogs.py:102
+#: dialogs.py:104
 msgid ""
 "Make <i>one</i> new book containing the sections selected above and then "
 "edit its Metadata."
 msgstr "Faire <i>un</i> nouveau livre contenant les sections sélectionnées ci-dessus et éditer alors ses métadonnées."
 
-#: dialogs.py:105
+#: dialogs.py:107
 msgid "New Book per Section"
 msgstr "Nouveau Livre par Section"
 
-#: dialogs.py:106
+#: dialogs.py:108
 msgid ""
 "Make a new book for <i>each</i> of the sections selected above.  Title for "
 "each will be the Table of Contents, which you can edit here first."
 msgstr "Faire un nouveau livre pour <i>chacune</i> des sections sélectionnées ci-dessus. Le Titre pour chacun sera la Table des Matières, que vous pouvez d'abord éditer ici."
 
-#: dialogs.py:109
+#: dialogs.py:111
 msgid "Get Size"
 msgstr "Obtenir la taille"
 
-#: dialogs.py:110
+#: dialogs.py:112
 msgid ""
 "Calculate the size of the new book from the currently selected sections."
 msgstr "Calculer la taille du nouveau livre à partir des sections actuellement sélectionnées."
 
-#: dialogs.py:136
+#: dialogs.py:138
 msgid "Missing Title(s)"
 msgstr "Titre(s) manquant"
 
-#: dialogs.py:137
+#: dialogs.py:139
 msgid "Some selected sections don't have a Table of Contents text."
 msgstr ""
 
-#: dialogs.py:138
+#: dialogs.py:140
 msgid ""
 "If you continue, those sections will be included with the last prior section"
 " that did have a Table of Contents text."
 msgstr ""
 
-#: dialogs.py:139
+#: dialogs.py:141
 msgid "If you cancel, you can go back and add Table of Contents entries."
 msgstr ""
 
-#: dialogs.py:140
+#: dialogs.py:142
 msgid "Double click to edit the Table of Contents entry for a section."
 msgstr ""
 
-#: dialogs.py:161
+#: dialogs.py:163
 msgid "Guide"
 msgstr "Guide"
 
-#: dialogs.py:161
+#: dialogs.py:163
 msgid "HREF"
 msgstr "HREF"
 
-#: dialogs.py:161
+#: dialogs.py:163
 msgid "Table of Contents"
 msgstr "Table des matières"
 
-#: dialogs.py:208
+#: dialogs.py:195
+msgid ""
+"Use Context Menu (right-click) on selected sections to check or uncheck all "
+"selected sections."
+msgstr ""
+
+#: dialogs.py:211
 msgid "Indicates 'special' pages: copyright, titlepage, etc."
 msgstr "Indique les pages 'spéciales' : copyright, page de titre etc."
 
-#: dialogs.py:214
+#: dialogs.py:217
 msgid ""
 "Click and copy hotkey to copy text.\n"
 "Double-click to edit ToC entry.\n"
 "Pipes(|) divide different ToC entries to the same place."
 msgstr "Touche directe cliquer et copier pour copier du texte.\nDouble clic pour éditer l'entrée de TdM\nLes tuyaux (|) clivent les diffétentes enrées de TdM vers la même place."
 
-#: dialogs.py:307
+#: dialogs.py:310
 msgid "Section Sample"
 msgstr "Section Exemple"
 
-#: dialogs.py:315 dialogs.py:316 dialogs.py:317 dialogs.py:339 dialogs.py:340
-#: dialogs.py:341
+#: dialogs.py:317
+msgid "Check Selected"
+msgstr ""
+
+#: dialogs.py:318
+msgid "Uncheck Selected"
+msgstr ""
+
+#: dialogs.py:332 dialogs.py:333 dialogs.py:334 dialogs.py:356 dialogs.py:357
+#: dialogs.py:358
 msgid "Splitting Sections..."
 msgstr "Division des Sections..."
 
-#: dialogs.py:344
+#: dialogs.py:361
 msgid "Cancel"
 msgstr "Annuler"
 
-#: dialogs.py:363
+#: dialogs.py:380
 msgid " - %s estimated until done"
 msgstr " - %s prévu jusqu'à la fin"
 
-#: dialogs.py:420
+#: dialogs.py:437
 msgid "%d day"
 msgstr "%d jour"
 
-#: dialogs.py:420
+#: dialogs.py:437
 msgid "%d days"
 msgstr "%d jours"
 
-#: dialogs.py:421
+#: dialogs.py:438
 msgid "%d hour"
 msgstr "%d heure"
 
-#: dialogs.py:421
+#: dialogs.py:438
 msgid "%d hours"
 msgstr "%d heures"
 
-#: dialogs.py:422
+#: dialogs.py:439
 msgid "%d minute"
 msgstr "%d minute"
 
-#: dialogs.py:422
+#: dialogs.py:439
 msgid "%d minutes"
 msgstr "%d minutes"
 
-#: dialogs.py:423
+#: dialogs.py:440
 msgid "%d second"
 msgstr "%d seconde"
 
-#: dialogs.py:423
+#: dialogs.py:440
 msgid "%d seconds"
 msgstr "%d secondes"
 
-#: dialogs.py:438
+#: dialogs.py:455
 msgid "less than 1 second"
 msgstr "moins d'1 seconde"
 
@@ -395,68 +409,68 @@ msgstr "Sélectionner un livre"
 msgid "Please select exactly one book to split."
 msgstr "S'il vous plait, sélectionner exactement un livre à extraire."
 
-#: epubsplit_plugin.py:132
+#: epubsplit_plugin.py:133
 msgid "No EPUB"
 msgstr "Pas d'EPUB"
 
-#: epubsplit_plugin.py:133
+#: epubsplit_plugin.py:134
 msgid "This plugin only works on EPUB format ebooks."
 msgstr "Cette extension fonctionne uniquement avec des ebooks au format EPUB"
 
-#: epubsplit_plugin.py:144
+#: epubsplit_plugin.py:145
 msgid "Select Sections to Split Off"
 msgstr "Sélectionner les sections à extraire"
 
-#: epubsplit_plugin.py:163
+#: epubsplit_plugin.py:164
 msgid "No Sections Selected"
 msgstr "Pas de Sections Sélectionnées"
 
-#: epubsplit_plugin.py:164
+#: epubsplit_plugin.py:165
 msgid ""
 "Book(s) not split.\n"
 "\n"
 "You must select at least one section to split."
 msgstr "Le(s) livre(s) ne s'est/ ne se sont pas scindé(s)\n\nVous devez au moins sélectionner une section à scinder."
 
-#: epubsplit_plugin.py:195
+#: epubsplit_plugin.py:196
 msgid "New Books Created"
 msgstr "Nouveaux Livres Créés"
 
-#: epubsplit_plugin.py:196
+#: epubsplit_plugin.py:197
 msgid "%s New Books Created."
 msgstr "%s Nouveaux Livres Créés"
 
-#: epubsplit_plugin.py:228
+#: epubsplit_plugin.py:229
 msgid "Computing size of EPUB..."
 msgstr "Calcul de la taille du EPUB..."
 
-#: epubsplit_plugin.py:242
+#: epubsplit_plugin.py:243
 msgid "Finished computing size of EPUB."
 msgstr "Calcul de la taille du EPUB terminée."
 
-#: epubsplit_plugin.py:244
+#: epubsplit_plugin.py:245
 msgid "Size of New Book"
 msgstr "Taille du Nouveau Livre"
 
-#: epubsplit_plugin.py:245
+#: epubsplit_plugin.py:246
 msgid "New EPUB File Size:"
 msgstr "Taille du nouveau fichier EPUB : "
 
-#: epubsplit_plugin.py:276
+#: epubsplit_plugin.py:277
 msgid "%s Split"
 msgstr "%s Extrait"
 
-#: epubsplit_plugin.py:308
+#: epubsplit_plugin.py:309
 msgid "Split from:"
 msgstr "Extrait de :"
 
-#: epubsplit_plugin.py:356
+#: epubsplit_plugin.py:359
 msgid ""
 "You can enable or disable Edit Metadata in Preferences > Plugins > "
 "EpubSplit."
 msgstr ""
 
-#: epubsplit_plugin.py:358
+#: epubsplit_plugin.py:361
 msgid ""
 "The book for the new Split EPUB has been created and default metadata filled in.\n"
 "\n"
@@ -467,19 +481,19 @@ msgid ""
 "If you download or add a cover image, it will be included in the generated EPUB."
 msgstr "Le livre pour le nouvel EPUB Extrait a été créé et les métadonnées intégrées.\n\nCependant, l'EPUB ne sera *pas* créé  tant que vous n'aurez pas revu, édité et fermé le dialogue de métadonnées qui suit.\n\nVous pouvez insérez les métadonnées vous même ou utiliser télécharger les métadonnées pour les livres connus.\n\nSi vous téléchargez ou ajoutez une couverture, celle-ci sera incluse dans l'EPUB généré."
 
-#: epubsplit_plugin.py:376
+#: epubsplit_plugin.py:379
 msgid "Splitting off from EPUB..."
 msgstr "Extraction de l'ePub..."
 
-#: epubsplit_plugin.py:408
+#: epubsplit_plugin.py:411
 msgid "Finished splitting off EPUB."
 msgstr "Extraction de l'ePub terminée"
 
-#: epubsplit_plugin.py:418
+#: epubsplit_plugin.py:421
 msgid ""
 "<b><u>%s</u> by %s</b> has been created and default metadata filled in."
 msgstr ""
 
-#: epubsplit_plugin.py:419
+#: epubsplit_plugin.py:422
 msgid "EpubSplit now skips the Edit Metadata step by default."
 msgstr ""

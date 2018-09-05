@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
-"POT-Creation-Date: 2018-08-31 13:05+Central Daylight Time\n"
-"PO-Revision-Date: 2018-09-01 02:24+0000\n"
-"Last-Translator: Kovid Goyal <kovid@kovidgoyal.net>\n"
+"POT-Creation-Date: 2018-09-02 13:44+Central Daylight Time\n"
+"PO-Revision-Date: 2018-09-07 08:35+0000\n"
+"Last-Translator: Maidur\n"
 "Language-Team: Estonian (http://www.transifex.com/calibre/calibre-plugins/language/et/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,29 +31,29 @@ msgstr "Kohandatud veerud"
 
 #: config.py:214
 msgid "Edit Metadata for New Book(s)"
-msgstr ""
+msgstr "'Muuda metaandmeid' uu(t)e raamatu(te) jaoks"
 
 #: config.py:215
 msgid ""
 "Show Edit Metadata Dialog after creating each new book entry, but "
 "<i>before</i> EPUB is created.<br>Allows for downloading metadata and "
 "ensures EPUB has updated metadata."
-msgstr ""
+msgstr "Näita pärast iga uue raamatu kirje loomist metaandmete muutmise dialoogi, kuid <i>enne</i> EPUB-i loomist.<br>Võimaldab metaandmete allalaadimist ja kindlustab uuendatud metaandmete olemasolu EPUB-is."
 
 #: config.py:219
 msgid "Show 'Always Include' Checkboxes"
-msgstr ""
+msgstr "Näita 'Kaasa alati' märkeruute"
 
 #: config.py:220
 msgid "If enabled, a checkbox will appear for each section."
-msgstr ""
+msgstr "Kui lubatud, ilmub iga sektsiooni jaoks märkeruut."
 
-#: config.py:221 dialogs.py:192
+#: config.py:221 dialogs.py:194
 msgid ""
 "Checked sections will be included in <i>all</i> split books.<br>Default "
 "title will still be taken from the first <i>selected</i> section, and "
 "section order will remain as shown."
-msgstr ""
+msgstr "Märgistatud sektsioonid kaasatakse <i>kõigis</i> eraldatud raamatutes.<br>Vaikimisi pealkiri võetakse endiselt esimesest <i>valitud</i> sektsioonist, ja sektsioonide järjekord jääb samaks nagu näidatud."
 
 #: config.py:226
 msgid ""
@@ -202,7 +202,7 @@ msgstr "Näita kogu eelistusi..."
 msgid "View data stored in the library database for this plugin"
 msgstr "Näita selle plugina jaoks talletatud andmeid kogude andmebaasis"
 
-#: config.py:337 dialogs.py:113
+#: config.py:337 dialogs.py:115
 msgid "Done"
 msgstr "Valmis"
 
@@ -238,142 +238,156 @@ msgstr "Kui oled määratlenud kohandatud veergusid, tuuakse need allpool välja
 msgid "Copy this %s column to new split books..."
 msgstr "Kopeeri see %s veerg uutesse eraldatud raamatutesse..."
 
-#: dialogs.py:61
+#: dialogs.py:63
 msgid "<p><b><i>Double click to copy from sample.</i></b></p>"
 msgstr "<p><b><i>Näidisest kopeerimiseks topeltklõpsa.</i></b></p>"
 
-#: dialogs.py:95
-msgid "Configure"
-msgstr ""
-
 #: dialogs.py:97
-msgid "Configure Plugin"
-msgstr ""
+msgid "Configure"
+msgstr "Seadista"
 
-#: dialogs.py:101
+#: dialogs.py:99
+msgid "Configure Plugin"
+msgstr "Seadista pluginat"
+
+#: dialogs.py:103
 msgid "New Book"
 msgstr "Uus raamat"
 
-#: dialogs.py:102
+#: dialogs.py:104
 msgid ""
 "Make <i>one</i> new book containing the sections selected above and then "
 "edit its Metadata."
 msgstr "Loo <i>üks</i> uus raamat, mis sisaldab ülalvalitud sektsioone, ja seejärel muuda selle metaandmeid."
 
-#: dialogs.py:105
+#: dialogs.py:107
 msgid "New Book per Section"
 msgstr "Uus raamat iga sektsiooni kohta"
 
-#: dialogs.py:106
+#: dialogs.py:108
 msgid ""
 "Make a new book for <i>each</i> of the sections selected above.  Title for "
 "each will be the Table of Contents, which you can edit here first."
 msgstr "Loo uus raamat <i>igast</i> ülalvalitud sektsioonist eraldi.  Iga raamatu pealkirjaks pannakse vastav väärtus veerust Sisukord ning sa saad seda esmalt siin muuta."
 
-#: dialogs.py:109
+#: dialogs.py:111
 msgid "Get Size"
 msgstr "Hangi suurus"
 
-#: dialogs.py:110
+#: dialogs.py:112
 msgid ""
 "Calculate the size of the new book from the currently selected sections."
 msgstr "Arvuta uue raamatu suurus praegu valitud sektsioonidest."
 
-#: dialogs.py:136
+#: dialogs.py:138
 msgid "Missing Title(s)"
 msgstr "Pealkiri(-jad) puudu"
 
-#: dialogs.py:137
+#: dialogs.py:139
 msgid "Some selected sections don't have a Table of Contents text."
-msgstr ""
+msgstr "Osal valitud sektsioonil pole sisukorra teksti."
 
-#: dialogs.py:138
+#: dialogs.py:140
 msgid ""
 "If you continue, those sections will be included with the last prior section"
 " that did have a Table of Contents text."
-msgstr ""
+msgstr "Kui jätkad, siis need sektsioonid kaasatakse viimase eelneva sektsiooniga, millel oli sisukorra tekst."
 
-#: dialogs.py:139
+#: dialogs.py:141
 msgid "If you cancel, you can go back and add Table of Contents entries."
-msgstr ""
+msgstr "Kui loobud, saad minna tagasi ja lisada sisukorra kirjed."
 
-#: dialogs.py:140
+#: dialogs.py:142
 msgid "Double click to edit the Table of Contents entry for a section."
-msgstr ""
+msgstr "Sektsiooni sisukorra kirje muutmiseks topeltkõpsa."
 
-#: dialogs.py:161
+#: dialogs.py:163
 msgid "Guide"
 msgstr "Juhis"
 
-#: dialogs.py:161
+#: dialogs.py:163
 msgid "HREF"
 msgstr "HREF"
 
-#: dialogs.py:161
+#: dialogs.py:163
 msgid "Table of Contents"
 msgstr "Sisukord"
 
-#: dialogs.py:208
+#: dialogs.py:195
+msgid ""
+"Use Context Menu (right-click) on selected sections to check or uncheck all "
+"selected sections."
+msgstr "Kõigi valitud sektsioonide märgistamiseks või märgistuse eemaldamiseks kasuta valitud sektsioonidel kontekstimenüüd (parem-klõps)."
+
+#: dialogs.py:211
 msgid "Indicates 'special' pages: copyright, titlepage, etc."
 msgstr "Tähistab 'erilisi' lehti: kopeerimisõigused, tiitelleht jms."
 
-#: dialogs.py:214
+#: dialogs.py:217
 msgid ""
 "Click and copy hotkey to copy text.\n"
 "Double-click to edit ToC entry.\n"
 "Pipes(|) divide different ToC entries to the same place."
-msgstr "Teksti kopeerimiseks klõpsa ja kopeeri kiirklahv.\nSisukorra kirje muutmiseks topeltklõpsa.\nTorud(|) eraldavad erinevaid sisukorra kirjeid samasse kohta."
+msgstr "Teksti kopeerimiseks klõpsa ja vajuta kopeerimise kiirklahvi.\nSisukorra kirje muutmiseks topeltklõpsa.\nTorud(|) eraldavad erinevaid sisukorra kirjeid samasse kohta."
 
-#: dialogs.py:307
+#: dialogs.py:310
 msgid "Section Sample"
 msgstr "Sektsiooni näidis"
 
-#: dialogs.py:315 dialogs.py:316 dialogs.py:317 dialogs.py:339 dialogs.py:340
-#: dialogs.py:341
+#: dialogs.py:317
+msgid "Check Selected"
+msgstr "Märgista valitud"
+
+#: dialogs.py:318
+msgid "Uncheck Selected"
+msgstr "Eemalda valitult märgistus"
+
+#: dialogs.py:332 dialogs.py:333 dialogs.py:334 dialogs.py:356 dialogs.py:357
+#: dialogs.py:358
 msgid "Splitting Sections..."
 msgstr "Sektsioonide eraldamine..."
 
-#: dialogs.py:344
+#: dialogs.py:361
 msgid "Cancel"
 msgstr "Loobu"
 
-#: dialogs.py:363
+#: dialogs.py:380
 msgid " - %s estimated until done"
 msgstr " - umbes %s lõpuni"
 
-#: dialogs.py:420
+#: dialogs.py:437
 msgid "%d day"
 msgstr "%d päev"
 
-#: dialogs.py:420
+#: dialogs.py:437
 msgid "%d days"
 msgstr "%d päeva"
 
-#: dialogs.py:421
+#: dialogs.py:438
 msgid "%d hour"
 msgstr "%d tund"
 
-#: dialogs.py:421
+#: dialogs.py:438
 msgid "%d hours"
 msgstr "%d tundi"
 
-#: dialogs.py:422
+#: dialogs.py:439
 msgid "%d minute"
 msgstr "%d minut"
 
-#: dialogs.py:422
+#: dialogs.py:439
 msgid "%d minutes"
 msgstr "%d minutit"
 
-#: dialogs.py:423
+#: dialogs.py:440
 msgid "%d second"
 msgstr "%d sekund"
 
-#: dialogs.py:423
+#: dialogs.py:440
 msgid "%d seconds"
 msgstr "%d sekundit"
 
-#: dialogs.py:438
+#: dialogs.py:455
 msgid "less than 1 second"
 msgstr "alla 1 sekundi"
 
@@ -393,68 +407,68 @@ msgstr "Vali üks raamat"
 msgid "Please select exactly one book to split."
 msgstr "Palun vali täpselt üks raamat, mis tükeldada."
 
-#: epubsplit_plugin.py:132
+#: epubsplit_plugin.py:133
 msgid "No EPUB"
 msgstr "Pole EPUB"
 
-#: epubsplit_plugin.py:133
+#: epubsplit_plugin.py:134
 msgid "This plugin only works on EPUB format ebooks."
 msgstr "See plugin töötab ainult EPUB-formaadis raamatutega."
 
-#: epubsplit_plugin.py:144
+#: epubsplit_plugin.py:145
 msgid "Select Sections to Split Off"
 msgstr "Eraldatavate sektsioonide valimine"
 
-#: epubsplit_plugin.py:163
+#: epubsplit_plugin.py:164
 msgid "No Sections Selected"
 msgstr "Ühtki sektsiooni pole valitud"
 
-#: epubsplit_plugin.py:164
+#: epubsplit_plugin.py:165
 msgid ""
 "Book(s) not split.\n"
 "\n"
 "You must select at least one section to split."
 msgstr "Raamatut(-id) ei eraldatud.\n\nEraldamiseks pead valima vähemalt ühe sektsiooni."
 
-#: epubsplit_plugin.py:195
+#: epubsplit_plugin.py:196
 msgid "New Books Created"
 msgstr "Uued raamatud loodud"
 
-#: epubsplit_plugin.py:196
+#: epubsplit_plugin.py:197
 msgid "%s New Books Created."
 msgstr "%s uut raamatut loodud."
 
-#: epubsplit_plugin.py:228
+#: epubsplit_plugin.py:229
 msgid "Computing size of EPUB..."
 msgstr "EPUB-i suuruse arvutamine..."
 
-#: epubsplit_plugin.py:242
+#: epubsplit_plugin.py:243
 msgid "Finished computing size of EPUB."
 msgstr "EPUB-i suuruse arvutamine valmis."
 
-#: epubsplit_plugin.py:244
+#: epubsplit_plugin.py:245
 msgid "Size of New Book"
 msgstr "Uue raamatu suurus"
 
-#: epubsplit_plugin.py:245
+#: epubsplit_plugin.py:246
 msgid "New EPUB File Size:"
 msgstr "Uue EPUB-faili suurus:"
 
-#: epubsplit_plugin.py:276
+#: epubsplit_plugin.py:277
 msgid "%s Split"
 msgstr "%s Eraldatud"
 
-#: epubsplit_plugin.py:308
+#: epubsplit_plugin.py:309
 msgid "Split from:"
 msgstr "Eraldatud raamatust:"
 
-#: epubsplit_plugin.py:356
+#: epubsplit_plugin.py:359
 msgid ""
 "You can enable or disable Edit Metadata in Preferences > Plugins > "
 "EpubSplit."
-msgstr ""
+msgstr "Metaandmete muutmise saab lubada või keelata lehel Eelistused > Pluginad > EpubSplit."
 
-#: epubsplit_plugin.py:358
+#: epubsplit_plugin.py:361
 msgid ""
 "The book for the new Split EPUB has been created and default metadata filled in.\n"
 "\n"
@@ -465,19 +479,19 @@ msgid ""
 "If you download or add a cover image, it will be included in the generated EPUB."
 msgstr "Uus eraldatud EPUB-raamat on loodud ja täidetud vaikimisi metaandmetega.\n\nKuid EPUBi *ei* looda enne, kui oled järgneva metaandmete dialoogi üle vaatanud, muutnud ja sulgenud.\n\nSa võid metaandmed ise sisestada või tuntud raamatute puhul kasutada metaandmete allalaadimise funktsiooni.\n\nKaanepildi allalaadimisel või lisamisel kaasatakse see loodud EPUBi."
 
-#: epubsplit_plugin.py:376
+#: epubsplit_plugin.py:379
 msgid "Splitting off from EPUB..."
 msgstr "EPUB-ist eraldamine..."
 
-#: epubsplit_plugin.py:408
+#: epubsplit_plugin.py:411
 msgid "Finished splitting off EPUB."
 msgstr "EPUB-ist eraldamine valmis."
 
-#: epubsplit_plugin.py:418
+#: epubsplit_plugin.py:421
 msgid ""
 "<b><u>%s</u> by %s</b> has been created and default metadata filled in."
-msgstr ""
+msgstr "<b><u>%s</u> autorilt %s</b> on loodud ja vaikimisi metaandmetega täidetud."
 
-#: epubsplit_plugin.py:419
+#: epubsplit_plugin.py:422
 msgid "EpubSplit now skips the Edit Metadata step by default."
 msgstr ""
