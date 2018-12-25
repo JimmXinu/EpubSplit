@@ -47,8 +47,6 @@ from calibre_plugins.epubsplit.common_utils \
 PREFS_NAMESPACE = 'EpubSplitPlugin'
 PREFS_KEY_SETTINGS = 'settings'
 
-TRANS_TEMP = _('Translation')
-
 # Set defaults used by all.  Library specific settings continue to
 # take from here.
 default_prefs = {}
