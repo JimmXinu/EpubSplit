@@ -3,7 +3,7 @@
 # 
 # Translators:
 # Armin Geller <armin.geller@t-online.de>, 2014
-# Ettore Atalan <atalanttore@googlemail.com>, 2014-2015
+# Ettore Atalan <atalanttore@googlemail.com>, 2014-2015,2018
 # ILB, 2014
 # Max Vogl <mail@max-vogl.de>, 2014
 # pitfd <pitfd@posteo.de>, 2018
@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
 "POT-Creation-Date: 2018-12-25 08:54+Central Standard Time\n"
-"PO-Revision-Date: 2018-12-25 15:41+0000\n"
-"Last-Translator: Kovid Goyal <kovid@kovidgoyal.net>\n"
+"PO-Revision-Date: 2018-12-26 19:44+0000\n"
+"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German (http://www.transifex.com/calibre/calibre-plugins/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -250,7 +250,7 @@ msgstr "<p><b><i>Doppelklich um vom Beispiel zu kopieren.</i></b></p>"
 
 #: dialogs.py:97
 msgid "Configure"
-msgstr ""
+msgstr "Konfigurieren"
 
 #: dialogs.py:99
 msgid "Configure Plugin"
