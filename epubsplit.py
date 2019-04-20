@@ -734,7 +734,12 @@ class SplitEpub:
                         #print("replacement path:%s"%a['href'])
                         changed = True
             if changed:
-                fl[3] = soup.__str__('utf-8').decode('utf-8')
+                try:
+                    # Newer BeautifulSoup versions
+                    fl[3] = soup.decode('utf-8')
+                except:
+                    # Older BS versions
+                    fl[3] = soup.__str__('utf-8').decode('utf-8')
 
         return outfiles
 
@@ -1092,7 +1097,12 @@ def splitHtml(data,tagid,before=False):
                 n.extract()
             parent = parent.parent
 
-    return re.sub(r'( *\r?\n)+','\r\n',soup.__str__('utf-8').decode('utf-8'))
+    try:
+        # Newer BeautifulSoup versions
+        return re.sub(r'( *\r?\n)+','\r\n',soup.decode('utf-8'))
+    except:
+        # Older BS versions
+        return re.sub(r'( *\r?\n)+','\r\n',soup.__str__('utf-8').decode('utf-8'))
 
 def get_path_part(n):
     relpath = os.path.dirname(n)
