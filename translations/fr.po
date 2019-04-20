@@ -2,6 +2,7 @@
 # Copyright (C) YEAR ORGANIZATION
 # 
 # Translators:
+# Doryan R, 2019
 # Ptit Prince <leporello1791@gmail.com>, 2015
 # Nicolas F. <fernetn@gmail.com>, 2017
 # Ptit Prince <leporello1791@gmail.com>, 2016-2019
@@ -9,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
 "POT-Creation-Date: 2018-12-25 08:54+Central Standard Time\n"
-"PO-Revision-Date: 2019-01-05 13:38+0000\n"
-"Last-Translator: Ptit Prince <leporello1791@gmail.com>\n"
+"PO-Revision-Date: 2019-02-01 17:12+0000\n"
+"Last-Translator: Doryan R\n"
 "Language-Team: French (http://www.transifex.com/calibre/calibre-plugins/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -44,18 +45,18 @@ msgstr "Afficher la Boîte de Dialogue Modifier les Métadonnées après la cré
 
 #: config.py:219
 msgid "Show 'Always Include' Checkboxes"
-msgstr ""
+msgstr "Afficher les cases à cocher 'Toujours inclure'"
 
 #: config.py:220
 msgid "If enabled, a checkbox will appear for each section."
-msgstr ""
+msgstr "Si activé, une case à cocher apparaît pour chaque section."
 
 #: config.py:221 dialogs.py:194
 msgid ""
 "Checked sections will be included in <i>all</i> split books.<br>Default "
 "title will still be taken from the first <i>selected</i> section, and "
 "section order will remain as shown."
-msgstr ""
+msgstr "Les sections cochées seront incluses dans <i>tous</i> les livres divisés. <br>Le titre par défaut sera toujours extrait de la première section <i>sélectionnée</i> et l'ordre des sections demeurera tel qu'il est indiqué."
 
 #: config.py:226
 msgid ""
@@ -214,7 +215,7 @@ msgstr "Les dialogues de confirmation ont tous été réinitialisés"
 
 #: config.py:354
 msgid "Save Source column:"
-msgstr ""
+msgstr "Enregistrer la colonne source:"
 
 #: config.py:355
 msgid ""
@@ -246,11 +247,11 @@ msgstr "<p><b><i>Double cliquer pour copier à partir de l'exemple.</i></b></p>"
 
 #: dialogs.py:97
 msgid "Configure"
-msgstr ""
+msgstr "Configurer"
 
 #: dialogs.py:99
 msgid "Configure Plugin"
-msgstr ""
+msgstr "Configurer le plugin"
 
 #: dialogs.py:103
 msgid "New Book"
@@ -287,21 +288,21 @@ msgstr "Titre(s) manquant"
 
 #: dialogs.py:139
 msgid "Some selected sections don't have a Table of Contents text."
-msgstr ""
+msgstr "Certaines sections sélectionnées n'ont pas de texte de table des matières."
 
 #: dialogs.py:140
 msgid ""
 "If you continue, those sections will be included with the last prior section"
 " that did have a Table of Contents text."
-msgstr ""
+msgstr "Si vous continuez, ces sections seront incluses dans la dernière section précédente qui contenait un texte de table des matières."
 
 #: dialogs.py:141
 msgid "If you cancel, you can go back and add Table of Contents entries."
-msgstr ""
+msgstr "Si vous annulez, vous pouvez revenir en arrière et ajouter des entrées dans la table des matières."
 
 #: dialogs.py:142
 msgid "Double click to edit the Table of Contents entry for a section."
-msgstr ""
+msgstr "Double-cliquez pour modifier l'entrée de la table des matières d'une section."
 
 #: dialogs.py:163
 msgid "Guide"
@@ -319,7 +320,7 @@ msgstr "Table des matières"
 msgid ""
 "Use Context Menu (right-click) on selected sections to check or uncheck all "
 "selected sections."
-msgstr ""
+msgstr "Utilisez le menu contextuel (clic droit) sur les sections sélectionnées pour cocher ou décocher toutes les sections sélectionnées."
 
 #: dialogs.py:211
 msgid "Indicates 'special' pages: copyright, titlepage, etc."
@@ -338,11 +339,11 @@ msgstr "Section Exemple"
 
 #: dialogs.py:317
 msgid "Check Selected"
-msgstr ""
+msgstr "Vérifier la sélection"
 
 #: dialogs.py:318
 msgid "Uncheck Selected"
-msgstr ""
+msgstr "Décocher la sélection"
 
 #: dialogs.py:332 dialogs.py:333 dialogs.py:334 dialogs.py:356 dialogs.py:357
 #: dialogs.py:358
@@ -468,7 +469,7 @@ msgstr "Extrait de :"
 msgid ""
 "You can enable or disable Edit Metadata in Preferences > Plugins > "
 "EpubSplit."
-msgstr ""
+msgstr "Vous pouvez activer ou désactiver les métadonnées d'édition dans Préférences> Plug-ins> EpubSplit."
 
 #: epubsplit_plugin.py:361
 msgid ""
@@ -492,8 +493,8 @@ msgstr "Extraction de l'ePub terminée"
 #: epubsplit_plugin.py:421
 msgid ""
 "<b><u>%s</u> by %s</b> has been created and default metadata filled in."
-msgstr ""
+msgstr "<b><u>%s</u>by %s</b> a été créé et les métadonnées par défaut sont renseignées."
 
 #: epubsplit_plugin.py:422
 msgid "EpubSplit now skips the Edit Metadata step by default."
-msgstr ""
+msgstr "EpubSplit ignore maintenant l’étape d’édition des métadonnées par défaut."
