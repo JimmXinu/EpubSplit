@@ -413,6 +413,8 @@ If you download or add a cover image, it will be included in the generated EPUB.
             self.gui.tags_view.recount()
             current = self.gui.library_view.currentIndex()
             self.gui.library_view.model().current_changed(current, self.previous)
+            if self.gui.cover_flow:
+                self.gui.cover_flow.dataChanged()
         finally:
             QApplication.restoreOverrideCursor()
 
