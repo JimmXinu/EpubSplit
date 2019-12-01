@@ -3,18 +3,20 @@
 # 
 # Translators:
 # Armin Geller <armin.geller@t-online.de>, 2014
+# Dirk Hein <bankman@mailbox.org>, 2019
 # Ettore Atalan <atalanttore@googlemail.com>, 2014-2015,2018
 # ILB, 2014
+# Janina Schlappkohl <mirataria@gmail.com>, 2019
 # Max Vogl <mail@max-vogl.de>, 2014
-# pitfd <pitfd@posteo.de>, 2018
+# pitfd, 2018
 # Sebastian Keller <Haggard@gmx.de>, 2015
-# Simon_Schuette <simonschuette@arcor.de>, 2014-2015
+# Simon Schütte, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
 "POT-Creation-Date: 2018-12-25 08:54+Central Standard Time\n"
-"PO-Revision-Date: 2018-12-26 19:44+0000\n"
-"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
+"PO-Revision-Date: 2019-08-04 21:51+0000\n"
+"Last-Translator: Janina Schlappkohl <mirataria@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/calibre/calibre-plugins/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,22 +39,22 @@ msgstr "Benutzerdefinierte Spalten"
 
 #: config.py:214
 msgid "Edit Metadata for New Book(s)"
-msgstr ""
+msgstr "Metadaten für neue Bücher bearbeiten"
 
 #: config.py:215
 msgid ""
 "Show Edit Metadata Dialog after creating each new book entry, but "
 "<i>before</i> EPUB is created.<br>Allows for downloading metadata and "
 "ensures EPUB has updated metadata."
-msgstr ""
+msgstr "Nachdem erstellen eines neuen Bucheintrags, das Dialogfeld \"Metadaten bearbeiten\" anzeigen<i>vor</i> dem erstellen des EPUB. <br>Ermöglicht das Herunterladen von Metadaten und stellt sicher, dass EPUB Metadaten aktualisiert sind. "
 
 #: config.py:219
 msgid "Show 'Always Include' Checkboxes"
-msgstr ""
+msgstr "Zeige \"Immer einschließen\" Checkbox"
 
 #: config.py:220
 msgid "If enabled, a checkbox will appear for each section."
-msgstr ""
+msgstr "Wenn aktiviert, erscheint eine Checkbox für jeden bereich"
 
 #: config.py:221 dialogs.py:194
 msgid ""
@@ -218,7 +220,7 @@ msgstr "Die Bestätigungsdialoge wurden alle zurückgesetzt"
 
 #: config.py:354
 msgid "Save Source column:"
-msgstr ""
+msgstr "Quellspalte Speichern:"
 
 #: config.py:355
 msgid ""
@@ -254,7 +256,7 @@ msgstr "Konfigurieren"
 
 #: dialogs.py:99
 msgid "Configure Plugin"
-msgstr ""
+msgstr "Plugin konfiguieren"
 
 #: dialogs.py:103
 msgid "New Book"
@@ -291,21 +293,21 @@ msgstr "Fehlende(r) Titel"
 
 #: dialogs.py:139
 msgid "Some selected sections don't have a Table of Contents text."
-msgstr ""
+msgstr "Einige ausgewählte Abschnitte enthalten kein Inhaltsverzeichnis."
 
 #: dialogs.py:140
 msgid ""
 "If you continue, those sections will be included with the last prior section"
 " that did have a Table of Contents text."
-msgstr ""
+msgstr "Wenn Sie fortfahren, werden die Abschnitte in den letzten Abschnitt aufgenommen, in dem sich ein Inhaltsverzeichnis befand."
 
 #: dialogs.py:141
 msgid "If you cancel, you can go back and add Table of Contents entries."
-msgstr ""
+msgstr "Bei Abbruch, können sie zurück gehen und Inhaltsverzeichniseinträge hinzufügen."
 
 #: dialogs.py:142
 msgid "Double click to edit the Table of Contents entry for a section."
-msgstr ""
+msgstr "Doppelklicken, um den Inhaltsverzeichniseintrag für einen Abschnitt zu bearbeiten."
 
 #: dialogs.py:163
 msgid "Guide"
@@ -323,7 +325,7 @@ msgstr "Inhaltsverzeichnis (ToC)"
 msgid ""
 "Use Context Menu (right-click) on selected sections to check or uncheck all "
 "selected sections."
-msgstr ""
+msgstr "Um alle ausgewählten Abschnitte zu aktivieren oder zu deaktiveren, verwenden sie das Kontextmenü (Rechtsklick)"
 
 #: dialogs.py:211
 msgid "Indicates 'special' pages: copyright, titlepage, etc."
@@ -342,11 +344,11 @@ msgstr "Abschnitts-Beispiel"
 
 #: dialogs.py:317
 msgid "Check Selected"
-msgstr ""
+msgstr "Auswahl Aktivieren"
 
 #: dialogs.py:318
 msgid "Uncheck Selected"
-msgstr ""
+msgstr "Auswahl Deaktivieren"
 
 #: dialogs.py:332 dialogs.py:333 dialogs.py:334 dialogs.py:356 dialogs.py:357
 #: dialogs.py:358
@@ -472,7 +474,7 @@ msgstr "Abspalten von:"
 msgid ""
 "You can enable or disable Edit Metadata in Preferences > Plugins > "
 "EpubSplit."
-msgstr ""
+msgstr "Metadaten bearbeiten kann unter Einstellungen > Plugins > EpubSplit, aktiviert oder deaktiviert werden. "
 
 #: epubsplit_plugin.py:361
 msgid ""
@@ -496,8 +498,8 @@ msgstr "Abspaltung von EPUB abgeschlossen."
 #: epubsplit_plugin.py:421
 msgid ""
 "<b><u>%s</u> by %s</b> has been created and default metadata filled in."
-msgstr ""
+msgstr "<b><u>%s</u>von%s</b>wurde erstellt und Standard Metadaten wurden eingefügt. "
 
 #: epubsplit_plugin.py:422
 msgid "EpubSplit now skips the Edit Metadata step by default."
-msgstr ""
+msgstr "EpubSplit überspringt nun standardmäßig den Schritt Metadaten bearbeiten."

@@ -2,13 +2,14 @@
 # Copyright (C) YEAR ORGANIZATION
 # 
 # Translators:
+# Aleksandr P, 2019
 # ashed <craysy@gmail.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
 "POT-Creation-Date: 2018-12-25 08:54+Central Standard Time\n"
-"PO-Revision-Date: 2019-01-12 10:46+0000\n"
-"Last-Translator: ashed <craysy@gmail.com>\n"
+"PO-Revision-Date: 2019-04-28 01:35+0000\n"
+"Last-Translator: Aleksandr P\n"
 "Language-Team: Russian (http://www.transifex.com/calibre/calibre-plugins/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,29 +32,29 @@ msgstr "Пользовательские столбцы"
 
 #: config.py:214
 msgid "Edit Metadata for New Book(s)"
-msgstr ""
+msgstr "Редактировать метаданные для новых книг"
 
 #: config.py:215
 msgid ""
 "Show Edit Metadata Dialog after creating each new book entry, but "
 "<i>before</i> EPUB is created.<br>Allows for downloading metadata and "
 "ensures EPUB has updated metadata."
-msgstr ""
+msgstr "Показать диалог редактирования метаданных после создания записи книги, но <i>до создания</i> файла EPUB.<br>Позволяет загрузить метаданные и служит для внесения правильных метаданных,"
 
 #: config.py:219
 msgid "Show 'Always Include' Checkboxes"
-msgstr ""
+msgstr "Показывать флажки «Всегда включать»"
 
 #: config.py:220
 msgid "If enabled, a checkbox will appear for each section."
-msgstr ""
+msgstr "Если включено, то для каждой секции появится соответствующий флажок."
 
 #: config.py:221 dialogs.py:194
 msgid ""
 "Checked sections will be included in <i>all</i> split books.<br>Default "
 "title will still be taken from the first <i>selected</i> section, and "
 "section order will remain as shown."
-msgstr ""
+msgstr "Отмеченные секции будут включены в <i>каждую</i> отделенную книгу.<br>Заголовок будет взят из первой <i>выделенной секции</i>, а порядок секций будет соответствовать текущему представлению."
 
 #: config.py:226
 msgid ""
@@ -212,7 +213,7 @@ msgstr "Все диалоги подтверждения были сброшен
 
 #: config.py:354
 msgid "Save Source column:"
-msgstr ""
+msgstr "Столбец для сохранения источника:"
 
 #: config.py:355
 msgid ""
@@ -248,7 +249,7 @@ msgstr "Конфигурировать"
 
 #: dialogs.py:99
 msgid "Configure Plugin"
-msgstr ""
+msgstr "Настроить плагин"
 
 #: dialogs.py:103
 msgid "New Book"
@@ -272,12 +273,12 @@ msgstr "Создать новую книгу для <i>каждой</i> из с�
 
 #: dialogs.py:111
 msgid "Get Size"
-msgstr ""
+msgstr "Узнать размер"
 
 #: dialogs.py:112
 msgid ""
 "Calculate the size of the new book from the currently selected sections."
-msgstr ""
+msgstr "Подсчитать размер новой книги, основываясь на выделенных секциях."
 
 #: dialogs.py:138
 msgid "Missing Title(s)"
@@ -285,21 +286,21 @@ msgstr "Отсутствует Название(я)"
 
 #: dialogs.py:139
 msgid "Some selected sections don't have a Table of Contents text."
-msgstr ""
+msgstr "У некоторых секций нет текста элемента оглавления."
 
 #: dialogs.py:140
 msgid ""
 "If you continue, those sections will be included with the last prior section"
 " that did have a Table of Contents text."
-msgstr ""
+msgstr "Если продолжить, то эти секции будут принадлежать последней секции с заданным текстом элемента оглавления."
 
 #: dialogs.py:141
 msgid "If you cancel, you can go back and add Table of Contents entries."
-msgstr ""
+msgstr "Если отменить операцию, можно будет добавить текст элемента оглавления."
 
 #: dialogs.py:142
 msgid "Double click to edit the Table of Contents entry for a section."
-msgstr ""
+msgstr "Дважды щелкните, чтобы изменить текст элемента оглавления для секции."
 
 #: dialogs.py:163
 msgid "Guide"
@@ -317,7 +318,7 @@ msgstr "Оглавление (Таблица содержания)"
 msgid ""
 "Use Context Menu (right-click) on selected sections to check or uncheck all "
 "selected sections."
-msgstr ""
+msgstr "Используйте контекстное меню (правый щелчок) на выделенных секциях, чтобы отметить их все или снять с них отметки."
 
 #: dialogs.py:211
 msgid "Indicates 'special' pages: copyright, titlepage, etc."
@@ -336,11 +337,11 @@ msgstr "Пример секции"
 
 #: dialogs.py:317
 msgid "Check Selected"
-msgstr ""
+msgstr "Отметить выделенное"
 
 #: dialogs.py:318
 msgid "Uncheck Selected"
-msgstr ""
+msgstr "Снять отметки с выделенного"
 
 #: dialogs.py:332 dialogs.py:333 dialogs.py:334 dialogs.py:356 dialogs.py:357
 #: dialogs.py:358
@@ -421,14 +422,14 @@ msgstr "Выберите секции для отделения"
 
 #: epubsplit_plugin.py:164
 msgid "No Sections Selected"
-msgstr ""
+msgstr "Нет выделенных секций"
 
 #: epubsplit_plugin.py:165
 msgid ""
 "Book(s) not split.\n"
 "\n"
 "You must select at least one section to split."
-msgstr ""
+msgstr "Книги не были разделены.\n\nНужно выбрать хотя бы одну секцию для отделения."
 
 #: epubsplit_plugin.py:196
 msgid "New Books Created"
@@ -440,19 +441,19 @@ msgstr "%s новых книг создано."
 
 #: epubsplit_plugin.py:229
 msgid "Computing size of EPUB..."
-msgstr ""
+msgstr "Подсчет размера файла EPUB..."
 
 #: epubsplit_plugin.py:243
 msgid "Finished computing size of EPUB."
-msgstr ""
+msgstr "Завершен подсчет размера файла EPUB."
 
 #: epubsplit_plugin.py:245
 msgid "Size of New Book"
-msgstr ""
+msgstr "Размер новой книги"
 
 #: epubsplit_plugin.py:246
 msgid "New EPUB File Size:"
-msgstr ""
+msgstr "Размер нового файла EPUB:"
 
 #: epubsplit_plugin.py:277
 msgid "%s Split"
@@ -466,7 +467,7 @@ msgstr "Отделить от:"
 msgid ""
 "You can enable or disable Edit Metadata in Preferences > Plugins > "
 "EpubSplit."
-msgstr ""
+msgstr "Редактирование метаданных можно включить или отключить в Параметры > Плагины > EpubSplit."
 
 #: epubsplit_plugin.py:361
 msgid ""
@@ -490,8 +491,8 @@ msgstr "Завершено отделение от  EPUB."
 #: epubsplit_plugin.py:421
 msgid ""
 "<b><u>%s</u> by %s</b> has been created and default metadata filled in."
-msgstr ""
+msgstr "Создано <b><u>%s</u> - %s</b> с метаданными по умолчанию."
 
 #: epubsplit_plugin.py:422
 msgid "EpubSplit now skips the Edit Metadata step by default."
-msgstr ""
+msgstr "EpubSplit теперь по умолчанию пропускает шаг редактирования метаданных."

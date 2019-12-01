@@ -5,7 +5,8 @@
 # Alex, 2016
 # Herman L.M. van der Vaart <vaarttuig@gmail.com>, 2018
 # Mario Moens <marimo.it4u@gmail.com>, 2017
-# M. de Boer <de.boer.melle@gmail.com>, 2018
+# M. de Boer <de.boer.melle@gmail.com>, 2018-2019
+# Meteor 0id, 2019
 # Rodolfo_Jadon, 2014-2015
 # Volluta <volluta@tutanota.com>, 2015
 # W.P.M.E. Hofland <wpme.hofland@gmail.com>, 2015
@@ -13,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
 "POT-Creation-Date: 2018-12-25 08:54+Central Standard Time\n"
-"PO-Revision-Date: 2018-12-25 15:41+0000\n"
-"Last-Translator: Kovid Goyal <kovid@kovidgoyal.net>\n"
+"PO-Revision-Date: 2019-08-20 15:16+0000\n"
+"Last-Translator: Meteor 0id\n"
 "Language-Team: Dutch (http://www.transifex.com/calibre/calibre-plugins/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -59,13 +60,13 @@ msgid ""
 "Checked sections will be included in <i>all</i> split books.<br>Default "
 "title will still be taken from the first <i>selected</i> section, and "
 "section order will remain as shown."
-msgstr ""
+msgstr "Gecontroleerde secties worden opgenomen in <i>alle</i> gesplitste boeken. <br> De standaardtitel wordt nog steeds overgenomen uit het eerste gedeelte <i>geselecteerde</i> en de sectievolgorde blijft zoals weergegeven."
 
 #: config.py:226
 msgid ""
 "When making a new Epub, the metadata from the source book will be copied or "
 "not as you choose below."
-msgstr "Bij het maken van een nieuwe Epub, zal naargelang uw keuze, de metadata van het boek al dan niet mee gekopieerd worden."
+msgstr "Bij het maken van een nieuwe Epub, zal naargelang uw keuze, de metagegevens van het boek al dan niet mee gekopieerd worden."
 
 #: config.py:239
 msgid "Title from First Included TOC"
@@ -206,7 +207,7 @@ msgstr "Toon bibliotheek voorkeuren..."
 
 #: config.py:324
 msgid "View data stored in the library database for this plugin"
-msgstr "Bekijk gegevens opgeslagen in de bibliotheekdatabase voor deze plugin"
+msgstr "Bekijk gegevens opgeslagen in de bibliotheekgegevensbank voor deze plugin"
 
 #: config.py:337 dialogs.py:115
 msgid "Done"
@@ -218,7 +219,7 @@ msgstr "Bevestigingsdialogen zijn allemaal gereset"
 
 #: config.py:354
 msgid "Save Source column:"
-msgstr ""
+msgstr "Opslaan bron kolom:"
 
 #: config.py:355
 msgid ""
@@ -250,11 +251,11 @@ msgstr "<p><b><i>Dubbelklik om van het voorbeeld te kopiëren.</i></b></p>"
 
 #: dialogs.py:97
 msgid "Configure"
-msgstr ""
+msgstr "configureren"
 
 #: dialogs.py:99
 msgid "Configure Plugin"
-msgstr ""
+msgstr "Configureer Plugin"
 
 #: dialogs.py:103
 msgid "New Book"
@@ -264,7 +265,7 @@ msgstr "Nieuw boek"
 msgid ""
 "Make <i>one</i> new book containing the sections selected above and then "
 "edit its Metadata."
-msgstr "Maak <i>een</i> nieuw boek aan met de hierboven geselecteerde secties  en wijzig dan de Metadata."
+msgstr "Maak <i>een</i> nieuw boek aan met de hierboven geselecteerde secties  en wijzig dan de Metagegevens."
 
 #: dialogs.py:107
 msgid "New Book per Section"
@@ -291,21 +292,21 @@ msgstr "Missende titel(s)"
 
 #: dialogs.py:139
 msgid "Some selected sections don't have a Table of Contents text."
-msgstr ""
+msgstr "Sommige geselecteerde secties hebben geen inhoudsopgave tekst."
 
 #: dialogs.py:140
 msgid ""
 "If you continue, those sections will be included with the last prior section"
 " that did have a Table of Contents text."
-msgstr ""
+msgstr "Als u doorgaat, worden die secties opgenomen in het laatste vorige gedeelte dat wel een inhoudsopgave-tekst bevatte."
 
 #: dialogs.py:141
 msgid "If you cancel, you can go back and add Table of Contents entries."
-msgstr ""
+msgstr "Als u annuleert, kunt u teruggaan en inhoudsopgave-items toevoegen."
 
 #: dialogs.py:142
 msgid "Double click to edit the Table of Contents entry for a section."
-msgstr ""
+msgstr "Dubbelklik om de inhoudsopgave voor een sectie te bewerken."
 
 #: dialogs.py:163
 msgid "Guide"
@@ -323,7 +324,7 @@ msgstr "Inhoudstafel"
 msgid ""
 "Use Context Menu (right-click) on selected sections to check or uncheck all "
 "selected sections."
-msgstr ""
+msgstr "Gebruik Contextmenu (klik met de rechtermuisknop) op geselecteerde secties om alle geselecteerde secties aan of uit te vinken."
 
 #: dialogs.py:211
 msgid "Indicates 'special' pages: copyright, titlepage, etc."
@@ -342,11 +343,11 @@ msgstr "Sectie voorbeeld"
 
 #: dialogs.py:317
 msgid "Check Selected"
-msgstr ""
+msgstr "Selecteer geselecteerd"
 
 #: dialogs.py:318
 msgid "Uncheck Selected"
-msgstr ""
+msgstr "De--selecteer geselecteerd"
 
 #: dialogs.py:332 dialogs.py:333 dialogs.py:334 dialogs.py:356 dialogs.py:357
 #: dialogs.py:358
@@ -427,14 +428,14 @@ msgstr "Selecteer secties om af te splitsen"
 
 #: epubsplit_plugin.py:164
 msgid "No Sections Selected"
-msgstr ""
+msgstr "Geen secties geselecteerd"
 
 #: epubsplit_plugin.py:165
 msgid ""
 "Book(s) not split.\n"
 "\n"
 "You must select at least one section to split."
-msgstr ""
+msgstr "Boek(en) niet gesplitst.\n\nU moet ten minste één sectie selecteren om te splitsen."
 
 #: epubsplit_plugin.py:196
 msgid "New Books Created"
@@ -472,7 +473,7 @@ msgstr "Splits vanaf:"
 msgid ""
 "You can enable or disable Edit Metadata in Preferences > Plugins > "
 "EpubSplit."
-msgstr ""
+msgstr "U kunt metagegevens bewerken of uitschakelen in Voorkeuren> Plug-ins> EpubSplit."
 
 #: epubsplit_plugin.py:361
 msgid ""
@@ -483,7 +484,7 @@ msgid ""
 "You can fill in the metadata yourself, or use download metadata for known books.\n"
 "\n"
 "If you download or add a cover image, it will be included in the generated EPUB."
-msgstr "Het boek voor het nieuwe opgesplitste EPUB is aangemaakt met standaard metadata reeds ingevuld.\n\nEchter, De EPUB zal *niet* worden aangemaakt zolang u het daar op volgende metadata dialoogvenster niet beoordeeld, bewerkt en afgesloten hebt.\n\nU kunt zelf de metadata gegevens invullen, of maak gebruik van metadata downloaden voor bekende boeken.\n\nIndien u een afbeelding van een voorblad download of toevoegt , zal het toegevoegd worden in de aangemaakte EPUB."
+msgstr "Het boek voor het nieuwe opgesplitste EPUB is aangemaakt met standaard metagegevens reeds ingevuld.\n\nEchter, De EPUB zal *niet* worden aangemaakt zolang u het daar op volgende metagegevens dialoogvenster niet beoordeeld, bewerkt en afgesloten hebt.\n\nU kunt zelf de metagegevens gegevens invullen, of maak gebruik van metagegevens downloaden voor bekende boeken.\n\nIndien u een afbeelding van een voorblad download of toevoegt , zal het toegevoegd worden in de aangemaakte EPUB."
 
 #: epubsplit_plugin.py:379
 msgid "Splitting off from EPUB..."
@@ -496,8 +497,8 @@ msgstr "Splitsen van EPUB voltooid."
 #: epubsplit_plugin.py:421
 msgid ""
 "<b><u>%s</u> by %s</b> has been created and default metadata filled in."
-msgstr ""
+msgstr "<b><u>%s</u>door %s</b> is gemaakt en standaard metagegevens zijn ingevuld."
 
 #: epubsplit_plugin.py:422
 msgid "EpubSplit now skips the Edit Metadata step by default."
-msgstr ""
+msgstr "EpubSplit skipt nu standaard de stap metagegevens bewerken."

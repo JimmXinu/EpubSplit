@@ -2,9 +2,9 @@
 # Copyright (C) YEAR ORGANIZATION
 # 
 # Translators:
-# Fito JB, 2014
+# Adolfo Jayme-Barrientos, 2014
 # Albert, 2016
-# Darío Hereñú <magallania@gmail.com>, 2018
+# Darío Hereñú, 2018
 # Jellby <jellby@yahoo.com>, 2014-2018
 # Rafael Ontivero <rafael.ontivero@gmail.com>, 2017
 msgid ""

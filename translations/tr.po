@@ -9,12 +9,13 @@
 # MUSTAFA ANAR <mstf.anar@gmail.com>, 2016
 # Necdet Yücel <necdetyucel@gmail.com>, 2017
 # Sarper S <fmdoge@gmail.com>, 2016
+# Serdar Sağlam <teknomobil@msn.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
 "POT-Creation-Date: 2018-12-25 08:54+Central Standard Time\n"
-"PO-Revision-Date: 2018-12-25 15:41+0000\n"
-"Last-Translator: Kovid Goyal <kovid@kovidgoyal.net>\n"
+"PO-Revision-Date: 2019-05-12 15:39+0000\n"
+"Last-Translator: Serdar Sağlam <teknomobil@msn.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/calibre/calibre-plugins/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,7 +38,7 @@ msgstr "Kişisel Sütunlar"
 
 #: config.py:214
 msgid "Edit Metadata for New Book(s)"
-msgstr ""
+msgstr "Yeni Kitaplar İçin Üst Verileri Düzenle"
 
 #: config.py:215
 msgid ""
@@ -48,11 +49,11 @@ msgstr ""
 
 #: config.py:219
 msgid "Show 'Always Include' Checkboxes"
-msgstr ""
+msgstr "'Her Zaman Dahil Et' Onay Kutularını Göster"
 
 #: config.py:220
 msgid "If enabled, a checkbox will appear for each section."
-msgstr ""
+msgstr "Etkinleştirilirse, her bölüm için bir onay kutusu görünür."
 
 #: config.py:221 dialogs.py:194
 msgid ""
@@ -218,7 +219,7 @@ msgstr "Onaylama diyaloglarının tümü sıfırlandı"
 
 #: config.py:354
 msgid "Save Source column:"
-msgstr ""
+msgstr "Kaynağı Kaydet sütunu:"
 
 #: config.py:355
 msgid ""
@@ -250,11 +251,11 @@ msgstr "<p><b><i>Örnekten kopyalamak için çift tıklayın.</i></b></p>"
 
 #: dialogs.py:97
 msgid "Configure"
-msgstr ""
+msgstr "Yapılandır"
 
 #: dialogs.py:99
 msgid "Configure Plugin"
-msgstr ""
+msgstr "Eklentiyi Yapılandır"
 
 #: dialogs.py:103
 msgid "New Book"
