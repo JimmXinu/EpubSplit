@@ -6,18 +6,21 @@ __copyright__ = '2019, Jim Miller'
 __docformat__ = 'restructuredtext en'
 
 import sys, re, os, traceback, copy
-from urllib import unquote
 from posixpath import normpath
+import logging
+logger = logging.getLogger(__name__)
 
 from zipfile import ZipFile, ZIP_STORED, ZIP_DEFLATED
 
 from xml.dom.minidom import parse, parseString, getDOMImplementation, Element
 from time import time
 
-try:
-    from calibre.ebooks import BeautifulSoup as bs
-except:
-    import BeautifulSoup as bs
+import six
+from six.moves.urllib.parse import unquote
+from six import string_types, text_type as unicode
+from six import unichr
+
+from bs4 import BeautifulSoup
 
 def _unirepl(match):
     "Return the unicode string for a decimal number"
@@ -33,7 +36,7 @@ def _unirepl(match):
     except:
         # This way, at least if there's more of entities out there
         # that fail, it doesn't blow the entire download.
-        print "Numeric entity translation failed, skipping: &#x%s%s"%(match.group(1),match.group(2))
+        print("Numeric entity translation failed, skipping: &#x%s%s"%(match.group(1),match.group(2)))
         retval = ""
     return retval
 
@@ -58,7 +61,7 @@ def stripHTML(soup):
     return removeAllEntities(re.sub(r'<[^>]+>','',"%s" % soup)).strip()
 
 def conditionalRemoveEntities(value):
-    if isinstance(value,str) or isinstance(value,unicode) :
+    if isinstance(value,string_types) :
         return removeEntities(value).strip()
     else:
         return value
@@ -71,15 +74,15 @@ def removeEntities(text):
 
     if text is None:
         return ""
-    if not (isinstance(text,str) or isinstance(text,unicode)):
+    if not (isinstance(text,string_types)):
         return str(text)
 
     try:
-        t = text.decode('utf-8')
-    except UnicodeEncodeError, e:
+        t = unicode(text) #.decode('utf-8')
+    except UnicodeEncodeError as e:
         try:
             t = text.encode ('ascii', 'xmlcharrefreplace')
-        except UnicodeEncodeError, e:
+        except UnicodeEncodeError as e:
             t = text
     text = t
     # replace numeric versions of [&<>] with named versions,
@@ -98,7 +101,7 @@ def removeEntities(text):
         v = entities[e]
         try:
             text = text.replace(e, v)
-        except UnicodeDecodeError, ex:
+        except UnicodeDecodeError as ex:
             # for the pound symbol in constants.py
             text = text.replace(e, v.decode('utf-8'))
 
@@ -564,7 +567,8 @@ class SplitEpub:
                 # (may be others due to nesting.
                 textnode = navpoint.getElementsByTagName("text")[0].firstChild
                 if textnode:
-                    text = textnode.data.encode("utf-8")
+                    text = unicode(textnode.data)
+                    # text = textnode.data.encode("utf-8")
                 else:
                     #print("No chapter title found in TOC for (%s)"%src)
                     text = ""
@@ -723,10 +727,10 @@ class SplitEpub:
         # Spin through to replace internal URLs
         for fl in outfiles:
             #print("file:%s"%fl[0])
-            soup = bs.BeautifulSoup(fl[3])
+            soup = BeautifulSoup(fl[3],"html5lib")
             changed = False
             for a in soup.findAll('a'):
-                if a.has_key('href'):
+                if a.has_attr('href'):
                     path = normpath(unquote("%s%s"%(get_path_part(fl[0]),a['href'])))
                     #print("full a['href']:%s"%path)
                     if path in self.filecache.anchors and self.filecache.anchors[path] != path:
@@ -734,12 +738,13 @@ class SplitEpub:
                         #print("replacement path:%s"%a['href'])
                         changed = True
             if changed:
-                try:
-                    # Newer BeautifulSoup versions
-                    fl[3] = soup.decode('utf-8')
-                except:
-                    # Older BS versions
-                    fl[3] = soup.__str__('utf-8').decode('utf-8')
+                fl[3] = unicode(soup)
+                # try:
+                #     # Newer BeautifulSoup versions
+                #     fl[3] = soup.decode('utf-8')
+                # except:
+                #     # Older BS versions
+                #     fl[3] = soup.__str__('utf-8').decode('utf-8')
 
         return outfiles
 
@@ -805,7 +810,7 @@ class SplitEpub:
 
         usedauthors=dict()
         for author in useauthors:
-            if( not usedauthors.has_key(author) ):
+            if( author not in usedauthors ):
                 usedauthors[author]=author
                 metadata.appendChild(newTag(contentdom,"dc:creator",
                                             attrs={"opf:role":"aut"},
@@ -900,7 +905,7 @@ class SplitEpub:
 
             try:
                 outputepub.writestr(linked,self.get_file(linked))
-            except Exception, e:
+            except Exception as e:
                 print("Failed to copy linked file (%s)\nException: %s"%(linked,e))
 
             id = "a%d"%contentcount
@@ -1001,7 +1006,7 @@ class FileCache:
         self.linkedfiles = set()
 
         ## always include font files for embedded fonts
-        for key, value in self.manifest_items.iteritems():
+        for key, value in six.iteritems(self.manifest_items):
             #print("manifest:%s %s"%(key,value))
             if key.startswith('i:') and value[1] == 'application/x-font-truetype':
                 self.add_linked_file(value[0])
@@ -1030,41 +1035,41 @@ class FileCache:
         self.newold[newfile]=href
         #print("newfile:%s"%newfile)
 
-        soup = bs.BeautifulSoup(filedata) #.encode('utf-8')
+        soup = BeautifulSoup(filedata,"html5lib") #.encode('utf-8')
         #print("soup head:%s"%soup.find('head'))
 
         # same name?  Don't need to worry about changing links to anchors
         for a in soup.findAll(): # not just 'a', any tag.
             #print("a:%s"%a)
-            if a.has_key('id'):
+            if a.has_attr('id'):
                 self.anchors[href+'#'+a['id']]=newfile+'#'+a['id']
 
         for img in soup.findAll('img'):
-            if img.has_key('src'):
+            if img.has_attr('src'):
                 src=img['src']
-            if img.has_key('xlink:href'):
+            if img.has_attr('xlink:href'):
                 src=img['xlink:href']
             self.add_linked_file(get_path_part(href)+src)
 
         # from baen epub.
         # <image width="462" height="616" xlink:href="cover.jpeg"/>
         for img in soup.findAll('image'):
-            if img.has_key('src'):
+            if img.has_attr('src'):
                 src=img['src']
-            if img.has_key('xlink:href'):
+            if img.has_attr('xlink:href'):
                 src=img['xlink:href']
             self.add_linked_file(get_path_part(href)+src)
 
         # link href="0.css" type="text/css"
         for style in soup.findAll('link',{'type':'text/css'}):
             #print("link:%s"%style)
-            if style.has_key('href'):
+            if style.has_attr('href'):
                 self.add_linked_file(get_path_part(href)+style['href'])
 
         return newfile
 
 def splitHtml(data,tagid,before=False):
-    soup = bs.BeautifulSoup(data)
+    soup = BeautifulSoup(data,"html5lib")
     #print("splitHtml.soup head:%s"%soup.find('head'))
 
     splitpoint = soup.find(id=tagid)
@@ -1097,12 +1102,13 @@ def splitHtml(data,tagid,before=False):
                 n.extract()
             parent = parent.parent
 
-    try:
-        # Newer BeautifulSoup versions
-        return re.sub(r'( *\r?\n)+','\r\n',soup.decode('utf-8'))
-    except:
-        # Older BS versions
-        return re.sub(r'( *\r?\n)+','\r\n',soup.__str__('utf-8').decode('utf-8'))
+    return re.sub(r'( *\r?\n)+','\r\n',unicode(soup))
+    # try:
+    #     # Newer BeautifulSoup versions
+    #     return re.sub(r'( *\r?\n)+','\r\n',soup.decode('utf-8'))
+    # except:
+    #     # Older BS versions
+    #     return re.sub(r'( *\r?\n)+','\r\n',soup.__str__('utf-8').decode('utf-8'))
 
 def get_path_part(n):
     relpath = os.path.dirname(n)

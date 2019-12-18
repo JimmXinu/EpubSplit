@@ -9,6 +9,9 @@ __docformat__ = 'restructuredtext en'
 
 import traceback
 from functools import partial
+import six
+from six import text_type as unicode
+from six.moves import range
 
 import logging
 logger = logging.getLogger(__name__)

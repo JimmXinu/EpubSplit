@@ -8,6 +8,8 @@ __copyright__ = '2018, Jim Miller'
 __docformat__ = 'restructuredtext en'
 
 import traceback, copy
+import six
+from six import text_type as unicode
 
 try:
     from PyQt5.Qt import (QDialog, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QFont, QGridLayout,
@@ -184,7 +186,7 @@ class ConfigWidget(QWidget):
 
         # Custom Columns tab
         colsmap = {}
-        for (col,chkbx) in self.columns_tab.custcol_checkboxes.iteritems():
+        for (col,chkbx) in six.iteritems(self.columns_tab.custcol_checkboxes):
             if chkbx.isChecked():
                 colsmap[col] = chkbx.isChecked()
             #print("colsmap[%s]:%s"%(col,colsmap[col]))
@@ -360,7 +362,7 @@ class CustomColumnsTab(QWidget):
         self.sourcecol = QComboBox(self)
         self.sourcecol.setToolTip(_("Choose a column to populate with template on split."))
         self.sourcecol.addItem('','none')
-        for key, column in custom_columns.iteritems():
+        for key, column in six.iteritems(custom_columns):
             if column['datatype'] in ('text','comments','series'):
                 self.sourcecol.addItem(column['name'],key)
         self.sourcecol.setCurrentIndex(self.sourcecol.findData(prefs['sourcecol']))
@@ -393,9 +395,9 @@ class CustomColumnsTab(QWidget):
 
         self.custcol_checkboxes = {}
 
-        for key, column in custom_columns.iteritems():
+        for key, column in six.iteritems(custom_columns):
             # print("\n============== %s ===========\n"%key)
-            # for (k,v) in column.iteritems():
+            # for (k,v) in six.iteritems(column):
             #     print("column['%s'] => %s"%(k,v))
             checkbox = QCheckBox('%s(%s)'%(column['name'],key))
             checkbox.setToolTip(_("Copy this %s column to new split books...")%column['datatype'])

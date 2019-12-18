@@ -11,10 +11,13 @@ import logging
 logger = logging.getLogger(__name__)
 
 import time, os, copy, threading
-from ConfigParser import SafeConfigParser
-from StringIO import StringIO
+from io import BytesIO
 from functools import partial
 from datetime import datetime
+
+import six
+from six.moves.configparser import SafeConfigParser
+from six import text_type as unicode
 
 try:
     from PyQt5.Qt import (QApplication, QCursor, Qt, QMenu, QToolButton)
@@ -128,7 +131,7 @@ class EpubSplitPlugin(InterfaceAction):
             misource = db.get_metadata(source_id, index_is_id=True)
 
             if db.has_format(source_id,'EPUB',index_is_id=True):
-                splitepub = SplitEpub(StringIO(db.format(source_id,'EPUB',index_is_id=True)))
+                splitepub = SplitEpub(BytesIO(db.format(source_id,'EPUB',index_is_id=True)))
             else:
                 d = error_dialog(self.gui, _('No EPUB'),
                                  _('This plugin only works on EPUB format ebooks.'))
@@ -319,7 +322,7 @@ class EpubSplitPlugin(InterfaceAction):
         self.t = time.time()
 
         custom_columns = self.gui.library_view.model().custom_columns
-        for col, action in prefs['custom_cols'].iteritems():
+        for col, action in six.iteritems(prefs['custom_cols']):
             #logger.debug("col: %s action: %s"%(col,action))
 
             if col not in custom_columns:
