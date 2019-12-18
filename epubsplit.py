@@ -20,7 +20,7 @@ from six.moves.urllib.parse import unquote
 from six import string_types, text_type as unicode
 from six import unichr
 
-from bs4 import BeautifulSoup
+from calibre.ebooks.BeautifulSoup import BeautifulSoup
 
 def _unirepl(match):
     "Return the unicode string for a decimal number"
@@ -727,10 +727,10 @@ class SplitEpub:
         # Spin through to replace internal URLs
         for fl in outfiles:
             #print("file:%s"%fl[0])
-            soup = BeautifulSoup(fl[3],"html5lib")
+            soup = BeautifulSoup(fl[3])
             changed = False
             for a in soup.findAll('a'):
-                if a.has_attr('href'):
+                if a.has_key('href'):
                     path = normpath(unquote("%s%s"%(get_path_part(fl[0]),a['href'])))
                     #print("full a['href']:%s"%path)
                     if path in self.filecache.anchors and self.filecache.anchors[path] != path:
@@ -915,7 +915,7 @@ class SplitEpub:
                                                'href':linked,
                                                'media-type':type}))
 
-        contentxml = contentdom.toprettyxml(indent='   ',encoding='utf-8')
+        contentxml = contentdom.toprettyxml(indent='   ') # ,encoding='utf-8'
         # tweak for brain damaged Nook STR.  Nook insists on name before content.
         contentxml = contentxml.replace('<meta content="coverimageid" name="cover"/>',
                                         '<meta name="cover" content="coverimageid"/>')
@@ -1035,41 +1035,41 @@ class FileCache:
         self.newold[newfile]=href
         #print("newfile:%s"%newfile)
 
-        soup = BeautifulSoup(filedata,"html5lib") #.encode('utf-8')
+        soup = BeautifulSoup(filedata) #.encode('utf-8')
         #print("soup head:%s"%soup.find('head'))
 
         # same name?  Don't need to worry about changing links to anchors
         for a in soup.findAll(): # not just 'a', any tag.
             #print("a:%s"%a)
-            if a.has_attr('id'):
+            if a.has_key('id'):
                 self.anchors[href+'#'+a['id']]=newfile+'#'+a['id']
 
         for img in soup.findAll('img'):
-            if img.has_attr('src'):
+            if img.has_key('src'):
                 src=img['src']
-            if img.has_attr('xlink:href'):
+            if img.has_key('xlink:href'):
                 src=img['xlink:href']
             self.add_linked_file(get_path_part(href)+src)
 
         # from baen epub.
         # <image width="462" height="616" xlink:href="cover.jpeg"/>
         for img in soup.findAll('image'):
-            if img.has_attr('src'):
+            if img.has_key('src'):
                 src=img['src']
-            if img.has_attr('xlink:href'):
+            if img.has_key('xlink:href'):
                 src=img['xlink:href']
             self.add_linked_file(get_path_part(href)+src)
 
         # link href="0.css" type="text/css"
         for style in soup.findAll('link',{'type':'text/css'}):
             #print("link:%s"%style)
-            if style.has_attr('href'):
+            if style.has_key('href'):
                 self.add_linked_file(get_path_part(href)+style['href'])
 
         return newfile
 
 def splitHtml(data,tagid,before=False):
-    soup = BeautifulSoup(data,"html5lib")
+    soup = BeautifulSoup(data)
     #print("splitHtml.soup head:%s"%soup.find('head'))
 
     splitpoint = soup.find(id=tagid)
