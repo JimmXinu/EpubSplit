@@ -362,7 +362,8 @@ class CustomColumnsTab(QWidget):
         self.sourcecol = QComboBox(self)
         self.sourcecol.setToolTip(_("Choose a column to populate with template on split."))
         self.sourcecol.addItem('','none')
-        for key, column in six.iteritems(custom_columns):
+        ## sort by visible Column Name (vs #name)
+        for key, column in sorted(custom_columns.items(), key=lambda x: x[1]['name']):
             if column['datatype'] in ('text','comments','series'):
                 self.sourcecol.addItem(column['name'],key)
         self.sourcecol.setCurrentIndex(self.sourcecol.findData(prefs['sourcecol']))
@@ -395,7 +396,8 @@ class CustomColumnsTab(QWidget):
 
         self.custcol_checkboxes = {}
 
-        for key, column in six.iteritems(custom_columns):
+        ## sort by visible Column Name (vs #name)
+        for key, column in sorted(custom_columns.items(), key=lambda x: x[1]['name']):
             # print("\n============== %s ===========\n"%key)
             # for (k,v) in six.iteritems(column):
             #     print("column['%s'] => %s"%(k,v))
