@@ -20,7 +20,7 @@ from six.moves.urllib.parse import unquote
 from six import string_types, text_type as unicode
 from six import unichr
 
-from calibre.ebooks.BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 
 def _unirepl(match):
     "Return the unicode string for a decimal number"
@@ -727,10 +727,10 @@ class SplitEpub:
         # Spin through to replace internal URLs
         for fl in outfiles:
             #print("file:%s"%fl[0])
-            soup = BeautifulSoup(fl[3])
+            soup = BeautifulSoup(fl[3],'html5lib')
             changed = False
             for a in soup.findAll('a'):
-                if a.has_key('href'):
+                if a.has_attr('href'):
                     path = normpath(unquote("%s%s"%(get_path_part(fl[0]),a['href'])))
                     #print("full a['href']:%s"%path)
                     if path in self.filecache.anchors and self.filecache.anchors[path] != path:
@@ -739,12 +739,6 @@ class SplitEpub:
                         changed = True
             if changed:
                 fl[3] = unicode(soup)
-                # try:
-                #     # Newer BeautifulSoup versions
-                #     fl[3] = soup.decode('utf-8')
-                # except:
-                #     # Older BS versions
-                #     fl[3] = soup.__str__('utf-8').decode('utf-8')
 
         return outfiles
 
@@ -906,7 +900,7 @@ class SplitEpub:
             try:
                 outputepub.writestr(linked,self.get_file(linked))
             except Exception as e:
-                print("Failed to copy linked file (%s)\nException: %s"%(linked,e))
+                print("Skipping linked file (%s)\nException: %s"%(linked,e))
 
             id = "a%d"%contentcount
             contentcount += 1
@@ -1035,41 +1029,41 @@ class FileCache:
         self.newold[newfile]=href
         #print("newfile:%s"%newfile)
 
-        soup = BeautifulSoup(filedata) #.encode('utf-8')
+        soup = BeautifulSoup(filedata,'html5lib')
         #print("soup head:%s"%soup.find('head'))
 
         # same name?  Don't need to worry about changing links to anchors
         for a in soup.findAll(): # not just 'a', any tag.
             #print("a:%s"%a)
-            if a.has_key('id'):
+            if a.has_attr('id'):
                 self.anchors[href+'#'+a['id']]=newfile+'#'+a['id']
 
         for img in soup.findAll('img'):
-            if img.has_key('src'):
+            if img.has_attr('src'):
                 src=img['src']
-            if img.has_key('xlink:href'):
+            if img.has_attr('xlink:href'):
                 src=img['xlink:href']
             self.add_linked_file(get_path_part(href)+src)
 
         # from baen epub.
         # <image width="462" height="616" xlink:href="cover.jpeg"/>
         for img in soup.findAll('image'):
-            if img.has_key('src'):
+            if img.has_attr('src'):
                 src=img['src']
-            if img.has_key('xlink:href'):
+            if img.has_attr('xlink:href'):
                 src=img['xlink:href']
             self.add_linked_file(get_path_part(href)+src)
 
         # link href="0.css" type="text/css"
         for style in soup.findAll('link',{'type':'text/css'}):
             #print("link:%s"%style)
-            if style.has_key('href'):
+            if style.has_attr('href'):
                 self.add_linked_file(get_path_part(href)+style['href'])
 
         return newfile
 
 def splitHtml(data,tagid,before=False):
-    soup = BeautifulSoup(data)
+    soup = BeautifulSoup(data,'html5lib')
     #print("splitHtml.soup head:%s"%soup.find('head'))
 
     splitpoint = soup.find(id=tagid)
@@ -1103,12 +1097,6 @@ def splitHtml(data,tagid,before=False):
             parent = parent.parent
 
     return re.sub(r'( *\r?\n)+','\r\n',unicode(soup))
-    # try:
-    #     # Newer BeautifulSoup versions
-    #     return re.sub(r'( *\r?\n)+','\r\n',soup.decode('utf-8'))
-    # except:
-    #     # Older BS versions
-    #     return re.sub(r'( *\r?\n)+','\r\n',soup.__str__('utf-8').decode('utf-8'))
 
 def get_path_part(n):
     relpath = os.path.dirname(n)
