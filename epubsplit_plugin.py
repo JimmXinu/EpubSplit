@@ -4,7 +4,7 @@ from __future__ import (unicode_literals, division, absolute_import,
                         print_function)
 
 __license__   = 'GPL v3'
-__copyright__ = '2019, Jim Miller'
+__copyright__ = '2020, Jim Miller'
 __docformat__ = 'restructuredtext en'
 
 import logging
@@ -132,6 +132,13 @@ class EpubSplitPlugin(InterfaceAction):
 
             if db.has_format(source_id,'EPUB',index_is_id=True):
                 splitepub = SplitEpub(BytesIO(db.format(source_id,'EPUB',index_is_id=True)))
+                from calibre.ebooks.oeb.polish.container import get_container
+                container = get_container(db.format_abspath(source_id,'EPUB',index_is_id=True))
+                if container.opf_version_parsed.major >= 3:
+                    d = error_dialog(self.gui, _('EPUB3 Detected'),
+                                     _('This plugin only works on EPUB2 format ebooks.'))
+                    d.exec_()
+                    return
             else:
                 d = error_dialog(self.gui, _('No EPUB'),
                                  _('This plugin only works on EPUB format ebooks.'))
@@ -433,6 +440,9 @@ If you download or add a cover image, it will be included in the generated EPUB.
     def apply_settings(self):
         # No need to do anything with prefs here, but we could.
         prefs
+
+    def get_splitepub(self, *args, **kwargs):
+        return SplitEpub(*args, **kwargs)
 
 def humanbytes(B):
    'Return the given bytes as a human friendly KB, MB, GB, or TB string'
