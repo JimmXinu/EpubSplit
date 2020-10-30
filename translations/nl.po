@@ -5,7 +5,7 @@
 # Alex, 2016
 # Herman L.M. van der Vaart <vaarttuig@gmail.com>, 2018
 # Mario Moens <marimo.it4u@gmail.com>, 2017
-# M. de Boer <de.boer.melle@gmail.com>, 2018-2019
+# M. de Boer <de.boer.melle@gmail.com>, 2018-2020
 # Meteor0id, 2019
 # Rodolfo_Jadon, 2014-2015
 # Volluta <volluta@tutanota.com>, 2015
@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
 "POT-Creation-Date: 2020-01-28 12:35-0600\n"
-"PO-Revision-Date: 2020-01-29 02:39+0000\n"
-"Last-Translator: Kovid Goyal <kovid@kovidgoyal.net>\n"
+"PO-Revision-Date: 2020-02-25 15:58+0000\n"
+"Last-Translator: M. de Boer <de.boer.melle@gmail.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/calibre/calibre-plugins/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -416,11 +416,11 @@ msgstr "Selecteer alstublieft één boek om te splitsen."
 
 #: epubsplit_plugin.py:138
 msgid "EPUB3 Detected"
-msgstr ""
+msgstr "EPUB3 gedetecteerd"
 
 #: epubsplit_plugin.py:139
 msgid "This plugin only works on EPUB2 format ebooks."
-msgstr ""
+msgstr "Deze plugin werkt alleen op ebooks met het EPUB2-bestandsformaat."
 
 #: epubsplit_plugin.py:143
 msgid "No EPUB"

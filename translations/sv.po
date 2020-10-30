@@ -2,8 +2,8 @@
 # Copyright (C) YEAR ORGANIZATION
 # 
 # Translators:
-# Jonatan Nyberg, 2016
-# Jonatan Nyberg, 2018
+# Jonatan Nyberg <jonatan.nyberg.karl@gmail.com>, 2016
+# Jonatan Nyberg <jonatan.nyberg.karl@gmail.com>, 2018,2020
 # Mars Northman <marsnorthman@gmail.com>, 2017
 # Merarom <merarom@yahoo.es>, 2014-2015
 # Sebastian Rasmussen <sebras@gmail.com>, 2018
@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
 "POT-Creation-Date: 2020-01-28 12:35-0600\n"
-"PO-Revision-Date: 2020-01-29 02:39+0000\n"
-"Last-Translator: Kovid Goyal <kovid@kovidgoyal.net>\n"
+"PO-Revision-Date: 2020-03-07 07:49+0000\n"
+"Last-Translator: Jonatan Nyberg <jonatan.nyberg.karl@gmail.com>\n"
 "Language-Team: Swedish (http://www.transifex.com/calibre/calibre-plugins/language/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -413,11 +413,11 @@ msgstr "Var god välj exakt en bok att dela upp."
 
 #: epubsplit_plugin.py:138
 msgid "EPUB3 Detected"
-msgstr ""
+msgstr "EPUB3 upptäckt"
 
 #: epubsplit_plugin.py:139
 msgid "This plugin only works on EPUB2 format ebooks."
-msgstr ""
+msgstr "Den här insticksmodulen fungerar bara på e-böcker med EPUB2-format."
 
 #: epubsplit_plugin.py:143
 msgid "No EPUB"
