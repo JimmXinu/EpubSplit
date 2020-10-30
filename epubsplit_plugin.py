@@ -42,7 +42,8 @@ try:
 except NameError:
     pass # load_translations() added in calibre 1.9
 
-from calibre_plugins.epubsplit.common_utils import (set_plugin_icon_resources, get_icon)
+from calibre_plugins.epubsplit.common_utils import (
+    set_plugin_icon_resources, get_icon, busy_cursor)
 
 from calibre_plugins.epubsplit.config import prefs
 
@@ -119,33 +120,34 @@ class EpubSplitPlugin(InterfaceAction):
                              show_copy_button=False)
             d.exec_()
         else:
-            self.previous = self.gui.library_view.currentIndex()
-            db=self.gui.current_db
-            self.book_count = 1 # for series Source columns
+            with busy_cursor():
+                self.previous = self.gui.library_view.currentIndex()
+                db=self.gui.current_db
+                self.book_count = 1 # for series Source columns
 
-            #logger.debug("1:%s"%(time.time()-self.t))
-            self.t = time.time()
+                #logger.debug("1:%s"%(time.time()-self.t))
+                self.t = time.time()
 
-            source_id = self.gui.library_view.get_selected_ids()[0]
+                source_id = self.gui.library_view.get_selected_ids()[0]
 
-            misource = db.get_metadata(source_id, index_is_id=True)
+                misource = db.get_metadata(source_id, index_is_id=True)
 
-            if db.has_format(source_id,'EPUB',index_is_id=True):
-                splitepub = SplitEpub(BytesIO(db.format(source_id,'EPUB',index_is_id=True)))
-                from calibre.ebooks.oeb.polish.container import get_container
-                container = get_container(db.format_abspath(source_id,'EPUB',index_is_id=True))
-                if container.opf_version_parsed.major >= 3:
-                    d = error_dialog(self.gui, _('EPUB3 Detected'),
-                                     _('This plugin only works on EPUB2 format ebooks.'))
+                if db.has_format(source_id,'EPUB',index_is_id=True):
+                    splitepub = SplitEpub(BytesIO(db.format(source_id,'EPUB',index_is_id=True)))
+                    from calibre.ebooks.oeb.polish.container import get_container
+                    container = get_container(db.format_abspath(source_id,'EPUB',index_is_id=True))
+                    if container.opf_version_parsed.major >= 3:
+                        d = error_dialog(self.gui, _('EPUB3 Detected'),
+                                         _('This plugin only works on EPUB2 format ebooks.'))
+                        d.exec_()
+                        return
+                else:
+                    d = error_dialog(self.gui, _('No EPUB'),
+                                     _('This plugin only works on EPUB format ebooks.'))
                     d.exec_()
                     return
-            else:
-                d = error_dialog(self.gui, _('No EPUB'),
-                                 _('This plugin only works on EPUB format ebooks.'))
-                d.exec_()
-                return
 
-            lines = splitepub.get_split_lines()
+                lines = splitepub.get_split_lines()
 
             # for line in lines:
             #     logger.debug("line(%d):%s"%(line['num'],line))
