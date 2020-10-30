@@ -575,11 +575,16 @@ class SplitEpub:
 
                 if href not in self.toc_map:
                     self.toc_map[href] = []
-                self.toc_map[href].append((text,anchor))
-                # sorting will put file links ahead of ancher links.
-                # Otherwise a non-linear anchor link may take
-                # precedence.
-                self.toc_map[href].sort()
+                if anchor == None:
+                    # put file links ahead of ancher links.  Otherwise
+                    # a non-linear anchor link may take precedence,
+                    # which will confuse EpubSplit.  This will cause
+                    # split lines to possibly be out of order from
+                    # TOC, but the alternative is worse.  Should be a
+                    # rare corner case.
+                    self.toc_map[href].insert(0,(text,anchor))
+                else:
+                    self.toc_map[href].append((text,anchor))
 
         return self.toc_map
 
