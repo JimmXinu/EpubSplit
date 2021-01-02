@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 __license__   = 'GPL v3'
-__copyright__ = '2019, Jim Miller'
+__copyright__ = '2021, Jim Miller'
 __docformat__ = 'restructuredtext en'
 
 import sys, re, os, traceback, copy
@@ -1007,7 +1007,10 @@ class FileCache:
         ## always include font files for embedded fonts
         for key, value in six.iteritems(self.manifest_items):
             #print("manifest:%s %s"%(key,value))
-            if key.startswith('i:') and value[1] == 'application/x-font-truetype':
+            if key.startswith('i:') and value[1] in ('application/vnd.ms-opentype',
+                                                     'application/x-font-ttf',
+                                                     'application/x-font-truetype',
+                                                     'application/font-sfnt'):
                 self.add_linked_file(value[0])
 
     def add_linked_file(self, href):
