@@ -4,7 +4,7 @@ from __future__ import (unicode_literals, division, absolute_import,
                         print_function)
 
 __license__   = 'GPL v3'
-__copyright__ = '2020, Jim Miller'
+__copyright__ = '2021, Jim Miller'
 __docformat__ = 'restructuredtext en'
 
 import logging
@@ -317,8 +317,29 @@ class EpubSplitPlugin(InterfaceAction):
         if prefs['copyidentifiers']:
             mi.set_identifiers(misource.get_identifiers())
 
+        comments = ''
+        titles = []
+
+        if prefs['copycommentstitle']:
+            titles.append('<em>'+misource.title+'</em>')
+
+        if prefs['copycommentscallink']:
+            library = self.gui.iactions['Choose Library'].library_name()
+            titles.append('<a href="calibre://show-book/'+library+'/'+unicode(source_id)+'">'+_('Calibre Library Link')+'</a>')
+
+        if prefs['copycommentsidurl']:
+            identifiers = misource.get_identifiers()
+            if 'url' in identifiers:
+                titles.append('<a href="'+identifiers['url']+'">'+_('Source URL')+'</a>')
+
+        if titles:
+            comments += '<p>' + ('<br>').join(titles) + '</p>\n'
+
         if prefs['copycomments'] and misource.comments:
-            mi.comments = "<p>"+_("Split from:")+"</p>" + misource.comments
+            comments +=  misource.comments
+
+        if comments:
+            mi.comments = '<div><p>'+_('Split from:')+'</p>\n'+comments+'</div>'
 
         #logger.debug("mi:%s"%mi)
         book_id = db.create_book_entry(mi,

@@ -4,7 +4,7 @@ from __future__ import (unicode_literals, division, absolute_import,
                         print_function)
 
 __license__   = 'GPL v3'
-__copyright__ = '2018, Jim Miller'
+__copyright__ = '2021, Jim Miller'
 __docformat__ = 'restructuredtext en'
 
 import traceback, copy
@@ -68,6 +68,9 @@ default_prefs['copypubdate'] = True
 
 default_prefs['copylanguages'] = True
 default_prefs['copyseries'] = True
+default_prefs['copycommentstitle'] = True
+default_prefs['copycommentscallink'] = False
+default_prefs['copycommentsidurl'] = True
 default_prefs['copycomments'] = True
 default_prefs['copycover'] = True
 
@@ -176,6 +179,9 @@ class ConfigWidget(QWidget):
         prefs['copytags'] = self.basic_tab.copytags.isChecked()
         prefs['copylanguages'] = self.basic_tab.copylanguages.isChecked()
         prefs['copyseries'] = self.basic_tab.copyseries.isChecked()
+        prefs['copycommentstitle'] = self.basic_tab.copycommentstitle.isChecked()
+        prefs['copycommentscallink'] = self.basic_tab.copycommentscallink.isChecked()
+        prefs['copycommentsidurl'] = self.basic_tab.copycommentsidurl.isChecked()
         prefs['copycomments'] = self.basic_tab.copycomments.isChecked()
         prefs['copycover'] = self.basic_tab.copycover.isChecked()
         prefs['copydate'] = self.basic_tab.copydate.isChecked()
@@ -297,6 +303,21 @@ class BasicTab(QWidget):
         self.copylanguages.setToolTip(_('Copy Languages from the source Epub to the Split Epub.'))
         self.copylanguages.setChecked(prefs['copylanguages'])
         self.sl.addWidget(self.copylanguages)
+
+        self.copycommentstitle = QCheckBox(_('Copy Source Title to Comments'),self)
+        self.copycommentstitle.setToolTip(_('Copy Title from the source Epub to the Split Epub Comments.'))
+        self.copycommentstitle.setChecked(prefs['copycommentstitle'])
+        self.sl.addWidget(self.copycommentstitle)
+
+        self.copycommentscallink = QCheckBox(_('Link to Source book in Calibre in Comments'),self)
+        self.copycommentscallink.setToolTip(_('Include a Calibre link to the source Epub in the Split Epub Comments.'))
+        self.copycommentscallink.setChecked(prefs['copycommentscallink'])
+        self.sl.addWidget(self.copycommentscallink)
+
+        self.copycommentsidurl = QCheckBox(_('Link to Source URL Identifier in Comments'),self)
+        self.copycommentsidurl.setToolTip(_("Include a link to the source Epub's URL Identifier(if present) in the Split Epub Comments."))
+        self.copycommentsidurl.setChecked(prefs['copycommentsidurl'])
+        self.sl.addWidget(self.copycommentsidurl)
 
         self.copycomments = QCheckBox(_('Copy Comments'),self)
         self.copycomments.setToolTip(_('Copy Comments from the source Epub to the Split Epub.  Adds "Split from:" to the comments.'))
