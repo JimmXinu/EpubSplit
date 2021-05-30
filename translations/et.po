@@ -2,13 +2,13 @@
 # Copyright (C) YEAR ORGANIZATION
 # 
 # Translators:
-# Maidur, 2016-2020
+# Maidur, 2016-2021
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
 "POT-Creation-Date: 2021-01-04 13:34-0600\n"
-"PO-Revision-Date: 2021-01-04 21:23+0000\n"
-"Last-Translator: Transifex Bot <>\n"
+"PO-Revision-Date: 2021-03-02 09:03+0000\n"
+"Last-Translator: Maidur\n"
 "Language-Team: Estonian (http://www.transifex.com/calibre/calibre-plugins/language/et/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -163,19 +163,19 @@ msgstr "Kopeeri keeled lähte-EPUBist eraldatud EPUBi."
 
 #: config.py:307
 msgid "Copy Source Title to Comments"
-msgstr ""
+msgstr "Kopeeri allika pealkiri kommentaaridesse"
 
 #: config.py:308
 msgid "Copy Title from the source Epub to the Split Epub Comments."
-msgstr ""
+msgstr "Kopeeri pealkiri lähte-Epubist eraldatud Epubi kommentaaridesse."
 
 #: config.py:312
 msgid "Link to Source book in Calibre in Comments"
-msgstr ""
+msgstr "Lähteraamatu viide Calibres kommentaarides"
 
 #: config.py:313
 msgid "Include a Calibre link to the source Epub in the Split Epub Comments."
-msgstr ""
+msgstr "Kaasa Calibre link lähte-Epubile eraldatud Epubi kommentaarides."
 
 #: config.py:317
 msgid "Link to Source URL Identifier in Comments"
@@ -494,11 +494,11 @@ msgstr "%s Eraldatud"
 
 #: epubsplit_plugin.py:328
 msgid "Calibre Library Link"
-msgstr ""
+msgstr "Calibre kogu link"
 
 #: epubsplit_plugin.py:333
 msgid "Source URL"
-msgstr ""
+msgstr "Lähte-URL"
 
 #: epubsplit_plugin.py:342
 msgid "Split from:"
