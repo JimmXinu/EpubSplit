@@ -5,14 +5,14 @@
 # carolsantosss <carolinesantosss@gmail.com>, 2015
 # Jala015 <felipebouabci@gmail.com>, 2016
 # Paulo_Neto <layoutbr@lexxa.com.br>, 2014,2016
-# Thiago Oliveira <thiago.eec@gmail.com>, 2018,2020
+# Thiago Oliveira <thiago.eec@gmail.com>, 2018,2020-2021
 # Wagner Marques <wagnermarques00@hotmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
 "POT-Creation-Date: 2021-01-04 13:34-0600\n"
-"PO-Revision-Date: 2021-01-04 21:23+0000\n"
-"Last-Translator: Transifex Bot <>\n"
+"PO-Revision-Date: 2021-05-31 13:00+0000\n"
+"Last-Translator: Thiago Oliveira <thiago.eec@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/calibre/calibre-plugins/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -167,29 +167,29 @@ msgstr "Copiar Idiomas do Epub de origem para o Epub separado."
 
 #: config.py:307
 msgid "Copy Source Title to Comments"
-msgstr ""
+msgstr "Copiar Título de origem para os Comentários"
 
 #: config.py:308
 msgid "Copy Title from the source Epub to the Split Epub Comments."
-msgstr ""
+msgstr "Copiar Título do Epub de origem para os Comentários do Epub dividido."
 
 #: config.py:312
 msgid "Link to Source book in Calibre in Comments"
-msgstr ""
+msgstr "Link para o Livro de origem nos Comentários do calibre"
 
 #: config.py:313
 msgid "Include a Calibre link to the source Epub in the Split Epub Comments."
-msgstr ""
+msgstr "Incluir um Link do calibre para o Epub de origem nos Comentários do Epub dividido."
 
 #: config.py:317
 msgid "Link to Source URL Identifier in Comments"
-msgstr ""
+msgstr "Link para a URL do Identificador do livro de origem nos Comentários"
 
 #: config.py:318
 msgid ""
 "Include a link to the source Epub's URL Identifier(if present) in the Split "
 "Epub Comments."
-msgstr ""
+msgstr "Incluir um link para a URL do Identificador (se presente) do Epub de origem nos Comentários do Epub dividido."
 
 #: config.py:322
 msgid "Copy Comments"
@@ -498,11 +498,11 @@ msgstr "%s - Parte"
 
 #: epubsplit_plugin.py:328
 msgid "Calibre Library Link"
-msgstr ""
+msgstr "Link da Biblioteca do calibre"
 
 #: epubsplit_plugin.py:333
 msgid "Source URL"
-msgstr ""
+msgstr "URL de origem"
 
 #: epubsplit_plugin.py:342
 msgid "Split from:"

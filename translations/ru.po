@@ -3,13 +3,13 @@
 # 
 # Translators:
 # Aleksandr P, 2019
-# ashed <craysy@gmail.com>, 2019-2020
+# ashed <craysy@gmail.com>, 2019-2021
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
 "POT-Creation-Date: 2021-01-04 13:34-0600\n"
-"PO-Revision-Date: 2021-01-04 21:23+0000\n"
-"Last-Translator: Transifex Bot <>\n"
+"PO-Revision-Date: 2021-06-29 18:30+0000\n"
+"Last-Translator: ashed <craysy@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/calibre/calibre-plugins/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -164,29 +164,29 @@ msgstr "Копировать языки из исходного Epub в Split Ep
 
 #: config.py:307
 msgid "Copy Source Title to Comments"
-msgstr ""
+msgstr "Копировать заголовок источника в комментарии"
 
 #: config.py:308
 msgid "Copy Title from the source Epub to the Split Epub Comments."
-msgstr ""
+msgstr "Скопировать заголовок из исходного Epub в Split Epub комментарии."
 
 #: config.py:312
 msgid "Link to Source book in Calibre in Comments"
-msgstr ""
+msgstr "Ссылка на исходную книгу в Calibre в комментариях"
 
 #: config.py:313
 msgid "Include a Calibre link to the source Epub in the Split Epub Comments."
-msgstr ""
+msgstr "Включить ссылку Calibre на исходный Epub в Split Epub комментариях."
 
 #: config.py:317
 msgid "Link to Source URL Identifier in Comments"
-msgstr ""
+msgstr "Ссылка на идентификатор исходного URL в комментариях"
 
 #: config.py:318
 msgid ""
 "Include a link to the source Epub's URL Identifier(if present) in the Split "
 "Epub Comments."
-msgstr ""
+msgstr "Включить ссылку на URL-идентификатор исходного Epub (если он есть) в Split Epub комментарии."
 
 #: config.py:322
 msgid "Copy Comments"
@@ -495,11 +495,11 @@ msgstr "%s Отделить"
 
 #: epubsplit_plugin.py:328
 msgid "Calibre Library Link"
-msgstr ""
+msgstr "Ссылка на библиотеку calibre"
 
 #: epubsplit_plugin.py:333
 msgid "Source URL"
-msgstr ""
+msgstr "Исходный URL"
 
 #: epubsplit_plugin.py:342
 msgid "Split from:"
