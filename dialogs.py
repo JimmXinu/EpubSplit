@@ -23,23 +23,6 @@ from PyQt5.Qt import (QTableWidget, QVBoxLayout, QHBoxLayout, QProgressDialog, Q
                       QDialogButtonBox, Qt, QAbstractItemView, QTableWidgetItem, QTextBrowser,
                       QMenu)
 
-try:
-    from calibre.gui2 import QVariant
-    del QVariant
-except ImportError:
-    is_qt4 = False
-    convert_qvariant = lambda x: x
-else:
-    is_qt4 = True
-
-    def convert_qvariant(x):
-        vt = x.type()
-        if vt == x.String:
-            return unicode(x.toString())
-        if vt == x.List:
-            return [convert_qvariant(i) for i in x.toList()]
-        return x.toPyObject()
-
 from calibre.gui2 import error_dialog, warning_dialog, question_dialog, info_dialog
 from calibre.gui2.dialogs.confirm_delete import confirm
 from calibre.ebooks.metadata import fmt_sidx
@@ -224,12 +207,12 @@ Pipes(|) divide different ToC entries to the same place.'''))
     def get_row_prev_toc(self,row):
         if not isinstance(row,int): # Can pass either Row qt obj or int.
             row = row.row()
-        return convert_qvariant(self.item(row,3).data(Qt.UserRole)).strip()
+        return self.item(row,3).data(Qt.UserRole).strip()
 
     def get_row_toc(self,row):
         if not isinstance(row,int): # Can pass either Row qt obj or int.
             row = row.row()
-        return convert_qvariant(self.item(row,3).text()).strip()
+        return self.item(row,3).text().strip()
 
     def get_selected_rows(self):
         ## order rows by linenum, copy in case QT handed us something
