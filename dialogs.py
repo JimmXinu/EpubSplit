@@ -18,16 +18,10 @@ logger = logging.getLogger(__name__)
 
 from datetime import datetime
 
-try:
-    from PyQt5 import QtWidgets as QtGui
-    from PyQt5.Qt import (QTableWidget, QVBoxLayout, QHBoxLayout, QProgressDialog, QTimer,
-                          QDialogButtonBox, Qt, QAbstractItemView, QTableWidgetItem, QTextBrowser,
-                          QMenu)
-except ImportError as e:
-    from PyQt4 import QtGui
-    from PyQt4.Qt import (QTableWidget, QVBoxLayout, QHBoxLayout, QProgressDialog, QTimer,
-                          QDialogButtonBox, Qt, QAbstractItemView, QTableWidgetItem, QTextBrowser,
-                          QMenu)
+from PyQt5 import QtWidgets as QtGui
+from PyQt5.Qt import (QTableWidget, QVBoxLayout, QHBoxLayout, QProgressDialog, QTimer,
+                      QDialogButtonBox, Qt, QAbstractItemView, QTableWidgetItem, QTextBrowser,
+                      QMenu)
 
 try:
     from calibre.gui2 import QVariant

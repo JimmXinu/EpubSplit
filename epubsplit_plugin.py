@@ -19,10 +19,7 @@ import six
 from six.moves.configparser import SafeConfigParser
 from six import text_type as unicode
 
-try:
-    from PyQt5.Qt import (QApplication, QCursor, Qt, QMenu, QToolButton)
-except ImportError as e:
-    from PyQt4.Qt import (QApplication, QCursor, Qt, QMenu, QToolButton)
+from PyQt5.Qt import (QApplication, QCursor, Qt, QMenu, QToolButton)
 
 from calibre.ptempfile import PersistentTemporaryFile
 from calibre.ebooks.metadata import MetaInformation, authors_to_string

@@ -12,20 +12,12 @@ from contextlib import contextmanager
 import six
 from six import text_type as unicode
 
-try:
-    from PyQt5 import QtWidgets as QtGui
-    from PyQt5.Qt import (QApplication, Qt, QIcon, QPixmap, QLabel, QDialog, QHBoxLayout,
-                          QTableWidgetItem, QFont, QLineEdit, QComboBox,
-                          QVBoxLayout, QDialogButtonBox, QStyledItemDelegate, QDateTime,
-                          QTextEdit,
-                          QListWidget, QAbstractItemView, QCursor)
-except ImportError as e:
-    from PyQt4 import QtGui
-    from PyQt4.Qt import (QApplication, Qt, QIcon, QPixmap, QLabel, QDialog, QHBoxLayout,
-                          QTableWidgetItem, QFont, QLineEdit, QComboBox,
-                          QVBoxLayout, QDialogButtonBox, QStyledItemDelegate, QDateTime,
-                          QTextEdit,
-                          QListWidget, QAbstractItemView, QCursor)
+from PyQt5 import QtWidgets as QtGui
+from PyQt5.Qt import (QApplication, Qt, QIcon, QPixmap, QLabel, QDialog, QHBoxLayout,
+                      QTableWidgetItem, QFont, QLineEdit, QComboBox,
+                      QVBoxLayout, QDialogButtonBox, QStyledItemDelegate, QDateTime,
+                      QTextEdit,
+                      QListWidget, QAbstractItemView, QCursor)
 from calibre.constants import iswindows
 from calibre.gui2 import gprefs, error_dialog, UNDEFINED_QDATETIME, info_dialog
 from calibre.gui2.actions import menu_action_unique_name
