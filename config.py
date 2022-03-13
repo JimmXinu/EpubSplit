@@ -400,14 +400,15 @@ class CustomColumnsTab(QWidget):
 
         ## sort by visible Column Name (vs #name)
         for key, column in sorted(custom_columns.items(), key=lambda x: x[1]['name']):
-            # print("\n============== %s ===========\n"%key)
-            # for (k,v) in six.iteritems(column):
-            #     print("column['%s'] => %s"%(k,v))
-            checkbox = QCheckBox('%s(%s)'%(column['name'],key))
-            checkbox.setToolTip(_("Copy this %s column to new split books...")%column['datatype'])
-            checkbox.setChecked(key in prefs['custom_cols'] and prefs['custom_cols'][key])
-            self.custcol_checkboxes[key] = checkbox
-            self.sl.addWidget(checkbox)
+            if column['datatype'] != 'composite':
+                # print("\n============== %s ===========\n"%key)
+                # for (k,v) in six.iteritems(column):
+                #     print("column['%s'] => %s"%(k,v))
+                checkbox = QCheckBox('%s(%s)'%(column['name'],key))
+                checkbox.setToolTip(_("Copy this %s column to new split books...")%column['datatype'])
+                checkbox.setChecked(key in prefs['custom_cols'] and prefs['custom_cols'][key])
+                self.custcol_checkboxes[key] = checkbox
+                self.sl.addWidget(checkbox)
 
         self.sl.insertStretch(-1)
 
