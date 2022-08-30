@@ -10,13 +10,14 @@ __docformat__ = 'restructuredtext en'
 import logging
 logger = logging.getLogger(__name__)
 
-import time, os, copy, threading
+import time, os, copy, threading, math
 from io import BytesIO
 from functools import partial
 from datetime import datetime
 
 import six
 from six.moves.configparser import SafeConfigParser
+from six.moves import range
 from six import text_type as unicode
 
 from PyQt5.Qt import (QApplication, QCursor, Qt, QMenu, QToolButton)
@@ -184,11 +185,45 @@ class EpubSplitPlugin(InterfaceAction):
                    newspecs):
 
         linelists, changedtocs, checkedalways = newspecs
-        # logger.debug(linelists)
+        logger.debug(linelists)
         if not self.has_lines(linelists):
             return
+
+        def list_from_lists(lin):
+            l=[]
+            for x in lin:
+                l.extend(x)
+            return l
+
+        if False:
+            # split evenly N times
+            split_n = 5
+            dolists = []
+            while len(linelists) > 0:
+                split_size = math.ceil(len(linelists)/split_n)
+                dolists.append(list_from_lists(linelists[:split_size]))
+                linelists = linelists[split_size:]
+                split_n = split_n - 1
+        elif True:
+            # split every N with.
+            split_size = 10
+            orphan_limit = 2
+            dolists = []
+            while len(linelists) > 0:
+                logger.debug(list_from_lists(linelists[:split_size]))
+                if len(linelists) - split_size > orphan_limit:
+                    dolists.append(list_from_lists(linelists[:split_size]))
+                    linelists = linelists[split_size:]
+                else:
+                    dolists.append(list_from_lists(linelists))
+                    linelists = []
+
+        else:
+            dolists = linelists
+
+        logger.debug(dolists)
         LoopProgressDialog(self.gui,
-                           linelists,
+                           dolists,
                            partial(self._do_splits_loop,
                                    db=db,
                                    source_id=source_id,
