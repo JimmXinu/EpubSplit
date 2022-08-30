@@ -349,7 +349,9 @@ class _LoopProgressDialog(QProgressDialog):
 
         ## self.do_loop does QTimer.singleShot on self.do_loop also.
         ## A weird way to do a loop, but that was the example I had.
-        QTimer.singleShot(0, self.do_loop)
+        ## 100 instead of 0 on the first go due to Win10(and later
+        ## qt6) not displaying dialog properly.
+        QTimer.singleShot(100, self.do_loop)
         self.exec_()
 
     def updateStatus(self):
