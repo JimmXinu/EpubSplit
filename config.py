@@ -7,12 +7,18 @@ __license__   = 'GPL v3'
 __copyright__ = '2021, Jim Miller'
 __docformat__ = 'restructuredtext en'
 
+import logging
+logger = logging.getLogger(__name__)
+
 import traceback, copy
 import six
 from six import text_type as unicode
 
-from PyQt5.Qt import (QDialog, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QFont, QGridLayout,
-                      QTextEdit, QComboBox, QCheckBox, QPushButton, QTabWidget, QScrollArea)
+from PyQt5.Qt import (QDialog, QWidget, QVBoxLayout, QHBoxLayout, QLabel,
+                      QLineEdit, QFont, QGridLayout, QComboBox,
+                      QCheckBox, QPushButton, QTabWidget, QScrollArea,
+                      QButtonGroup, QRadioButton, QIntValidator, QLayout,
+                      QSpacerItem)
 
 from calibre.gui2 import dynamic, info_dialog
 from calibre.utils.config import JSONConfig
@@ -29,6 +35,20 @@ from calibre_plugins.epubsplit.common_utils \
 
 PREFS_NAMESPACE = 'EpubSplitPlugin'
 PREFS_KEY_SETTINGS = 'settings'
+
+PER_SECTION = 'per_section'
+PER_N_SECTIONS = 'per_n_sections'
+PER_N_SPLITS = 'per_n_splits'
+NEW_BOOK_PER_LIST = [PER_SECTION, PER_N_SECTIONS, PER_N_SPLITS]
+title_section = _("Title for each new book will be taken from the first section in the Table of Contents above, which you can edit here first.")
+NEW_BOOK_PER = {
+    PER_SECTION:(_("New Book per Section"),
+                 _("Make a new book for <i>each</i> of the sections selected above.") + "<br>" + title_section),
+    PER_N_SECTIONS:(_("New Book per N Sections"),
+                    _("Make new books, each containing N sections from those selected above.") + "<br>" + title_section),
+    PER_N_SPLITS:(_("N New Books"),
+                  _("Make N new books by evenly dividing the sections selected above.") + "<br>" + title_section)
+    }
 
 # Set defaults used by all.  Library specific settings continue to
 # take from here.
@@ -59,6 +79,11 @@ default_prefs['custom_cols'] = {}
 
 default_prefs['sourcecol'] = ''
 default_prefs['sourcetemplate'] = "{title} by {authors}"
+
+default_prefs['new_book_per'] = PER_SECTION
+default_prefs['n_sections_num'] = '10'
+default_prefs['orphans_num'] = '2'
+default_prefs['n_splits_num'] = '3'
 
 def set_library_config(library_config):
     get_gui().current_db.prefs.set_namespaced(PREFS_NAMESPACE,
@@ -151,6 +176,9 @@ class ConfigWidget(QWidget):
         self.columns_tab = CustomColumnsTab(self, plugin_action)
         tab_widget.addTab(self.columns_tab, _('Custom Columns'))
 
+        self.newbookper_tab = NewBookPerTab(self, plugin_action)
+        tab_widget.addTab(self.newbookper_tab, _('New Book Per'))
+
     def save_settings(self):
         prefs['editmetadata'] = self.basic_tab.editmetadata.isChecked()
         prefs['show_checkedalways'] = self.basic_tab.show_checkedalways.isChecked()
@@ -181,6 +209,14 @@ class ConfigWidget(QWidget):
 
         prefs['sourcecol'] = unicode(self.columns_tab.sourcecol.itemData(self.columns_tab.sourcecol.currentIndex()))
         prefs['sourcetemplate'] = unicode(self.columns_tab.sourcetemplate.text())
+
+        # NewBookPer tab
+        prefs['new_book_per'] = NEW_BOOK_PER_LIST[self.newbookper_tab.radiogroup.checkedId()]
+        # logger.debug(prefs['new_book_per'])
+        prefs['n_sections_num'] = unicode(self.newbookper_tab.n_sections_num.text())
+        prefs['orphans_num'] = unicode(self.newbookper_tab.orphans_num.text())
+        prefs['n_splits_num'] = unicode(self.newbookper_tab.n_splits_num.text())
+
 
         prefs.save_to_db()
 
@@ -412,3 +448,98 @@ class CustomColumnsTab(QWidget):
 
         self.sl.insertStretch(-1)
 
+class NewBookPerTab(QWidget):
+
+    def __init__(self, parent_dialog, plugin_action):
+        QWidget.__init__(self)
+        self.parent_dialog = parent_dialog
+        self.plugin_action = plugin_action
+
+        self.l = QVBoxLayout()
+        self.setLayout(self.l)
+
+        label = QLabel(_('Only one automatic Multiple Split mode can be active a time.  Select which and configure settings below.')
+                       +'<p>'+_("The title for each new book will be taken from the first included section in the Table of Contents.")
+                       +'<p>'+_('Sections that do not have a Table of Contents entry will be included in the previous section.')
+                       +'<p>'+_('You may edit the Table of Contents entries before splitting.'))
+        label.setWordWrap(True)
+        self.l.addWidget(label)
+
+        def indent_group(l):
+            horz = QHBoxLayout()
+            horz.addItem(QSpacerItem(20, 1))
+            vertright = QVBoxLayout()
+            horz.addLayout(vertright)
+            for i in l:
+                if isinstance(i,QLayout):
+                    vertright.addLayout(i)
+                else:
+                    vertright.addWidget(i)
+            self.l.addLayout(horz)
+
+        def label_num_input(label,tooltip,minimum=0):
+            horz = QHBoxLayout()
+            label = QLabel(label)
+            label.setToolTip(tooltip)
+            edit = QLineEdit(self)
+            edit.setToolTip(tooltip)
+            label.setBuddy(edit)
+            # allow only integers
+            only_int = QIntValidator()
+            only_int.setRange(minimum, 10000)
+            edit.setValidator(only_int)
+            edit.setMaximumWidth(100)
+            horz.addWidget(label)
+            horz.addWidget(edit)
+            horz.insertStretch(-1)
+            return (horz,edit)
+
+        self.radiogroup = QButtonGroup()
+        ## list incase I want to reorder.
+        rb_idx = 0
+        for n in NEW_BOOK_PER_LIST:
+            rb = QRadioButton(NEW_BOOK_PER[n][0])
+            rb.setToolTip(NEW_BOOK_PER[n][1])
+            self.l.addWidget(rb)
+            rb.setChecked(prefs['new_book_per'] == n)
+            self.radiogroup.addButton(rb,rb_idx)
+            rb_idx = rb_idx + 1
+            indent_list = []
+            if n == PER_SECTION:
+                self.per_section = rb
+                l1 = QLabel(_('Create a new book for each selected section.'))
+                l1.setWordWrap(True)
+                indent_list = [l1]
+            elif n == PER_N_SECTIONS:
+                self.per_n_sections = rb
+                l1 = QLabel(_('Create new books every N selected sections.'))
+                l1.setWordWrap(True)
+                (n_sections_layout,
+                 self.n_sections_num) = label_num_input(_('Number of Sections'),
+                                                       _('Sections per new book'),
+                                                        minimum=2)
+                l2 = QLabel(_('If the last book would contain fewer than sections than the Orphan Limit, include them in the previous book instead.  Last book will have more than N sections when that happens.'))
+                l2.setWordWrap(True)
+                (orphans_layout,
+                 self.orphans_num) = label_num_input(_('Orphan Limit'),
+                                                       _('Limit for orphan sections'))
+                indent_list = [l1,
+                               n_sections_layout,
+                               orphans_layout,
+                               l2]
+                self.n_sections_num.setText(prefs['n_sections_num'])
+                self.orphans_num.setText(prefs['orphans_num'])
+            elif n == PER_N_SPLITS:
+                self.per_n_splits = rb
+                l1 = QLabel(_('Create N new books, dividing the selected sections between them as evenly as possible.')
+                            +'<p>'+_("Note that 'evenly' means the number of sections with entries in the Table of Contents, not files or size by bytes or words."))
+                l1.setWordWrap(True)
+                (n_splits_layout,
+                 self.n_splits_num) = label_num_input(_('Number of books'),
+                                                       _('Split all selected sections into this many new books, dividing the sections evenly between them.'),
+                                                      minimum=2)
+                indent_list = [l1,n_splits_layout]
+                self.n_splits_num.setText(prefs['n_splits_num'])
+            indent_group(indent_list)
+            self.l.addSpacing(5)
+        self.l.insertStretch(-1)

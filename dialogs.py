@@ -40,6 +40,9 @@ from calibre_plugins.epubsplit.common_utils \
     import (ReadOnlyTableWidgetItem, SizePersistedDialog,
             ImageTitleLayout, get_icon)
 
+from calibre_plugins.epubsplit.config \
+    import (NEW_BOOK_PER, PER_SECTION, PER_N_SECTIONS, PER_N_SPLITS )
+
 SAMPLE_NOTE=_("<p><b><i>Double click to copy from sample.</i></b></p>")
 
 class SelectLinesDialog(SizePersistedDialog):
@@ -84,9 +87,11 @@ class SelectLinesDialog(SizePersistedDialog):
         new_book.setToolTip(_("Make <i>one</i> new book containing the sections selected above and then edit its Metadata."))
         new_book.clicked.connect(self.new_book)
 
-        new_books = button_box.addButton(_("New Book per Section"), button_box.ActionRole)
-        new_books.setToolTip(_("Make a new book for <i>each</i> of the sections selected above.  Title for each will be the Table of Contents, which you can edit here first."))
-        new_books.clicked.connect(self.new_books)
+        self.new_books_b = button_box.addButton(_("New Book per Section"), button_box.ActionRole)
+        (txt,tooltip) = NEW_BOOK_PER[self.prefs['new_book_per']]
+        self.new_books_b.setText(txt)
+        self.new_books_b.setToolTip(tooltip)
+        self.new_books_b.clicked.connect(self.new_books)
 
         get_split_size = button_box.addButton(_("Get Size"), button_box.ActionRole)
         get_split_size.setToolTip("<i></i>" + _("Calculate the size of the new book from the currently selected sections."))
@@ -106,6 +111,9 @@ class SelectLinesDialog(SizePersistedDialog):
     def user_config(self):
         self.do_user_config()
         self.lines_table.show_checkedalways(self.prefs['show_checkedalways'])
+        (txt,tooltip) = NEW_BOOK_PER[self.prefs['new_book_per']]
+        self.new_books_b.setText(txt)
+        self.new_books_b.setToolTip(tooltip)
 
     def get_split_size(self):
         self.get_split_size_fn(self.get_selected_linenums_tocs())

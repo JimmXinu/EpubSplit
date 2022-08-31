@@ -43,7 +43,8 @@ except NameError:
 from calibre_plugins.epubsplit.common_utils import (
     set_plugin_icon_resources, get_icon, busy_cursor)
 
-from calibre_plugins.epubsplit.config import prefs
+from calibre_plugins.epubsplit.config \
+    import (prefs, NEW_BOOK_PER, PER_SECTION, PER_N_SECTIONS, PER_N_SPLITS )
 
 from calibre_plugins.epubsplit.epubsplit import SplitEpub
 
@@ -195,19 +196,20 @@ class EpubSplitPlugin(InterfaceAction):
                 l.extend(x)
             return l
 
-        if False:
+        logger.debug(prefs['new_book_per'])
+        if prefs['new_book_per'] == PER_N_SPLITS:
             # split evenly N times
-            split_n = 5
+            split_n = int(prefs['n_splits_num'])
             dolists = []
             while len(linelists) > 0:
-                split_size = math.ceil(len(linelists)/split_n)
+                split_size = int(math.ceil(len(linelists)/split_n))
                 dolists.append(list_from_lists(linelists[:split_size]))
                 linelists = linelists[split_size:]
                 split_n = split_n - 1
-        elif True:
-            # split every N with.
-            split_size = 10
-            orphan_limit = 2
+        elif prefs['new_book_per'] == PER_N_SECTIONS:
+            # split every N with orphan limit.
+            split_size = int(prefs['n_sections_num'])
+            orphan_limit = int(prefs['orphans_num'])
             dolists = []
             while len(linelists) > 0:
                 logger.debug(list_from_lists(linelists[:split_size]))
@@ -218,7 +220,7 @@ class EpubSplitPlugin(InterfaceAction):
                     dolists.append(list_from_lists(linelists))
                     linelists = []
 
-        else:
+        else: # PER_SECTION
             dolists = linelists
 
         logger.debug(dolists)
