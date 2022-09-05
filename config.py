@@ -40,7 +40,7 @@ PER_SECTION = 'per_section'
 PER_N_SECTIONS = 'per_n_sections'
 PER_N_SPLITS = 'per_n_splits'
 NEW_BOOK_PER_LIST = [PER_SECTION, PER_N_SECTIONS, PER_N_SPLITS]
-title_section = _("Title for each new book will be taken from the first section in the Table of Contents above, which you can edit here first.")
+title_section = _("Title for each new book will be taken from the first included section in the Table of Contents above, which you can edit here first.")
 NEW_BOOK_PER = {
     PER_SECTION:(_("New Book per Section"),
                  _("Make a new book for <i>each</i> of the sections selected above.") + "<br>" + title_section),
