@@ -5,7 +5,7 @@
 # Adolfo Jayme-Barrientos, 2014
 # Albert, 2016
 # Darío Hereñú, 2018
-# Jellby <jellby@yahoo.com>, 2014-2018,2020-2021
+# Jellby <jellby@yahoo.com>, 2014-2018,2020-2022
 # Rafael Ontivero <rafael.ontivero@gmail.com>, 2017
 # Walter Paterno <walter.paterno@gmail.com>, 2022
 msgid ""
@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: calibre-plugins\n"
 "POT-Creation-Date: 2022-08-31 13:36-0500\n"
 "PO-Revision-Date: 2014-06-19 23:02+0000\n"
-"Last-Translator: Walter Paterno <walter.paterno@gmail.com>, 2022\n"
+"Last-Translator: Jellby <jellby@yahoo.com>, 2014-2018,2020-2022\n"
 "Language-Team: Spanish (http://www.transifex.com/calibre/calibre-plugins/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,7 +30,7 @@ msgstr "Complemento de interfaz de usuario para separar partes de un archivo EPU
 msgid ""
 "Title for each new book will be taken from the first included section in the"
 " Table of Contents above, which you can edit here first."
-msgstr "El título de cada nuevo libro se tomará de la primera sección incluida en la Tabla de contenido anterior, que puede editar aquí primero."
+msgstr "El título de cada nuevo libro se tomará de la primera sección incluida en el índice anterior, que puede modificar aquí primero."
 
 #: config.py:45 dialogs.py:90
 msgid "New Book per Section"
@@ -38,23 +38,23 @@ msgstr "Libro nuevo por sección"
 
 #: config.py:46
 msgid "Make a new book for <i>each</i> of the sections selected above."
-msgstr "Cree un nuevo libro para <i>cada</i> de las secciones seleccionadas anteriormente."
+msgstr "Crear un nuevo libro para <i>cada una</i> de las secciones seleccionadas anteriormente."
 
 #: config.py:47
 msgid "New Book per N Sections"
-msgstr "Nuevo Libro por N Secciones"
+msgstr "Nuevo libro cada N secciones"
 
 #: config.py:48
 msgid "Make new books, each containing N sections from those selected above."
-msgstr "Cree nuevos libros, cada uno con N secciones de las seleccionadas anteriormente."
+msgstr "Crear nuevos libros, cada uno con N secciones de las seleccionadas anteriormente."
 
 #: config.py:49
 msgid "N New Books"
-msgstr "N Libros Nuevos"
+msgstr "N libros nuevos"
 
 #: config.py:50
 msgid "Make N new books by evenly dividing the sections selected above."
-msgstr "Haz N libros nuevos dividiendo uniformemente las secciones seleccionadas arriba."
+msgstr "Hacer N libros nuevos dividiendo uniformemente las secciones seleccionadas anteriormente."
 
 #: config.py:174
 msgid "Basic"
@@ -66,11 +66,11 @@ msgstr "Columnas personalizadas"
 
 #: config.py:180
 msgid "New Book Per"
-msgstr "Nuevo libro por"
+msgstr "Nuevo libro cada"
 
 #: config.py:239
 msgid "Edit Metadata for New Book(s)"
-msgstr "Editar metadatos para libro nuevo(s)"
+msgstr "Modificar metadatos para nuevo(s) libro(s)"
 
 #: config.py:240
 msgid ""
@@ -206,7 +206,7 @@ msgstr "Copiar título del origen a comentarios"
 
 #: config.py:325
 msgid "Copy Title from the source Epub to the Split Epub Comments."
-msgstr "Copiar el título del epub original a los cometarios del epub dividido."
+msgstr "Copiar el título del epub original a los comentarios del epub dividido."
 
 #: config.py:329
 msgid "Link to Source book in Calibre in Comments"
@@ -307,31 +307,31 @@ msgstr "Copiar esta columna %s a los nuevos libros divididos..."
 msgid ""
 "Only one automatic Multiple Split mode can be active a time.  Select which "
 "and configure settings below."
-msgstr "Solo puede estar activo un modo de división múltiple automático a la vez. Seleccione cuál y configure los ajustes a continuación."
+msgstr "Sólo puede estar activo un modo de división múltiple automática a la vez. Seleccione cuál y configure los ajustes a continuación."
 
 #: config.py:462
 msgid ""
 "The title for each new book will be taken from the first included section in"
 " the Table of Contents."
-msgstr "El título de cada nuevo libro se tomará de la primera sección incluida en la Tabla de contenido."
+msgstr "El título de cada nuevo libro se tomará de la primera sección incluida en el índice."
 
 #: config.py:463
 msgid ""
 "Sections that do not have a Table of Contents entry will be included in the "
 "previous section."
-msgstr "Las secciones que no tengan una entrada de tabla de contenido se incluirán en la sección anterior."
+msgstr "Las secciones que no tengan una entrada en el índice se incluirán en la sección anterior."
 
 #: config.py:464
 msgid "You may edit the Table of Contents entries before splitting."
-msgstr "Puede editar las entradas de la tabla de contenido antes de dividir."
+msgstr "Puede modificar las entradas del índice antes de dividir."
 
 #: config.py:510
 msgid "Create a new book for each selected section."
-msgstr "Cree un nuevo libro para cada sección seleccionada."
+msgstr "Crear un nuevo libro para cada sección seleccionada."
 
 #: config.py:515
 msgid "Create new books every N selected sections."
-msgstr "Crea nuevos libros cada N secciones seleccionadas."
+msgstr "Crear nuevos libros cada N secciones seleccionadas."
 
 #: config.py:518
 msgid "Number of Sections"
@@ -339,18 +339,18 @@ msgstr "Número de secciones"
 
 #: config.py:519
 msgid "Sections per new book"
-msgstr "Secciones por libro nuevo"
+msgstr "Secciones por cada nuevo libro"
 
 #: config.py:521
 msgid ""
 "If the last book would contain fewer than sections than the Orphan Limit, "
 "include them in the previous book instead.  Last book will have more than N "
 "sections when that happens."
-msgstr "Si el último libro contiene menos de secciones que el límite de huérfanos, inclúyalas en el libro anterior. El último libro tendrá más de N secciones cuando eso suceda."
+msgstr "Si el último libro contendría menos secciones que el límite de huérfanos, éstas se incluirán en el libro anterior en su lugar. El último libro tendrá más de N secciones cuando esto ocurra."
 
 #: config.py:524
 msgid "Orphan Limit"
-msgstr "Límite huérfano"
+msgstr "Límite de huérfanos"
 
 #: config.py:525
 msgid "Limit for orphan sections"
@@ -360,13 +360,13 @@ msgstr "Límite para secciones huérfanas"
 msgid ""
 "Create N new books, dividing the selected sections between them as evenly as"
 " possible."
-msgstr "Cree N nuevos libros, dividiendo las secciones seleccionadas entre ellos de la manera más uniforme posible."
+msgstr "Crear N nuevos libros, dividiendo las secciones seleccionadas entre ellos de la manera más uniforme posible."
 
 #: config.py:535
 msgid ""
 "Note that 'evenly' means the number of sections with entries in the Table of"
 " Contents, not files or size by bytes or words."
-msgstr "Tenga en cuenta que 'parcialmente' significa el número de secciones con entradas en la tabla de contenido, no archivos o tamaño por bytes o palabras."
+msgstr "Tenga en cuenta que «uniforme» se refiere al número de secciones con entrada en el índice, no al número de archivos ni tamaño en bytes o palabras."
 
 #: config.py:538
 msgid "Number of books"
@@ -376,7 +376,7 @@ msgstr "Número de libros"
 msgid ""
 "Split all selected sections into this many new books, dividing the sections "
 "evenly between them."
-msgstr "Divida todas las secciones seleccionadas en esta cantidad de libros nuevos, dividiendo las secciones de manera uniforme entre ellos."
+msgstr "Dividir todas las secciones seleccionadas en esta cantidad de libros nuevos, dividiendo las secciones de manera uniforme entre ellos."
 
 #: dialogs.py:46
 msgid "<p><b><i>Double click to copy from sample.</i></b></p>"
@@ -483,7 +483,7 @@ msgstr "Cancelar"
 
 #: dialogs.py:370
 msgid " - %s estimated until done"
-msgstr " - aproximadamente %s para terminar"
+msgstr "- aproximadamente %s para terminar"
 
 #: dialogs.py:427
 msgid "%d day"
