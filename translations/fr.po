@@ -5,14 +5,15 @@
 # a270031086f2a0d3514bc0cb507b48f6, 2019
 # Ptit Prince <leporello1791@gmail.com>, 2015
 # Nicolas F. <fernetn@gmail.com>, 2017
+# Paul Muraille <paul.muraille@tictips.net>, 2023
 # Ptit Prince <leporello1791@gmail.com>, 2016-2021
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
 "POT-Creation-Date: 2022-08-31 13:36-0500\n"
 "PO-Revision-Date: 2014-06-19 23:02+0000\n"
-"Last-Translator: Ptit Prince <leporello1791@gmail.com>, 2016-2021\n"
-"Language-Team: French (http://www.transifex.com/calibre/calibre-plugins/language/fr/)\n"
+"Last-Translator: Paul Muraille <paul.muraille@tictips.net>, 2023\n"
+"Language-Team: French (http://app.transifex.com/calibre/calibre-plugins/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -36,7 +37,7 @@ msgstr "Nouveau Livre par Section"
 
 #: config.py:46
 msgid "Make a new book for <i>each</i> of the sections selected above."
-msgstr ""
+msgstr "Créer un nouveau livre pour <i>chacune</i> des sections sélectionnées ci-dessus."
 
 #: config.py:47
 msgid "New Book per N Sections"
@@ -333,11 +334,11 @@ msgstr ""
 
 #: config.py:518
 msgid "Number of Sections"
-msgstr ""
+msgstr "Nombre de sections"
 
 #: config.py:519
 msgid "Sections per new book"
-msgstr ""
+msgstr "Sections par nouveau livre"
 
 #: config.py:521
 msgid ""
@@ -368,7 +369,7 @@ msgstr ""
 
 #: config.py:538
 msgid "Number of books"
-msgstr ""
+msgstr "Nombre de livres"
 
 #: config.py:539
 msgid ""

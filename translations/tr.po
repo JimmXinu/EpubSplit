@@ -3,6 +3,7 @@
 # 
 # Translators:
 # tarakbumba <tarakbumba@gmail.com>, 2016
+# Bora Atıcı, 2023
 # Çağla Turhan, 2016
 # Emre Deniz, 2014
 # mahmut özcan <faradundamarti@yandex.com>, 2016
@@ -15,8 +16,8 @@ msgstr ""
 "Project-Id-Version: calibre-plugins\n"
 "POT-Creation-Date: 2022-08-31 13:36-0500\n"
 "PO-Revision-Date: 2014-06-19 23:02+0000\n"
-"Last-Translator: Serdar Sağlam <teknomobil@msn.com>, 2019\n"
-"Language-Team: Turkish (http://www.transifex.com/calibre/calibre-plugins/language/tr/)\n"
+"Last-Translator: Bora Atıcı, 2023\n"
+"Language-Team: Turkish (http://app.transifex.com/calibre/calibre-plugins/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,7 +27,7 @@ msgstr ""
 
 #: __init__.py:48
 msgid "UI plugin to split off parts of an epub into a new book."
-msgstr "Bir epub' ı yeni kitap olarak ayırmak için bir grafiksel eklenti."
+msgstr "Bir EPUB'ın bölümlerini yeni bir kitaba bölmek için grafik eklentisi."
 
 #: config.py:43
 msgid ""
@@ -40,23 +41,23 @@ msgstr "Her bir bölüm için yeni kitap"
 
 #: config.py:46
 msgid "Make a new book for <i>each</i> of the sections selected above."
-msgstr ""
+msgstr "Yukarıda seçilen bölümlerin <i>her biri</i> için yeni bir kitap oluşturun."
 
 #: config.py:47
 msgid "New Book per N Sections"
-msgstr ""
+msgstr "N Sayıda Bölüm Başına Yeni Kitap"
 
 #: config.py:48
 msgid "Make new books, each containing N sections from those selected above."
-msgstr ""
+msgstr "Her biri yukarıda seçilenlerden N bölüm içeren yeni kitaplar oluşturun."
 
 #: config.py:49
 msgid "N New Books"
-msgstr ""
+msgstr "N Yeni Kitap"
 
 #: config.py:50
 msgid "Make N new books by evenly dividing the sections selected above."
-msgstr ""
+msgstr "Yukarıda seçilen bölümleri eşit olarak bölerek N yeni kitap yapın."
 
 #: config.py:174
 msgid "Basic"
@@ -68,7 +69,7 @@ msgstr "Kişisel Sütunlar"
 
 #: config.py:180
 msgid "New Book Per"
-msgstr ""
+msgstr "Yeni Kitap Başına"
 
 #: config.py:239
 msgid "Edit Metadata for New Book(s)"
@@ -79,7 +80,7 @@ msgid ""
 "Show Edit Metadata Dialog after creating each new book entry, but "
 "<i>before</i> EPUB is created.<br>Allows for downloading metadata and "
 "ensures EPUB has updated metadata."
-msgstr ""
+msgstr "Her yeni kitap girişi oluşturulduktan sonra, ancak EPUB oluşturulmadan <i>önce</i> Meta Verileri Düzenle İletişim Kutusunu göster. Meta verilerin indirilmesine <br>izin verir ve EPUB'un meta verilere güncellenmesini sağlar."
 
 #: config.py:244
 msgid "Show 'Always Include' Checkboxes"
@@ -204,23 +205,23 @@ msgstr "Dilleri kaynak Epub' tan Parça Epub' a kopyala."
 
 #: config.py:324
 msgid "Copy Source Title to Comments"
-msgstr ""
+msgstr "Kaynak Başlığını Yorumlara Kopyala"
 
 #: config.py:325
 msgid "Copy Title from the source Epub to the Split Epub Comments."
-msgstr ""
+msgstr "Başlığı kaynak EPUB'dan, Bölünmüş EPUB Yorumlarına kopyalayın."
 
 #: config.py:329
 msgid "Link to Source book in Calibre in Comments"
-msgstr ""
+msgstr "Yorumlarda Calibre'deki Kaynak kitabın bağlantısı"
 
 #: config.py:330
 msgid "Include a Calibre link to the source Epub in the Split Epub Comments."
-msgstr ""
+msgstr "Bölünmüş Epub Yorumları'na kaynak Epub'a bir Calibre bağlantısı ekleyin."
 
 #: config.py:334
 msgid "Link to Source URL Identifier in Comments"
-msgstr ""
+msgstr "Yorumlarda Kaynak URL Tanımlayıcısına Bağlantı"
 
 #: config.py:335
 msgid ""
@@ -309,39 +310,39 @@ msgstr "Bu %s sütununu yeni parça kitaplara kopyala..."
 msgid ""
 "Only one automatic Multiple Split mode can be active a time.  Select which "
 "and configure settings below."
-msgstr ""
+msgstr "Her seferinde yalnızca bir otomatik Çoklu Bölme modu etkin olabilir. Birini seçin ve aşağıdaki ayarları yapılandırın."
 
 #: config.py:462
 msgid ""
 "The title for each new book will be taken from the first included section in"
 " the Table of Contents."
-msgstr ""
+msgstr "Her yeni kitabın başlığı, İçindekiler'deki ilk dahil edilen bölümden alınacaktır."
 
 #: config.py:463
 msgid ""
 "Sections that do not have a Table of Contents entry will be included in the "
 "previous section."
-msgstr ""
+msgstr "İçindekiler girişi olmayan bölümler bir önceki bölüme dahil edilecektir."
 
 #: config.py:464
 msgid "You may edit the Table of Contents entries before splitting."
-msgstr ""
+msgstr "Bölmeden önce İçindekiler girişlerini düzenleyebilirsiniz."
 
 #: config.py:510
 msgid "Create a new book for each selected section."
-msgstr ""
+msgstr "Seçilen her bölüm için yeni bir kitap oluşturun."
 
 #: config.py:515
 msgid "Create new books every N selected sections."
-msgstr ""
+msgstr "Seçilen her N bölümde yeni kitaplar oluşturun."
 
 #: config.py:518
 msgid "Number of Sections"
-msgstr ""
+msgstr "Bölüm Sayısı"
 
 #: config.py:519
 msgid "Sections per new book"
-msgstr ""
+msgstr "Yeni kitap başına bölümler"
 
 #: config.py:521
 msgid ""
@@ -362,7 +363,7 @@ msgstr ""
 msgid ""
 "Create N new books, dividing the selected sections between them as evenly as"
 " possible."
-msgstr ""
+msgstr "Seçilen bölümleri aralarında mümkün olduğunca eşit bir şekilde bölerek N yeni kitap oluşturun."
 
 #: config.py:535
 msgid ""
@@ -372,13 +373,13 @@ msgstr ""
 
 #: config.py:538
 msgid "Number of books"
-msgstr ""
+msgstr "Kitap sayısı"
 
 #: config.py:539
 msgid ""
 "Split all selected sections into this many new books, dividing the sections "
 "evenly between them."
-msgstr ""
+msgstr "Seçilen tüm bölümleri aralarında eşit bir şekilde bölerek birçok yeni kitaba ayırın."
 
 #: dialogs.py:46
 msgid "<p><b><i>Double click to copy from sample.</i></b></p>"
@@ -409,7 +410,7 @@ msgstr ""
 #: dialogs.py:97
 msgid ""
 "Calculate the size of the new book from the currently selected sections."
-msgstr ""
+msgstr "Seçili olan bölümlerden yeni kitabın uzunluğunu hesaplayın."
 
 #: dialogs.py:126
 msgid "Missing Title(s)"
@@ -417,21 +418,21 @@ msgstr "Eksik Başlık(lar)"
 
 #: dialogs.py:127
 msgid "Some selected sections don't have a Table of Contents text."
-msgstr ""
+msgstr "Seçilen bazı bölümlerde İçindekiler metni yok."
 
 #: dialogs.py:128
 msgid ""
 "If you continue, those sections will be included with the last prior section"
 " that did have a Table of Contents text."
-msgstr ""
+msgstr "Devam ederseniz, bu bölümler İçindekiler metni içeren önceki son bölüme dahil edilecektir."
 
 #: dialogs.py:129
 msgid "If you cancel, you can go back and add Table of Contents entries."
-msgstr ""
+msgstr "İptal ederseniz geri dönüp İçindekiler girişleri ekleyebilirsiniz."
 
 #: dialogs.py:130
 msgid "Double click to edit the Table of Contents entry for a section."
-msgstr ""
+msgstr "Bir bölümün İçindekiler girişini düzenlemek için çift tıklayın."
 
 #: dialogs.py:151
 msgid "Guide"
@@ -468,11 +469,11 @@ msgstr "Örnek bölüm"
 
 #: dialogs.py:305
 msgid "Check Selected"
-msgstr ""
+msgstr "Seçileni Kontrol Et"
 
 #: dialogs.py:306
 msgid "Uncheck Selected"
-msgstr ""
+msgstr "Seçilenin işaretini kaldır"
 
 #: dialogs.py:320 dialogs.py:321 dialogs.py:322 dialogs.py:344 dialogs.py:345
 #: dialogs.py:346
@@ -541,11 +542,11 @@ msgstr "Bölmek için bir kitap seçin."
 
 #: epubsplit_plugin.py:137
 msgid "EPUB3 Detected"
-msgstr ""
+msgstr "EPUB3 Algılandı"
 
 #: epubsplit_plugin.py:138
 msgid "This plugin only works on EPUB2 format ebooks."
-msgstr ""
+msgstr "Bu eklenti yalnızca EPUB2 biçimindeki e-kitaplarda çalışır."
 
 #: epubsplit_plugin.py:142
 msgid "No EPUB"
@@ -561,14 +562,14 @@ msgstr "Ayırmak istediğiniz bölümleri seçin."
 
 #: epubsplit_plugin.py:173
 msgid "No Sections Selected"
-msgstr ""
+msgstr "Seçili Bölüm Yok"
 
 #: epubsplit_plugin.py:174
 msgid ""
 "Book(s) not split.\n"
 "\n"
 "You must select at least one section to split."
-msgstr ""
+msgstr "Kitap(lar) bölünmemiş.\n\nBölmek için en az bir bölüm seçmelisiniz."
 
 #: epubsplit_plugin.py:240
 msgid "New Books Created"
@@ -580,19 +581,19 @@ msgstr "%s Yeni Kitap(lar) Oluşturuldu."
 
 #: epubsplit_plugin.py:273
 msgid "Computing size of EPUB..."
-msgstr ""
+msgstr "EPUB'un bilgi işlem boyutu..."
 
 #: epubsplit_plugin.py:287
 msgid "Finished computing size of EPUB."
-msgstr ""
+msgstr "EPUB'un tamamlanmış bilgi işlem boyutu."
 
 #: epubsplit_plugin.py:289
 msgid "Size of New Book"
-msgstr ""
+msgstr "Yeni Kitabın Boyutu"
 
 #: epubsplit_plugin.py:290
 msgid "New EPUB File Size:"
-msgstr ""
+msgstr "Yeni EPUB Dosya Boyutu:"
 
 #: epubsplit_plugin.py:321
 msgid "%s Split"
@@ -600,11 +601,11 @@ msgstr "%s Bölme"
 
 #: epubsplit_plugin.py:360
 msgid "Calibre Library Link"
-msgstr ""
+msgstr "Kalibre Kitaplığı Bağlantısı"
 
 #: epubsplit_plugin.py:365
 msgid "Source URL"
-msgstr ""
+msgstr "Kaynak URL'si"
 
 #: epubsplit_plugin.py:374
 msgid "Split from:"
@@ -614,7 +615,7 @@ msgstr "Bu ögeden ayır:"
 msgid ""
 "You can enable or disable Edit Metadata in Preferences > Plugins > "
 "EpubSplit."
-msgstr ""
+msgstr "Tercihler > Eklentiler > EpubSplit'te Meta Verileri Düzenle'yi etkinleştirebilir veya devre dışı bırakabilirsiniz."
 
 #: epubsplit_plugin.py:426
 msgid ""
@@ -642,4 +643,4 @@ msgstr ""
 
 #: epubsplit_plugin.py:489
 msgid "EpubSplit now skips the Edit Metadata step by default."
-msgstr ""
+msgstr "EpubSplit artık Meta Verileri Düzenle adımını varsayılan olarak atlıyor."
