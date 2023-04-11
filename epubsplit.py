@@ -1141,8 +1141,13 @@ generate an epub with each of the "lines" given included.''')
 
     parser.add_option("-o", "--output", dest="outputopt", default="split.epub",
                       help="Set OUTPUT file, Default: split.epub", metavar="OUTPUT")
+    parser.add_option("--output-dir", dest="outputdiropt",
+                      help="Set OUTPUT directory, Default: presend working directory")
+    parser.add_option('--split-by-section',
+                      action='store_true', dest='split_by_section',
+                      help='Create a new epub from *each* of the listed line sections instead of one containing all.  Splits all sections if no lines numbers are given. Each split will be named <lineno>-<outputname> and placed in the output-dir.', )
     parser.add_option("-t", "--title", dest="titleopt", default=None,
-                      help="Use TITLE as the metadata title.  Default: '<original epub title> Split'", metavar="TITLE")
+                      help="Use TITLE as the metadata title.  Default: '<original epub title> Split' or ToC entry with --split-by-section", metavar="TITLE")
     parser.add_option("-d", "--description", dest="descopt", default=None,
                       help="Use DESC as the metadata description.  Default: 'Split from <epub title> by <author>'.", metavar="DESC")
     parser.add_option("-a", "--author",
@@ -1166,8 +1171,6 @@ generate an epub with each of the "lines" given included.''')
     if not options.languageopts:
         options.languageopts = ['en']
 
-    print("output file: "+options.outputopt)
-
     if not args:
         parser.print_help()
         return
@@ -1176,7 +1179,31 @@ generate an epub with each of the "lines" given included.''')
 
     lines = epubO.get_split_lines()
 
-    if len(args) == 1:
+    if options.split_by_section:
+        if len(args) > 1:
+            section_lines = args[1:]
+        else:
+            section_lines = range(len(lines))
+
+        for lineno in section_lines:
+            lineint = int(lineno)
+            outputfile = "%0.4d-%s"%(lineint,options.outputopt)
+            if options.outputdiropt:
+                outputfile = os.path.join(options.outputdiropt,outputfile)
+            print("output file: "+outputfile)
+            ## take title from (first) ToC if available
+            title = (lines[lineint]['toc'][0] if lines[lineint]['toc'] else options.titleopt)
+            print("title: %s"%title)
+            epubO.write_split_epub(outputfile,
+                                   [lineno],
+                                   authoropts=options.authoropts,
+                                   titleopt=title,
+                                   descopt=options.descopt,
+                                   tags=options.tagopts,
+                                   languages=options.languageopts,
+                                   coverjpgpath=options.coveropt)
+        return
+    elif len(args) == 1:
         count = 0
         showlist=['toc','guide','anchor','id','href']
         for line in lines:
@@ -1185,10 +1212,14 @@ generate an epub with each of the "lines" given included.''')
                 if s in line and line[s]:
                     print("\t%s: %s"%(s,line[s]))
             count += 1
+        return
 
     if len(args) > 1:
-
-        epubO.write_split_epub(options.outputopt,
+        outputfile = options.outputopt
+        if options.outputdiropt:
+            outputfile = os.path.join(options.outputdiropt,outputfile)
+        print("output file: "+outputfile)
+        epubO.write_split_epub(outputfile,
                                args[1:],
                                authoropts=options.authoropts,
                                titleopt=options.titleopt,
