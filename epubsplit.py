@@ -1145,7 +1145,7 @@ generate an epub with each of the "lines" given included.''')
                       help="Set OUTPUT directory, Default: presend working directory")
     parser.add_option('--split-by-section',
                       action='store_true', dest='split_by_section',
-                      help='Create a new epub from *each* of the listed line sections instead of one containing all.  Splits all sections if no lines numbers are given. Each split will be named <lineno>-<outputname> and placed in the output-dir.', )
+                      help='Create a new epub from each of the listed line sections instead of one containing all.  Splits all sections if no lines numbers are given. Each split will be named <number>-<output name> and placed in the output-dir.  Sections without a Table of Contents entry will be included with the preceding section(s)', )
     parser.add_option("-t", "--title", dest="titleopt", default=None,
                       help="Use TITLE as the metadata title.  Default: '<original epub title> Split' or ToC entry with --split-by-section", metavar="TITLE")
     parser.add_option("-d", "--description", dest="descopt", default=None,
