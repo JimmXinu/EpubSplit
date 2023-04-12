@@ -1185,23 +1185,38 @@ generate an epub with each of the "lines" given included.''')
         else:
             section_lines = range(len(lines))
 
+        splitslist = []
+        sectionlist = []
+        title=None
         for lineno in section_lines:
-            lineint = int(lineno)
-            outputfile = "%0.4d-%s"%(lineint,options.outputopt)
+            toclist = lines[int(lineno)]['toc']
+            if sectionlist and not toclist:
+                sectionlist.append(lineno)
+            else:
+                ## take title from (first) ToC if available, else titleopt (_ Split internally if None)
+                title = (toclist[0] if toclist else options.titleopt)
+                print("title: %s"%title)
+                sectionlist=[lineno]
+                splitslist.append((sectionlist,title))
+        if sectionlist:
+            splitslist.append((sectionlist,title))
+        # print(splitslist)
+
+        filecount = 1
+        for sectionlist, title in splitslist:
+            outputfile = "%0.4d-%s"%(filecount,options.outputopt)
             if options.outputdiropt:
                 outputfile = os.path.join(options.outputdiropt,outputfile)
             print("output file: "+outputfile)
-            ## take title from (first) ToC if available
-            title = (lines[lineint]['toc'][0] if lines[lineint]['toc'] else options.titleopt)
-            print("title: %s"%title)
             epubO.write_split_epub(outputfile,
-                                   [lineno],
+                                   sectionlist,
                                    authoropts=options.authoropts,
                                    titleopt=title,
                                    descopt=options.descopt,
                                    tags=options.tagopts,
                                    languages=options.languageopts,
                                    coverjpgpath=options.coveropt)
+            filecount+=1
         return
     elif len(args) == 1:
         count = 0
