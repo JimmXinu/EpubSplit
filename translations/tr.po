@@ -33,7 +33,7 @@ msgstr "Bir EPUB'ın bölümlerini yeni bir kitaba bölmek için grafik eklentis
 msgid ""
 "Title for each new book will be taken from the first included section in the"
 " Table of Contents above, which you can edit here first."
-msgstr ""
+msgstr "Her yeni kitabın başlığı, ilk önce burada düzenleyebileceğiniz, yukarıdaki İçindekiler Tablosunun ilk dahil edilen bölümünden alınacaktır."
 
 #: config.py:45 dialogs.py:90
 msgid "New Book per Section"
@@ -95,7 +95,7 @@ msgid ""
 "Checked sections will be included in <i>all</i> split books.<br>Default "
 "title will still be taken from the first <i>selected</i> section, and "
 "section order will remain as shown."
-msgstr ""
+msgstr "İşaretli bölümler <i>tüm</i> bölünmüş kitaplara dahil edilecektir.<br>Varsayılan başlık yine ilk <i>seçilen</i> bölümden alınacak ve bölüm sırası gösterildiği gibi kalacaktır."
 
 #: config.py:251
 msgid ""
@@ -227,7 +227,7 @@ msgstr "Yorumlarda Kaynak URL Tanımlayıcısına Bağlantı"
 msgid ""
 "Include a link to the source Epub's URL Identifier(if present) in the Split "
 "Epub Comments."
-msgstr ""
+msgstr "Bölünmüş Epub Yorumlarına kaynak Epub'ın URL Tanımlayıcısına (varsa) bir bağlantı ekleyin."
 
 #: config.py:339
 msgid "Copy Comments"
@@ -349,15 +349,15 @@ msgid ""
 "If the last book would contain fewer than sections than the Orphan Limit, "
 "include them in the previous book instead.  Last book will have more than N "
 "sections when that happens."
-msgstr ""
+msgstr "Son kitap Orphan Sınırından daha az bölüm içeriyorsa, bunları bir önceki kitaba ekleyin. Bu gerçekleştiğinde son kitap N'den fazla bölüme sahip olacaktır."
 
 #: config.py:524
 msgid "Orphan Limit"
-msgstr ""
+msgstr "Orphan Sınırı"
 
 #: config.py:525
 msgid "Limit for orphan sections"
-msgstr ""
+msgstr "Orphan bölümleri için sınır"
 
 #: config.py:534
 msgid ""
@@ -369,7 +369,7 @@ msgstr "Seçilen bölümleri aralarında mümkün olduğunca eşit bir şekilde 
 msgid ""
 "Note that 'evenly' means the number of sections with entries in the Table of"
 " Contents, not files or size by bytes or words."
-msgstr ""
+msgstr "'Eşit olarak', bayt veya kelime bazında dosya veya boyut değil, İçindekiler Tablosu'ndaki girişlerin bulunduğu bölüm sayısı anlamına geldiğini unutmayın."
 
 #: config.py:538
 msgid "Number of books"
@@ -405,7 +405,7 @@ msgstr "Yukarıda seçilmiş olan tüm bölümleri içeren yeni bir kitap oluşt
 
 #: dialogs.py:96
 msgid "Get Size"
-msgstr ""
+msgstr "Boyutu Al"
 
 #: dialogs.py:97
 msgid ""
@@ -450,7 +450,7 @@ msgstr "İçindekiler"
 msgid ""
 "Use Context Menu (right-click) on selected sections to check or uncheck all "
 "selected sections."
-msgstr ""
+msgstr "Seçilen tüm bölümleri işaretlemek veya işaretini kaldırmak için seçilen bölümlerde Bağlam Menüsünü (sağ tıklayın) kullanın."
 
 #: dialogs.py:199
 msgid "Indicates 'special' pages: copyright, titlepage, etc."
@@ -639,7 +639,7 @@ msgstr "EPUB'ın ayrılması tamamlandı."
 #: epubsplit_plugin.py:488
 msgid ""
 "<b><u>%s</u> by %s</b> has been created and default metadata filled in."
-msgstr ""
+msgstr "<b><u>%s</u> tarafından %s</b> oluşturuldu ve varsayılan meta veriler dolduruldu."
 
 #: epubsplit_plugin.py:489
 msgid "EpubSplit now skips the Edit Metadata step by default."
