@@ -767,10 +767,15 @@ class SplitEpub:
 
         self.filecache = FileCache(self.get_manifest_items())
 
-        # grab a copy--going to be modifying it.  Doesn't do deep copy.
-        lines = self.get_split_lines()
-        for j in linenums:
-            lines[int(j)]['include']=True
+        # set include flag in split_lines.
+        if not self.split_lines: self.get_split_lines()
+        lines = self.split_lines
+
+        for j in range(len(lines)):
+            if j in set(linenums):
+                lines[j]['include']=True
+            else:
+                lines[j]['include']=False
 
         # loop through finding 'chunks' -- contiguous pieces in the
         # same file.  Each included file is at least one chunk, but if
@@ -781,7 +786,7 @@ class SplitEpub:
         currentfile = None
         start = None
         for line in lines:
-            if 'include' in line:
+            if line['include']:
                 if not inchunk: # start new chunk
                     inchunk = True
                     currentfile = line['href']
