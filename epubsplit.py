@@ -768,14 +768,13 @@ class SplitEpub:
         self.filecache = FileCache(self.get_manifest_items())
 
         # set include flag in split_lines.
-        if not self.split_lines: self.get_split_lines()
+        if not self.split_lines:
+            self.get_split_lines()
         lines = self.split_lines
 
+        lines_set = set([int(k) for k in linenums])
         for j in range(len(lines)):
-            if j in set([int(k) for k in linenums]):
-                lines[j]['include']=True
-            else:
-                lines[j]['include']=False
+            lines[j]['include'] = j in lines_set
 
         # loop through finding 'chunks' -- contiguous pieces in the
         # same file.  Each included file is at least one chunk, but if
