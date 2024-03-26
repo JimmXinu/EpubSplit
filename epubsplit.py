@@ -772,7 +772,7 @@ class SplitEpub:
         lines = self.split_lines
 
         for j in range(len(lines)):
-            if j in set(linenums):
+            if j in set([int(k) for k in linenums]):
                 lines[j]['include']=True
             else:
                 lines[j]['include']=False
@@ -1056,7 +1056,7 @@ class SplitEpub:
         # come back to lines again for TOC because files only has files(gasp-shock!)
         count=1
         for line in self.split_lines:
-            if 'include' in line:
+            if line['include']:
                 # if changed, use only changed values.
                 if line['num'] in changedtocs:
                     line['toc'] = changedtocs[line['num']]
