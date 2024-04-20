@@ -661,11 +661,9 @@ class SplitEpub:
 
                 # The first of these in each navPoint should be the appropriate one.
                 # (may be others due to nesting.
-                textnode = navpoint.getElementsByTagName("text")[0].firstChild
-                if textnode:
-                    text = unicode(textnode.data)
-                    # text = textnode.data.encode("utf-8")
-                else:
+                try:
+                    text = unicode(navpoint.getElementsByTagName("text")[0].firstChild.data)
+                except:
                     #print("No chapter title found in TOC for (%s)"%src)
                     text = ""
 
