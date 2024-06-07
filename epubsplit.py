@@ -579,7 +579,6 @@ entities = { '&aacute;' : 'á',
          }
 
 class SplitEpub:
-
     def __init__(self, inputio):
         self.epub = ZipFile(inputio, 'r')
         self.content_dom = None
@@ -670,7 +669,7 @@ class SplitEpub:
                 # The first of these in each navPoint should be the appropriate one.
                 # (may be others due to nesting.
                 try:
-                    text = unicode(navpoint.getElementsByTagName("text")[0].firstChild.data)
+                    text = navpoint.getElementsByTagName("text")[0].firstChild.data
                 except:
                     #print("No chapter title found in TOC for (%s)"%src)
                     text = ""
@@ -693,78 +692,39 @@ class SplitEpub:
     # 'split lines' are all the points that the epub can be split on.
     # Offer a split at each spine file and each ToC point.
     def get_split_lines(self):
+        if not self.split_lines:
+            self.split_lines = []
+            count = 0
+            for itemref in self.get_content_dom().getElementsByTagName("itemref"):
+                idref = itemref.getAttribute("idref")
+                href, type = self.get_manifest_items()["i:" + idref]
+                current = {
+                    'href': href,
+                    'anchor': None,
+                    'toc': [],
+                    'id': idref,
+                    'type': type,
+                    'num': count,
+                    'sample': self.epub.read(href).decode('utf-8')[:1500] + "..." if len(self.epub.read(href)) > 1500 else self.epub.read(href).decode('utf-8')
+                }
+                self.split_lines.append(current)
+                count += 1
 
-        metadom = self.get_content_dom()
-        ## Save indiv book title
-        try:
-            self.origtitle = metadom.getElementsByTagName("dc:title")[0].firstChild.data
-        except:
-            self.origtitle = "(Title Missing)"
-
-        ## Save authors.
-        for creator in metadom.getElementsByTagName("dc:creator"):
-            try:
-                if( creator.getAttribute("opf:role") == "aut" or not creator.hasAttribute("opf:role") and creator.firstChild != None):
-                    if creator.firstChild.data not in self.origauthors:
-                        self.origauthors.append(creator.firstChild.data)
-            except:
-                pass
-        if len(self.origauthors) == 0:
-            self.origauthors.append("(Authors Missing)")
-
-        self.split_lines = [] # list of dicts with href, anchor and toc
-        # spin on spine files.
-        count=0
-        for itemref in metadom.getElementsByTagName("itemref"):
-            idref = itemref.getAttribute("idref")
-            (href,type) = self.get_manifest_items()["i:"+idref]
-            current = {}
-            self.split_lines.append(current)
-            current['href']=href
-            current['anchor']=None
-            current['toc'] = []
-            if href in self.get_guide_items():
-                current['guide'] = self.get_guide_items()[href]
-            current['id'] = idref
-            current['type'] = type
-            current['num'] = count
-            t=self.epub.read(href).decode('utf-8')
-            if len(t) > 1500 : t = t[:1500] + "..."
-            current['sample']=t
-            count += 1
-            #print("spine:%s->%s"%(idref,href))
-
-            # if href is in the toc.
-            if href in self.get_toc_map():
-                # For each toc entry, check to see if there's an anchor, if so,
-                # make a new split line.
-                for tocitem in self.get_toc_map()[href]:
-                    (text,anchor) = tocitem
-                    # XXX for outputing to screen in CLI--hopefully won't need in plugin?
-                    try:
-                        text = "%s"%text
-                    except:
-                        text = "(error text)"
-
-                    if anchor:
-                        #print("breakpoint: %d"%count)
-                        current = {}
-                        self.split_lines.append(current)
-                        current['href']=href
-                        current['anchor']=anchor
-                        current['toc']=[]
-                        current['id'] = idref
-                        current['type'] = type
-                        current['num'] = count
-                        # anchor, need to split first, then reduce to 1500.
-                        t=splitHtml(self.epub.read(href).decode('utf-8'),anchor,before=False)
-                        if len(t) > 1500 : t = t[:1500] + "..."
-                        current['sample']=t
-                        count += 1
-                    # There can be more than one toc to the same split line.
-                    # This won't find multiple toc to the same anchor yet.
-                    current['toc'].append(text)
-                    #print("\ttoc:'%s' %s#%s"%(text,href,anchor))
+                if href in self.get_toc_map():
+                    for text, anchor in self.get_toc_map()[href]:
+                        if anchor:
+                            current = {
+                                'href': href,
+                                'anchor': anchor,
+                                'toc': [],
+                                'id': idref,
+                                'type': type,
+                                'num': count,
+                                'sample': self.epub.read(href).decode('utf-8')[:1500] + "..." if len(self.epub.read(href)) > 1500 else self.epub.read(href).decode('utf-8')
+                            }
+                            self.split_lines.append(current)
+                            count += 1
+                        current['toc'].append(text)
         return self.split_lines
 
     # pass in list of line numbers(?)
@@ -1360,4 +1320,3 @@ generate an epub with each of the "lines" given included.''')
 
 if __name__ == "__main__":
     main(sys.argv[1:])
-
