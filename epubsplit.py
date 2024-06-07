@@ -587,6 +587,7 @@ class SplitEpub:
         self.manifest_items = None
         self.guide_items = None
         self.toc_dom = None
+        self.toc_relpath = None
         self.toc_map = None
         self.split_lines = None
         self.origauthors = []
@@ -613,6 +614,12 @@ class SplitEpub:
             self.get_content_dom() # sets self.content_relpath also.
         return self.content_relpath
 
+    def get_toc_relpath(self):
+        ## Save the path to the toc.ncx file--hrefs inside it are relative to it.
+        if not self.toc_relpath:
+            self.get_manifest_items() # sets self.toc_relpath also.
+        return self.toc_relpath
+
     def get_manifest_items(self):
         if not self.manifest_items:
             self.manifest_items = {}
@@ -625,6 +632,7 @@ class SplitEpub:
 
                 if( item.getAttribute("media-type") == "application/x-dtbncx+xml" ):
                     # TOC file is only one with this type--as far as I know.
+                    self.toc_relpath = get_path_part(fullhref)
                     self.toc_dom = parseString(self.epub.read(fullhref))
 
         return self.manifest_items
@@ -653,7 +661,7 @@ class SplitEpub:
             self.toc_map = {}
             # update all navpoint ids with bookid for uniqueness.
             for navpoint in self.get_toc_dom().getElementsByTagName("navPoint"):
-                src = normpath(unquote(self.get_content_relpath()+navpoint.getElementsByTagName("content")[0].getAttribute("src")))
+                src = normpath(unquote(self.get_toc_relpath()+navpoint.getElementsByTagName("content")[0].getAttribute("src")))
                 if '#' in src:
                     (href,anchor)=src.split("#")
                 else:
@@ -679,7 +687,6 @@ class SplitEpub:
                     self.toc_map[href].insert(0,(text,anchor))
                 else:
                     self.toc_map[href].append((text,anchor))
-
         return self.toc_map
 
     # list of dicts with href, anchor & toc text.
