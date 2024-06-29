@@ -16,7 +16,6 @@ from functools import partial
 from datetime import datetime
 
 import six
-from six.moves.configparser import SafeConfigParser
 from six.moves import range
 from six import text_type as unicode
 
