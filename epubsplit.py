@@ -684,9 +684,16 @@ class SplitEpub:
                     # split lines to possibly be out of order from
                     # TOC, but the alternative is worse.  Should be a
                     # rare corner case.
-                    self.toc_map[href].insert(0,(text,anchor))
+                    ## Keep order of non-anchor entries to the same file.
+                    idx=0
+                    while idx < len(self.toc_map[href]) and self.toc_map[href][idx][1] is None: # [1] is anchor
+                        # print(idx)
+                        # print(self.toc_map[href][idx])
+                        idx = idx+1
+                    self.toc_map[href].insert(idx,(text,anchor))
                 else:
                     self.toc_map[href].append((text,anchor))
+            # print(self.toc_map)
         return self.toc_map
 
     # list of dicts with href, anchor & toc text.
