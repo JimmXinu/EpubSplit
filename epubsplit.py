@@ -1166,21 +1166,18 @@ class FileCache:
             if a.has_attr('id'):
                 self.anchors[href+'#'+a['id']]=newfile+'#'+a['id']
 
-        for img in soup.findAll('img'):
-            if img.has_attr('src'):
-                src=img['src']
-            if img.has_attr('xlink:href'):
-                src=img['xlink:href']
-            self.add_linked_file(get_path_part(href)+src)
-
-        # from baen epub.
+        # <image> from baen epub.
         # <image width="462" height="616" xlink:href="cover.jpeg"/>
-        for img in soup.findAll('image'):
+        for img in soup.findAll('img') + soup.findAll('image'):
+            src = None
             if img.has_attr('src'):
                 src=img['src']
             if img.has_attr('xlink:href'):
                 src=img['xlink:href']
-            self.add_linked_file(get_path_part(href)+src)
+            if src:
+                self.add_linked_file(get_path_part(href)+src)
+            else:
+                logger.info("img tag without src in file:(%s) tag:(%s)"%(href,img))
 
         # link href="0.css" type="text/css"
         for style in soup.findAll('link',{'type':'text/css'}):
