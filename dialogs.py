@@ -94,10 +94,8 @@ class SelectLinesDialog(SizePersistedDialog):
 
         # Find type
         self.findtype = QComboBox(self)
-        self.findtype.addItem(_('Highlight'))
-        self.findtype.addItem(_('Select'))
-        self.findtype.addItem(_('Check'))
         self.findtype.setToolTip(_('Choose how found entries will be treated.'))
+        self.populate_findtype()
 
         # Case Sensitivity option
         self.caseSens = QtGui.QCheckBox(_('Case sensitive'),self)
@@ -148,9 +146,17 @@ class SelectLinesDialog(SizePersistedDialog):
         self.lines_table.populate_table(lines)
         self.lines_table.show_checkedalways(self.prefs['show_checkedalways'])
 
+    def populate_findtype(self):
+        self.findtype.clear()
+        self.findtype.addItem(_('Highlight'))
+        self.findtype.addItem(_('Select'))
+        if self.prefs['show_checkedalways']:
+            self.findtype.addItem(_('Check'))
+
     def user_config(self):
         self.do_user_config()
         self.lines_table.show_checkedalways(self.prefs['show_checkedalways'])
+        self.populate_findtype()
         (txt,tooltip) = NEW_BOOK_PER[self.prefs['new_book_per']]
         self.new_books_b.setText(txt)
         self.new_books_b.setToolTip(tooltip)
@@ -209,7 +215,7 @@ class SelectLinesDialog(SizePersistedDialog):
             text = self.lines_table.get_row_toc(row)
             if not self.caseSens.isChecked():
                 text = text.lower()
-            cb = self.lines_table.item(row,0)
+
             found = False
             if query in text:
                 logger.debug("found(%s):%s"%(row,text))
@@ -217,19 +223,23 @@ class SelectLinesDialog(SizePersistedDialog):
                 found = True
             else:
                 checkstate = Qt.Unchecked
+
             if self.findtype.currentText() == _('Check'):
                 # checkbox
-                cb.setCheckState(checkstate)
+                self.lines_table.item(row,0).setCheckState(checkstate)
+
             if self.findtype.currentText() == _('Select'):
                 # select - need to select each cell in row.
                 for col in range(self.lines_table.columnCount()):
                     self.lines_table.item(row,col).setSelected(found)
+
             if self.findtype.currentText() == _('Highlight'): # Highlight
+                tocitem = self.lines_table.item(row,3)
                 if found:
-                    cb.setBackground(highlightcolor)
+                    tocitem.setBackground(highlightcolor)
                 else:
-                    # copy background from href cell.
-                    cb.setBackground(self.lines_table.item(row,1).background())
+                    # copy unhighlighted background from href cell.
+                    tocitem.setBackground(self.lines_table.item(row,1).background())
 
 class LinesTableWidget(QTableWidget):
 
