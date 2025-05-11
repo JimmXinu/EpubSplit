@@ -19,9 +19,10 @@ logger = logging.getLogger(__name__)
 from datetime import datetime
 
 from PyQt5 import QtWidgets as QtGui
+from PyQt5 import QtCore
 from PyQt5.Qt import (QTableWidget, QVBoxLayout, QHBoxLayout, QProgressDialog, QTimer,
                       QDialogButtonBox, Qt, QAbstractItemView, QTableWidgetItem, QTextBrowser,
-                      QMenu)
+                      QMenu, QLabel, QLineEdit, QApplication, QColor, QComboBox)
 
 from calibre.gui2 import error_dialog, warning_dialog, question_dialog, info_dialog
 from calibre.gui2.dialogs.confirm_delete import confirm
@@ -59,6 +60,7 @@ class SelectLinesDialog(SizePersistedDialog):
         self.get_split_size_fn = get_split_size_fn
         self.do_user_config = do_user_config
         self.prefs = prefs
+        self.keys=dict()
 
         self.setWindowTitle(header)
         self.setWindowIcon(icon)
@@ -73,6 +75,44 @@ class SelectLinesDialog(SizePersistedDialog):
 
         self.lines_table = LinesTableWidget(self)
         lines_layout.addWidget(self.lines_table)
+
+        find_layout = QHBoxLayout()
+
+        findtooltip=_('Search for string in Table of Contents Entries.')
+        label = QLabel(_('Find:'))
+        label.setToolTip(findtooltip)
+
+        # Button to find the document for something
+        self.findButton = QtGui.QPushButton(_('Find'),self)
+        self.findButton.clicked.connect(self.find)
+        self.findButton.setToolTip(findtooltip)
+
+        # The field into which to type the query
+        self.findField = QLineEdit(self)
+        self.findField.setToolTip(findtooltip)
+        self.findField.returnPressed.connect(self.findButton.setFocus)
+
+        # Find type
+        self.findtype = QComboBox(self)
+        self.findtype.addItem(_('Highlight'))
+        self.findtype.addItem(_('Select'))
+        self.findtype.addItem(_('Check'))
+        self.findtype.setToolTip(_('Choose how found entries will be treated.'))
+
+        # Case Sensitivity option
+        self.caseSens = QtGui.QCheckBox(_('Case sensitive'),self)
+        self.caseSens.setToolTip(_("Search for case sensitive string; don't treat Harry, HARRY and harry all the same."))
+
+        find_layout.addWidget(label)
+        find_layout.addWidget(self.findField)
+        find_layout.addWidget(self.findButton)
+        find_layout.addWidget(self.findtype)
+        find_layout.addWidget(self.caseSens)
+
+        self.addCtrlKeyPress(QtCore.Qt.Key_F,self.findFocus)
+        # self.addCtrlKeyPress(QtCore.Qt.Key_G,self.find)
+
+        layout.addLayout(find_layout)
 
         options_layout = QHBoxLayout()
 
@@ -137,6 +177,59 @@ class SelectLinesDialog(SizePersistedDialog):
 
     def get_selected_linenums_tocs(self):
         return self.lines_table.get_selected_linenums_tocs()
+
+    def addCtrlKeyPress(self,key,func):
+        # print("addKeyPress: key(0x%x)"%key)
+        # print("control: 0x%x"%QtCore.Qt.ControlModifier)
+        self.keys[key]=func
+
+    def keyPressEvent(self, event):
+        # print("event: key(0x%x) modifiers(0x%x)"%(event.key(),event.modifiers()))
+        if (event.modifiers() & QtCore.Qt.ControlModifier) and event.key() in self.keys:
+            func = self.keys[event.key()]
+            return func()
+        else:
+            return SizePersistedDialog.keyPressEvent(self, event)
+
+    def findFocus(self):
+        # print("findFocus called")
+        self.findField.setFocus()
+        self.findField.selectAll()
+
+    def find(self):
+        query = self.findField.text()
+        if not self.caseSens.isChecked():
+            query = query.lower()
+        logger.debug("find:%s"%query)
+
+        # colors copied from Calibre.
+        highlightcolor = QColor('#027524') if QApplication.instance().is_dark_theme else QColor('#b4ecb4')
+
+        for row in range(self.lines_table.rowCount()):
+            text = self.lines_table.get_row_toc(row)
+            if not self.caseSens.isChecked():
+                text = text.lower()
+            cb = self.lines_table.item(row,0)
+            found = False
+            if query in text:
+                logger.debug("found(%s):%s"%(row,text))
+                checkstate = Qt.Checked
+                found = True
+            else:
+                checkstate = Qt.Unchecked
+            if self.findtype.currentText() == _('Check'):
+                # checkbox
+                cb.setCheckState(checkstate)
+            if self.findtype.currentText() == _('Select'):
+                # select - need to select each cell in row.
+                for col in range(self.lines_table.columnCount()):
+                    self.lines_table.item(row,col).setSelected(found)
+            if self.findtype.currentText() == _('Highlight'): # Highlight
+                if found:
+                    cb.setBackground(highlightcolor)
+                else:
+                    # copy background from href cell.
+                    cb.setBackground(self.lines_table.item(row,1).background())
 
 class LinesTableWidget(QTableWidget):
 
