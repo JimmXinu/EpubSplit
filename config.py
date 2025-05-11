@@ -252,96 +252,85 @@ class BasicTab(QWidget):
         label.setWordWrap(True)
         self.l.addWidget(label)
 
-        scrollable = QScrollArea()
-        scrollcontent = QWidget()
-        scrollable.setWidget(scrollcontent)
-        scrollable.setWidgetResizable(True)
-        self.l.addWidget(scrollable)
-
-        self.sl = QVBoxLayout()
-        scrollcontent.setLayout(self.sl)
-
         self.copytoctitle = QCheckBox(_('Title from First Included TOC'),self)
         self.copytoctitle.setToolTip(_('Copy Title from the the first Table of Contents entry included in the Split Epub.\nSupersedes Copy Title below.'))
         self.copytoctitle.setChecked(prefs['copytoctitle'])
-        self.sl.addWidget(self.copytoctitle)
+        self.l.addWidget(self.copytoctitle)
 
         self.copytitle = QCheckBox(_('Copy Title'),self)
         self.copytitle.setToolTip(_('Copy Title from the source Epub to the Split Epub.  Adds "Split" to the title.'))
         self.copytitle.setChecked(prefs['copytitle'])
-        self.sl.addWidget(self.copytitle)
+        self.l.addWidget(self.copytitle)
 
         self.copyauthors = QCheckBox(_('Copy Authors'),self)
         self.copyauthors.setToolTip(_('Copy Authors from the source Epub to the Split Epub.'))
         self.copyauthors.setChecked(prefs['copyauthors'])
-        self.sl.addWidget(self.copyauthors)
+        self.l.addWidget(self.copyauthors)
 
         self.copyseries = QCheckBox(_('Copy Series'),self)
         self.copyseries.setToolTip(_('Copy Series from the source Epub to the Split Epub.'))
         self.copyseries.setChecked(prefs['copyseries'])
-        self.sl.addWidget(self.copyseries)
+        self.l.addWidget(self.copyseries)
 
         self.copycover = QCheckBox(_('Copy Cover'),self)
         self.copycover.setToolTip(_('Copy Cover from the source Epub to the Split Epub.'))
         self.copycover.setChecked(prefs['copycover'])
-        self.sl.addWidget(self.copycover)
+        self.l.addWidget(self.copycover)
 
         self.copyrating = QCheckBox(_('Copy Rating'),self)
         self.copyrating.setToolTip(_('Copy Rating from the source Epub to the Split Epub.'))
         self.copyrating.setChecked(prefs['copyrating'])
-        self.sl.addWidget(self.copyrating)
+        self.l.addWidget(self.copyrating)
 
         self.copytags = QCheckBox(_('Copy Tags'),self)
         self.copytags.setToolTip(_('Copy Tags from the source Epub to the Split Epub.'))
         self.copytags.setChecked(prefs['copytags'])
-        self.sl.addWidget(self.copytags)
+        self.l.addWidget(self.copytags)
 
         self.copyidentifiers = QCheckBox(_('Copy Identifiers'),self)
         self.copyidentifiers.setToolTip(_('Copy Identifiers from the source Epub to the Split Epub.'))
         self.copyidentifiers.setChecked(prefs['copyidentifiers'])
-        self.sl.addWidget(self.copyidentifiers)
+        self.l.addWidget(self.copyidentifiers)
 
         self.copydate = QCheckBox(_('Copy Date'),self)
         self.copydate.setToolTip(_('Copy Date from the source Epub to the Split Epub.'))
         self.copydate.setChecked(prefs['copydate'])
-        self.sl.addWidget(self.copydate)
+        self.l.addWidget(self.copydate)
 
         self.copypubdate = QCheckBox(_('Copy Published Date'),self)
         self.copypubdate.setToolTip(_('Copy Published Date from the source Epub to the Split Epub.'))
         self.copypubdate.setChecked(prefs['copypubdate'])
-        self.sl.addWidget(self.copypubdate)
+        self.l.addWidget(self.copypubdate)
 
         self.copypublisher = QCheckBox(_('Copy Publisher'),self)
         self.copypublisher.setToolTip(_('Copy Publisher from the source Epub to the Split Epub.'))
         self.copypublisher.setChecked(prefs['copypublisher'])
-        self.sl.addWidget(self.copypublisher)
+        self.l.addWidget(self.copypublisher)
 
         self.copylanguages = QCheckBox(_('Copy Languages'),self)
         self.copylanguages.setToolTip(_('Copy Languages from the source Epub to the Split Epub.'))
         self.copylanguages.setChecked(prefs['copylanguages'])
-        self.sl.addWidget(self.copylanguages)
+        self.l.addWidget(self.copylanguages)
 
         self.copycommentstitle = QCheckBox(_('Copy Source Title to Comments'),self)
         self.copycommentstitle.setToolTip(_('Copy Title from the source Epub to the Split Epub Comments.'))
         self.copycommentstitle.setChecked(prefs['copycommentstitle'])
-        self.sl.addWidget(self.copycommentstitle)
+        self.l.addWidget(self.copycommentstitle)
 
         self.copycommentscallink = QCheckBox(_('Link to Source book in Calibre in Comments'),self)
         self.copycommentscallink.setToolTip(_('Include a Calibre link to the source Epub in the Split Epub Comments.'))
         self.copycommentscallink.setChecked(prefs['copycommentscallink'])
-        self.sl.addWidget(self.copycommentscallink)
+        self.l.addWidget(self.copycommentscallink)
 
         self.copycommentsidurl = QCheckBox(_('Link to Source URL Identifier in Comments'),self)
         self.copycommentsidurl.setToolTip(_("Include a link to the source Epub's URL Identifier(if present) in the Split Epub Comments."))
         self.copycommentsidurl.setChecked(prefs['copycommentsidurl'])
-        self.sl.addWidget(self.copycommentsidurl)
+        self.l.addWidget(self.copycommentsidurl)
 
         self.copycomments = QCheckBox(_('Copy Comments'),self)
         self.copycomments.setToolTip(_('Copy Comments from the source Epub to the Split Epub.  Adds "Split from:" to the comments.'))
         self.copycomments.setChecked(prefs['copycomments'])
-        self.sl.addWidget(self.copycomments)
-
-        self.sl.insertStretch(-1)
+        self.l.addWidget(self.copycomments)
 
         self.l.addSpacing(15)
 
