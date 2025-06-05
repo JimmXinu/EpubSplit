@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: calibre-plugins\n"
-"POT-Creation-Date: 2022-08-31 13:36-0500\n"
+"POT-Creation-Date: 2025-05-27 10:55-0500\n"
 "PO-Revision-Date: 2014-06-19 23:02+0000\n"
 "Last-Translator: tony shen <anthanny@hotmail.com>, 2024\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/calibre/calibre-plugins/language/zh_CN/)\n"
@@ -29,7 +29,7 @@ msgid ""
 " Table of Contents above, which you can edit here first."
 msgstr "每本新书的标题都将取自上述目录中包含的第一个章节，您可以在此先编辑它。"
 
-#: config.py:45 dialogs.py:90
+#: config.py:45 dialogs.py:128
 msgid "New Book per Section"
 msgstr "每个章节一本书"
 
@@ -84,7 +84,7 @@ msgstr "显示“始终包含”复选框"
 msgid "If enabled, a checkbox will appear for each section."
 msgstr "如果启用，每个章节都会出现一个复选框。"
 
-#: config.py:246 dialogs.py:182
+#: config.py:246 dialogs.py:285
 msgid ""
 "Checked sections will be included in <i>all</i> split books.<br>Default "
 "title will still be taken from the first <i>selected</i> section, and "
@@ -97,521 +97,559 @@ msgid ""
 "not as you choose below."
 msgstr "制作新的Epub时，源书中的元数据将被复制或不被复制，如下所示。"
 
-#: config.py:264
+#: config.py:255
 msgid "Title from First Included TOC"
 msgstr "从首个内置目录中获取标题"
 
-#: config.py:265
+#: config.py:256
 msgid ""
 "Copy Title from the the first Table of Contents entry included in the Split Epub.\n"
 "Supersedes Copy Title below."
 msgstr "从Split Epub中包含的第一个目录条目复制标题。取代下面的复制标题。"
 
-#: config.py:269
+#: config.py:260
 msgid "Copy Title"
 msgstr "复制书名"
 
-#: config.py:270
+#: config.py:261
 msgid ""
 "Copy Title from the source Epub to the Split Epub.  Adds \"Split\" to the "
 "title."
 msgstr "将书名从源Epub复制到拆分的Epub。 添加 \"拆分\" 到书名中. "
 
-#: config.py:274
+#: config.py:265
 msgid "Copy Authors"
 msgstr "复制作者"
 
-#: config.py:275
+#: config.py:266
 msgid "Copy Authors from the source Epub to the Split Epub."
 msgstr "将作者从源Epub复制到拆分的Epub。"
 
-#: config.py:279
+#: config.py:270
 msgid "Copy Series"
 msgstr "复制丛书"
 
-#: config.py:280
+#: config.py:271
 msgid "Copy Series from the source Epub to the Split Epub."
 msgstr "将丛书从源Epub复制到拆分的Epub。"
 
-#: config.py:284
+#: config.py:275
 msgid "Copy Cover"
 msgstr "复制封面"
 
-#: config.py:285
+#: config.py:276
 msgid "Copy Cover from the source Epub to the Split Epub."
 msgstr "将封面从源Epub复制到拆分的Epub。"
 
-#: config.py:289
+#: config.py:280
 msgid "Copy Rating"
 msgstr "复制评分"
 
-#: config.py:290
+#: config.py:281
 msgid "Copy Rating from the source Epub to the Split Epub."
 msgstr "将评分从源Epub复制到拆分的Epub。"
 
-#: config.py:294
+#: config.py:285
 msgid "Copy Tags"
 msgstr "复制标签"
 
-#: config.py:295
+#: config.py:286
 msgid "Copy Tags from the source Epub to the Split Epub."
 msgstr "将标签从源Epub复制到拆分的Epub。"
 
-#: config.py:299
+#: config.py:290
 msgid "Copy Identifiers"
 msgstr "复制书号"
 
-#: config.py:300
+#: config.py:291
 msgid "Copy Identifiers from the source Epub to the Split Epub."
 msgstr "将标识符从源Epub复制到拆分的Epub。"
 
-#: config.py:304
+#: config.py:295
 msgid "Copy Date"
 msgstr "复制创建日期"
 
-#: config.py:305
+#: config.py:296
 msgid "Copy Date from the source Epub to the Split Epub."
 msgstr "将创建日期从源Epub复制到拆分的Epub。"
 
-#: config.py:309
+#: config.py:300
 msgid "Copy Published Date"
 msgstr "复制出版日期"
 
-#: config.py:310
+#: config.py:301
 msgid "Copy Published Date from the source Epub to the Split Epub."
 msgstr "将出版日期从源Epub复制到拆分的Epub。"
 
-#: config.py:314
+#: config.py:305
 msgid "Copy Publisher"
 msgstr "复制出版商"
 
-#: config.py:315
+#: config.py:306
 msgid "Copy Publisher from the source Epub to the Split Epub."
 msgstr "将出版商从源Epub复制到拆分的Epub。"
 
-#: config.py:319
+#: config.py:310
 msgid "Copy Languages"
 msgstr "复制语言"
 
-#: config.py:320
+#: config.py:311
 msgid "Copy Languages from the source Epub to the Split Epub."
 msgstr "将语言从源Epub复制到拆分的Epub。"
 
-#: config.py:324
+#: config.py:315
 msgid "Copy Source Title to Comments"
 msgstr "复制源标题到简介"
 
-#: config.py:325
+#: config.py:316
 msgid "Copy Title from the source Epub to the Split Epub Comments."
 msgstr "将标题从源Epub复制到拆分的Epub的简介中。"
 
-#: config.py:329
+#: config.py:320
 msgid "Link to Source book in Calibre in Comments"
 msgstr "在书籍简介中显示源书籍在Calibre中的链接"
 
-#: config.py:330
+#: config.py:321
 msgid "Include a Calibre link to the source Epub in the Split Epub Comments."
 msgstr "在拆分后的书籍的简介中包含源书籍在Calibre中的链接"
 
-#: config.py:334
+#: config.py:325
 msgid "Link to Source URL Identifier in Comments"
 msgstr "在书籍简介中包含源书籍的标识符的链接"
 
-#: config.py:335
+#: config.py:326
 msgid ""
 "Include a link to the source Epub's URL Identifier(if present) in the Split "
 "Epub Comments."
 msgstr "在拆分后的书籍简介中包含源书籍的标识符的链接(如果有的话)"
 
-#: config.py:339
+#: config.py:330
 msgid "Copy Comments"
 msgstr "复制简介"
 
-#: config.py:340
+#: config.py:331
 msgid ""
 "Copy Comments from the source Epub to the Split Epub.  Adds \"Split from:\" "
 "to the comments."
 msgstr "将简介从源Epub复制到拆分的Epub。 添加 \"拆分自:\"到简介中. "
 
-#: config.py:348
+#: config.py:337
 msgid ""
 "These controls aren't plugin settings as such, but convenience buttons for "
 "setting Keyboard shortcuts and getting all the EpubSplit confirmation "
 "dialogs back again."
 msgstr "下述设置本身不属于插件设置，而是用于设置键盘快捷键和再次返回所有 Epub拆分 确认对话框的快捷按钮。"
 
-#: config.py:353
+#: config.py:342
 msgid "Keyboard shortcuts..."
 msgstr "快捷键..."
 
-#: config.py:354
+#: config.py:343
 msgid "Edit the keyboard shortcuts associated with this plugin"
 msgstr "编辑与此插件关联的键盘快捷键"
 
-#: config.py:358
+#: config.py:347
 msgid "Reset disabled &confirmation dialogs"
 msgstr "重置禁用的确认对话框（&C）"
 
-#: config.py:359
+#: config.py:348
 msgid "Reset all show me again dialogs for the EpubSplit plugin"
 msgstr "重置 Epub拆分 插件的所有“再次显示”对话框"
 
-#: config.py:363
+#: config.py:352
 msgid "View library preferences..."
 msgstr "查看书库首选项..."
 
-#: config.py:364
+#: config.py:353
 msgid "View data stored in the library database for this plugin"
 msgstr "查看存储在书库数据库中的此插件的数据"
 
-#: config.py:377 dialogs.py:100
+#: config.py:366 dialogs.py:138
 msgid "Done"
 msgstr "完成"
 
-#: config.py:378
+#: config.py:367
 msgid "Confirmation dialogs have all been reset"
 msgstr "确认对话框已全部重置"
 
-#: config.py:394
+#: config.py:383
 msgid "Save Source column:"
 msgstr "保留原栏目"
 
-#: config.py:395
+#: config.py:384
 msgid ""
 "If set, the column below will be populated with the template below to record"
 " the source of the split file."
 msgstr "如果设置，下述栏目的内容将使用下述模板来填充，以记录拆分的文件的原始信息。"
 
-#: config.py:401
+#: config.py:390
 msgid "Choose a column to populate with template on split."
 msgstr "选择在拆分时要根据模板填充数据的栏目。"
 
-#: config.py:411
+#: config.py:400
 msgid "Template from source book. Example: {title} by {authors}"
 msgstr "根据源书籍建立的模板。例如: {title} 作者 {authors} "
 
-#: config.py:421
+#: config.py:410
 msgid ""
 "If you have custom columns defined, they will be listed below.  Choose if "
 "you would like these columns copied to new split books."
 msgstr "如果你有自定义栏目，他们将显示在下面。选择你希望复制到拆分后的新书中的栏目。"
 
-#: config.py:444
+#: config.py:433
 msgid "Copy this %s column to new split books..."
 msgstr "复制该 %s 栏目到拆分后的新书..."
 
-#: config.py:461
+#: config.py:450
 msgid ""
 "Only one automatic Multiple Split mode can be active a time.  Select which "
 "and configure settings below."
 msgstr "一次只能激活一种自动拆分模式。选择并配置下面的设置。"
 
-#: config.py:462
+#: config.py:451
 msgid ""
 "The title for each new book will be taken from the first included section in"
 " the Table of Contents."
 msgstr "每本新书的标题都将取自目录中包含的第一个章节。"
 
-#: config.py:463
+#: config.py:452
 msgid ""
 "Sections that do not have a Table of Contents entry will be included in the "
 "previous section."
 msgstr "没在目录条目中的章节将包含在前一章节中。"
 
-#: config.py:464
+#: config.py:453
 msgid "You may edit the Table of Contents entries before splitting."
 msgstr "你可以在拆分前编辑目录条目。"
 
-#: config.py:510
+#: config.py:499
 msgid "Create a new book for each selected section."
 msgstr "为每个选定的章节创建一本新书。"
 
-#: config.py:515
+#: config.py:504
 msgid "Create new books every N selected sections."
 msgstr "为选定的每N个章节创建一本新书。"
 
-#: config.py:518
+#: config.py:507
 msgid "Number of Sections"
 msgstr "章节数"
 
-#: config.py:519
+#: config.py:508
 msgid "Sections per new book"
 msgstr "每本新书的章节数"
 
-#: config.py:521
+#: config.py:510
 msgid ""
 "If the last book would contain fewer than sections than the Orphan Limit, "
 "include them in the previous book instead.  Last book will have more than N "
 "sections when that happens."
 msgstr "如果最后一本书包含的章节数少于“最小章节数”，则将其包含在上一本书中。发生这种情况时，最后一本书将包含 N个 以上的章节。"
 
-#: config.py:524
+#: config.py:513
 msgid "Orphan Limit"
 msgstr "最小章节数"
 
-#: config.py:525
+#: config.py:514
 msgid "Limit for orphan sections"
 msgstr "限制生成一本书时需要的最小章节数"
 
-#: config.py:534
+#: config.py:523
 msgid ""
 "Create N new books, dividing the selected sections between them as evenly as"
 " possible."
 msgstr "创建 N 本新书，尽可保证每本书的章节数接近。"
 
-#: config.py:535
+#: config.py:524
 msgid ""
 "Note that 'evenly' means the number of sections with entries in the Table of"
 " Contents, not files or size by bytes or words."
 msgstr "请注意，“接近”指包含的目录中的章节数，而不是文件数或字节数或字数。"
 
-#: config.py:538
+#: config.py:527
 msgid "Number of books"
 msgstr "书籍数"
 
-#: config.py:539
+#: config.py:528
 msgid ""
 "Split all selected sections into this many new books, dividing the sections "
 "evenly between them."
 msgstr "将选定的章节拆分成这么多本新书，并尽量保证章节数接近。"
 
-#: dialogs.py:46
+#: dialogs.py:47
 msgid "<p><b><i>Double click to copy from sample.</i></b></p>"
 msgstr "<p><b><i>双击从样本复制。</i></b></p>"
 
-#: dialogs.py:80
+#: dialogs.py:81
+msgid "Search for string in Table of Contents Entries."
+msgstr ""
+
+#: dialogs.py:82
+msgid "Find:"
+msgstr ""
+
+#: dialogs.py:86
+msgid "Find"
+msgstr ""
+
+#: dialogs.py:97
+msgid "Choose how found entries will be treated."
+msgstr ""
+
+#: dialogs.py:101
+msgid "Case sensitive"
+msgstr ""
+
+#: dialogs.py:102
+msgid ""
+"Search for case sensitive string; don't treat Harry, HARRY and harry all the"
+" same."
+msgstr ""
+
+#: dialogs.py:118
 msgid "Configure"
 msgstr "配置"
 
-#: dialogs.py:82
+#: dialogs.py:120
 msgid "Configure Plugin"
 msgstr "设置插件"
 
-#: dialogs.py:86
+#: dialogs.py:124
 msgid "New Book"
 msgstr "新书"
 
-#: dialogs.py:87
+#: dialogs.py:125
 msgid ""
 "Make <i>one</i> new book containing the sections selected above and then "
 "edit its Metadata."
 msgstr "制作<i>一本</i>包含上述选定部分的新书，然后编辑其元数据。"
 
-#: dialogs.py:96
+#: dialogs.py:134
 msgid "Get Size"
 msgstr "获取大小"
 
-#: dialogs.py:97
+#: dialogs.py:135
 msgid ""
 "Calculate the size of the new book from the currently selected sections."
 msgstr "根据当前选定的章节计算新书的大小。"
 
-#: dialogs.py:126
+#: dialogs.py:151 dialogs.py:236
+msgid "Highlight"
+msgstr ""
+
+#: dialogs.py:152 dialogs.py:231
+msgid "Select"
+msgstr ""
+
+#: dialogs.py:154 dialogs.py:227
+msgid "Check"
+msgstr ""
+
+#: dialogs.py:172
 msgid "Missing Title(s)"
 msgstr "缺失标题"
 
-#: dialogs.py:127
+#: dialogs.py:173
 msgid "Some selected sections don't have a Table of Contents text."
 msgstr "部分选定的章节没有对应的目录条目。"
 
-#: dialogs.py:128
+#: dialogs.py:174
 msgid ""
 "If you continue, those sections will be included with the last prior section"
 " that did have a Table of Contents text."
 msgstr "如果继续，这些部分将包括在上一节中，该节具有目录文本。"
 
-#: dialogs.py:129
+#: dialogs.py:175
 msgid "If you cancel, you can go back and add Table of Contents entries."
 msgstr "如果取消，您将返回并可添加目录条目。"
 
-#: dialogs.py:130
+#: dialogs.py:176
 msgid "Double click to edit the Table of Contents entry for a section."
 msgstr "双击以编辑章节对应的目录条目。"
 
-#: dialogs.py:151
+#: dialogs.py:254
 msgid "Guide"
 msgstr "类型"
 
-#: dialogs.py:151
+#: dialogs.py:254
 msgid "HREF"
 msgstr "源内容"
 
-#: dialogs.py:151
+#: dialogs.py:254
 msgid "Table of Contents"
 msgstr "目录项"
 
-#: dialogs.py:183
+#: dialogs.py:286
 msgid ""
 "Use Context Menu (right-click) on selected sections to check or uncheck all "
 "selected sections."
 msgstr "在所选部分上使用上下文菜单（右键单击）来勾选或取消勾选所有所选部分。"
 
-#: dialogs.py:199
+#: dialogs.py:302
 msgid "Indicates 'special' pages: copyright, titlepage, etc."
 msgstr "表示“特殊”页面：版权、标题页等"
 
-#: dialogs.py:205
+#: dialogs.py:308
 msgid ""
 "Click and copy hotkey to copy text.\n"
 "Double-click to edit ToC entry.\n"
 "Pipes(|) divide different ToC entries to the same place."
 msgstr "单击并复制热键以复制文本。\n单击可编辑目录条目。\n管道（|）将不同的目录条目划分到同一位置。"
 
-#: dialogs.py:298
+#: dialogs.py:401
 msgid "Section Sample"
 msgstr "章节示例"
 
-#: dialogs.py:305
+#: dialogs.py:408
 msgid "Check Selected"
 msgstr "选择所选项"
 
-#: dialogs.py:306
+#: dialogs.py:409
 msgid "Uncheck Selected"
 msgstr "不选所选项"
 
-#: dialogs.py:320 dialogs.py:321 dialogs.py:322 dialogs.py:344 dialogs.py:345
-#: dialogs.py:346
+#: dialogs.py:423 dialogs.py:424 dialogs.py:425 dialogs.py:447 dialogs.py:448
+#: dialogs.py:449
 msgid "Splitting Sections..."
 msgstr "分拆章节中..."
 
-#: dialogs.py:349
+#: dialogs.py:452
 msgid "Cancel"
 msgstr "取消"
 
-#: dialogs.py:370
+#: dialogs.py:473
 msgid " - %s estimated until done"
 msgstr " - %s 预计直至完成"
 
-#: dialogs.py:427
+#: dialogs.py:530
 msgid "%d day"
 msgstr "%d 天"
 
-#: dialogs.py:427
+#: dialogs.py:530
 msgid "%d days"
 msgstr "%d 天"
 
-#: dialogs.py:428
+#: dialogs.py:531
 msgid "%d hour"
 msgstr "%d 小时"
 
-#: dialogs.py:428
+#: dialogs.py:531
 msgid "%d hours"
 msgstr "%d 小时"
 
-#: dialogs.py:429
+#: dialogs.py:532
 msgid "%d minute"
 msgstr "%d 分钟"
 
-#: dialogs.py:429
+#: dialogs.py:532
 msgid "%d minutes"
 msgstr "%d 分钟"
 
-#: dialogs.py:430
+#: dialogs.py:533
 msgid "%d second"
 msgstr "%d 秒"
 
-#: dialogs.py:430
+#: dialogs.py:533
 msgid "%d seconds"
 msgstr "%d 秒"
 
-#: dialogs.py:445
+#: dialogs.py:548
 msgid "less than 1 second"
 msgstr "少于1秒"
 
-#: epubsplit_plugin.py:68
+#: epubsplit_plugin.py:67
 msgid "EpubSplit"
 msgstr "Epub拆分"
 
-#: epubsplit_plugin.py:69
+#: epubsplit_plugin.py:68
 msgid "Split off part of an EPUB into a new book."
 msgstr "将epub的拆分为新书"
 
-#: epubsplit_plugin.py:115
+#: epubsplit_plugin.py:114
 msgid "Select One Book"
 msgstr "选取一本书"
 
-#: epubsplit_plugin.py:116
+#: epubsplit_plugin.py:115
 msgid "Please select exactly one book to split."
 msgstr "请只选择一本书"
 
-#: epubsplit_plugin.py:137
+#: epubsplit_plugin.py:136
 msgid "EPUB3 Detected"
 msgstr "文件为EPUB3格式"
 
-#: epubsplit_plugin.py:138
+#: epubsplit_plugin.py:137
 msgid "This plugin only works on EPUB2 format ebooks."
 msgstr "该插件仅用于EPUB2格式的电子书."
 
-#: epubsplit_plugin.py:142
+#: epubsplit_plugin.py:141
 msgid "No EPUB"
 msgstr "无EPUB"
 
-#: epubsplit_plugin.py:143
+#: epubsplit_plugin.py:142
 msgid "This plugin only works on EPUB format ebooks."
 msgstr "该插件仅用于EPUB格式的电子书."
 
-#: epubsplit_plugin.py:154
+#: epubsplit_plugin.py:153
 msgid "Select Sections to Split Off"
 msgstr "选择需拆分的章节"
 
-#: epubsplit_plugin.py:173
+#: epubsplit_plugin.py:172
 msgid "No Sections Selected"
 msgstr "未选择章节"
 
-#: epubsplit_plugin.py:174
+#: epubsplit_plugin.py:173
 msgid ""
 "Book(s) not split.\n"
 "\n"
 "You must select at least one section to split."
 msgstr "书籍未拆分.\n\n你至少需选择一本用于拆分的书."
 
-#: epubsplit_plugin.py:240
+#: epubsplit_plugin.py:239
 msgid "New Books Created"
 msgstr "新书籍已创建"
 
-#: epubsplit_plugin.py:241
+#: epubsplit_plugin.py:240
 msgid "%s New Books Created."
 msgstr "%s 本新书已创建."
 
-#: epubsplit_plugin.py:273
+#: epubsplit_plugin.py:272
 msgid "Computing size of EPUB..."
 msgstr "正在计算EPUB的大小..."
 
-#: epubsplit_plugin.py:287
+#: epubsplit_plugin.py:286
 msgid "Finished computing size of EPUB."
 msgstr "完成计算EPUB的大小。"
 
-#: epubsplit_plugin.py:289
+#: epubsplit_plugin.py:288
 msgid "Size of New Book"
 msgstr "新书的大小"
 
-#: epubsplit_plugin.py:290
+#: epubsplit_plugin.py:289
 msgid "New EPUB File Size:"
 msgstr "新EPUB文件大小:"
 
-#: epubsplit_plugin.py:321
+#: epubsplit_plugin.py:320
 msgid "%s Split"
 msgstr "%s 分拆"
 
-#: epubsplit_plugin.py:360
+#: epubsplit_plugin.py:359
 msgid "Calibre Library Link"
 msgstr "Calibre 书库链接"
 
-#: epubsplit_plugin.py:365
+#: epubsplit_plugin.py:364
 msgid "Source URL"
 msgstr "源URL"
 
-#: epubsplit_plugin.py:374
+#: epubsplit_plugin.py:373
 msgid "Split from:"
 msgstr "分拆自:"
 
-#: epubsplit_plugin.py:424
+#: epubsplit_plugin.py:423
 msgid ""
 "You can enable or disable Edit Metadata in Preferences > Plugins > "
 "EpubSplit."
 msgstr "你可以在首选项 >插件 > Epub拆分 启用或禁用元数据编辑 ."
 
-#: epubsplit_plugin.py:426
+#: epubsplit_plugin.py:425
 msgid ""
 "The book for the new Split EPUB has been created and default metadata filled in.\n"
 "\n"
@@ -622,19 +660,19 @@ msgid ""
 "If you download or add a cover image, it will be included in the generated EPUB."
 msgstr "新Split EPub的书籍已经创建，并填写了默认元数据。\n\n然而，在您查看、编辑和关闭随后的元数据对话框之前，才会 ** 创建EPub。\n\n您可以自己填写元数据，也可以使用已知书籍的下载元数据。\n\n如果您下载或添加封面图像，它将包含在生成的EPub中。"
 
-#: epubsplit_plugin.py:444
+#: epubsplit_plugin.py:443
 msgid "Splitting off from EPUB..."
 msgstr "拆分自EPUB..."
 
-#: epubsplit_plugin.py:476
+#: epubsplit_plugin.py:475
 msgid "Finished splitting off EPUB."
 msgstr "完成EPUB拆分"
 
-#: epubsplit_plugin.py:488
+#: epubsplit_plugin.py:487
 msgid ""
 "<b><u>%s</u> by %s</b> has been created and default metadata filled in."
 msgstr "<b><u>%s</u> 作者 %s</b> 已创建并生成了默认元数据."
 
-#: epubsplit_plugin.py:489
+#: epubsplit_plugin.py:488
 msgid "EpubSplit now skips the Edit Metadata step by default."
 msgstr "Epub拆分 现在默认跳过“编辑元数据”步骤。"

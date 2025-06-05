@@ -1,0 +1,677 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# 
+# Translators:
+# Usama Khalil, 2025
+# Usama Khalil, 2025
+msgid ""
+msgstr ""
+"Project-Id-Version: calibre-plugins\n"
+"POT-Creation-Date: 2025-05-27 10:55-0500\n"
+"PO-Revision-Date: 2014-06-19 23:02+0000\n"
+"Last-Translator: Usama Khalil, 2025\n"
+"Language-Team: Arabic (http://app.transifex.com/calibre/calibre-plugins/language/ar/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: __init__.py:48
+msgid "UI plugin to split off parts of an epub into a new book."
+msgstr "إضافة واجهة مستخدم لتقسيم أجزاء من ملف epub إلى كتاب جديد."
+
+#: config.py:43
+msgid ""
+"Title for each new book will be taken from the first included section in the"
+" Table of Contents above, which you can edit here first."
+msgstr "سيتم أخذ عنوان كل كتاب جديد من القسم الأول المضمن في جدول المحتويات أعلاه، والذي يمكنك تعديله هنا أولاً."
+
+#: config.py:45 dialogs.py:128
+msgid "New Book per Section"
+msgstr "كتاب جديد لكل قسم"
+
+#: config.py:46
+msgid "Make a new book for <i>each</i> of the sections selected above."
+msgstr "إنشاء كتاب جديد <i>لكل</i> قسم من الأقسام المحددة أعلاه."
+
+#: config.py:47
+msgid "New Book per N Sections"
+msgstr "كتاب جديد لكل N قسم"
+
+#: config.py:48
+msgid "Make new books, each containing N sections from those selected above."
+msgstr "إنشاء كتب جديدة، يحتوي كل منها على N قسم من الأقسام المحددة أعلاه."
+
+#: config.py:49
+msgid "N New Books"
+msgstr "N كتب جديدة"
+
+#: config.py:50
+msgid "Make N new books by evenly dividing the sections selected above."
+msgstr "إنشاء N كتابًا جديدًا بتقسيم الأقسام المحددة أعلاه بالتساوي."
+
+#: config.py:174
+msgid "Basic"
+msgstr "أساسي"
+
+#: config.py:177
+msgid "Custom Columns"
+msgstr "أعمدة مخصصة"
+
+#: config.py:180
+msgid "New Book Per"
+msgstr "كتاب جديد لكل"
+
+#: config.py:239
+msgid "Edit Metadata for New Book(s)"
+msgstr "تحرير البيانات الوصفية للكتاب (الكتب) الجديد"
+
+#: config.py:240
+msgid ""
+"Show Edit Metadata Dialog after creating each new book entry, but "
+"<i>before</i> EPUB is created.<br>Allows for downloading metadata and "
+"ensures EPUB has updated metadata."
+msgstr "إظهار مربع حوار تحرير البيانات الوصفية بعد إنشاء كل إدخال كتاب جديد، ولكن <i>قبل</i> إنشاء ملف EPUB.<br>يسمح بتنزيل البيانات الوصفية و يضمن أن ملف EPUB يحتوي على بيانات وصفية محدثة."
+
+#: config.py:244
+msgid "Show 'Always Include' Checkboxes"
+msgstr "إظهار مربعات اختيار 'تضمين دائمًا'"
+
+#: config.py:245
+msgid "If enabled, a checkbox will appear for each section."
+msgstr "إذا تم التمكين، سيظهر مربع اختيار لكل قسم."
+
+#: config.py:246 dialogs.py:285
+msgid ""
+"Checked sections will be included in <i>all</i> split books.<br>Default "
+"title will still be taken from the first <i>selected</i> section, and "
+"section order will remain as shown."
+msgstr "سيتم تضمين الأقسام المحددة في <i>جميع</i> الكتب المقسمة.<br>سيظل العنوان الافتراضي مأخوذًا من القسم <i>المحدد</i> الأول، وسيظل ترتيب الأقسام كما هو موضح."
+
+#: config.py:251
+msgid ""
+"When making a new Epub, the metadata from the source book will be copied or "
+"not as you choose below."
+msgstr "عند إنشاء ملف Epub جديد، سيتم نسخ البيانات الوصفية من الكتاب المصدر أو عدم نسخها حسب اختيارك أدناه."
+
+#: config.py:255
+msgid "Title from First Included TOC"
+msgstr "العنوان من أول جدول محتويات مضمن"
+
+#: config.py:256
+msgid ""
+"Copy Title from the the first Table of Contents entry included in the Split Epub.\n"
+"Supersedes Copy Title below."
+msgstr "نسخ العنوان من أول إدخال في جدول المحتويات المضمن في ملف Epub المقسم.\nيحل محل نسخ العنوان أدناه."
+
+#: config.py:260
+msgid "Copy Title"
+msgstr "نسخ العنوان"
+
+#: config.py:261
+msgid ""
+"Copy Title from the source Epub to the Split Epub.  Adds \"Split\" to the "
+"title."
+msgstr "نسخ العنوان من ملف Epub المصدر إلى ملف Epub المقسم.  يضيف \"مقسم\" إلى العنوان."
+
+#: config.py:265
+msgid "Copy Authors"
+msgstr "نسخ المؤلفين"
+
+#: config.py:266
+msgid "Copy Authors from the source Epub to the Split Epub."
+msgstr "نسخ المؤلفين من ملف Epub المصدر إلى ملف Epub المقسم."
+
+#: config.py:270
+msgid "Copy Series"
+msgstr "نسخ السلسلة"
+
+#: config.py:271
+msgid "Copy Series from the source Epub to the Split Epub."
+msgstr "نسخ السلسلة من ملف Epub المصدر إلى ملف Epub المقسم."
+
+#: config.py:275
+msgid "Copy Cover"
+msgstr "نسخ الغلاف"
+
+#: config.py:276
+msgid "Copy Cover from the source Epub to the Split Epub."
+msgstr "نسخ الغلاف من ملف Epub المصدر إلى ملف Epub المقسم."
+
+#: config.py:280
+msgid "Copy Rating"
+msgstr "نسخ التقييم"
+
+#: config.py:281
+msgid "Copy Rating from the source Epub to the Split Epub."
+msgstr "نسخ التقييم من ملف Epub المصدر إلى ملف Epub المقسم."
+
+#: config.py:285
+msgid "Copy Tags"
+msgstr "نسخ العلامات"
+
+#: config.py:286
+msgid "Copy Tags from the source Epub to the Split Epub."
+msgstr "نسخ العلامات من ملف Epub المصدر إلى ملف Epub المقسم."
+
+#: config.py:290
+msgid "Copy Identifiers"
+msgstr "نسخ المعرفات"
+
+#: config.py:291
+msgid "Copy Identifiers from the source Epub to the Split Epub."
+msgstr "نسخ المعرفات من ملف Epub المصدر إلى ملف Epub المقسم."
+
+#: config.py:295
+msgid "Copy Date"
+msgstr "نسخ التاريخ"
+
+#: config.py:296
+msgid "Copy Date from the source Epub to the Split Epub."
+msgstr "نسخ التاريخ من ملف Epub المصدر إلى ملف Epub المقسم."
+
+#: config.py:300
+msgid "Copy Published Date"
+msgstr "نسخ تاريخ النشر"
+
+#: config.py:301
+msgid "Copy Published Date from the source Epub to the Split Epub."
+msgstr "نسخ تاريخ النشر من ملف Epub المصدر إلى ملف Epub المقسم."
+
+#: config.py:305
+msgid "Copy Publisher"
+msgstr "نسخ الناشر"
+
+#: config.py:306
+msgid "Copy Publisher from the source Epub to the Split Epub."
+msgstr "نسخ الناشر من ملف Epub المصدر إلى ملف Epub المقسم."
+
+#: config.py:310
+msgid "Copy Languages"
+msgstr "نسخ اللغات"
+
+#: config.py:311
+msgid "Copy Languages from the source Epub to the Split Epub."
+msgstr "نسخ اللغات من ملف Epub المصدر إلى ملف Epub المقسم."
+
+#: config.py:315
+msgid "Copy Source Title to Comments"
+msgstr "نسخ عنوان المصدر إلى التعليقات"
+
+#: config.py:316
+msgid "Copy Title from the source Epub to the Split Epub Comments."
+msgstr "نسخ العنوان من ملف Epub المصدر إلى تعليقات ملف Epub المقسم."
+
+#: config.py:320
+msgid "Link to Source book in Calibre in Comments"
+msgstr "ربط الكتاب المصدر في Calibre في التعليقات"
+
+#: config.py:321
+msgid "Include a Calibre link to the source Epub in the Split Epub Comments."
+msgstr "تضمين رابط Calibre لملف Epub المصدر في تعليقات ملف Epub المقسم."
+
+#: config.py:325
+msgid "Link to Source URL Identifier in Comments"
+msgstr "ربط بمعرف URL المصدر في التعليقات"
+
+#: config.py:326
+msgid ""
+"Include a link to the source Epub's URL Identifier(if present) in the Split "
+"Epub Comments."
+msgstr "تضمين رابط إلى معرف URL لملف Epub المصدر (إن وجد) في تعليقات ملف Epub المقسم."
+
+#: config.py:330
+msgid "Copy Comments"
+msgstr "نسخ التعليقات"
+
+#: config.py:331
+msgid ""
+"Copy Comments from the source Epub to the Split Epub.  Adds \"Split from:\" "
+"to the comments."
+msgstr "نسخ التعليقات من ملف Epub المصدر إلى ملف Epub المقسم.  يضيف \"مقسم من:\" إلى التعليقات."
+
+#: config.py:337
+msgid ""
+"These controls aren't plugin settings as such, but convenience buttons for "
+"setting Keyboard shortcuts and getting all the EpubSplit confirmation "
+"dialogs back again."
+msgstr "هذه الضوابط ليست إعدادات إضافة بحد ذاتها، بل هي أزرار ملائمة لـ تعيين اختصارات لوحة المفاتيح واستعادة جميع مربعات حوار تأكيد EpubSplit مرة أخرى."
+
+#: config.py:342
+msgid "Keyboard shortcuts..."
+msgstr "اختصارات لوحة المفاتيح..."
+
+#: config.py:343
+msgid "Edit the keyboard shortcuts associated with this plugin"
+msgstr "تحرير اختصارات لوحة المفاتيح المرتبطة بهذه الإضافة"
+
+#: config.py:347
+msgid "Reset disabled &confirmation dialogs"
+msgstr "إعادة تعيين مربعات حوار &التأكيد المعطلة"
+
+#: config.py:348
+msgid "Reset all show me again dialogs for the EpubSplit plugin"
+msgstr "إعادة تعيين جميع مربعات حوار \"أظهر لي مرة أخرى\" لإضافة EpubSplit"
+
+#: config.py:352
+msgid "View library preferences..."
+msgstr "عرض تفضيلات المكتبة..."
+
+#: config.py:353
+msgid "View data stored in the library database for this plugin"
+msgstr "عرض البيانات المخزنة في قاعدة بيانات المكتبة لهذه الإضافة"
+
+#: config.py:366 dialogs.py:138
+msgid "Done"
+msgstr "تم"
+
+#: config.py:367
+msgid "Confirmation dialogs have all been reset"
+msgstr "تمت إعادة تعيين جميع مربعات حوار التأكيد"
+
+#: config.py:383
+msgid "Save Source column:"
+msgstr "حفظ عمود المصدر:"
+
+#: config.py:384
+msgid ""
+"If set, the column below will be populated with the template below to record"
+" the source of the split file."
+msgstr "إذا تم التعيين، فسيتم ملء العمود أدناه بالقالب أدناه لتسجيل مصدر الملف المقسم."
+
+#: config.py:390
+msgid "Choose a column to populate with template on split."
+msgstr "اختر عمودًا لملئه بالقالب عند التقسيم."
+
+#: config.py:400
+msgid "Template from source book. Example: {title} by {authors}"
+msgstr "قالب من الكتاب المصدر. مثال: {title} بواسطة {authors}"
+
+#: config.py:410
+msgid ""
+"If you have custom columns defined, they will be listed below.  Choose if "
+"you would like these columns copied to new split books."
+msgstr "إذا كانت لديك أعمدة مخصصة مُعرّفة، فسيتم إدراجها أدناه. اختر ما إذا كنت ترغب في نسخ هذه الأعمدة إلى دفاتر مُقسّمة جديدة."
+
+#: config.py:433
+msgid "Copy this %s column to new split books..."
+msgstr "نسخ هذا العمود %s إلى كتب مقسمة جديدة..."
+
+#: config.py:450
+msgid ""
+"Only one automatic Multiple Split mode can be active a time.  Select which "
+"and configure settings below."
+msgstr "يمكن أن يكون وضع التقسيم المتعدد التلقائي نشطًا واحدًا فقط في كل مرة.  اختر أيًا منها وقم بتهيئة الإعدادات أدناه."
+
+#: config.py:451
+msgid ""
+"The title for each new book will be taken from the first included section in"
+" the Table of Contents."
+msgstr "سيتم أخذ عنوان كل كتاب جديد من القسم الأول المضمن في جدول المحتويات."
+
+#: config.py:452
+msgid ""
+"Sections that do not have a Table of Contents entry will be included in the "
+"previous section."
+msgstr "سيتم تضمين الأقسام التي لا تحتوي على إدخال في جدول المحتويات في القسم السابق."
+
+#: config.py:453
+msgid "You may edit the Table of Contents entries before splitting."
+msgstr "يمكنك تعديل إدخالات جدول المحتويات قبل التقسيم."
+
+#: config.py:499
+msgid "Create a new book for each selected section."
+msgstr "إنشاء كتاب جديد لكل قسم محدد."
+
+#: config.py:504
+msgid "Create new books every N selected sections."
+msgstr "إنشاء كتب جديدة كل N قسم محدد."
+
+#: config.py:507
+msgid "Number of Sections"
+msgstr "عدد الأقسام"
+
+#: config.py:508
+msgid "Sections per new book"
+msgstr "أقسام لكل كتاب جديد"
+
+#: config.py:510
+msgid ""
+"If the last book would contain fewer than sections than the Orphan Limit, "
+"include them in the previous book instead.  Last book will have more than N "
+"sections when that happens."
+msgstr "إذا كان الكتاب الأخير سيحتوي على أقسام أقل من حد الأيتام، قم بتضمينها في الكتاب السابق بدلاً من ذلك.  سيحتوي الكتاب الأخير على أكثر من N قسم عندما يحدث ذلك."
+
+#: config.py:513
+msgid "Orphan Limit"
+msgstr "حد الأيتام"
+
+#: config.py:514
+msgid "Limit for orphan sections"
+msgstr "حد الأقسام اليتيمة"
+
+#: config.py:523
+msgid ""
+"Create N new books, dividing the selected sections between them as evenly as"
+" possible."
+msgstr "إنشاء N كتابًا جديدًا، مع تقسيم الأقسام المحددة بينها بالتساوي قدر الإمكان."
+
+#: config.py:524
+msgid ""
+"Note that 'evenly' means the number of sections with entries in the Table of"
+" Contents, not files or size by bytes or words."
+msgstr "لاحظ أن 'بالتساوي' تعني عدد الأقسام التي تحتوي على إدخالات في جدول المحتويات، وليس الملفات أو الحجم بالبايت أو الكلمات."
+
+#: config.py:527
+msgid "Number of books"
+msgstr "عدد الكتب"
+
+#: config.py:528
+msgid ""
+"Split all selected sections into this many new books, dividing the sections "
+"evenly between them."
+msgstr "تقسيم جميع الأقسام المحددة إلى هذا العدد من الكتب الجديدة، مع تقسيم الأقسام بالتساوي بينها."
+
+#: dialogs.py:47
+msgid "<p><b><i>Double click to copy from sample.</i></b></p>"
+msgstr "<p><b><i>انقر نقرًا مزدوجًا للنسخ من العينة.</i></b></p>"
+
+#: dialogs.py:81
+msgid "Search for string in Table of Contents Entries."
+msgstr "البحث عن سلسلة نصية في إدخالات جدول المحتويات."
+
+#: dialogs.py:82
+msgid "Find:"
+msgstr "بحث:"
+
+#: dialogs.py:86
+msgid "Find"
+msgstr "بحث"
+
+#: dialogs.py:97
+msgid "Choose how found entries will be treated."
+msgstr "اختر كيف سيتم التعامل مع الإدخالات التي تم العثور عليها."
+
+#: dialogs.py:101
+msgid "Case sensitive"
+msgstr "حساس لحالة الأحرف"
+
+#: dialogs.py:102
+msgid ""
+"Search for case sensitive string; don't treat Harry, HARRY and harry all the"
+" same."
+msgstr "البحث عن سلسلة نصية حساسة لحالة الأحرف؛ لا تتعامل مع Harry و HARRY و harry بنفس الطريقة."
+
+#: dialogs.py:118
+msgid "Configure"
+msgstr "تهيئة"
+
+#: dialogs.py:120
+msgid "Configure Plugin"
+msgstr "تهيئة الإضافة"
+
+#: dialogs.py:124
+msgid "New Book"
+msgstr "كتاب جديد"
+
+#: dialogs.py:125
+msgid ""
+"Make <i>one</i> new book containing the sections selected above and then "
+"edit its Metadata."
+msgstr "إنشاء كتاب جديد <i>واحد</i> يحتوي على الأقسام المحددة أعلاه ثم تحرير بياناته الوصفية."
+
+#: dialogs.py:134
+msgid "Get Size"
+msgstr "الحصول على الحجم"
+
+#: dialogs.py:135
+msgid ""
+"Calculate the size of the new book from the currently selected sections."
+msgstr "حساب حجم الكتاب الجديد من الأقسام المحددة حاليًا."
+
+#: dialogs.py:151 dialogs.py:236
+msgid "Highlight"
+msgstr "تمييز"
+
+#: dialogs.py:152 dialogs.py:231
+msgid "Select"
+msgstr "تحديد"
+
+#: dialogs.py:154 dialogs.py:227
+msgid "Check"
+msgstr "تحديد"
+
+#: dialogs.py:172
+msgid "Missing Title(s)"
+msgstr "عناوين مفقودة"
+
+#: dialogs.py:173
+msgid "Some selected sections don't have a Table of Contents text."
+msgstr "بعض الأقسام المحددة لا تحتوي على نص في جدول المحتويات."
+
+#: dialogs.py:174
+msgid ""
+"If you continue, those sections will be included with the last prior section"
+" that did have a Table of Contents text."
+msgstr "إذا تابعت، فسيتم تضمين تلك الأقسام مع آخر قسم سابق كان يحتوي على نص في جدول المحتويات."
+
+#: dialogs.py:175
+msgid "If you cancel, you can go back and add Table of Contents entries."
+msgstr "إذا ألغيت، يمكنك العودة وإضافة إدخالات جدول المحتويات."
+
+#: dialogs.py:176
+msgid "Double click to edit the Table of Contents entry for a section."
+msgstr "انقر نقرًا مزدوجًا لتحرير إدخال جدول المحتويات لقسم ما."
+
+#: dialogs.py:254
+msgid "Guide"
+msgstr "دليل"
+
+#: dialogs.py:254
+msgid "HREF"
+msgstr "HREF"
+
+#: dialogs.py:254
+msgid "Table of Contents"
+msgstr "جدول المحتويات"
+
+#: dialogs.py:286
+msgid ""
+"Use Context Menu (right-click) on selected sections to check or uncheck all "
+"selected sections."
+msgstr "استخدم قائمة السياق (النقر بزر الماوس الأيمن) على الأقسام المحددة لتحديد أو إلغاء تحديد جميع الأقسام المحددة."
+
+#: dialogs.py:302
+msgid "Indicates 'special' pages: copyright, titlepage, etc."
+msgstr "يشير إلى الصفحات 'الخاصة': حقوق النشر، صفحة العنوان، إلخ."
+
+#: dialogs.py:308
+msgid ""
+"Click and copy hotkey to copy text.\n"
+"Double-click to edit ToC entry.\n"
+"Pipes(|) divide different ToC entries to the same place."
+msgstr "انقر وانسخ مفتاح الاختصار لنسخ النص.\nانقر نقرًا مزدوجًا لتحرير إدخال جدول المحتويات.\nتقسم الأنابيب (|) إدخالات جدول المحتويات المختلفة إلى نفس المكان."
+
+#: dialogs.py:401
+msgid "Section Sample"
+msgstr "عينة القسم"
+
+#: dialogs.py:408
+msgid "Check Selected"
+msgstr "تحديد المختار"
+
+#: dialogs.py:409
+msgid "Uncheck Selected"
+msgstr "إلغاء تحديد المختار"
+
+#: dialogs.py:423 dialogs.py:424 dialogs.py:425 dialogs.py:447 dialogs.py:448
+#: dialogs.py:449
+msgid "Splitting Sections..."
+msgstr "جارٍ تقسيم الأقسام..."
+
+#: dialogs.py:452
+msgid "Cancel"
+msgstr "إلغاء"
+
+#: dialogs.py:473
+msgid " - %s estimated until done"
+msgstr " - %s تقديري حتى الانتهاء"
+
+#: dialogs.py:530
+msgid "%d day"
+msgstr "%d يوم"
+
+#: dialogs.py:530
+msgid "%d days"
+msgstr "%d أيام"
+
+#: dialogs.py:531
+msgid "%d hour"
+msgstr "%d ساعة"
+
+#: dialogs.py:531
+msgid "%d hours"
+msgstr "%d ساعات"
+
+#: dialogs.py:532
+msgid "%d minute"
+msgstr "%d دقيقة"
+
+#: dialogs.py:532
+msgid "%d minutes"
+msgstr "%d دقائق"
+
+#: dialogs.py:533
+msgid "%d second"
+msgstr "%d ثانية"
+
+#: dialogs.py:533
+msgid "%d seconds"
+msgstr "%d ثوانٍ"
+
+#: dialogs.py:548
+msgid "less than 1 second"
+msgstr "أقل من ثانية واحدة"
+
+#: epubsplit_plugin.py:67
+msgid "EpubSplit"
+msgstr "EpubSplit"
+
+#: epubsplit_plugin.py:68
+msgid "Split off part of an EPUB into a new book."
+msgstr "تقسيم جزء من ملف EPUB إلى كتاب جديد."
+
+#: epubsplit_plugin.py:114
+msgid "Select One Book"
+msgstr "حدد كتابًا واحدًا"
+
+#: epubsplit_plugin.py:115
+msgid "Please select exactly one book to split."
+msgstr "الرجاء تحديد كتاب واحد بالضبط لتقسيمه."
+
+#: epubsplit_plugin.py:136
+msgid "EPUB3 Detected"
+msgstr "تم اكتشاف EPUB3"
+
+#: epubsplit_plugin.py:137
+msgid "This plugin only works on EPUB2 format ebooks."
+msgstr "هذه الإضافة تعمل فقط مع الكتب الإلكترونية بتنسيق EPUB2."
+
+#: epubsplit_plugin.py:141
+msgid "No EPUB"
+msgstr "لا يوجد EPUB"
+
+#: epubsplit_plugin.py:142
+msgid "This plugin only works on EPUB format ebooks."
+msgstr "هذه الإضافة تعمل فقط مع الكتب الإلكترونية بتنسيق EPUB."
+
+#: epubsplit_plugin.py:153
+msgid "Select Sections to Split Off"
+msgstr "تحديد الأقسام المراد تقسيمها"
+
+#: epubsplit_plugin.py:172
+msgid "No Sections Selected"
+msgstr "لم يتم تحديد أقسام"
+
+#: epubsplit_plugin.py:173
+msgid ""
+"Book(s) not split.\n"
+"\n"
+"You must select at least one section to split."
+msgstr "لم يتم تقسيم الكتاب (الكتب).\n\nيجب عليك تحديد قسم واحد على الأقل لتقسيمه."
+
+#: epubsplit_plugin.py:239
+msgid "New Books Created"
+msgstr "تم إنشاء كتب جديدة"
+
+#: epubsplit_plugin.py:240
+msgid "%s New Books Created."
+msgstr "تم إنشاء %s كتب جديدة."
+
+#: epubsplit_plugin.py:272
+msgid "Computing size of EPUB..."
+msgstr "جارٍ حساب حجم ملف EPUB..."
+
+#: epubsplit_plugin.py:286
+msgid "Finished computing size of EPUB."
+msgstr "انتهى حساب حجم ملف EPUB."
+
+#: epubsplit_plugin.py:288
+msgid "Size of New Book"
+msgstr "حجم الكتاب الجديد"
+
+#: epubsplit_plugin.py:289
+msgid "New EPUB File Size:"
+msgstr "حجم ملف EPUB الجديد:"
+
+#: epubsplit_plugin.py:320
+msgid "%s Split"
+msgstr "%s مقسم"
+
+#: epubsplit_plugin.py:359
+msgid "Calibre Library Link"
+msgstr "رابط مكتبة Calibre"
+
+#: epubsplit_plugin.py:364
+msgid "Source URL"
+msgstr "عنوان URL المصدر"
+
+#: epubsplit_plugin.py:373
+msgid "Split from:"
+msgstr "مقسم من:"
+
+#: epubsplit_plugin.py:423
+msgid ""
+"You can enable or disable Edit Metadata in Preferences > Plugins > "
+"EpubSplit."
+msgstr "يمكنك تمكين أو تعطيل تحرير البيانات الوصفية في التفضيلات > الإضافات > EpubSplit."
+
+#: epubsplit_plugin.py:425
+msgid ""
+"The book for the new Split EPUB has been created and default metadata filled in.\n"
+"\n"
+"However, the EPUB will *not* be created until after you've reviewed, edited, and closed the metadata dialog that follows.\n"
+"\n"
+"You can fill in the metadata yourself, or use download metadata for known books.\n"
+"\n"
+"If you download or add a cover image, it will be included in the generated EPUB."
+msgstr "تم إنشاء الكتاب لملف EPUB المقسم الجديد وتم ملء البيانات الوصفية الافتراضية.\n\nومع ذلك، لن يتم إنشاء ملف EPUB إلا بعد مراجعة وتحرير وإغلاق مربع حوار البيانات الوصفية الذي يليه.\n\nيمكنك ملء البيانات الوصفية بنفسك، أو استخدام بيانات وصفية تم تنزيلها للكتب المعروفة.\n\nإذا قمت بتنزيل أو إضافة صورة غلاف، فسيتم تضمينها في ملف EPUB الذي تم إنشاؤه."
+
+#: epubsplit_plugin.py:443
+msgid "Splitting off from EPUB..."
+msgstr "جارٍ التقسيم من ملف EPUB..."
+
+#: epubsplit_plugin.py:475
+msgid "Finished splitting off EPUB."
+msgstr "انتهى تقسيم ملف EPUB."
+
+#: epubsplit_plugin.py:487
+msgid ""
+"<b><u>%s</u> by %s</b> has been created and default metadata filled in."
+msgstr "تم إنشاء <b><u>%s</u> بواسطة %s</b> وتم ملء البيانات الوصفية الافتراضية."
+
+#: epubsplit_plugin.py:488
+msgid "EpubSplit now skips the Edit Metadata step by default."
+msgstr "يتخطى EpubSplit الآن خطوة تحرير البيانات الوصفية افتراضيًا."
