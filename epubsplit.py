@@ -1187,11 +1187,23 @@ class FileCache:
             else:
                 logger.info("img tag without src in file:(%s) tag:(%s)"%(href,img))
 
-        # link href="0.css" type="text/css"
+        ## External CSS
+        # <link href="0.css" type="text/css">
         for style in soup.findAll('link',{'type':'text/css'}):
             #print("link:%s"%style)
             if style.has_attr('href'):
                 self.add_css_file(get_path_part(href)+style['href'])
+
+        ## Internal CSS
+                # <style>...</style>
+        cssdata_list = [ stripHTML(x) for x in soup.select('style') ]
+        # logger.debug(cssdata_list)
+
+        ## Inline CSS
+        cssdata_list.extend([ x['style'] for x in soup.select('*[style]') ])
+        # logger.debug(cssdata_list)
+
+        self.add_css_data(href,"\n".join(cssdata_list))
 
         return newfile
 
@@ -1212,7 +1224,12 @@ class FileCache:
 
         logger.debug("add_css_file(%s)"%href)
 
-        cssdata = self.epub.read(href).decode('utf-8')
+        self.add_css_data(href,self.epub.read(href).decode('utf-8'))
+
+        self.add_linked_file(href)
+
+    def add_css_data(self,href,cssdata):
+        logger.debug("add_css_DATA(%s)"%href)
 
         ## Brute force discard all CSS comments
         cssdata = re.sub(r'(/\*.*?\*/)', r'', cssdata, flags=re.DOTALL)
@@ -1240,9 +1257,6 @@ class FileCache:
                 url = get_path_part(href)+url
                 logger.debug("url:%s"%url)
                 self.add_linked_file(url)
-
-        # logger.debug(cssdata)
-        self.add_linked_file(href)
 
 def splitHtml(data,tagid,before=False):
     soup = BeautifulSoup(data,'html5lib')
