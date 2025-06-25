@@ -1202,6 +1202,8 @@ class FileCache:
         ## This will add those url() refs, but there's nothing checks
         ## that the CSS rules containing those url()s are *used* by
         ## the content files.
+
+        ## XXX What about <style> and inline attr style="" ??
         href = self.fix_path(href)
 
         if self.is_linked_file(href):
@@ -1218,12 +1220,14 @@ class FileCache:
         if '@import' in cssdata:
             ## @import url("substyle.css");
             ## @import url('substyle.css');
+            ## @import url(substyle.css);
             ## @import "substyle.css";
             ## @import 'substyle.css';
             logger.debug("CSS @import")
             ## the pattern will also accept mismatched '/", which is broken CSS.
-            for url in re.findall(r'@import (?:url\()?[\'"](.*?)[\'"]\)?', cssdata):
-                logger.debug("import:%s"%url)
+            for url in re.findall(r'@import (?:url\()?[\'"]?([^\'"\)]+)[\'"]?\)?', cssdata):
+                url = get_path_part(href)+url
+                logger.debug("import:%s"%(url))
                 self.add_css_file(url)
 
         if 'url(' in cssdata:
@@ -1231,7 +1235,9 @@ class FileCache:
             ## url("href")
             ## url('href')
             logger.debug("CSS url()")
+            ## the pattern will also accept mismatched '/", which is broken CSS.
             for url in re.findall(r'url\([\'"]?(.*?)[\'"]?\)', cssdata):
+                url = get_path_part(href)+url
                 logger.debug("url:%s"%url)
                 self.add_linked_file(url)
 
