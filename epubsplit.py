@@ -777,7 +777,7 @@ class SplitEpub:
     # pass in list of line numbers(?)
     def get_split_files(self,linenums):
 
-        self.filecache = FileCache(self.get_manifest_items())
+        self.filecache = FileCache(self.epub,self.get_manifest_items())
 
         # set include flag in split_lines.
         if not self.split_lines:
@@ -1011,8 +1011,12 @@ class SplitEpub:
 
         fontdecrypter = FontDecrypter(self.epub,self.get_content_dom())
         linked=''
-        for (linked,type) in self.filecache.linkedfiles:
-            # print("linked files:(%s,%s)"%(linked,type))
+        for linked in self.filecache.linkedfiles:
+            if ("h:"+linked) in self.get_manifest_items():
+                mtype = self.get_manifest_items()["h:"+linked][1]
+            else:
+                mtype = 'unknown'
+            logger.debug("linked files:(%s,%s)"%(linked,mtype))
             # add to manifest
             if coverjpgpath and linked == "cover.jpg":
                 continue # don't dup cover.
@@ -1032,7 +1036,7 @@ class SplitEpub:
             manifest.appendChild(newTag(contentdom,"item",
                                         attrs={'id':id,
                                                'href':linked,
-                                               'media-type':type}))
+                                               'media-type':mtype}))
 
         contentxml = contentdom.toprettyxml(indent='   ') # ,encoding='utf-8'
         # tweak for brain damaged Nook STR.  Nook insists on name before content.
@@ -1117,7 +1121,8 @@ div { margin: 0pt; padding: 0pt; }
 
 class FileCache:
 
-    def __init__(self,manifest_items={}):
+    def __init__(self,epub,manifest_items={}):
+        self.epub = epub
         self.manifest_items = manifest_items
         self.oldnew = {}
         self.newold = {}
@@ -1125,21 +1130,24 @@ class FileCache:
         self.linkedfiles = set()
 
         ## always include font files for embedded fonts
-        for key, value in six.iteritems(self.manifest_items):
-            # print("manifest:%s %s"%(key,value))
-            if key.startswith('i:') and value[1] in ('application/vnd.ms-opentype',
-                                                     'application/x-font-ttf',
-                                                     'application/x-font-truetype',
-                                                     'application/font-sfnt'):
-                self.add_linked_file(value[0])
+        # for key, value in six.iteritems(self.manifest_items):
+        #     # logger.debug("manifest:%s %s"%(key,value))
+        #     if key.startswith('i:') and value[1] in ('application/vnd.ms-opentype',
+        #                                              'application/x-font-ttf',
+        #                                              'application/x-font-truetype',
+        #                                              'application/font-sfnt',
+        #                                              # 'text/css',
+        #                                              ):
+        #         self.add_linked_file(value[0])
+
+    def fix_path(self, href):
+        return normpath(unquote(href)) # fix %20 & /../
 
     def add_linked_file(self, href):
-        href = normpath(unquote(href)) # fix %20 & /../
-        if ("h:"+href) in self.manifest_items:
-            type = self.manifest_items["h:"+href][1]
-        else:
-            type = 'unknown'
-        self.linkedfiles.add((href,type))
+        self.linkedfiles.add(self.fix_path(href))
+
+    def is_linked_file(self, href):
+        return self.fix_path(href) in self.linkedfiles
 
     def add_content_file(self, href, filedata):
 
@@ -1183,9 +1191,52 @@ class FileCache:
         for style in soup.findAll('link',{'type':'text/css'}):
             #print("link:%s"%style)
             if style.has_attr('href'):
-                self.add_linked_file(get_path_part(href)+style['href'])
+                self.add_css_file(get_path_part(href)+style['href'])
 
         return newfile
+
+    def add_css_file(self, href):
+        ## When adding a linked CSS file, also look inside it for
+        ## url() refs and @imports.
+        ##
+        ## This will add those url() refs, but there's nothing checks
+        ## that the CSS rules containing those url()s are *used* by
+        ## the content files.
+        href = self.fix_path(href)
+
+        if self.is_linked_file(href):
+            logger.debug("add_css_file Skipping %s already linked"%href)
+            return
+
+        logger.debug("add_css_file(%s)"%href)
+
+        cssdata = self.epub.read(href).decode('utf-8')
+
+        ## Brute force discard all CSS comments
+        cssdata = re.sub(r'(/\*.*?\*/)', r'', cssdata, flags=re.DOTALL)
+
+        if '@import' in cssdata:
+            ## @import url("substyle.css");
+            ## @import url('substyle.css');
+            ## @import "substyle.css";
+            ## @import 'substyle.css';
+            logger.debug("CSS @import")
+            ## the pattern will also accept mismatched '/", which is broken CSS.
+            for url in re.findall(r'@import (?:url\()?[\'"](.*?)[\'"]\)?', cssdata):
+                logger.debug("import:%s"%url)
+                self.add_css_file(url)
+
+        if 'url(' in cssdata:
+            ## url(href)
+            ## url("href")
+            ## url('href')
+            logger.debug("CSS url()")
+            for url in re.findall(r'url\([\'"]?(.*?)[\'"]?\)', cssdata):
+                logger.debug("url:%s"%url)
+                self.add_linked_file(url)
+
+        # logger.debug(cssdata)
+        self.add_linked_file(href)
 
 def splitHtml(data,tagid,before=False):
     soup = BeautifulSoup(data,'html5lib')
