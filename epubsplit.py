@@ -1243,6 +1243,11 @@ def newTag(dom,name,attrs=None,text=None):
     return tag
 
 def main(argv,usage=None):
+    loghandler=logging.StreamHandler()
+    loghandler.setFormatter(logging.Formatter("%(filename)s(%(lineno)d): %(message)s"))
+    logger.addHandler(loghandler)
+    loghandler.setLevel(logging.DEBUG)
+    logger.setLevel(logging.DEBUG)
 
     from optparse import OptionParser
 
@@ -1278,8 +1283,14 @@ generate an epub with each of the "lines" given included.''')
                       help="Include LANG as dc:language tag, multiple languages may be given, Default: en", metavar="LANG")
     parser.add_option("-c", "--cover", dest="coveropt", default=None,
                       help="Path to a jpg to use as cover image.", metavar="COVER")
+    parser.add_option('--debug',
+                      action='store_true', dest='debug',
+                      help='Show debug and notice output.', )
 
     (options, args) = parser.parse_args(argv)
+
+    if not options.debug:
+        logger.setLevel(logging.WARNING)
 
     ## Add .epub if not already there.
     if not options.outputopt.lower().endswith(".epub"):
